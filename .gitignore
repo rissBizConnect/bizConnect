@@ -3,6 +3,7 @@
 .git
 target/
 *.class
+.metadata
 
 # Maven/Gradle build artifacts
 /target/
