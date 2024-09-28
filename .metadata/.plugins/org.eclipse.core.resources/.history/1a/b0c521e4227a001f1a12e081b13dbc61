@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>testAjaxView</title>
+<%-- jsp 에서 el 사용시 절대경로를 표시하는 /first 를
+	${ pageContext.servletContext.contextPath } 로 표기함
+	톰켓이 구동하고 있는 에플리케이션의 contet--
+ --%>
+<script type="text/javascript" src="/first/resources/js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<h1>jQuery 로 ajax 스프링 적용 테스트</h1>
+<hr>
+
+</body>
+</html>

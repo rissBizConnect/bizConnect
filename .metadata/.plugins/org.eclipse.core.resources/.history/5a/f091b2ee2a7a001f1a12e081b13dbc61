@@ -1,0 +1,30 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>testAjaxView</title>
+<%-- jsp 에서 el 사용시 절대경로를 표시하는 /first 를
+	${ pageContext.servletContext.contextPath } 로 표기함
+	톰켓이 구동하고 있는 에플리케이션의 contet-root 를 조회해 오라는 의미임
+ --%>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath }/resources/js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<h1>jQuery 로 ajax 스프링 적용 테스트</h1>
+<hr>
+
+<h2>1. 서버로 전송 값은 없고, 결과로 문자열을 받아서 출력 : get 방식</h2>
+<p id="p1" style="width: 300px;height: 50px;border: 1px solid red;"></p>
+<button id="test1">테스트1</button>
+
+<script type="text/javascript">
+//window.onload = function(){ 태그객체.이벤트명 = function(){ 이벤트 발생시 처리 내용 작성 }};
+//jQuery.documen.ready(function(){ 태그객체.이벤트명 = function(){ 이벤트 발생시 처리 내용 작성 }});
+//window.onload 와 jQuery.document.ready 는 의미가 같음 : 브라우저에 문서 읽어들이기가 완료되면을 의미함
+//jQuery 는 줄임말로 $ 로 표기함
+//jQuery.document.ready(function(){}); 는 줄여서 $(function(){});
+</script>
+</body>
+</html>
