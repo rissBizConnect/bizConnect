@@ -1,8 +1,0 @@
-package org.myweb.first.test.model.service;
-
-import org.springframework.stereotype.Service;
-
-@Service("testService")
-public class TestServiceImpl implements TestService {
-
-}
