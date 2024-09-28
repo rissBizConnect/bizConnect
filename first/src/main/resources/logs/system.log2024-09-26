@@ -1,0 +1,23 @@
+[11:12:31][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:12:32][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 658 ms
+[11:12:32][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:12:32][INFO ][FrameworkServlet.java: 547] - Completed initialization in 660 ms
+[11:13:28][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:13:29][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 639 ms
+[11:13:29][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:13:30][INFO ][FrameworkServlet.java: 547] - Completed initialization in 666 ms
+[11:15:08][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:15:09][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 601 ms
+[11:15:09][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:15:09][INFO ][FrameworkServlet.java: 547] - Completed initialization in 651 ms
+[11:16:32][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:16:32][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 612 ms
+[11:16:32][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:16:33][INFO ][FrameworkServlet.java: 547] - Completed initialization in 651 ms
+[12:02:11][INFO ][MemberController.java: 162] - enroll.do : Member [userId=user02, userPwd=pass02, userName=누굴까, gender=M, age=23, phone=010-1212-7878, email=kangkd@test.org, enrollDate=null, lastModified=null, signType=null, adminYN=null, loginOk=null, photoFileName=null]
+[12:02:11][INFO ][MemberController.java: 168] - after encode : $2a$10$Gw9Zh2FoB2q7MgysqfOihellEoLXEyid7uhMQ0qlnor7rsdklbfXO, length : 60
+[12:02:11][INFO ][MemberController.java: 174] - savePath : D:\spring_workspace\first\src\main\webapp\resources\photo_files
+[12:22:21][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[12:22:21][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 618 ms
+[12:22:21][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[12:22:22][INFO ][FrameworkServlet.java: 547] - Completed initialization in 711 ms
