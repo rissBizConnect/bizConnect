@@ -3,12 +3,6 @@
 .git
 target/
 *.class
-.metadata
-
-# Eclipse settings
-.classpath
-.project
-.settings
 
 # Maven/Gradle build artifacts
 /target/
