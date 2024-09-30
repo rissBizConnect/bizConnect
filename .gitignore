@@ -3,7 +3,6 @@
 .git
 target/
 *.class
-.metadata
 
 # Eclipse settings
 .classpath
