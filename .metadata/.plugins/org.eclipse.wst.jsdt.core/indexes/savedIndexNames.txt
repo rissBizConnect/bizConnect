@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\riss\bizConnect\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3324070606.index
+1894729692.index
+707154666.index
+2209865847.index
+2444894211.index
+213531398.index
