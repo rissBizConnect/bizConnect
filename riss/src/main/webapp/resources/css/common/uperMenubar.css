@@ -1,8 +1,8 @@
 @charset "EUC-KR";
-
+/
 ul{
 	position: absolute;
-	left: 50%;
+	left: 500px;
 }
 
 li{
@@ -10,9 +10,9 @@ li{
 }
 
 li a{
+	float:left;
 	list-style-type: none;
 	text-decoration: none;
-	width: calc(100%);;
 	height: 30px;
 	display: block;
 	background: orange;
