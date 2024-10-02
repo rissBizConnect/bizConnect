@@ -9,9 +9,13 @@
 <meta charset="UTF-8">
 <title>attendance</title>
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-<c:import url="/WEB-INF/views/common/uperMenubar.jsp" />
+
 </head>
 <body>
+	<c:import url="/WEB-INF/views/common/header.jsp" />
+	<c:import url="/WEB-INF/views/common/menubar.jsp" />
 	<button onclick="return false;">출 첵</button>
+	
+	<c:import url="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>

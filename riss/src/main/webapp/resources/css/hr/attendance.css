@@ -1,6 +1,6 @@
 @charset "EUC-KR";
 
-button {
+/* button {
 	position: absolute;
 	left: 50%;
 	width: 350px;
@@ -11,5 +11,5 @@ button {
 	margin-bottom: 15px;
 	font-size: 14pt;
 	font-weight: bold;
-	cursor: pointer;  /* 손가락모양 : 클릭 가능한 버튼으로 표시함 */
-}
+	cursor: pointer;  손가락모양 : 클릭 가능한 버튼으로 표시함
+} */

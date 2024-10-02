@@ -11,6 +11,7 @@ public class AttendanceController {
 	public ModelAndView moveAttendance (ModelAndView mv) {
 		
 		mv.setViewName("hr/attendance");
+		/* mv.setViewName("common/header"); */
 		return mv;
 	}
 }
