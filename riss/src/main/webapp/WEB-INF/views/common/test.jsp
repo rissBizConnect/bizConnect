@@ -106,7 +106,7 @@
                             <li><a href="#" onclick="loadPage('연차')">연차</a></li>
                         </ul>
                     </li>
-                    <li><a href="#" onclick="loadPage('사원명')">사원명</a></li>
+                    <li><a href="#" onclick="loadPage('사원명')">사원명부</a></li>
                     <li class="has-submenu" id="salary">
                         <a href="#" onclick="toggleSubmenu('salary')">급여관리</a>
                         <ul class="submenu" id="salary-submenu">
