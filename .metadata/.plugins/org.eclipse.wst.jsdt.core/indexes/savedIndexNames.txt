@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+D:\git\bizConnect\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1537774661.index
+1093824020.index
+3136682829.index
+1789118821.index
+851497005.index
+1894729692.index

@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 *.xml
 .deployables
 .git
@@ -25,3 +26,6 @@ target/
 .DS_Store
 *.swp
 *.jar
+=======
+/.metadata/
+>>>>>>> Stashed changes
