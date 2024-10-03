@@ -14,4 +14,8 @@ public class AttendanceDao {
 	public GooutTime gooutCheck(Member logginUser) {
 		return sqlSessionTemplate.selectOne("attendanceMapper.selectGooutCheck",logginUser);
 	}
+
+	public String test() {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selecttest");
+	}
 }

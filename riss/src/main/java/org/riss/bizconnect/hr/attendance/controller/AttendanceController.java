@@ -46,7 +46,14 @@ public class AttendanceController {
 		session.invalidate();
 		return mv;
 	}
-
+	@RequestMapping("test.do")
+	public ModelAndView test(ModelAndView mv) {
+		logger.info("asdsadsads");
+		logger.info("test : " + attendanceService.test());
+		
+		mv.setViewName("hr/attendance");
+		return mv;
+	}
 //	@RequestMapping("gooutwork.do")
 //	public String gooutworkCheck() {
 //		if (attendanceService.goCheck() > 0)

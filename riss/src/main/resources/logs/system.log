@@ -1,18 +1,6 @@
-[09:56:16][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[09:56:17][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 744 ms
-[09:56:17][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[09:56:18][INFO ][FrameworkServlet.java: 547] - Completed initialization in 745 ms
-[10:15:43][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[10:15:44][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 713 ms
-[10:15:44][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[10:15:44][INFO ][FrameworkServlet.java: 547] - Completed initialization in 751 ms
-[12:06:07][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[12:06:07][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 696 ms
-[12:06:07][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[12:06:08][INFO ][FrameworkServlet.java: 547] - Completed initialization in 727 ms
-[12:50:54][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[12:50:55][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 711 ms
-[12:50:55][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[12:50:56][INFO ][FrameworkServlet.java: 547] - Completed initialization in 727 ms
-[12:52:16][INFO ][NoticeController.java: 110] - ndetail.do : 28
-[12:52:34][INFO ][NoticeController.java: 110] - ndetail.do : 16
+[00:00:35][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:00:36][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 591 ms
+[00:00:36][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:00:37][INFO ][FrameworkServlet.java: 547] - Completed initialization in 646 ms
+[00:00:38][INFO ][AttendanceController.java: 51] - asdsadsads
+[00:00:38][INFO ][AttendanceController.java: 52] - test : 설계방식2

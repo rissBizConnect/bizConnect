@@ -7,6 +7,8 @@ public interface AttendanceService {
 
 	GooutTime gooutCheck(Member logginUser);
 
+	String test();
+
 
 
 }

@@ -16,6 +16,11 @@ public class AttendanceServiceImpl implements AttendanceService {
 	public GooutTime gooutCheck(Member logginUser) {
 		return attendanceDao.gooutCheck(logginUser);
 	}
+
+	@Override
+	public String test() {
+		return attendanceDao.test();
+	}
 	
 
 }
