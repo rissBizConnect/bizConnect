@@ -22,15 +22,15 @@ public class AttendanceController {
 	private AttendanceService attendanceService;
 
 	@RequestMapping("moveAttendance.do")
-	public ModelAndView moveAttendance(HttpServletRequest request, ModelAndView mv) {
-		request.setAttribute("loginUser", new Member("COM010", "GID010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager"));
+	public ModelAndView moveAttendance(HttpSession session, HttpServletRequest request, ModelAndView mv) {
 		
-		HttpSession session = request.getSession(false);
+		Member member = new Member("COM010", "GID010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");
+		session.setAttribute("loginUser", member);
 		
-		Member logginUser = (Member) request.getAttribute("loginUser");
-		GooutTime gooutTime = attendanceService.gooutCheck(logginUser);
+		Member loginUser = (Member) request.getAttribute("loginUser");
+		GooutTime gooutTime = attendanceService.gooutCheck(loginUser);
 		
-		logger.info("gooutTime  : " + gooutTime);
+
 //		if (logginUser == null) {
 //			mv.addObject("gooutBTN", "go");
 //			logger.info("go 활성화");
@@ -43,7 +43,7 @@ public class AttendanceController {
 //		}
 
 		mv.setViewName("hr/attendance");
-		session.invalidate();
+		//session.invalidate();
 		return mv;
 	}
 	@RequestMapping("test.do")

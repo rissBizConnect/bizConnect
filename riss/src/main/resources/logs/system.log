@@ -4,3 +4,66 @@
 [00:00:37][INFO ][FrameworkServlet.java: 547] - Completed initialization in 646 ms
 [00:00:38][INFO ][AttendanceController.java: 51] - asdsadsads
 [00:00:38][INFO ][AttendanceController.java: 52] - test : 설계방식2
+[00:09:04][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:09:04][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 597 ms
+[00:09:04][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:09:05][INFO ][FrameworkServlet.java: 547] - Completed initialization in 580 ms
+[00:09:10][INFO ][AttendanceController.java: 51] - asdsadsads
+[00:09:11][INFO ][AttendanceController.java: 52] - test : 설계방식2
+[00:11:25][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:11:26][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 589 ms
+[00:11:26][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:11:27][INFO ][FrameworkServlet.java: 547] - Completed initialization in 623 ms
+[00:11:31][INFO ][AttendanceController.java: 33] - gooutTime  : null
+[00:16:12][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:16:13][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 600 ms
+[00:16:13][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:16:14][INFO ][FrameworkServlet.java: 547] - Completed initialization in 601 ms
+[00:16:17][INFO ][AttendanceController.java: 33] - gooutTime  : GooutTime [day=0024-10-04, goDate=null, outDate=null, time=null]
+[00:27:54][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:27:55][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 569 ms
+[00:27:55][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:27:56][INFO ][FrameworkServlet.java: 547] - Completed initialization in 600 ms
+[00:28:08][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:28:09][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 587 ms
+[00:28:09][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:28:09][INFO ][FrameworkServlet.java: 547] - Completed initialization in 569 ms
+[00:30:55][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:30:55][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 588 ms
+[00:30:55][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:30:56][INFO ][FrameworkServlet.java: 547] - Completed initialization in 620 ms
+[00:31:17][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:31:18][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 593 ms
+[00:31:18][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:31:19][INFO ][FrameworkServlet.java: 547] - Completed initialization in 571 ms
+[00:32:11][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:32:12][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 576 ms
+[00:32:12][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:32:12][INFO ][FrameworkServlet.java: 547] - Completed initialization in 574 ms
+[00:32:34][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:32:34][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 589 ms
+[00:32:34][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:32:35][INFO ][FrameworkServlet.java: 547] - Completed initialization in 615 ms
+[00:33:39][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:33:40][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 598 ms
+[00:33:40][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:33:41][INFO ][FrameworkServlet.java: 547] - Completed initialization in 597 ms
+[00:33:48][INFO ][AttendanceController.java: 34] - gooutTime  : GooutTime [day=0024-10-04, goDate=null, outDate=null, time=null]
+[00:34:48][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:34:48][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 584 ms
+[00:34:48][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:34:49][INFO ][FrameworkServlet.java: 547] - Completed initialization in 602 ms
+[00:34:51][INFO ][AttendanceController.java: 30] - loginUser  : Member [gId=COM010, comCode=GID010, userPW=password012, userName=Ella Harris, userJob=null, userRegNo=861010-0123456, userPhone=null, userEmail=null, userAddr=null, userEntry=null, userPay=0, userContract=Full-time, userAccount=null, userCard=null, userRole=Marketing Manager, userFacePictPath=null]
+[00:34:51][INFO ][AttendanceController.java: 35] - gooutTime  : GooutTime [day=0024-10-04, goDate=null, outDate=null, time=null]
+[00:35:24][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:35:25][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 605 ms
+[00:35:25][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:35:26][INFO ][FrameworkServlet.java: 547] - Completed initialization in 587 ms
+[00:35:27][INFO ][AttendanceController.java: 30] - loginUser  : Member [gId=COM010, comCode=GID010, userPW=password012, userName=Ella Harris, userJob=null, userRegNo=861010-0123456, userPhone=null, userEmail=null, userAddr=null, userEntry=null, userPay=0, userContract=Full-time, userAccount=null, userCard=null, userRole=Marketing Manager, userFacePictPath=null]
+[00:35:27][INFO ][AttendanceController.java: 35] - gooutTime  : GooutTime [day=0024-10-04, goDate=null, outDate=null, time=null]
+[00:36:19][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[00:36:20][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 596 ms
+[00:36:20][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[00:36:21][INFO ][FrameworkServlet.java: 547] - Completed initialization in 614 ms
+[00:36:22][INFO ][AttendanceController.java: 31] - loginUser  : Member [gId=COM010, comCode=GID010, userPW=password012, userName=Ella Harris, userJob=null, userRegNo=861010-0123456, userPhone=null, userEmail=null, userAddr=null, userEntry=null, userPay=0, userContract=Full-time, userAccount=null, userCard=null, userRole=Marketing Manager, userFacePictPath=null]
+[00:36:23][INFO ][AttendanceController.java: 36] - gooutTime  : GooutTime [day=0024-10-04, goDate=null, outDate=null, time=null]
