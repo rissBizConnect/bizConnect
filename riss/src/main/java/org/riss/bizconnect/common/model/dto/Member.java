@@ -6,22 +6,22 @@ import java.sql.Date;
 public class Member implements Serializable {
 	private static final long serialVersionUID = 662131242686852907L;
 	
-	String gId; 			//아이디
-	String comCode;		//회사코드
-	String userPW;		//비밀번호
-	String userName;		//이름
-	String userJob;		//직원분류
-	String userRegNo;		//주민번호
-	String userPhone;		//전화버놓
-	String userEmail;		//이메일
-	String userAddr;		//주소
-	Date userEntry;		//입사일
-	int userPay;			//기본급
-	String userContract;		//계약서
-	String userAccount;		//계좌번호
-	String userCard;		//카드번호
-	String userRole;		//권한
-	String userFacePictPath;	//얼굴 사진 주소
+	private String gId; 			//아이디
+	private String comCode;		//회사코드
+	private String userPW;		//비밀번호
+	private String userName;		//이름
+	private String userJob;		//직원분류
+	private String userRegNo;		//주민번호
+	private String userPhone;		//전화버놓
+	private String userEmail;		//이메일
+	private String userAddr;		//주소
+	private Date userEntry;		//입사일
+	private int userPay;			//기본급
+	private String userContract;		//계약서
+	private String userAccount;		//계좌번호
+	private String userCard;		//카드번호
+	private String userRole;		//권한
+	private String userFacePictPath;	//얼굴 사진 주소
 	
 	public Member() {
 		super();

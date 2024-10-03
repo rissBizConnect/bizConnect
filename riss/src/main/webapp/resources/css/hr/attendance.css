@@ -1,15 +1,44 @@
 @charset "EUC-KR";
 
-/* button {
-	position: absolute;
-	left: 50%;
-	width: 350px;
-	height: 35px;
-	background-color: navy;
-	color: white;
-	margin-top: 10px;
-	margin-bottom: 15px;
-	font-size: 14pt;
-	font-weight: bold;
-	cursor: pointer;  손가락모양 : 클릭 가능한 버튼으로 표시함
-} */
+.gowork {
+	width: 10%;
+    height: 2%;
+    position: absolute;
+    top: 150px;
+    left: 300px;
+}
+.headerPos {
+position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.menubarPos {
+    position: absolute;
+    top: 63px;
+    left: 0;
+    
+}
+
+.contentPos {
+        position: absolute;
+    top: 150px;
+    left: 350px;
+}
+
+.footerPos {
+    position: absolute;
+    width: 100%;
+    bottom: -142px;
+    left: 0;
+}
+
+.goworkBTN {
+	position: relative;
+    width: 287px;
+    height: 47px;
+    left: 62px;
+    top: 100px;
+
+}
+
