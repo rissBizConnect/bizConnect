@@ -2,5 +2,3 @@
     pageEncoding="UTF-8"%>
 <!-- index.jsp -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<jsp:include page="/WEB-INF/views/common/test.jsp" />

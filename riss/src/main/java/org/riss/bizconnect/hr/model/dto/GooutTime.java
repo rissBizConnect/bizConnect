@@ -6,6 +6,7 @@ import java.sql.Date;
 public class GooutTime implements Serializable {
 	private static final long serialVersionUID = 505505501604098377L;
 	
+	private Date day;
 	private Date goDate;
 	private Date outDate;
 	private Date time;
@@ -14,11 +15,20 @@ public class GooutTime implements Serializable {
 		super();
 	}
 
-	public GooutTime(Date goDate, Date outDate, Date time) {
+	public GooutTime(Date day, Date goDate, Date outDate, Date time) {
 		super();
+		this.day = day;
 		this.goDate = goDate;
 		this.outDate = outDate;
 		this.time = time;
+	}
+
+	public Date getDay() {
+		return day;
+	}
+
+	public void setDay(Date day) {
+		this.day = day;
 	}
 
 	public Date getGoDate() {
@@ -51,7 +61,8 @@ public class GooutTime implements Serializable {
 
 	@Override
 	public String toString() {
-		return "GooutTime [goDate=" + goDate + ", outDate=" + outDate + ", time=" + time + "]";
+		return "GooutTime [day=" + day + ", goDate=" + goDate + ", outDate=" + outDate + ", time=" + time + "]";
 	}
+	
 	
 }
