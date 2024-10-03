@@ -5,8 +5,8 @@ import java.lang.reflect.Member;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.riss.bizconnect.common.model.dto.GooutTime;
 import org.riss.bizconnect.hr.attendance.model.service.AttendanceService;
+import org.riss.bizconnect.hr.model.dto.GooutTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +42,8 @@ public class AttendanceController {
 	@RequestMapping("gooutwork.do")
 	public String gooutworkCheck() {
 		if(attendanceService.goCheck() > 0)
+			return "common/footer";
+		
+		return "common/click";
 	}
 }

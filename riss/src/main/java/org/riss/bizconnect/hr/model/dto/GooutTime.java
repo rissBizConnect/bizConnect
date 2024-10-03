@@ -1,4 +1,4 @@
-package org.riss.bizconnect.common.model.dto;
+package org.riss.bizconnect.hr.model.dto;
 
 import java.io.Serializable;
 import java.sql.Date;

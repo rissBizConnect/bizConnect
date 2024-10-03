@@ -21,7 +21,7 @@
 	</div>
 	<div class="contentPos">
 		<c:import url="/WEB-INF/views/common/click.jsp" />
-		<button class="goworkBTN" onclick="goWork.do">출 첵</button>
+		<button class="goworkBTN" onclick="javascript:location.href='${pageContext.servletContext.contextPath }/gooutwork.do'"'>출 첵</button>
 	</div>
 	<div class="footerPos">
 	<c:import url="/WEB-INF/views/common/footer.jsp" />

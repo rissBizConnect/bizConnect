@@ -10,6 +10,6 @@ public class AttendanceDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public int goCheck() {
-		return sqlSessionTemplate.insert(null);
+		return sqlSessionTemplate.insert("attendanceMapper.insertGoCheck");
 	}
 }
