@@ -20,7 +20,7 @@ public class RetireController {
 
     @Autowired
     private RetireService retireService;
-    @RequestMapping("main.do")
+    @RequestMapping("retireeList.do")
     public String RetireMainView(
     		Model model
     		) {

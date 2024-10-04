@@ -5,11 +5,15 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/click.css?after">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/styles.css">
 	<script src="${pageContext.request.contextPath}/resources/js/click.js" charset="utf-8"></script>
 <title>Insert title here</title>
 </head>
 <body>
+
+<%@ include file="../common/menubar.jsp" %>
+
+
     <div class="container">
     <main id="content">
         <section class="dashboard">
@@ -45,5 +49,8 @@
         </section>
     </main>
 </div>
+<footer>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/footer.css">
+</footer>
 </body>
 </html>
