@@ -1,34 +1,67 @@
 package org.riss.bizconnect.hr.retiree.model.service;
 
-import org.riss.bizconnect.hr.retiree.model.dao.RetireDAO;
+import java.util.ArrayList;
+
+import org.riss.bizconnect.hr.retiree.model.dao.retireDao;
 import org.riss.bizconnect.hr.retiree.model.dto.RetireDTO;
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.common.model.dto.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-@Service
+@Service("retireService")
 public class RetireServiceImpl implements RetireService {
+
     @Autowired
-    private RetireDAO retireDAO; // DAO 의존성 주입
+    private retireDao retireDao;
 
     @Override
-    public RetireDTO findRetire(int retNo, String comCode) {
-        return retireDAO.getRetireInfo(retNo, comCode); // DAO 메서드 호출
+    public RetireDTO selectRetiree(String retireId) {
+        return retireDao.selectRetiree(retireId);
     }
 
     @Override
-    public List<RetireDTO> findAllRetires() {
-        return retireDAO.getAllRetires(); // DAO 메서드 호출
+    public ArrayList<RetireDTO> selectAllRetirees(Paging paging) {
+        return retireDao.selectAllRetirees(paging);
     }
 
     @Override
-    public void registerRetire(RetireDTO retire) {
-        retireDAO.addRetire(retire); // DAO 메서드 호출
+    public int insertRetiree(RetireDTO retiree) {
+        return retireDao.insertRetiree(retiree);
     }
 
     @Override
-    public void modifyRetire(RetireDTO retire) {
-        retireDAO.updateRetire(retire); // DAO 메서드 호출
+    public int updateRetiree(RetireDTO retiree) {
+        return retireDao.updateRetiree(retiree);
+    }
+
+    @Override
+    public int deleteRetiree(String retireId) {
+        return retireDao.deleteRetiree(retireId);
+    }
+
+    @Override
+    public int selectRetireeCount() {
+        return retireDao.selectRetireeCount();
+    }
+
+    @Override
+    public ArrayList<RetireDTO> searchRetireesByName(Search search) {
+        return retireDao.searchRetireesByName(search);
+    }
+
+    @Override
+    public int searchRetireesByNameCount(String keyword) {
+        return retireDao.searchRetireesByNameCount(keyword);
+    }
+
+    @Override
+    public ArrayList<RetireDTO> searchRetireesByDate(Search search) {
+        return retireDao.searchRetireesByDate(search);
+    }
+
+    @Override
+    public int searchRetireesByDateCount(Search search) {
+        return retireDao.searchRetireesByDateCount(search);
     }
 }

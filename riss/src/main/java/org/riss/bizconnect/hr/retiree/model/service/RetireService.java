@@ -1,12 +1,20 @@
 package org.riss.bizconnect.hr.retiree.model.service;
 
-import org.riss.bizconnect.hr.retiree.model.dto.RetireDTO;
+import java.util.ArrayList;
 
-import java.util.List;
+import org.riss.bizconnect.hr.retiree.model.dto.RetireDTO;
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.common.model.dto.Search;
 
 public interface RetireService {
-    RetireDTO findRetire(int retNo, String comCode);      // 퇴직자 정보 조회
-    List<RetireDTO> findAllRetires();                     // 모든 퇴직자 정보 조회
-    void registerRetire(RetireDTO retire);                // 퇴직자 정보 등록
-    void modifyRetire(RetireDTO retire);                  // 퇴직자 정보 수정
+    RetireDTO selectRetiree(String retireId);
+    ArrayList<RetireDTO> selectAllRetirees(Paging paging);
+    int insertRetiree(RetireDTO retiree);
+    int updateRetiree(RetireDTO retiree);
+    int deleteRetiree(String retireId);
+    int selectRetireeCount();
+    ArrayList<RetireDTO> searchRetireesByName(Search search);
+    int searchRetireesByNameCount(String keyword);
+    ArrayList<RetireDTO> searchRetireesByDate(Search search);
+    int searchRetireesByDateCount(Search search);
 }
