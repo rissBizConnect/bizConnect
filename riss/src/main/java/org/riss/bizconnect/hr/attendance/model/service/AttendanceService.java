@@ -5,9 +5,12 @@ import org.riss.bizconnect.hr.model.dto.GooutTime;
 
 public interface AttendanceService {
 
-	GooutTime gooutCheck(Member logginUser);
+	GooutTime selectTodayGOTime(Member loginUser);
 
-	String test();
+	int insertGOTime(Member loginUser);
+
+	int updateGoD(Member loginUser);
+	int updateOutD(Member loginUser);
 
 
 

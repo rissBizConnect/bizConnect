@@ -1,6 +1,7 @@
 package org.riss.bizconnect.hr.attendance.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import java.time.LocalDateTime;
+
 import javax.servlet.http.HttpSession;
 
 import org.riss.bizconnect.common.model.dto.Member;
@@ -11,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -22,37 +24,69 @@ public class AttendanceController {
 	private AttendanceService attendanceService;
 
 	@RequestMapping("moveAttendance.do")
-	public ModelAndView moveAttendance(HttpSession session, HttpServletRequest request, ModelAndView mv) {
+	public ModelAndView moveAttendance(
+			HttpSession session, 
+			ModelAndView mv) {
 		
-		Member member = new Member("COM010", "GID010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");
+		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");
 		session.setAttribute("loginUser", member);
 		
-		Member loginUser = (Member) request.getAttribute("loginUser");
-		GooutTime gooutTime = attendanceService.gooutCheck(loginUser);
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		GooutTime gooutTime = attendanceService.selectTodayGOTime(loginUser);
 		
-
-//		if (logginUser == null) {
-//			mv.addObject("gooutBTN", "go");
-//			logger.info("go 활성화");
-//		} else if (logginUser.getOutDate() == null) {
-//			mv.addObject("gooutBTN", "out");
-//			logger.info("out 활성화");
-//		} else {
-//			mv.addObject("gooutBTN", "finish");
-//			logger.info("모든 버튼 비활성화");
-//		}
+		logger.info("Member : " + loginUser);
+		logger.info("gooutTime : " + gooutTime);
+		if (gooutTime == null || gooutTime.getDay() == null) {
+			if(attendanceService.insertGOTime(loginUser) > 0) {
+				mv.addObject("gooutBTN", "go");
+				logger.info("insert => go 활성화");
+			}
+		} else if (gooutTime.getGoDate() == null) {
+			mv.addObject("gooutBTN", "go");
+			logger.info("go 활성화");
+			
+		} else if(gooutTime.getOutDate() == null){
+			mv.addObject("gooutBTN", "out");
+			logger.info("out 활성화");
+		} else {
+			mv.addObject("gooutBTN", "finish");
+			logger.info("모든 버튼 비활성화");
+		}
 
 		mv.setViewName("hr/attendance");
 		//session.invalidate();
 		return mv;
 	}
-	@RequestMapping("test.do")
-	public ModelAndView test(ModelAndView mv) {
-		logger.info("asdsadsads");
-		logger.info("test : " + attendanceService.test());
+	@RequestMapping("goWorkCheck.do")
+	public String goWork(
+			HttpSession session) {
 		
-		mv.setViewName("hr/attendance");
-		return mv;
+		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");
+		session.setAttribute("loginUser", member);
+	
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		if(attendanceService.updateGoD(loginUser) > 0) {
+			return "redirect:moveAttendance.do";
+		}else {
+			return "common/error";
+		}
+	}
+	
+	@RequestMapping("goWorkCheck.do")
+	public String outWork(
+			HttpSession session) {
+		
+		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");
+		session.setAttribute("loginUser", member);
+	
+		Member loginUser = (Member) session.getAttribute("loginUser");
+		
+		if(attendanceService.updateOutD(loginUser) > 0) {
+			return "redirect:moveAttendance.do";
+		}else {
+			return "common/error";
+		}	
 	}
 //	@RequestMapping("gooutwork.do")
 //	public String gooutworkCheck() {

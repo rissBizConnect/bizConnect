@@ -11,11 +11,19 @@ public class AttendanceDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public GooutTime gooutCheck(Member logginUser) {
-		return sqlSessionTemplate.selectOne("attendanceMapper.selectGooutCheck",logginUser);
+	public GooutTime selectTodayGOTime(Member loginUser) {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectTodayGOTime",loginUser);
 	}
 
-	public String test() {
-		return sqlSessionTemplate.selectOne("attendanceMapper.selecttest");
+	public int insertGOTime(Member loginUser) {
+		return sqlSessionTemplate.insert("attendanceMapper.insertGOTime",loginUser);
+	}
+
+	public int updateGoD(Member loginUser) {
+		return sqlSessionTemplate.update("attendanceMapper.updateGoD",loginUser);
+	}
+
+	public int updateOutD(Member loginUser) {
+		return sqlSessionTemplate.update("attendanceMapper.updateOutD",loginUser);
 	}
 }

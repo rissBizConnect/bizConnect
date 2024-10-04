@@ -13,14 +13,22 @@ public class AttendanceServiceImpl implements AttendanceService {
 	private AttendanceDao attendanceDao;
 
 	@Override
-	public GooutTime gooutCheck(Member logginUser) {
-		return attendanceDao.gooutCheck(logginUser);
+	public GooutTime selectTodayGOTime(Member loginUser) {
+		return attendanceDao.selectTodayGOTime(loginUser);
 	}
 
 	@Override
-	public String test() {
-		return attendanceDao.test();
+	public int insertGOTime(Member loginUser) {
+		return attendanceDao.insertGOTime(loginUser);
 	}
-	
 
+	@Override
+	public int updateGoD(Member loginUser) {
+		return attendanceDao.updateGoD(loginUser);
+	}
+
+	@Override
+	public int updateOutD(Member loginUser) {
+		return attendanceDao.updateOutD(loginUser);
+	}
 }
