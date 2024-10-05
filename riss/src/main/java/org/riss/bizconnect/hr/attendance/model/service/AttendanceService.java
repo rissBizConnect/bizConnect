@@ -1,16 +1,20 @@
 package org.riss.bizconnect.hr.attendance.model.service;
 
+import java.util.ArrayList;
+
 import org.riss.bizconnect.common.model.dto.Member;
-import org.riss.bizconnect.hr.attendance.model.dto.GooutTime;
+import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
 
 public interface AttendanceService {
 
-	GooutTime selectTodayGOTime(Member loginUser);
+	Attendance selectTodayAttendance(Member loginUser);
 
-	int insertGOTime(Member loginUser);
+	int insertAttendance(Member loginUser);
 
 	int updateGoD(Member loginUser);
 	int updateOutD(Member loginUser);
+
+	ArrayList<Attendance> selectMyAttendance(Member loginUser);
 
 
 

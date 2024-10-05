@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class GooutTime implements Serializable {
+public class Attendance implements Serializable {
 	private static final long serialVersionUID = 505505501604098377L;
 	
 	private Date day;
@@ -12,11 +12,11 @@ public class GooutTime implements Serializable {
 	private Timestamp outDate;
 	private Timestamp time;
 	
-	public GooutTime() {
+	public Attendance() {
 		super();
 	}
 
-	public GooutTime(Date day, Timestamp goDate, Timestamp outDate, Timestamp time) {
+	public Attendance(Date day, Timestamp goDate, Timestamp outDate, Timestamp time) {
 		super();
 		this.day = day;
 		this.goDate = goDate;
