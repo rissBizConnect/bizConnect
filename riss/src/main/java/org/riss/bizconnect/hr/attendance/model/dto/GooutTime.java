@@ -1,21 +1,22 @@
-package org.riss.bizconnect.hr.model.dto;
+package org.riss.bizconnect.hr.attendance.model.dto;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class GooutTime implements Serializable {
 	private static final long serialVersionUID = 505505501604098377L;
 	
 	private Date day;
-	private Date goDate;
-	private Date outDate;
-	private Date time;
+	private Timestamp goDate;
+	private Timestamp outDate;
+	private Timestamp time;
 	
 	public GooutTime() {
 		super();
 	}
 
-	public GooutTime(Date day, Date goDate, Date outDate, Date time) {
+	public GooutTime(Date day, Timestamp goDate, Timestamp outDate, Timestamp time) {
 		super();
 		this.day = day;
 		this.goDate = goDate;
@@ -31,27 +32,27 @@ public class GooutTime implements Serializable {
 		this.day = day;
 	}
 
-	public Date getGoDate() {
+	public Timestamp getGoDate() {
 		return goDate;
 	}
 
-	public void setGoDate(Date goDate) {
+	public void setGoDate(Timestamp goDate) {
 		this.goDate = goDate;
 	}
 
-	public Date getOutDate() {
+	public Timestamp getOutDate() {
 		return outDate;
 	}
 
-	public void setOutDate(Date outDate) {
+	public void setOutDate(Timestamp outDate) {
 		this.outDate = outDate;
 	}
 
-	public Date getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
 
-	public void setTime(Date time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 
@@ -63,6 +64,5 @@ public class GooutTime implements Serializable {
 	public String toString() {
 		return "GooutTime [day=" + day + ", goDate=" + goDate + ", outDate=" + outDate + ", time=" + time + "]";
 	}
-	
 	
 }

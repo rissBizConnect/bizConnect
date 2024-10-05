@@ -21,7 +21,9 @@
 	</div>
 	<div class="contentPos">
 		<c:import url="/WEB-INF/views/common/click.jsp" />
-		<button class="goworkBTN" onclick="javascript:location.href='${pageContext.servletContext.contextPath }/gooutwork.do'"'>출 첵</button>
+		<c:if test="${ !empty requestScope.gooutBTN }">
+			<button class="goworkBTN" onclick="javascript:location.href='${pageContext.servletContext.contextPath }/${requestScope.URL }'"'>${ requestScope.gooutBTN }</button>
+		</c:if>
 	</div>
 	<div class="footerPos">
 	<c:import url="/WEB-INF/views/common/footer.jsp" />

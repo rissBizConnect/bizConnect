@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 import javax.servlet.http.HttpSession;
 
 import org.riss.bizconnect.common.model.dto.Member;
+import org.riss.bizconnect.hr.attendance.model.dto.GooutTime;
 import org.riss.bizconnect.hr.attendance.model.service.AttendanceService;
-import org.riss.bizconnect.hr.model.dto.GooutTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,18 +38,22 @@ public class AttendanceController {
 		logger.info("gooutTime : " + gooutTime);
 		if (gooutTime == null || gooutTime.getDay() == null) {
 			if(attendanceService.insertGOTime(loginUser) > 0) {
-				mv.addObject("gooutBTN", "go");
+				mv.addObject("gooutBTN", "출 근");
+				mv.addObject("URL", "goWorkCheck.do");
 				logger.info("insert => go 활성화");
+			}else {
+				mv.addObject("common/error");
 			}
 		} else if (gooutTime.getGoDate() == null) {
-			mv.addObject("gooutBTN", "go");
+			mv.addObject("gooutBTN", "출 근");
+			mv.addObject("URL", "goWorkCheck.do");
 			logger.info("go 활성화");
 			
 		} else if(gooutTime.getOutDate() == null){
-			mv.addObject("gooutBTN", "out");
+			mv.addObject("gooutBTN", "퇴 근");
+			mv.addObject("URL", "outWorkCheck.do");
 			logger.info("out 활성화");
 		} else {
-			mv.addObject("gooutBTN", "finish");
 			logger.info("모든 버튼 비활성화");
 		}
 
@@ -73,7 +77,7 @@ public class AttendanceController {
 		}
 	}
 	
-	@RequestMapping("goWorkCheck.do")
+	@RequestMapping("outWorkCheck.do")
 	public String outWork(
 			HttpSession session) {
 		
