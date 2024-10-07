@@ -2777,3 +2777,13 @@ Caused by: Error : 933, Position : 59, Sql = SELECT *
 [20:08:05][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 581 ms
 [20:08:05][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
 [20:08:06][INFO ][FrameworkServlet.java: 547] - Completed initialization in 621 ms
+[10:04:08][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[10:04:08][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 594 ms
+[10:04:08][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[10:04:09][INFO ][FrameworkServlet.java: 547] - Completed initialization in 595 ms
+[10:17:13][INFO ][AttendanceController.java: 40] - 확인 : 2
+[10:17:13][INFO ][AttendanceController.java: 44] - insert => go 활성화
+[10:57:53][INFO ][AttendanceController.java: 40] - 확인 : 0
+[10:57:53][INFO ][AttendanceController.java: 49] - out 활성화
+[10:57:55][INFO ][AttendanceController.java: 40] - 확인 : 0
+[10:57:55][INFO ][AttendanceController.java: 51] - 모든 버튼 비활성화
