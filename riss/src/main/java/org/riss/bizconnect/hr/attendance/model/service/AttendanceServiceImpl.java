@@ -3,6 +3,7 @@ package org.riss.bizconnect.hr.attendance.model.service;
 import java.util.ArrayList;
 
 import org.riss.bizconnect.common.model.dto.Member;
+import org.riss.bizconnect.common.model.dto.Paging;
 import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.attendance.model.dao.AttendanceDao;
 import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
@@ -38,7 +39,12 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public ArrayList<Attendance> selectMyAttendance(Member loginUser) {
-		return attendanceDao.selectMyAttendance(loginUser);
+	public ArrayList<Attendance> selectMyAttendance(Paging paging) {
+		return attendanceDao.selectMyAttendance(paging);
+	}
+
+	@Override
+	public int selectListCount() {
+		return attendanceDao.selectListCount();
 	}
 }
