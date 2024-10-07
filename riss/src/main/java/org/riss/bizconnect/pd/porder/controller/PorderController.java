@@ -14,6 +14,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class PorderController {
+	
+	@Autowired
+	private PorderService porderService;
+	
+	@RequestMapping("porder.do")
+	public ModelAndView Pordertest(ModelAndView mv) {
+		mv.setViewName("stock/porder");
+		ArrayList<PorderDTO> porder = porderService.listAllPorders();
+		
+		mv.addObject("all", porder);
+		
+		return mv;
+	}
+}
+
+/*
+@Controller
+public class PorderController {
 	private static final Logger logger = LoggerFactory.getLogger(PorderController.class);
 
 	
@@ -29,6 +47,4 @@ public class PorderController {
 		mv.addObject("one1", porder);
 		
 		return mv;
-	}
-	
-}
+	}*/

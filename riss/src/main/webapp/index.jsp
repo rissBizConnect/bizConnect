@@ -7,7 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<button onclick="javascript:location.href='/bizconnect/nlist.do'; return false;">목록</button> 
+	<button onclick="javascript:location.href='/bizconnect/porder.do'; return false;">발주관리</button> 
+	<button onclick="javascript:location.href='/bizconnect/product.do'; return false;">발주:제품관리</button> 
+	<button onclick="javascript:location.href='/bizconnect/order.do'; return false;">수주관리</button> 
+	<button onclick="javascript:location.href='/bizconnect/oproduct.do'; return false;">수주:제품관리</button> 
+	<button onclick="javascript:location.href='/bizconnect/check.do'; return false;">교환/환불관리</button> 
+	<button onclick="javascript:location.href='/bizconnect/erpclient.do'; return false;">거래처관리</button> 
 </body>
 </html>
 
