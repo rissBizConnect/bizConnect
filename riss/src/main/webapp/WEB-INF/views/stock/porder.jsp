@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>bizconnect</title>
+<title>bizconnect-발주관리</title>
 </head>
 <body>
 
 
 <c:forEach items="${ requestScope.one1}" var="n">
 	${ n.test }
-</c:forEach> home,, 만드는중,,-인경
+</c:forEach> 발주관리 만드는중,,-인경
 </body>
 </html>
