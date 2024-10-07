@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.riss.bizconnect.common.model.dto.Member;
+import org.riss.bizconnect.common.model.dto.Paging;
 import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
 import org.slf4j.Logger;
@@ -42,8 +43,12 @@ public class AttendanceDao {
 		return sqlSessionTemplate.update("attendanceMapper.updateOutD",loginUser);
 	}
 
-	public ArrayList<Attendance> selectMyAttendance(Member loginUser) {
-		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectMyAttendance",loginUser);
+	public ArrayList<Attendance> selectMyAttendance(Paging paging) {
+		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectMyAttendance",paging);
 		return (ArrayList<Attendance>)list;
+	}
+
+	public int selectListCount() {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectListCount");
 	}
 }

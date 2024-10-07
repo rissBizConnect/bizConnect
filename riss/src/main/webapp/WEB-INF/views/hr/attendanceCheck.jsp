@@ -40,8 +40,8 @@
 			</table>
 		</div>
 	</div>
-		
-	<<div class="footerPos">
+	<c:import url="/WEB-INF/views/common/pagingView.jsp" />
+	<div class="footerPos">
 		<c:import url="/WEB-INF/views/common/footer.jsp" />
 	</div>
 </body>
