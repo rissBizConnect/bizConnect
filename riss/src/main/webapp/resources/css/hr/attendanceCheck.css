@@ -22,10 +22,9 @@ position: relative;
 }
 
 .contentPos {
-    position: absolute;
-    width: 1000px;
-    left: 100px;
-    top: 200px;
+	position: relative;
+	left: 50px;
+	top: 20px;
 }
 
 .footerPos {
@@ -34,11 +33,12 @@ position: relative;
 }
 
 .goworkBTN {
-    position: absolute;
+	position: relative;
     width: 287px;
     height: 47px;
-    left: 354px;
-    top: 449px;
+    left: 62px;
+    top: 100px;
+
 }
 
 .front{
@@ -46,10 +46,10 @@ position: relative;
 }
 
 .table {
+
 	border: 1; 
 	width: 80%;
 }
-
-hr {
-	width: 80%;
+.row {
+	 text-align: center; /* 수평 중앙 배치 */
 }
