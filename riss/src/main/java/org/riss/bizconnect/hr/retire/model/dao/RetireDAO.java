@@ -2,39 +2,49 @@ package org.riss.bizconnect.hr.retire.model.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.riss.bizconnect.hr.retire.model.dto.Retire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository("retireDAO")
 public class RetireDAO {
+	@Autowired
+    private SqlSessionTemplate sqlSessionTemplate;
 
-    private final SqlSession sqlSession;
-
-    @Autowired
-    public RetireDAO(SqlSessionFactory sqlSessionFactory) {
-        this.sqlSession = sqlSessionFactory.openSession();
-    }
 
     public List<Retire> getAllRetires() {
-        return sqlSession.selectList("RetireMapper.getAllRetires");
+        return sqlSessionTemplate.selectList("RetireMapper.getAllRetires");
     }
 
     public void addRetire(Retire retire) {
-        sqlSession.insert("RetireMapper.addRetire", retire);
+    	sqlSessionTemplate.insert("RetireMapper.addRetire", retire);
     }
 
     public void updateRetire(Retire retire) {
-        sqlSession.update("RetireMapper.updateRetire", retire);
+    	sqlSessionTemplate.update("RetireMapper.updateRetire", retire);
     }
 
     public void deleteRetire(String retNo) {
-        sqlSession.delete("RetireMapper.deleteRetire", retNo);
+    	sqlSessionTemplate.delete("RetireMapper.deleteRetire", retNo);
     }
 
     public Retire getRetireById(String retNo) {
-        return sqlSession.selectOne("RetireMapper.getRetireById", retNo);
+        return sqlSessionTemplate.selectOne("RetireMapper.getRetireById", retNo);
+    }
+    
+    //회원 --> 퇴직자 변경
+    public int updateToRetire(String gid) {
+        return sqlSessionTemplate.update("RetireMapper.convertToRetire", gid);
+    }
+
+    public int updateToWorker(String retNo) {
+        return sqlSessionTemplate.update("RetireMapper.convertToWorker", retNo);
+    }
+
+    public List<Retire> selectRetireList() {
+        return sqlSessionTemplate.selectList("RetireMapper.selectRetireList");
     }
 }

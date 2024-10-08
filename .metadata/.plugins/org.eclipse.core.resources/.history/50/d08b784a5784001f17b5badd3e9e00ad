@@ -1,0 +1,11 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+
+@Service("retireService")
+public class RetireServiceImpl implements RetireService {
+
+	@Autowired
+    private RetireDAO retireDAO;
+}

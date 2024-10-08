@@ -1,0 +1,93 @@
+package org.riss.bizconnect.hr.retire.model.dto;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class Retire implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private int retireNo; // 퇴직자 번호
+    private String gid; // 사원 ID
+    private String comCode; // 회사 코드
+    private Date retireDate; // 퇴사일
+    private String comments; // 비고
+    private int totalWorkDays; // 총 근무일
+
+  
+
+    public Retiree() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	// 매개변수 있는 생성자
+    public Retiree(int retireNo, String gid, String comCode, Date retireDate, String comments, int totalWorkDays) {
+        this.retireNo = retireNo;
+        this.gid = gid;
+        this.comCode = comCode;
+        this.retireDate = retireDate;
+        this.comments = comments;
+        this.totalWorkDays = totalWorkDays;
+    }
+
+    // Getter 및 Setter
+    public int getRetireNo() {
+        return retireNo;
+    }
+
+    public void setRetireNo(int retireNo) {
+        this.retireNo = retireNo;
+    }
+
+    public String getGid() {
+        return gid;
+    }
+
+    public void setGid(String gid) {
+        this.gid = gid;
+    }
+
+    public String getComCode() {
+        return comCode;
+    }
+
+    public void setComCode(String comCode) {
+        this.comCode = comCode;
+    }
+
+    public Date getRetireDate() {
+        return retireDate;
+    }
+
+    public void setRetireDate(Date retireDate) {
+        this.retireDate = retireDate;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public int getTotalWorkDays() {
+        return totalWorkDays;
+    }
+
+    public void setTotalWorkDays(int totalWorkDays) {
+        this.totalWorkDays = totalWorkDays;
+    }
+
+    @Override
+    public String toString() {
+        return "RetireeDTO{" +
+                "retireNo=" + retireNo +
+                ", gid='" + gid + '\'' +
+                ", comCode='" + comCode + '\'' +
+                ", retireDate=" + retireDate +
+                ", comments='" + comments + '\'' +
+                ", totalWorkDays=" + totalWorkDays +
+                '}';
+    }
+}

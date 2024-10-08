@@ -1,0 +1,7 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+public class RetireServiceImpl implements RetireService {
+
+	@Autowired
+    private RetireDAO retireDAO;
+}

@@ -1,0 +1,60 @@
+package org.riss.bizconnect.hr.retire.model.controller;
+
+import java.util.List;
+
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.riss.bizconnect.hr.retire.model.service.RetireService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+@Controller
+public class RetireController {
+	
+	@Autowired
+    private RetireService retireService;
+
+	@RequestMapping("retire.do")
+	public String retirePage() {
+		return "hr/retireList";
+	}
+	
+    public RetireController(RetireService retireService) {
+        this.retireService = retireService;
+    }
+
+    @RequestMapping("list.do")
+    public String listRetires(Model model) {
+        List<Retire> retireList = retireService.getAllRetires();
+        model.addAttribute("retireList", retireList); // 퇴직자 목록을 모델에 추가
+        return "retire/list"; // 반환할 JSP 경로
+    }
+    
+ // 사원 -> 퇴직자로 변환
+    @PostMapping("/convertToRetire.do")
+    public String convertToRetire(@RequestParam("gid") String gid, RedirectAttributes redirectAttributes) {
+        boolean success = retireService.convertToRetire(gid);
+        if (success) {
+            redirectAttributes.addFlashAttribute("message", "사원을 퇴직자로 변환했습니다.");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "변환에 실패했습니다.");
+        }
+        return "redirect:/retire/list.do";
+    }
+
+    // 퇴직자 -> 사원으로 변환
+    @PostMapping("/convertToWorker.do")
+    public String convertToWorker(@RequestParam("retNo") String retNo, RedirectAttributes redirectAttributes) {
+        boolean success = retireService.convertToWorker(retNo);
+        if (success) {
+            redirectAttributes.addFlashAttribute("message", "퇴직자를 사원으로 변환했습니다.");
+        } else {
+            redirectAttributes.addFlashAttribute("error", "변환에 실패했습니다.");
+        }
+        return "redirect:/retire/list.do";
+    }
+}

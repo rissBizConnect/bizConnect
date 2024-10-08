@@ -1,0 +1,61 @@
+package org.riss.bizconnect.hr.retire.model.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.common.model.dto.Search;
+import org.riss.bizconnect.hr.retiree.model.dto.RetireDTO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class RetireDao {
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate; 
+
+	public int deleteRetiree(String retireId) {
+		return sqlSessionTemplate.selectOne("boardMapper.deleteRetiree", retireId);
+	}
+
+	public int updateRetiree(Retire retiree) {
+		return sqlSessionTemplate.selectOne("boardMapper.updateRetiree", retiree);
+	}
+
+	public ArrayList<Retire> selectAllRetirees(Paging paging) {
+		List<Retire> list = sqlSessionTemplate.selectList("boardMapper.selectAllRetirees", paging);
+		return (ArrayList<Retire>)list;
+	}
+
+	public int insertRetiree(Retire retiree) {
+		return sqlSessionTemplate.selectOne("boardMapper.insertRetiree", retiree);
+	}
+
+	public int selectRetireeCount() {
+		return sqlSessionTemplate.selectOne("boardMapper.selectRetireeCount");
+	}
+
+	public ArrayList<Retire> searchRetireesByName(Search search) {
+		List<Retire> list = sqlSessionTemplate.selectList("boardMapper.searchRetireesByName", search);
+		return (ArrayList<Retire>)list;
+	}
+
+	public int searchRetireesByNameCount(String keyword) {
+		return sqlSessionTemplate.selectOne("boardMapper.searchRetireesByNameCount", keyword);
+	}
+
+	public ArrayList<Retire> searchRetireesByDate(Search search) {
+		List<Retire> list = sqlSessionTemplate.selectList("boardMapper.searchRetireesByDate", search);
+		return (ArrayList<Retire>)list;
+	}
+
+	public int searchRetireesByDateCount(Search search) {
+		return sqlSessionTemplate.selectOne("boardMapper.searchRetireesByDateCount", search);
+	}
+
+	public Retire selectRetiree(String retireId) {
+		return sqlSessionTemplate.selectOne("boardMapper.selectRetiree", retireId);
+	}
+
+}

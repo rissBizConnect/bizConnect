@@ -1,0 +1,41 @@
+@charset "UTF-8";
+.container {
+    display: flex;
+    flex: 1; /* 나머지 공간을 채움 */
+}
+
+aside {
+    background-color: #E0F7FA; /* 밝은 하늘색 */
+    width: 200px; /* 고정된 너비 */
+    padding: 10px;
+}
+
+.side-menu {
+    list-style-type: none; /* 기본 리스트 스타일 제거 */
+    padding: 0;
+}
+
+.side-menu li {
+    margin: 10px 0;
+}
+
+.side-menu a {
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: #007BFF; /* 파란색 */
+}
+
+.submenu {
+    display: none; /* 서브메뉴 기본 숨김 */
+    padding-left: 15px; /* 서브메뉴 들여쓰기 */
+}
+
+.info-box {
+    background-color: #E0E0E0; /* 밝은 회색 */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+body aside nav ul {
+	position: static;
+	top: 1000px;
+}

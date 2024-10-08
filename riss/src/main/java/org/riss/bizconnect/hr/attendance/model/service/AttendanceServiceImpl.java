@@ -3,6 +3,7 @@ package org.riss.bizconnect.hr.attendance.model.service;
 import java.util.ArrayList;
 
 import org.riss.bizconnect.common.model.dto.Member;
+import org.riss.bizconnect.common.model.dto.Paging;
 import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.attendance.model.dao.AttendanceDao;
 import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
@@ -18,27 +19,32 @@ public class AttendanceServiceImpl implements AttendanceService {
 	private AttendanceDao attendanceDao;
 
 	@Override
-	public Attendance selectTodayAttendance(Member loginUser) {
-		return attendanceDao.selectTodayAttendance(loginUser);
+	public Attendance selectTodayAttendance(Member member) {
+		return attendanceDao.selectTodayAttendance(member);
 	}
 
 	@Override
-	public int insertAttendance(Member loginUser) {
-		return attendanceDao.insertAttendance(loginUser);
+	public int insertAttendance(Attendance attendance) {
+		return attendanceDao.insertAttendance(attendance);
 	}
 
 	@Override
-	public int updateGoD(Member loginUser) {
-		return attendanceDao.updateGoD(loginUser);
+	public int updateGoD(Attendance attendance) {
+		return attendanceDao.updateGoD(attendance);
 	}
 
 	@Override
-	public int updateOutD(Member loginUser) {
-		return attendanceDao.updateOutD(loginUser);
+	public int updateOutD(Attendance attendance) {
+		return attendanceDao.updateOutD(attendance);
 	}
 
 	@Override
-	public ArrayList<Attendance> selectMyAttendance(Member loginUser) {
-		return attendanceDao.selectMyAttendance(loginUser);
+	public ArrayList<Attendance> selectMyAttendance(Paging paging) {
+		return attendanceDao.selectMyAttendance(paging);
+	}
+
+	@Override
+	public int selectListCount() {
+		return attendanceDao.selectListCount();
 	}
 }

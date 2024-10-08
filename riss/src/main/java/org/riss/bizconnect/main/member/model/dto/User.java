@@ -1,6 +1,5 @@
 package org.riss.bizconnect.main.member.model.dto;
 
-// src/main/java/org/riss/bizconnect/main/member/model/dto/User.java
 public class User implements java.io.Serializable {
     private static final long serialVersionUID = -2119372912749016520L;
 
@@ -23,6 +22,7 @@ public class User implements java.io.Serializable {
         this.comCode = comCode;
     }
 
+    // Getters and Setters
     public String getgID() {
         return gID;
     }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+ "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="retireview">
+<!-- 	 <resultMap type="Member" id="reultMember">
+		<result property="gId" column="GID" />
+		<result property="comCode" column="COM_CODE" />
+		<result property="userPW" column="USER_PW" />
+		<result property="userName" column="USER_NAME" />
+		<result property="userJob" column="USER_JOB" />
+		<result property="userRegNo" column="USER_REGNO" />
+		<result property="userPhone" column="USER_PHONE" />
+		<result property="userEmail" column="USER_EMAIL" />
+		<result property="userAddr" column="USER_ADDR" />
+		<result property="userEntry" column="USER_ENTRY_DATE" />
+		<result property="userPay" column="USER_PAY" />
+		<result property="userContract" column="USER_CONTRACT" />
+		<result property="userAccount" column="USER_ACCOUNT" />
+		<result property="userCard" column="USER_CARD" />
+		<result property="userRole" column="USER_ROLE" />
+		<result property="userFacePictPath" column="USER_PICTURE" />
+	</resultMap> -->
+
+	<resultMap type="Attendance" id="reultGAttendance">
+		<result property="day" column="GOOUTWORK_DATE" />
+		<result property="goDate" column="GOOUTWORK_GOD" />
+		<result property="outDate" column="GOOUTWORK_OUTD" />
+		<result property="time" column="GOOUTWORK_TIME" />
+	</resultMap>
+
+	<select id="selectTodayAttendance" parameterType="Member" resultMap="reultGAttendance">
+		select *
+		from  tb_gooutwork
+		where gooutwork_date = to_date(sysdate,'yy-MM-dd')
+	</select>
+	
+	<select id="selectMyAttendance" parameterType="Member" resultMap="reultGAttendance">
+		SELECT *
+		FROM tb_gooutwork
+		ORDER BY gooutwork_date DESC
+	</select>
+
+	<insert id="insertAttendance" parameterType="Member">
+		INSERT INTO TB_GOOUTWORK (GOOUTWORK_DATE, GOOUTWORK_GOD, GOOUTWORK_OUTD, GOOUTWORK_TIME, GID, COM_CODE)
+		SELECT GOOUTWORK_DATE, null, null, null, 'GID010', 'COM010'
+		FROM (
+		    SELECT TO_DATE('2023-10-10', 'YYYY-MM-DD') + LEVEL - 1 AS GOOUTWORK_DATE
+		    FROM dual
+		    CONNECT BY LEVEL &lt;= TRUNC(sysdate) - TO_DATE('2023-10-10', 'YYYY-MM-DD') + 1) day
+		WHERE NOT EXISTS (
+		    SELECT 1
+		    FROM TB_GOOUTWORK
+		    WHERE GOOUTWORK_DATE = day.GOOUTWORK_DATE)
+	</insert>
+	
+	<update id="updateGoD" parameterType="Member">
+		update tb_gooutwork
+		set GOOUTWORK_god = systimestamp
+		where gid = #{ gId } and com_code = #{ comCode } and  to_date(gooutwork_date,'yy-MM-dd') = to_date(sysdate,'yy-MM-dd')
+	</update>
+	
+	<update id="updateOutD" parameterType="Member">
+		update tb_gooutwork
+		set GOOUTWORK_outd = systimestamp
+		where gid = #{ gId } and com_code = #{ comCode } and to_date(gooutwork_date,'yy-MM-dd') = to_date(sysdate,'yy-MM-dd')
+	
+	</update>
+</mapper>

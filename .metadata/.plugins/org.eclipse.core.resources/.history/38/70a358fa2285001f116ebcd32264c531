@@ -1,0 +1,32 @@
+package org.riss.bizconnect.hr.retire.model.dao;
+
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class RetireDAO {
+    // DB 연결을 위한 필드 및 생성자 추가
+
+	
+    public List<Retire> getAllRetires() {
+        // 전체 퇴직자 조회 로직
+    }
+
+    public void addRetire(Retire retire) {
+        // 퇴직자 추가 로직
+    }
+
+    public void updateRetire(Retire retire) {
+        // 퇴직자 수정 로직
+    }
+
+    public void deleteRetire(String retNo) {
+        // 퇴직자 삭제 로직
+    }
+
+    public Retire getRetireById(String retNo) {
+        // 퇴직자 사번으로 조회 로직
+    }
+}

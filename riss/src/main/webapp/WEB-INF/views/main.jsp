@@ -78,7 +78,9 @@
 </style>
 </head>
 <body>
-
+<hr>
+<c:import url="/WEB-INF/views/common/menubar.jsp" />
+<br>
 <div class="header">
     <!-- 전체메뉴 버튼 (상단 오른쪽에 배치됨) -->
     <button onclick="location.href='/bizconnect/menu.do'">전체메뉴</button>
@@ -100,6 +102,7 @@
 <div class="content">
     <!-- Main content area -->
     <h1>마이페이지</h1>
+    
     <div class="form-section">
         <!-- Form content goes here -->
         <table>
@@ -119,6 +122,8 @@
         </table>
     </div>
 </div>
-
+<footer>
+<c:import url="/WEB-INF/views/common/footer.jsp" />
+</footer>
 </body>
 </html>

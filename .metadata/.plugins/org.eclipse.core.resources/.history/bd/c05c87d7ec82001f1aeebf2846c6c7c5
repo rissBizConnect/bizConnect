@@ -1,0 +1,34 @@
+package org.riss.bizconnect.hr.attendance.model.service;
+
+import org.riss.bizconnect.common.model.dto.Member;
+import org.riss.bizconnect.hr.attendance.model.dao.AttendanceDao;
+import org.riss.bizconnect.hr.attendance.model.dto.AttendanceDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("attendanceService")
+public class AttendanceServiceImpl implements AttendanceService {
+	
+	@Autowired
+	private AttendanceDao attendanceDao;
+
+	@Override
+	public AttendanceDto selectTodayAttendance(Member loginUser) {
+		return attendanceDao.selectTodayAttendance(loginUser);
+	}
+
+	@Override
+	public int insertAttendance(Member loginUser) {
+		return attendanceDao.insertAttendance(loginUser);
+	}
+
+	@Override
+	public int updateGoD(Member loginUser) {
+		return attendanceDao.updateGoD(loginUser);
+	}
+
+	@Override
+	public int updateOutD(Member loginUser) {
+		return attendanceDao.updateOutD(loginUser);
+	}
+}

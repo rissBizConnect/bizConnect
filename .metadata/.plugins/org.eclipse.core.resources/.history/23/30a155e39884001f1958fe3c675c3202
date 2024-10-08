@@ -1,0 +1,20 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import java.util.ArrayList;
+
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+
+public interface RetireService {
+
+		ArrayList<Retire> selectAllRetirees();
+	    
+	    // 퇴직자 추가
+	    int insertRetiree(Retire retiree);
+
+	    // 퇴직자 수정
+	    int updateRetiree(Retire retiree);
+
+	    // 퇴직자 삭제
+	    int deleteRetiree(int retireId);
+
+}

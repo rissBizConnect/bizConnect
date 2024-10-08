@@ -13,8 +13,10 @@ public class Retire implements Serializable {
     private String exitreason; // 비고
     private int retTotalDate; // 총 근무일
     private Date userEntryDate; // 입사일
+    private String comCode; //회사코드
 	
-    public Retire() {
+   
+	public Retire() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -54,11 +56,17 @@ public class Retire implements Serializable {
 	public void setUserEntryDate(Date userEntryDate) {
 		this.userEntryDate = userEntryDate;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getComCode() {
+			return comCode;
 	}
-	
-	public Retire(String retNo, String gid, Date retDate, String exitreason, int retTotalDate, Date userEntryDate) {
+	public void setComCode(String comCode) {
+			this.comCode = comCode;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;                                                                                                              
+	}
+	public Retire(String retNo, String gid, Date retDate, String exitreason, int retTotalDate, Date userEntryDate,
+			String comCode) {
 		super();
 		this.retNo = retNo;
 		this.gid = gid;
@@ -66,13 +74,11 @@ public class Retire implements Serializable {
 		this.exitreason = exitreason;
 		this.retTotalDate = retTotalDate;
 		this.userEntryDate = userEntryDate;
+		this.comCode = comCode;
 	}
-	
 	@Override
 	public String toString() {
 		return "Retire [retNo=" + retNo + ", gid=" + gid + ", retDate=" + retDate + ", exitreason=" + exitreason
-				+ ", retTotalDate=" + retTotalDate + ", userEntryDate=" + userEntryDate + "]";
-	}
-
-  
+				+ ", retTotalDate=" + retTotalDate + ", userEntryDate=" + userEntryDate + ", comCode=" + comCode + "]";
+	} 
 }

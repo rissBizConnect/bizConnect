@@ -1,0 +1,49 @@
+package org.riss.bizconnect.hr.retiree.model.controller;
+
+import org.riss.bizconnect.hr.retiree.model.dto.RetireeDTO;
+import org.riss.bizconnect.hr.retiree.model.service.RetireeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/retiree")
+public class RetireeController {
+
+    @Autowired
+    private RetireeService retireeService;
+
+    @GetMapping("/list")
+    public String listRetirees(Model model) {
+        List<RetireeDTO> retireeList = retireeService.getRetireeList();
+        model.addAttribute("retireeList", retireeList);
+        return "retiree/list"; // JSP 파일 경로
+    }
+
+    @PostMapping("/add")
+    public String addRetiree(RetireeDTO retiree) {
+        retireeService.addRetiree(retiree);
+        return "redirect:/retiree/list";
+    }
+
+    @PostMapping("/modify")
+    public String modifyRetiree(RetireeDTO retiree) {
+        retireeService.modifyRetiree(retiree);
+        return "redirect:/retiree/list";
+    }
+
+    @PostMapping("/delete/{retireNo}")
+    public String deleteRetiree(@PathVariable int retireNo) {
+        retire
+        retireeService.removeRetiree(retireNo);
+        return "redirect:/retiree/list";
+    }
+
+    @PostMapping("/convert/{retireNo}")
+    public String convertRetireeToUser(@PathVariable int retireNo, @RequestParam String gid, @RequestParam String comCode) {
+        retireeService.convertRetireeToUser(gid, comCode, retireNo);
+        return "redirect:/retiree/list";
+    }
+}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.riss.bizconnect.common.model.dto.Member;
+import org.riss.bizconnect.common.model.dto.Paging;
 import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
 import org.slf4j.Logger;
@@ -21,27 +22,31 @@ public class AttendanceDao {
 	private static final Logger logger = LoggerFactory.getLogger(AttendanceController.class);
 	
 	@Transactional
-	public Attendance selectTodayAttendance(Member loginUser) {
-		return sqlSessionTemplate.selectOne("attendanceMapper.selectTodayAttendance",loginUser);
+	public Attendance selectTodayAttendance(Member member) {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectTodayAttendance",member);
 	}
 	
 	@Transactional
-	public int insertAttendance(Member loginUser) {
+	public int insertAttendance(Attendance loginUser) {
 		return sqlSessionTemplate.insert("attendanceMapper.insertAttendance",loginUser);
 	}
 	
 	@Transactional
-	public int updateGoD(Member loginUser) {
+	public int updateGoD(Attendance loginUser) {
 		return sqlSessionTemplate.update("attendanceMapper.updateGoD",loginUser);
 	}
 	
 	@Transactional
-	public int updateOutD(Member loginUser) {
+	public int updateOutD(Attendance loginUser) {
 		return sqlSessionTemplate.update("attendanceMapper.updateOutD",loginUser);
 	}
 
-	public ArrayList<Attendance> selectMyAttendance(Member loginUser) {
-		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectMyAttendance",loginUser);
+	public ArrayList<Attendance> selectMyAttendance(Paging paging) {
+		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectMyAttendance",paging);
 		return (ArrayList<Attendance>)list;
+	}
+
+	public int selectListCount() {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectListCount");
 	}
 }

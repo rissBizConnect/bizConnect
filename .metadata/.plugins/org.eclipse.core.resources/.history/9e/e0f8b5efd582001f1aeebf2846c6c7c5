@@ -1,0 +1,44 @@
+@charset "EUC-KR";
+
+.gowork {
+	width: 10%;
+    height: 2%;
+    position: absolute;
+    top: 150px;
+    left: 300px;
+}
+.headerPos {
+position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.menubarPos {
+    position: absolute;
+    top: 63px;
+    left: 0;
+    
+}
+
+.contentPos {
+        position: absolute;
+    top: 150px;
+    left: 350px;
+}
+
+.footerPos {
+    position: absolute;
+    width: 100%;
+    bottom: -142px;
+    left: 0;
+}
+
+.goworkBTN {
+	position: relative;
+    width: 287px;
+    height: 47px;
+    left: 62px;
+    top: 100px;
+
+}
+

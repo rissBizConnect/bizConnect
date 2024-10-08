@@ -34,4 +34,19 @@ public class RetireServiceImpl implements RetireService {
     public Retire getRetireById(String retNo) {
         return retireDAO.getRetireById(retNo);
     }
+    // 사원 -> 퇴직자 변환
+    @Override
+    public boolean convertToRetire(String gid) {
+        return retireDAO.updateToRetire(gid) > 0;
+    }
+
+    @Override
+    public boolean convertToWorker(String retNo) {
+        return retireDAO.updateToWorker(retNo) > 0;
+    }
+
+    @Override
+    public List<Retire> getRetireList() {
+        return retireDAO.selectRetireList();
+    }
 }
