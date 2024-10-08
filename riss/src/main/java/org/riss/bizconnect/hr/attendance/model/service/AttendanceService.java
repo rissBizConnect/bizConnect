@@ -8,12 +8,12 @@ import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
 
 public interface AttendanceService {
 
-	Attendance selectTodayAttendance(Member loginUser);
+	Attendance selectTodayAttendance(Member member);
 
-	int insertAttendance(Member loginUser);
+	int insertAttendance(Attendance attendance);
 
-	int updateGoD(Member loginUser);
-	int updateOutD(Member loginUser);
+	int updateGoD(Attendance attendance);
+	int updateOutD(Attendance attendance);
 
 	ArrayList<Attendance> selectMyAttendance(Paging paging);
 

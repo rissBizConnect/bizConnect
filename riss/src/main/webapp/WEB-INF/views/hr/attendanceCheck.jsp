@@ -38,9 +38,10 @@
 					<td class = "row"><c:if test="${!empty att.time }">${ att.time.toLocalDateTime().getHour() } 시 ${ att.time.toLocalDateTime().getMinute() } 분</c:if></td>
 				</tr></c:forEach>
 			</table>
+			<c:import url="/WEB-INF/views/common/pagingView.jsp" />
 		</div>
 	</div>
-	<c:import url="/WEB-INF/views/common/pagingView.jsp" />
+	
 	<div class="footerPos">
 		<c:import url="/WEB-INF/views/common/footer.jsp" />
 	</div>

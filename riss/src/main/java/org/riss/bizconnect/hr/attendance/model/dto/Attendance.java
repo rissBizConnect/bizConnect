@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 public class Attendance implements Serializable {
 	private static final long serialVersionUID = 505505501604098377L;
 	
+	private String gId; 			//아이디
+	private String comCode;		//회사코드
 	private Date day;
 	private Timestamp goDate;
 	private Timestamp outDate;
@@ -16,12 +18,30 @@ public class Attendance implements Serializable {
 		super();
 	}
 
-	public Attendance(Date day, Timestamp goDate, Timestamp outDate, Timestamp time) {
+	public Attendance(String gId, String comCode, Date day, Timestamp goDate, Timestamp outDate, Timestamp time) {
 		super();
+		this.gId = gId;
+		this.comCode = comCode;
 		this.day = day;
 		this.goDate = goDate;
 		this.outDate = outDate;
 		this.time = time;
+	}
+
+	public String getgId() {
+		return gId;
+	}
+
+	public void setgId(String gId) {
+		this.gId = gId;
+	}
+
+	public String getComCode() {
+		return comCode;
+	}
+
+	public void setComCode(String comCode) {
+		this.comCode = comCode;
 	}
 
 	public Date getDay() {
@@ -62,7 +82,11 @@ public class Attendance implements Serializable {
 
 	@Override
 	public String toString() {
-		return "GooutTime [day=" + day + ", goDate=" + goDate + ", outDate=" + outDate + ", time=" + time + "]";
+		return "Attendance [gId=" + gId + ", comCode=" + comCode + ", day=" + day + ", goDate=" + goDate + ", outDate="
+				+ outDate + ", time=" + time + "]";
 	}
-	
+
+	public void calTimestamp() {
+		this.time = new Timestamp(this.outDate.getTime() - this.goDate.getTime());
+	}
 }

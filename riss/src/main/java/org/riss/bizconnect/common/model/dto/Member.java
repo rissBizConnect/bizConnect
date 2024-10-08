@@ -26,7 +26,8 @@ public class Member implements Serializable {
 	public Member() {
 		super();
 	}
-	
+
+
 	public Member(String gId, String comCode, String userPW, String userName, String userRegNo, Date userEntry,
 			String userContract, String userRole) {
 		super();
@@ -39,18 +40,6 @@ public class Member implements Serializable {
 		this.userContract = userContract;
 		this.userRole = userRole;
 	}
-
-//	public Member(String gId, String comCode, String userPW, String userName, String userRegNo, String userContract,
-//			String userRole) {
-//		super();
-//		this.gId = gId;
-//		this.comCode = comCode;
-//		this.userPW = userPW;
-//		this.userName = userName;
-//		this.userRegNo = userRegNo;
-//		this.userContract = userContract;
-//		this.userRole = userRole;
-//	}
 
 	public Member(String gId, String comCode, String userPW, String userName, String userJob, String userRegNo,
 			String userPhone, String userEmail, String userAddr, Date userEntry, int userPay, String userContract,

@@ -19,23 +19,23 @@ public class AttendanceServiceImpl implements AttendanceService {
 	private AttendanceDao attendanceDao;
 
 	@Override
-	public Attendance selectTodayAttendance(Member loginUser) {
-		return attendanceDao.selectTodayAttendance(loginUser);
+	public Attendance selectTodayAttendance(Member member) {
+		return attendanceDao.selectTodayAttendance(member);
 	}
 
 	@Override
-	public int insertAttendance(Member loginUser) {
-		return attendanceDao.insertAttendance(loginUser);
+	public int insertAttendance(Attendance attendance) {
+		return attendanceDao.insertAttendance(attendance);
 	}
 
 	@Override
-	public int updateGoD(Member loginUser) {
-		return attendanceDao.updateGoD(loginUser);
+	public int updateGoD(Attendance attendance) {
+		return attendanceDao.updateGoD(attendance);
 	}
 
 	@Override
-	public int updateOutD(Member loginUser) {
-		return attendanceDao.updateOutD(loginUser);
+	public int updateOutD(Attendance attendance) {
+		return attendanceDao.updateOutD(attendance);
 	}
 
 	@Override

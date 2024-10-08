@@ -1,6 +1,7 @@
 package org.riss.bizconnect.hr.attendance.controller;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
@@ -31,23 +32,23 @@ public class AttendanceController {
 		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
 				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
 		session.setAttribute("loginUser", member);
+		
+		Member loginUser = (Member)session.getAttribute("loginUser");
+		Attendance attendance = attendanceService.selectTodayAttendance(loginUser);
 
-		Member loginUser = (Member) session.getAttribute("loginUser");
-		Attendance gooutTime = attendanceService.selectTodayAttendance(loginUser);
-
-		logger.info("확인 : " + attendanceService.insertAttendance(loginUser));
-		if (gooutTime == null || gooutTime.getGoDate() == null) {
+		logger.info("확인 : " + attendanceService.insertAttendance(attendance));
+		if (attendance == null || attendance.getGoDate() == null) {
 			mv.addObject("gooutBTN", "출 근");
 			mv.addObject("URL", "goWorkCheck.do");
 			logger.info("insert => go 활성화");
 			mv.addObject("common/error");
-		} else if (gooutTime.getOutDate() == null) {
+		} else if (attendance.getOutDate() == null) {
 			mv.addObject("gooutBTN", "퇴 근");
 			mv.addObject("URL", "outWorkCheck.do");
 			logger.info("out 활성화");
 		} else {
 			logger.info("모든 버튼 비활성화");
-		}
+		} 
 
 		mv.setViewName("hr/attendance");
 		// session.invalidate();
@@ -62,8 +63,10 @@ public class AttendanceController {
 		session.setAttribute("loginUser", member);
 
 		Member loginUser = (Member) session.getAttribute("loginUser");
+		Attendance attendance = attendanceService.selectTodayAttendance(loginUser);
+		attendance.setGoDate(new Timestamp (System.currentTimeMillis()));
 
-		if (attendanceService.updateGoD(loginUser) > 0) {
+		if (attendanceService.updateGoD(attendance) > 0) {
 			return "redirect:moveAttendance.do";
 		} else {
 			return "common/error";
@@ -78,8 +81,11 @@ public class AttendanceController {
 		session.setAttribute("loginUser", member);
 
 		Member loginUser = (Member) session.getAttribute("loginUser");
-
-		if (attendanceService.updateOutD(loginUser) > 0) {
+		Attendance attendance = attendanceService.selectTodayAttendance(loginUser);
+		attendance.setOutDate(new Timestamp(System.currentTimeMillis()));
+		attendance.calTimestamp();
+		
+		if (attendanceService.updateOutD(attendance) > 0) {
 			return "redirect:moveAttendance.do";
 		} else {
 			return "common/error";
@@ -130,7 +136,7 @@ public class AttendanceController {
 		return mv;
 	}
 
-	@RequestMapping("moveAttendanceUpdate.do")
+/*	@RequestMapping("moveAttendanceUpdate.do")
 	public ModelAndView moveAttendanceUpdate(HttpSession session, ModelAndView mv) {
 
 		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
@@ -144,5 +150,5 @@ public class AttendanceController {
 
 		mv.setViewName("hr/attendanceCheck");
 		return mv;
-	}
+	}*/
 }

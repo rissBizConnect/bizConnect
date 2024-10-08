@@ -31,14 +31,13 @@
 	<c:if test="${ currentPage gt 1 }">
 		<a href="/bizconnect/${ urlMapping }?page=1">[첫페이지로]</a> &nbsp;
 	</c:if>
-	
 	<%-- 이전 페이지그룹으로 이동 --%>
 	<%-- 이전 그룹이 있다면 --%>
-	<c:if test="${ (currentPage - 10) lt startPage and (currentPage - 10) gt 1 }">
+	<c:if test="${ (currentPage - 10) lt startPage and (currentPage - 10) ge 1 }">
 		<a href="/bizconnect/${ urlMapping }?page=${ startPage - 10 }">[이전그룹]</a> &nbsp;
 	</c:if>
 	<%-- 이전 그룹이 없다면 --%>
-	<c:if test="${ !((currentPage - 10) lt startPage and (currentPage - 10) gt 1) }">
+	<c:if test="${ !((currentPage - 10) lt startPage and (currentPage - 10) ge 1) }">
 		[이전그룹] &nbsp;
 	</c:if>
 	
