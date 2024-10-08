@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/menubar.css">
-  
+  	<script src="${pageContext.request.contextPath}/resources/js/hr.js" charset="utf-8"></script>
     <title>Bizconnect - 퇴직자 관리</title>
 </head>
 <body>
