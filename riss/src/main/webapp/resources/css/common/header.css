@@ -18,17 +18,16 @@ body {
     flex-wrap: nowrap;
 }
 .login-mypage {
-    position: relative;
+ 	position: absolute;
     width: 200px;
-    right: -44px;
-    top: -25px;
+    right: -30px;
+    top: 30px;
 }
 .menu-sub {
-    position: relative;
-    width: 800px;
+	position: absolute;
+	width: 500px;
     top: 32px;
-    left: 0px;
-}
+    left: 300px;
     
 }
 .menu-sub a {
@@ -44,9 +43,5 @@ body {
 .menu-sub a:hover {
     color: #FFCC00; /* 마우스 오버 시 노란색 */
     transform: scale(1.1); /* 살짝 확대 효과 */
-}
-
-.bar {
-	margin: 90px;
 }
 

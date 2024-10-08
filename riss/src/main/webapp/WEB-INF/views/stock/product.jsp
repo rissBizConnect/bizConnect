@@ -9,7 +9,7 @@
 </head>
 <body>
 <form action="insertproduct.do" method="post" onsubmit="return validate();" enctype="multipart/form-data"><br>
-	<input type="text" name="ProductrNo">발주번호 &nbsp;<br>
+	<input type="text" name="ProductNo">제품번호 &nbsp;<br>
 	<input type="text" name="ProductName">제품명 &nbsp;<br>
 	<input type="text" name="ProductSize">규격 &nbsp;<br>
 	<input type="number" name="ProductPrice">까먹었어 &nbsp;<br>

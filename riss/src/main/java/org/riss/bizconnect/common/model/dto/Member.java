@@ -27,16 +27,14 @@ public class Member implements Serializable {
 		super();
 	}
 
-
-	public Member(String gId, String comCode, String userPW, String userName, String userRegNo, Date userEntry,
-			String userContract, String userRole) {
+	public Member(String gId, String comCode, String userPW, String userName, String userRegNo, String userContract,
+			String userRole) {
 		super();
 		this.gId = gId;
 		this.comCode = comCode;
 		this.userPW = userPW;
 		this.userName = userName;
 		this.userRegNo = userRegNo;
-		this.userEntry = userEntry;
 		this.userContract = userContract;
 		this.userRole = userRole;
 	}

@@ -16,14 +16,14 @@
 
 
 	<bean class="org.apache.commons.dbcp.BasicDataSource"
-      id="realDataSource" destroy-method="close">
-      <property name="driverClassName"
-         value="oracle.jdbc.driver.OracleDriver" />
-      <property name="url"
-         value="jdbc:oracle:thin:@117.110.11.50:1521:xe" />
-      <property name="username" value="c##project2team" />
-      <property name="password" value="1234" />
-   </bean>
+		id="realDataSource" destroy-method="close">
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="c##project" />
+		<property name="password" value="project" />
+	</bean>
 
 	<!-- 1-1. 실행할 쿼리문과 쿼리문에 전달되는 값과 ?(#{필드명 또는 변수명}) 에 적용된 구문을 확인하기 위한 로그와 select 
 		쿼리문 실행의 결과인 ResultSet 과 dml 구문(insert, update, delete) 실행 결과 등을 로그로 자동 출력되게 
