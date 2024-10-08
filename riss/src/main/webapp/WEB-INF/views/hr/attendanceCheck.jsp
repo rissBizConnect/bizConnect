@@ -35,7 +35,7 @@
 					<td class = "row">${ att.day }</td>
 					<td class = "row"><c:if test="${!empty att.goDate }">${ att.goDate.toLocalDateTime().getHour() } 시 ${ att.goDate.toLocalDateTime().getMinute() } 분</c:if></td>
 					<td class = "row"><c:if test="${!empty att.outDate }">${ att.outDate.toLocalDateTime().getHour() } 시 ${ att.outDate.toLocalDateTime().getMinute() } 분</c:if></td>
-					<td class = "row"><c:if test="${!empty att.time }">${ att.time.toLocalDateTime().getHour() } 시 ${ att.time.toLocalDateTime().getMinute() } 분</c:if></td>
+					<td class = "row"><c:if test="${!empty att.time }">${ att.calHTimestamp() } 시 ${ att.calMTimestamp() } 분 ${ att.calSTimestamp() } 초</c:if></td>
 				</tr></c:forEach>
 			</table>
 			<c:import url="/WEB-INF/views/common/pagingView.jsp" />

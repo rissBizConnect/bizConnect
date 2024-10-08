@@ -23,22 +23,18 @@ public class AttendanceDao {
 	
 	private static final Logger logger = LoggerFactory.getLogger(AttendanceController.class);
 
-	@Transactional
 	public Attendance selectTodayAttendance(Member member) {
 		return sqlSessionTemplate.selectOne("attendanceMapper.selectTodayAttendance",member);
 	}
 	
-	@Transactional
-	public int insertAttendance(Attendance loginUser) {
-		return sqlSessionTemplate.insert("attendanceMapper.insertAttendance",loginUser);
+	public int insertAttendance(Member member) {
+		return sqlSessionTemplate.insert("attendanceMapper.insertAttendance",member);
 	}
-	
-	@Transactional
+
 	public int updateGoD(Attendance loginUser) {
 		return sqlSessionTemplate.update("attendanceMapper.updateGoD",loginUser);
 	}
 	
-	@Transactional
 	public int updateOutD(Attendance loginUser) {
 		return sqlSessionTemplate.update("attendanceMapper.updateOutD",loginUser);
 	}
@@ -48,7 +44,7 @@ public class AttendanceDao {
 		return (ArrayList<Attendance>)list;
 	}
 
-	public int selectListCount() {
-		return sqlSessionTemplate.selectOne("attendanceMapper.selectListCount");
+	public int selectListCount(Member loginUser) {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectListCount", loginUser);
 	}
 }

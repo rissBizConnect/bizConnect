@@ -20,7 +20,7 @@ public class MenuController {
     // 인사관리 페이지
     @GetMapping("/hrManagement.do")
     public String hrManagement() {
-        return "hrManagement"; // hrManagement.jsp로 이동
+        return "hr/attendance"; // hrManagement.jsp로 이동
     }
 
     // 재고관리 페이지

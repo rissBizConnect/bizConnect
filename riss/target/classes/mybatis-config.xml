@@ -13,6 +13,7 @@
 	    <typeAlias type="org.riss.bizconnect.main.member.model.dto.User" alias="User" />
 	    <typeAlias type="org.riss.bizconnect.hr.attendance.model.dto.Attendance" alias="Attendance" />
 	    <typeAlias type="org.riss.bizconnect.common.model.dto.Member" alias="Member" />
+	    <typeAlias type="org.riss.bizconnect.common.model.dto.Paging" alias="Paging" />
 	</typeAliases>
 
     

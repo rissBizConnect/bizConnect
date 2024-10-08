@@ -24,8 +24,8 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public int insertAttendance(Attendance attendance) {
-		return attendanceDao.insertAttendance(attendance);
+	public int insertAttendance(Member member) {
+		return attendanceDao.insertAttendance(member);
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public int selectListCount() {
-		return attendanceDao.selectListCount();
+	public int selectListCount(Member loginUser) {
+		return attendanceDao.selectListCount(loginUser);
 	}
 }

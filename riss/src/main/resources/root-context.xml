@@ -20,9 +20,12 @@
       <property name="driverClassName"
          value="oracle.jdbc.driver.OracleDriver" />
       <property name="url"
-         value="jdbc:oracle:thin:@117.110.11.50:1521:xe" />
-      <property name="username" value="c##project2team" />
-      <property name="password" value="1234" />
+      	value="jdbc:oracle:thin:@localhost:1521:xe" />
+         <!-- value="jdbc:oracle:thin:@117.110.11.50:1521:xe" /> -->
+      <!-- <property name="username" value="c##project2team" />
+      <property name="password" value="1234" /> -->
+      <property name="username" value="c##hong" />
+      <property name="password" value="hong" />
    </bean>
 
 	<!-- 1-1. 실행할 쿼리문과 쿼리문에 전달되는 값과 ?(#{필드명 또는 변수명}) 에 적용된 구문을 확인하기 위한 로그와 select 
