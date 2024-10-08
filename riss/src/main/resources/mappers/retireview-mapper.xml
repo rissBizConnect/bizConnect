@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RetireMapper">
+
+	
+    <select id="getAllRetires" resultType="org.riss.bizconnect.hr.retire.model.dto.Retire">
+        SELECT retNo, gid, retDate, exitreason, retTotalDate, userEntryDate
+        FROM TB_RETIRE
+    </select>
+
+    <insert id="addRetire">
+        INSERT INTO TB_RETIRE (retNo, gid, retDate, exitreason, retTotalDate, userEntryDate)
+        VALUES (#{retNo}, #{gid}, #{retDate}, #{exitreason}, #{retTotalDate}, #{userEntryDate})
+    </insert>
+
+    <update id="updateRetire">
+        UPDATE TB_RETIRE
+        SET gid = #{gid}, retDate = #{retDate}, exitreason = #{exitreason},
+            retTotalDate = #{retTotalDate}, userEntryDate = #{userEntryDate}
+        WHERE retNo = #{retNo}
+    </update>
+
+    <delete id="deleteRetire">
+        DELETE FROM TB_RETIRE WHERE retNo = #{retNo}
+    </delete>
+
+    <select id="getRetireById" resultType="org.riss.bizconnect.hr.retire.model.dto.Retire">
+        SELECT retNo, gid, retDate, exitreason, retTotalDate, userEntryDate
+        FROM TB_RETIRE
+        WHERE retNo = #{retNo}
+    </select>
+    
+     <!-- 사원을 퇴직자로 변환 -->
+    <update id="convertToRetire">
+        UPDATE TB_USERINFO
+        SET status = 'N'
+        WHERE gid = #{gid}
+    </update>
+
+    <!-- 퇴직자를 사원으로 변환 -->
+    <update id="convertToWorker">
+        UPDATE TB_RETIRE
+        SET status = 'Y'
+        WHERE retNo = #{retNo}
+    </update>
+
+    <!-- 퇴직자 및 사원 목록 조회 -->
+    <select id="selectRetireList" resultType="org.riss.bizconnect.hr.retire.model.dto.Retire">
+        SELECT u.gid, u.entryDate AS userEntryDate, r.retNo, r.retDate, r.exitreason, r.retTotalDate
+        FROM TB_USERINFO u
+        LEFT JOIN TB_RETIRE r ON u.gid = r.gid
+    </select>
+
+
+
+</mapper>
