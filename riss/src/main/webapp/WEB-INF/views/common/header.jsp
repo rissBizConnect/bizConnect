@@ -1,26 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
+<!-- header.jsp -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/common/header.css?after">
-<title>Bizconnect - 퇴직자 관리</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bizconnect - 퇴직자 관리</title>
+    <link rel="stylesheet" href="<c:url value='/css/styles.css'/>">
+    <script src="<c:url value='/js/jquery-3.7.1.min.js'/>"></script>
 </head>
-<body> 
-	<ul class="menu">
-		<h1>Bizconnect</h1>
-		<nav class="login-mypage">
-			<button onclick="goToMypage()">마이페이지</button>
-			<button onclick="logout()">로그아웃</button>
-		</nav>
-		<hr>
-		<div class="menu-sub">
-			<a href="#" onclick="loadPage('인사관리')">인사관리</a> 
-			<a href="#" onclick="loadPage('재고관리')">재고관리</a> 
-			<a href="#" onclick="loadPage('회계관리')">회계관리</a>
-		</div>
-	</ul>
-</body>
-</html>
+<body>
+    <header>
+        <h1>Bizconnect 퇴직자 관리 시스템</h1>
+        <nav>
+            <ul>
+                <li><a href="<c:url value='/retiree/list'/>">퇴직자 목록</a></li>
+                <li><a href="<c:url value='/retiree/form'/>">퇴직자 추가</a></li>
+                <li><a href="<c:url value='/index'/>">홈</a></li>
+            </ul>
+        </nav>
+    </header>
+>
