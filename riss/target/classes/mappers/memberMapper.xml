@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+	<resultMap type="org.riss.bizconnect.main.member.model.dto.User" id="ASD">
+		<result property="gID" column="GID" />
+		<result property="userPw" column="USER_PW" />
+		<result property="comCode" column="COM_CODE" />
+		<result property="userName" column="USER_NAME" />
+		<result property="userRole" column="USER_ROLE" />
+
+		
+	</resultMap>
+	
+    <!-- 로그인 처리에 사용할 selectLogin 쿼리 -->
+    <select id="selectLogin" parameterType="org.riss.bizconnect.main.member.model.dto.User" resultMap="ASD" >
+    SELECT GID, USER_PW, COM_CODE, USER_NAME, USER_ROLE
+    FROM TB_USERINFO
+    WHERE GID = #{gID}
+      AND USER_PW = #{userPw}
+      AND COM_CODE = #{comCode}
+	</select>
+
+	
+
+</mapper>
