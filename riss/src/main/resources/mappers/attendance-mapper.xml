@@ -23,6 +23,8 @@
 	</resultMap> -->
 
 	<resultMap type="Attendance" id="reultGAttendance">
+		<result property="gId" column="GID" />
+		<result property="comCode" column="COM_CODE" />
 		<result property="day" column="GOOUTWORK_DATE" />
 		<result property="goDate" column="GOOUTWORK_GOD" />
 		<result property="outDate" column="GOOUTWORK_OUTD" />
@@ -32,37 +34,47 @@
 	<select id="selectTodayAttendance" parameterType="Member" resultMap="reultGAttendance">
 		select *
 		from  tb_gooutwork
-		where gooutwork_date = to_date(sysdate,'yy-MM-dd')
+		where gooutwork_date = to_date(sysdate,'yy-MM-dd') and gid = #{ gId } and COM_CODE = #{comCode}
 	</select>
 	
-	<select id="selectMyAttendance" parameterType="Member" resultMap="reultGAttendance">
-		SELECT *
-		FROM tb_gooutwork
-		ORDER BY gooutwork_date DESC
+	<select id="selectMyAttendance" parameterType="Paging" resultMap="reultGAttendance">
+		select *	
+		from (select rownum rnum, GID, COM_CODE, GOOUTWORK_DATE, GOOUTWORK_GOD, GOOUTWORK_OUTD, GOOUTWORK_TIME
+		from (SELECT *
+			FROM tb_gooutwork
+			where gid = #{ gId } and COM_CODE = #{comCode}
+			ORDER BY gooutwork_date DESC))
+		where rnum between #{ startRow } and #{ endRow } 
+	</select>
+	
+	<select id="selectListCount" resultType="_int" parameterType="Member">
+		select count(*) from tb_gooutwork
+		where gid = #{ gId } and COM_CODE = #{comCode}
 	</select>
 
 	<insert id="insertAttendance" parameterType="Member">
 		INSERT INTO TB_GOOUTWORK (GOOUTWORK_DATE, GOOUTWORK_GOD, GOOUTWORK_OUTD, GOOUTWORK_TIME, GID, COM_CODE)
-		SELECT GOOUTWORK_DATE, null, null, null, 'GID010', 'COM010'
+		SELECT GOOUTWORK_DATE, null, null, null, #{gId}, #{comCode}
 		FROM (
-		    SELECT TO_DATE('2023-10-10', 'YYYY-MM-DD') + LEVEL - 1 AS GOOUTWORK_DATE
+		    SELECT #{userEntry} + LEVEL - 1 AS GOOUTWORK_DATE
 		    FROM dual
-		    CONNECT BY LEVEL &lt;= TRUNC(sysdate) - TO_DATE('2023-10-10', 'YYYY-MM-DD') + 1) day
+		    CONNECT BY LEVEL &lt;= TRUNC(sysdate) - #{userEntry} + 1) day
 		WHERE NOT EXISTS (
 		    SELECT 1
 		    FROM TB_GOOUTWORK
-		    WHERE GOOUTWORK_DATE = day.GOOUTWORK_DATE)
+		    WHERE GOOUTWORK_DATE = day.GOOUTWORK_DATE and gid = #{ gId } and COM_CODE = #{comCode})
 	</insert>
 	
-	<update id="updateGoD" parameterType="Member">
+	<update id="updateGoD" parameterType="Attendance">
 		update tb_gooutwork
-		set GOOUTWORK_god = systimestamp
+		set GOOUTWORK_god = #{goDate}
 		where gid = #{ gId } and com_code = #{ comCode } and  to_date(gooutwork_date,'yy-MM-dd') = to_date(sysdate,'yy-MM-dd')
 	</update>
 	
-	<update id="updateOutD" parameterType="Member">
+	<update id="updateOutD" parameterType="Attendance">
 		update tb_gooutwork
-		set GOOUTWORK_outd = systimestamp
+		set GOOUTWORK_outd = #{outDate},
+		GOOUTWORK_TIME = #{time}		
 		where gid = #{ gId } and com_code = #{ comCode } and to_date(gooutwork_date,'yy-MM-dd') = to_date(sysdate,'yy-MM-dd')
 	
 	</update>

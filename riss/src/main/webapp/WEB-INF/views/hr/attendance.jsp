@@ -29,7 +29,7 @@
 		</div>
 	</div>
 		
-	<<div class="footerPos">
+	<div class="footerPos">
 		<c:import url="/WEB-INF/views/common/footer.jsp" />
 	</div>
 	<%-- <div class="headerPos">

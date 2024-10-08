@@ -35,8 +35,9 @@ public class AttendanceController {
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		Attendance attendance = attendanceService.selectTodayAttendance(loginUser);
-
-		logger.info("확인 : " + attendanceService.insertAttendance(attendance));
+		logger.info("attendance : " + attendance);
+		
+		logger.info("확인 : " + attendanceService.insertAttendance(loginUser));
 		if (attendance == null || attendance.getGoDate() == null) {
 			mv.addObject("gooutBTN", "출 근");
 			mv.addObject("URL", "goWorkCheck.do");
@@ -84,7 +85,7 @@ public class AttendanceController {
 		Attendance attendance = attendanceService.selectTodayAttendance(loginUser);
 		attendance.setOutDate(new Timestamp(System.currentTimeMillis()));
 		attendance.calTimestamp();
-		
+		logger.info("attendance : " + attendance);
 		if (attendanceService.updateOutD(attendance) > 0) {
 			return "redirect:moveAttendance.do";
 		} else {
@@ -114,9 +115,9 @@ public class AttendanceController {
 		if (slimit != null) {
 			limit = Integer.parseInt(slimit);
 		}
-
+		logger.info("loginUser : " + loginUser);
 		// 총 목록갯수 조회해서 총 페이지 수 계산함
-		int listCount = attendanceService.selectListCount();
+		int listCount = attendanceService.selectListCount(loginUser);
 		// 페이지 관련 항목 계산 처리
 		Paging paging = new Paging(loginUser.getgId(), loginUser.getComCode(), listCount, limit, currentPage, "moveAttendanceCheck.do");
 		paging.calculate();

@@ -10,14 +10,14 @@ public interface AttendanceService {
 
 	Attendance selectTodayAttendance(Member member);
 
-	int insertAttendance(Attendance attendance);
+	int insertAttendance(Member member);
 
 	int updateGoD(Attendance attendance);
 	int updateOutD(Attendance attendance);
 
 	ArrayList<Attendance> selectMyAttendance(Paging paging);
 
-	int selectListCount();
+	int selectListCount(Member loginUser);
 
 
 
