@@ -14,12 +14,22 @@
 	    <typeAlias type="org.riss.bizconnect.hr.attendance.model.dto.Attendance" alias="Attendance" />
 	    <typeAlias type="org.riss.bizconnect.common.model.dto.Member" alias="Member" />
 	    <typeAlias type="org.riss.bizconnect.common.model.dto.Paging" alias="Paging" />
+	    <typeAlias type="org.riss.bizconnect.hr.retire.model.dto.Retire" alias="Retire"/>
+	    <typeAlias type="org.riss.bizconnect.pd.product.model.dto.ProductDTO" alias="ProductDTO" />      
+        <typeAlias type="org.riss.bizconnect.pd.porder.model.dto.PorderDTO" alias="PorderDTO" />
+        <typeAlias type="org.riss.bizconnect.pd.order.model.dto.OrderDTO" alias="OrderDTO" />
+        <typeAlias type="org.riss.bizconnect.pd.client.model.dto.ClientDTO" alias="ClientDTO" />
+	
 	</typeAliases>
 
     
     <mappers>
         <mapper resource="mappers/attendance-mapper.xml" />
-        <!-- Referencing the new memberMapper.xml file -->
+        <mapper resource="mappers/retireview-mapper.xml"/>
+        <mapper resource="mappers/client-mapper.xml" />
+        <mapper resource="mappers/porder-mapper.xml" />
+        <mapper resource="mappers/order-mapper.xml" />
+        <mapper resource="mappers/product-mapper.xml" />
         <mapper resource="mappers/memberMapper.xml" />
     </mappers>
 

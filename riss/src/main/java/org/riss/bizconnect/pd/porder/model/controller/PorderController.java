@@ -1,17 +1,14 @@
 package org.riss.bizconnect.pd.porder.model.controller;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.pd.porder.model.dto.PorderDTO;
 import org.riss.bizconnect.pd.porder.model.service.PorderService;
-import org.riss.bizconnect.pd.product.model.dto.ProductDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +33,8 @@ public class PorderController {
 	@RequestMapping("insertporder.do")
 	public ModelAndView insertporder(ModelAndView mv, HttpSession session, HttpServletRequest request) {
 		
-	    Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");//지워!!!!!!!!!!!!!!!!!!!!
+		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
 	    session.setAttribute("loginUser", member);//너도!!!!!!!!!!!!!!!!!!!!!!!!
 	     
 	    member = (Member)session.getAttribute("loginUser");
