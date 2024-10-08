@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common/menubar.css">
-  
+  	<script src="${pageContext.request.contextPath}/resources/js/hr.js" charset="utf-8"></script>
     <title>Bizconnect - 퇴직자 관리</title>
 </head>
 <body>
@@ -26,11 +26,12 @@
 	                    <li><a href="#" onclick="loadPage('급여')">급여</a></li>
 	                </ul>
 	            </li>
+	            
 	            <li class="has-submenu" id="retiree">
 	                <a href="#" onclick="toggleSubmenu('retiree')">퇴직자관리</a>
 	                <ul class="submenu" id="retiree-submenu">
-	                    <li><a href="#" onclick="loadPage('퇴직자')">퇴직자</a></li>
-	                    <li><a href="#" onclick="loadPage('퇴직자->사원')">퇴직자 -> 사원</a></li>
+	                   	<li><a href="${pageContext.request.contextPath}/retire.do">퇴직자</a></li>
+	                    <li><a href="${pageContext.request.contextPath}/convertPage.do" onclick="loadPage('퇴직자->사원')">퇴직자 -> 사원</a></li>
 	                </ul>
 	            </li>
 	            <li class="has-submenu" id="document">
