@@ -1,4 +1,4 @@
-package org.riss.bizconnect.pd.product.controller;
+package org.riss.bizconnect.pd.product.model.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.riss.bizconnect.common.model.dto.Member;
-import org.riss.bizconnect.pd.product.dto.ProductDTO;
-import org.riss.bizconnect.pd.product.service.ProductService;
+import org.riss.bizconnect.pd.product.model.dto.ProductDTO;
+import org.riss.bizconnect.pd.product.model.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +46,7 @@ public class ProductController {
 
 		prod.setLicenseCode(member.getComCode());
 		
-		prod.setProductrNo(request.getParameter("ProductrNo"));
+		prod.setProductNo(request.getParameter("ProductNo"));
 		prod.setProductName(request.getParameter("ProductName"));
 		prod.setProductSize(request.getParameter("ProductSize"));
 

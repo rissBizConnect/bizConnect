@@ -1,9 +1,9 @@
-package org.riss.bizconnect.pd.product.service;
+package org.riss.bizconnect.pd.product.model.service;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.riss.bizconnect.pd.product.dto.ProductDTO;
+import org.riss.bizconnect.pd.product.model.dto.ProductDTO;
 
 
 public interface ProductService {

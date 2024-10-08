@@ -1,10 +1,10 @@
-package org.riss.bizconnect.pd.porder.service;
+package org.riss.bizconnect.pd.porder.model.service;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.riss.bizconnect.pd.porder.dao.PorderDAO;
-import org.riss.bizconnect.pd.porder.dto.PorderDTO;
+import org.riss.bizconnect.pd.porder.model.dto.PorderDTO;
+import org.riss.bizconnect.pd.porder.model.dao.PorderDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +49,10 @@ public class PorderServiceImpl implements PorderService {
 		return null;
 	}
 
+	@Override
+	public int insertporder(PorderDTO pord) {
+		return porderDAO.insertporder(pord);
+	}
 
 	/*
 	@Override

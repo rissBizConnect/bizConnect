@@ -1,4 +1,4 @@
-package org.riss.bizconnect.pd.product.dto;
+package org.riss.bizconnect.pd.product.model.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -7,9 +7,9 @@ public class ProductDTO implements Serializable {
 	
 	private static final long serialVersionUID = 3765759391170591356L;
 	
-	private String ProductrNo; //발주-제품번호
+	private String ProductNo; //발주-제품번호
 	private String LicenseCode; //회사코드
-	private String PordertNo; //발주번호
+	private String PorderNo; //발주번호
 	private String ClientCode; //거래처번호
 	private String ProductName; //발주-제품명
 	private double ProductPrice; //발주-판매단가
@@ -26,13 +26,13 @@ public class ProductDTO implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ProductDTO(String productrNo, String licenseCode, String pordertNo, String clientCode, String productName,
+	public ProductDTO(String productNo, String licenseCode, String porderNo, String clientCode, String productName,
 			double productPrice, double productPurPrice, int productCnt, LocalDate productiDate, LocalDate productoDate,
 			String productSize, String productStatus, String fieldNum) {
 		super();
-		ProductrNo = productrNo;
+		ProductNo = productNo;
 		LicenseCode = licenseCode;
-		PordertNo = pordertNo;
+		PorderNo = porderNo;
 		ClientCode = clientCode;
 		ProductName = productName;
 		ProductPrice = productPrice;
@@ -45,12 +45,12 @@ public class ProductDTO implements Serializable {
 		FieldNum = fieldNum;
 	}
 
-	public String getProductrNo() {
-		return ProductrNo;
+	public String getProductNo() {
+		return ProductNo;
 	}
 
-	public void setProductrNo(String productrNo) {
-		ProductrNo = productrNo;
+	public void setProductNo(String productNo) {
+		ProductNo = productNo;
 	}
 
 	public String getLicenseCode() {
@@ -61,12 +61,12 @@ public class ProductDTO implements Serializable {
 		LicenseCode = licenseCode;
 	}
 
-	public String getPordertNo() {
-		return PordertNo;
+	public String getPorderNo() {
+		return PorderNo;
 	}
 
-	public void setPordertNo(String pordertNo) {
-		PordertNo = pordertNo;
+	public void setPorderNo(String porderNo) {
+		PorderNo = porderNo;
 	}
 
 	public String getClientCode() {
@@ -151,7 +151,7 @@ public class ProductDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ProductDTO [ProductrNo=" + ProductrNo + ", LicenseCode=" + LicenseCode + ", PordertNo=" + PordertNo
+		return "ProductDTO [ProductNo=" + ProductNo + ", LicenseCode=" + LicenseCode + ", PorderNo=" + PorderNo
 				+ ", ClientCode=" + ClientCode + ", ProductName=" + ProductName + ", ProductPrice=" + ProductPrice
 				+ ", ProductPurPrice=" + ProductPurPrice + ", ProductCnt=" + ProductCnt + ", ProductiDate="
 				+ ProductiDate + ", ProductoDate=" + ProductoDate + ", ProductSize=" + ProductSize + ", ProductStatus="

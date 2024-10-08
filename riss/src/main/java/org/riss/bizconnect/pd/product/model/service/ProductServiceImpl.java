@@ -1,10 +1,10 @@
-package org.riss.bizconnect.pd.product.service;
+package org.riss.bizconnect.pd.product.model.service;
 
 import java.util.ArrayList;
 import java.util.Optional;
 
-import org.riss.bizconnect.pd.product.dao.ProductDAO;
-import org.riss.bizconnect.pd.product.dto.ProductDTO;
+import org.riss.bizconnect.pd.product.model.dao.ProductDAO;
+import org.riss.bizconnect.pd.product.model.dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
