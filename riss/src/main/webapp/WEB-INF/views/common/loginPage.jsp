@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +11,9 @@
 
 <div id="loginForm">    
     <form action="/bizconnect/login.do" method="post">
-        <label>아이디: <input type="text" name="userId"></label><br>
-        <label>암호: <input type="password" name="userPwd"></label><br>
-        <label>회사 코드: <input type="text" name="comcode"></label><br> 
+        <label>아이디: <input type="text" name="gID"></label><br>
+        <label>암호: <input type="password" name="userPw"></label><br>
+        <label>회사 코드: <input type="text" name="comCode"></label><br> 
         <input type="submit" value="로그인">
     </form>
 </div>

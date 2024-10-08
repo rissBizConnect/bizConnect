@@ -1,57 +1,65 @@
 package org.riss.bizconnect.main.member.model.dto;
 
 public class User implements java.io.Serializable {
-	private static final long serialVersionUID = -2119372912749016520L;
-	
-	private String gID;				//	GID	VARCHAR2(20 BYTE)
-	private String userName;	//	USER_NAME	VARCHAR2(20 BYTE)
-	private String userPw;		//	USER_PW	VARCHAR2(50 BYTE)
-	
-	public User() {
-		super();
-	}
+    private static final long serialVersionUID = -2119372912749016520L;
 
-	public User(String gID, String userName, String userPw) {
-		super();
-		this.gID = gID;
-		this.userName = userName;
-		this.userPw = userPw;
-	}
+    private String gID;        // GID
+    private String userPw;     // USER_PW
+    private String comCode;    // COM_CODE
+    private String userName;   // USER_NAME
+    private String userRole;   // USER_ROLE
 
-	public String getgID() {
-		return gID;
-	}
+    // Constructors, getters, setters, toString...
 
-	public void setgID(String gID) {
-		this.gID = gID;
-	}
+    public User() {
+        super();
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public User(String gID, String userPw, String comCode) {
+        super();
+        this.gID = gID;
+        this.userPw = userPw;
+        this.comCode = comCode;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    // Getters and Setters
+    public String getgID() {
+        return gID;
+    }
 
-	public String getUserPw() {
-		return userPw;
-	}
+    public void setgID(String gID) {
+        this.gID = gID;
+    }
 
-	public void setUserPw(String userPw) {
-		this.userPw = userPw;
-	}
+    public String getUserPw() {
+        return userPw;
+    }
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+    public void setUserPw(String userPw) {
+        this.userPw = userPw;
+    }
 
-	@Override
-	public String toString() {
-		return "User [gID=" + gID + ", userName=" + userName + ", userPw=" + userPw + "]";
-	}
+    public String getComCode() {
+        return comCode;
+    }
 
-	
-	
-	
+    public void setComCode(String comCode) {
+        this.comCode = comCode;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
+    }
 }

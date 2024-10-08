@@ -8,37 +8,48 @@
     left: 300px;
 }
 .headerPos {
-position: absolute;
+position: relative;
     top: 0;
     left: 0;
     width: 100%;
 }
 .menubarPos {
-    position: absolute;
-    top: 63px;
+    position: relative;
+    float: left;
+    top: 0;
     left: 0;
     
 }
 
 .contentPos {
-        position: absolute;
-    top: 150px;
-    left: 350px;
+    position: absolute;
+    width: 1000px;
+    left: 100px;
+    top: 200px;
 }
 
 .footerPos {
-    position: absolute;
-    width: 100%;
-    bottom: -142px;
-    left: 0;
+    position: relative;
+    bottom: -20px;
 }
 
 .goworkBTN {
-	position: relative;
+    position: absolute;
     width: 287px;
     height: 47px;
-    left: 62px;
-    top: 100px;
-
+    left: 354px;
+    top: 449px;
 }
 
+.front{
+	height: 100%
+}
+
+.table {
+	border: 1; 
+	width: 80%;
+}
+
+hr {
+	width: 80%;
+}

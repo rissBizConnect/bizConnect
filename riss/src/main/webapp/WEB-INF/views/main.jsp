@@ -100,6 +100,7 @@
 <div class="content">
     <!-- Main content area -->
     <h1>마이페이지</h1>
+    
     <div class="form-section">
         <!-- Form content goes here -->
         <table>

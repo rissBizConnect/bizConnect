@@ -11,15 +11,14 @@
 <body> 
 	<ul class="menu">
 		<h1>Bizconnect</h1>
-		<nav class="login-mypage">
+		<div class="menu-sub">
+			<a class = "bar" href="#" onclick="loadPage('인사관리')">인사관리</a> 
+			<a class = "bar" href="#" onclick="loadPage('재고관리')">재고관리</a> 
+			<a class = "bar" href="#" onclick="loadPage('회계관리')">회계관리</a>
+		</div>
+		<div class="login-mypage">
 			<button onclick="goToMypage()">마이페이지</button>
 			<button onclick="logout()">로그아웃</button>
-		</nav>
-		<hr>
-		<div class="menu-sub">
-			<a href="#" onclick="loadPage('인사관리')">인사관리</a> 
-			<a href="#" onclick="loadPage('재고관리')">재고관리</a> 
-			<a href="#" onclick="loadPage('회계관리')">회계관리</a>
 		</div>
 	</ul>
 </body>
