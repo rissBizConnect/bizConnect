@@ -3,8 +3,6 @@ package org.riss.bizconnect.hr.attendance.model.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.common.model.dto.Paging;
@@ -22,7 +20,7 @@ public class AttendanceDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	private static final Logger logger = LoggerFactory.getLogger(AttendanceController.class);
-
+	
 	@Transactional
 	public Attendance selectTodayAttendance(Member member) {
 		return sqlSessionTemplate.selectOne("attendanceMapper.selectTodayAttendance",member);

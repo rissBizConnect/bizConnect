@@ -1,0 +1,65 @@
+package org.riss.bizconnect.hr.retiree.model.service;
+
+import java.util.ArrayList;
+
+import org.riss.bizconnect.hr.retire.model.dao.RetireDao;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("retireService")
+public class RetireServiceImpl implements RetireService {
+
+    @Autowired
+    private RetireDao retireDao;
+
+    @Override
+    public Retire selectRetiree(String retireId) {
+        return RetireDao.selectRetiree(retireId);
+    }
+
+    @Override
+    public ArrayList<Retire> selectAllRetirees(Paging paging) {
+        return RetireDao.selectAllRetirees(paging);
+    }
+
+    @Override
+    public int insertRetiree(Retire retiree) {
+        return RetireDao.insertRetiree(retiree);
+    }
+
+    @Override
+    public int updateRetiree(Retire retiree) {
+        return retireDao.updateRetiree(retiree);
+    }
+
+    @Override
+    public int deleteRetiree(String retireId) {
+        return RetireDao.deleteRetiree(retireId);
+    }
+
+    @Override
+    public int selectRetireeCount() {
+        return RetireDao.selectRetireeCount();
+    }
+
+    @Override
+    public ArrayList<Retire> searchRetireesByName(Search search) {
+        return RetireDao.searchRetireesByName(search);
+    }
+
+    @Override
+    public int searchRetireesByNameCount(String keyword) {
+        return RetireDao.searchRetireesByNameCount(keyword);
+    }
+
+    @Override
+    public ArrayList<Retire> searchRetireesByDate(Search search) {
+        return RetireDao.searchRetireesByDate(search);
+    }
+
+    @Override
+    public int searchRetireesByDateCount(Search search) {
+        return RetireDao.searchRetireesByDateCount(search);
+    }
+}

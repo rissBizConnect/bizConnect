@@ -1,0 +1,18 @@
+package org.riss.bizconnect.hr.retiree.model.service;
+
+import java.util.ArrayList;
+
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+
+public interface RetireService {
+	Retire selectRetiree(String retireId);
+    ArrayList<Retire> selectAllRetirees(Paging paging);
+    int insertRetiree(Retire retiree);
+    int updateRetiree(Retire retiree);
+    int deleteRetiree(String retireId);
+    int selectRetireeCount();
+    ArrayList<Retire> searchRetireesByName(Search search);
+    int searchRetireesByNameCount(String keyword);
+    ArrayList<Retire> searchRetireesByDate(Search search);
+    int searchRetireesByDateCount(Search search);
+}

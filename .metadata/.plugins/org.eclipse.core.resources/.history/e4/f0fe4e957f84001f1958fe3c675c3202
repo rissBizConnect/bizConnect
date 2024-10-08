@@ -1,0 +1,43 @@
+package org.riss.bizconnect.hr.retire.model.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
+import org.riss.bizconnect.hr.retire.model.controller.RetireController;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository("retireDAO")
+public class RetireDAO {
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
+
+	private static final Logger logger = LoggerFactory.getLogger(RetireController.class);
+	
+	 // 퇴직자 목록 조회
+    public List<Retire> getRetireeList() {
+    	List<Retire> list = sqlSessionTemplate.selectList("retireviewMapper.getRetireeList");
+		return (ArrayList<Retire>)list;
+    }
+
+    // 퇴직자 추가
+    public int insertRetiree(Retire retiree) {
+        return SqlSessionTemplate.insert("retireviewMapper.insertRetiree", retiree);
+    }
+
+    // 퇴직자 수정
+    public int updateRetiree(Retire retiree) {
+        return SqlSessionTemplate.update("retireviewMapper.updateRetiree", retiree);
+    }
+
+    // 퇴직자 삭제
+    public int deleteRetiree(int retireId) {
+        return SqlSessionTemplate.delete("retireviewMapper.deleteRetiree", retireId);
+    }
+    
+}

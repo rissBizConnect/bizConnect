@@ -1,0 +1,13 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import java.util.ArrayList;
+
+import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.riss.bizconnect.hr.retire.model.service.RetireService;
+
+public interface RetireService {
+    
+
+    
+}

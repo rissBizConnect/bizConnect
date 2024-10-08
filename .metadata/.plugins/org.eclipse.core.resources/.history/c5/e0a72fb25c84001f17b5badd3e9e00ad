@@ -1,0 +1,5 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+public interface RetireService {
+
+}

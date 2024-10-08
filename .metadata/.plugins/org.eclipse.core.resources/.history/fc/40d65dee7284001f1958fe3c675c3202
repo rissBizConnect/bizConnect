@@ -1,0 +1,39 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import java.util.List;
+
+import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("retireService")
+public class RetireServiceImpl implements RetireService {
+
+	@Autowired
+    private RetireDAO retireDAO;
+
+	@Override
+	public void addRetiree(Retire retiree) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Retire> getRetireeList(String entryYear, String retireYear, String retType) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateRetiree(Retire retiree) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteRetiree(int retireId) {
+		// TODO Auto-generated method stub
+		
+	}
+}

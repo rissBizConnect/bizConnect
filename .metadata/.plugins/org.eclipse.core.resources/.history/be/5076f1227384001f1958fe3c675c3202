@@ -1,0 +1,20 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+
+public interface RetireService {
+
+	int insertRetire(Retire retire);
+
+	int updateAddReadCount(int retire_no);
+
+	int deleteNotice(int retire_no);
+
+	int deleteRetire(int retire_no);
+
+	int updateRetire(Retire retire);
+
+}

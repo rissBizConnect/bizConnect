@@ -1,0 +1,51 @@
+package org.riss.bizconnect.hr.retire.model.controller;
+
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.riss.bizconnect.hr.retire.model.service.RetireService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/retiree")
+public class RetireController {
+
+    @Autowired
+    private RetireService retireService;
+
+    @GetMapping("/list")
+    public String listRetires(Model model) {
+        List<Retire> retireeList = retireService.getRetireList();
+        model.addAttribute("retireList", retireList);
+        return "retire/list"; // JSP 파일 경로
+    }
+
+    @PostMapping("/add")
+    public String addRetire(Retire retiree) {
+        retireService.addRetire(retiree);
+        return "redirect:/retire/list";
+    }
+
+    @PostMapping("/modify")
+    public String modifyRetire(Retire retiree) {
+        retireService.modifyRetiree(retiree);
+        return "redirect:/retire/list";
+    }
+
+    @PostMapping("/delete/{retireNo}")
+    public String deleteRetire(@PathVariable int retireNo) {
+        retireService.removeRetire(retireNo);
+        return "redirect:/retire/list";
+    }
+
+    @PostMapping("/convert/{retireNo}")
+    public String convertRetireToUser(
+    		@PathVariable int retireNo, 
+    		@RequestParam String gid, 
+    		@RequestParam String comCode) {
+        retireService.convertRetireToUser(gid, comCode, retireNo);
+        return "redirect:/retire/list";
+    }
+}

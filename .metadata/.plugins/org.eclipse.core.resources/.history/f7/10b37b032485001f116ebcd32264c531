@@ -1,0 +1,26 @@
+package org.riss.bizconnect.hr.retire.model.controller;
+
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.riss.bizconnect.hr.retire.model.service.RetireService;
+import org.riss.bizconnect.hr.retire.model.service.RetireServiceImpl;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
+
+public class RetireController extends HttpServlet {
+    private final RetireService retireService = new RetireServiceImpl();
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Retire> retireList = retireService.getAllRetires();
+        request.setAttribute("retireList", retireList);
+        request.getRequestDispatcher("/WEB-INF/views/retireList.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 추가, 수정, 삭제 기능 구현
+    }
+}
