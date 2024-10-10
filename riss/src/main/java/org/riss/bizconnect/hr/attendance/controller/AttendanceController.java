@@ -104,21 +104,19 @@ public class AttendanceController {
 
 		
 		Member loginUser = (Member) session.getAttribute("loginUser");
-		// 페이징 처리
+
 		int currentPage = 1;
 		if (page != null) {
 			currentPage = Integer.parseInt(page);
 		}
 
-		// 한 페이지에 출력할 공지 갯수 10개로 지정
 		int limit = 10;
 		if (slimit != null) {
 			limit = Integer.parseInt(slimit);
 		}
-		logger.info("loginUser : " + loginUser);
-		// 총 목록갯수 조회해서 총 페이지 수 계산함
+
 		int listCount = attendanceService.selectListCount(loginUser);
-		// 페이지 관련 항목 계산 처리
+
 		Paging paging = new Paging(loginUser.getgId(), loginUser.getComCode(), listCount, limit, currentPage, "moveAttendanceCheck.do");
 		paging.calculate();
 
@@ -136,20 +134,50 @@ public class AttendanceController {
 		}
 		return mv;
 	}
-
-/*	@RequestMapping("moveAttendanceUpdate.do")
-	public ModelAndView moveAttendanceUpdate(HttpSession session, ModelAndView mv) {
-
+	
+	@RequestMapping("moveAttendanceCheckM.do")
+	public ModelAndView moveAttendanceUpdateM(
+			HttpSession session, 
+			ModelAndView mv,
+			@RequestParam(name = "page", required = false) String page,
+			@RequestParam(name = "limit", required = false) String slimit) {
 		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
 				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
 		session.setAttribute("loginUser", member);
 
+		
 		Member loginUser = (Member) session.getAttribute("loginUser");
-		ArrayList<Attendance> myAttendance = attendanceService.selectMyAttendance(loginUser);
 
-		mv.addObject("list", myAttendance);
+		int currentPage = 1;
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
 
-		mv.setViewName("hr/attendanceCheck");
+		int limit = 10;
+		if (slimit != null) {
+			limit = Integer.parseInt(slimit);
+		}
+		logger.info("loginUser : " + loginUser);
+
+		int listCount = attendanceService.selectComListCount(loginUser);
+
+		Paging paging = new Paging(loginUser.getgId(), loginUser.getComCode(), listCount, limit, currentPage, "moveAttendanceCheckM.do");
+		paging.calculate();
+
+		
+		ArrayList<Attendance> list = attendanceService.selectComAttendance(paging);
+
+		if (list != null && list.size() > 0) {
+			mv.addObject("list", list);
+			mv.addObject("paging", paging);
+			mv.addObject("currentPage", currentPage);
+			mv.setViewName("hr/attendanceCheckM");
+		} else {
+			mv.addObject("message", currentPage + " 페이지 목록 조회 실패!");
+			mv.setViewName("common/error");
+		}
 		return mv;
-	}*/
+	}
+	
+	
 }

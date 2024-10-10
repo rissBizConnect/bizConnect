@@ -14,17 +14,13 @@
 </head>
 <body>
 	<div class="front">
-		<div class="headerPos">
-			<c:import url="/WEB-INF/views/common/header.jsp" />
-		</div>
+		<c:import url="/WEB-INF/views/common/header.jsp" />
+		<c:import url="/WEB-INF/views/common/menubar.jsp" />
 		
-			<div class="menubarPos">
-				<c:import url="/WEB-INF/views/common/menubar.jsp" />
-			</div>
-			<div class = contentPos>
+		<div class = contentPos>
 			<h4>근태 현황</h4>
 			<hr>
-			<table class = "table" border="1" cellspacing="0" width="1000px">
+			<table class = "table" border="1" cellspacing="0">
 				<tr>
 					<th class = "row">날 짜</th>
 					<th class = "row">출근 시간</th>
@@ -38,12 +34,10 @@
 					<td class = "row"><c:if test="${!empty att.time }">${ att.calHTimestamp() } 시 ${ att.calMTimestamp() } 분 ${ att.calSTimestamp() } 초</c:if></td>
 				</tr></c:forEach>
 			</table>
-			<c:import url="/WEB-INF/views/common/pagingView.jsp" />
+			<div class = "paging"><c:import url="/WEB-INF/views/common/pagingView.jsp" /></div>
 		</div>
 	</div>
-	
-	<div class="footerPos">
-		<c:import url="/WEB-INF/views/common/footer.jsp" />
-	</div>
+	<c:import url="/WEB-INF/views/common/footer.jsp" />
+
 </body>
 </html>
