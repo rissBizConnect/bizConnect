@@ -14,13 +14,9 @@
 </head>
 <body>
 	<div class="front">
-		<div class="headerPos">
-			<c:import url="/WEB-INF/views/common/header.jsp" />
-		</div>
+		<c:import url="/WEB-INF/views/common/header.jsp" />
+		<c:import url="/WEB-INF/views/common/menubar.jsp" />
 		
-		<div class="menubarPos">
-			<c:import url="/WEB-INF/views/common/menubar.jsp" />
-		</div>
 		<div class = contentPos>
 			<c:import url="/WEB-INF/views/common/click.jsp" />
 			<c:if test="${ !empty requestScope.gooutBTN }">
@@ -28,24 +24,8 @@
 			</c:if>
 		</div>
 	</div>
-		
-	<div class="footerPos">
+
 		<c:import url="/WEB-INF/views/common/footer.jsp" />
-	</div>
-	<%-- <div class="headerPos">
-		<c:import url="/WEB-INF/views/common/header.jsp" />
-	</div>
-	<div class="menubarPos">
-		<c:import url="/WEB-INF/views/common/menubar.jsp" />
-	</div>
-	<div class="contentPos">
-		<c:import url="/WEB-INF/views/common/click.jsp" />
-		<c:if test="${ !empty requestScope.gooutBTN }">
-			<button class="goworkBTN" onclick="javascript:location.href='${pageContext.servletContext.contextPath }/${requestScope.URL }'"'>${ requestScope.gooutBTN }</button>
-		</c:if>
-	</div>
-	<div class="footerPos">
-	<c:import url="/WEB-INF/views/common/footer.jsp" />
-	</div> --%>
+
 </body>
 </html>

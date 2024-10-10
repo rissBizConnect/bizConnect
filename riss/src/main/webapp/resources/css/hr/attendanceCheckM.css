@@ -28,7 +28,6 @@
     height: 47px;
     left: 62px;
     top: 100px;
-
 }
 
 .front{
@@ -36,14 +35,25 @@
 }
 
 .table {
-
 	width: 1000px;
+    position: absolute;
+    top: 100px;
 }
 .row {
 	 text-align: center; /* 수평 중앙 배치 */
 }
-.paging{
+.paging {
 	top: 372px;
     position: absolute;
     left: 135px;
+}
+
+.categoryPos {
+position: absolute;
+    left: 120px;
+    top: 38px;
+}
+
+.category {
+	height: 26px;
 }
