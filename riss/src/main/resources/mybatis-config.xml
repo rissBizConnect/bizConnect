@@ -19,13 +19,12 @@
         <typeAlias type="org.riss.bizconnect.pd.porder.model.dto.PorderDTO" alias="PorderDTO" />
         <typeAlias type="org.riss.bizconnect.pd.order.model.dto.OrderDTO" alias="OrderDTO" />
         <typeAlias type="org.riss.bizconnect.pd.client.model.dto.ClientDTO" alias="ClientDTO" />
-	
+		<typeAlias type="org.riss.bizconnect.common.model.dto.Search" alias="Search" />
 	</typeAliases>
-
     
     <mappers>
         <mapper resource="mappers/attendance-mapper.xml" />
-        <mapper resource="mappers/retireview-mapper.xml"/>
+        <mapper resource="mappers/retireMapper.xml"/>
         <mapper resource="mappers/client-mapper.xml" />
         <mapper resource="mappers/porder-mapper.xml" />
         <mapper resource="mappers/order-mapper.xml" />

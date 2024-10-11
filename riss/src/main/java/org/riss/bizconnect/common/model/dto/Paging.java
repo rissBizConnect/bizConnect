@@ -26,6 +26,10 @@ public class Paging implements java.io.Serializable {
 		this.urlMapping = urlMapping;
 	}
 
+	public Paging() {
+		// TODO Auto-generated constructor stub
+	}
+
 	//페이지 계산 메소드
 	public void calculate() {
 		//총 페이지 수 계산 : 

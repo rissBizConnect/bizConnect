@@ -17,7 +17,7 @@
 	                <ul class="submenu" id="attendance-submenu">
 	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendance.do'; return false;">출퇴근</a></li>
 	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceCheck.do'; return false;">나의 근태현황</a></li>
-	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceUpdateM.do'; return false;">근태 수정/현황</a></li>
+	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceCheckM.do'; return false;">근태 수정/현황</a></li>
 	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceCheck.do'; return false;">연차</a></li>
 	                </ul>
 	            </li>
@@ -29,10 +29,10 @@
 	                </ul>
 	            </li>
 	            
-	            <li class="has-submenu" id="retiree">
-	                <a href="#" onclick="toggleSubmenu('retiree'); return false;">퇴직자관리</a>
-	                <ul class="submenu" id="retiree-submenu">
-	                   	<li><a href="${pageContext.request.contextPath}/retire.do">퇴직자</a></li>
+	            <li class="has-submenu" id="retire">
+	                <a href="#" onclick="toggleSubmenu('retire'); return false;">퇴직자관리</a>
+	                <ul class="submenu" id="retire-submenu">
+	                   	<li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/allRetirees.do'; return false;">퇴직자</a></li>
 	                    <li><a href="${pageContext.request.contextPath}/convertPage.do" onclick="loadPage('퇴직자->사원'); return=false;">퇴직자 -> 사원</a></li>
 	                </ul>
 	            </li>

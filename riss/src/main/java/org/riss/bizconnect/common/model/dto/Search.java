@@ -10,7 +10,7 @@ public class Search {
 	private Date end;			//등록날짜 검색의 끝날짜
 	private int age;			//회원관리에서 연령대별 검색에서의 나이
 	private String comCode;
-	
+
 	public Search() {
 		super();
 	}
@@ -76,5 +76,4 @@ public class Search {
 		return "Search [keyword=" + keyword + ", startRow=" + startRow + ", endRow=" + endRow + ", begin=" + begin
 				+ ", end=" + end + ", age=" + age + ", comCode=" + comCode + "]";
 	}
-
 }

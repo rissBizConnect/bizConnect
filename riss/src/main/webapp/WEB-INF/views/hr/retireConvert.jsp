@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="path" value="${pageContext.servletContext.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,11 @@
 </head>
 <body>
  <h2>사원 <-> 퇴직자 변환</h2>
+ <div class="front">
+		<c:import url="/WEB-INF/views/common/header.jsp" />
+		<c:import url="/WEB-INF/views/common/menubar.jsp" />
+		
+  <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
     <table>
         <thead>
             <tr>
@@ -54,5 +61,6 @@
             </c:forEach>
         </tbody>
     </table>
+    	<c:import url="/WEB-INF/views/common/footer.jsp" />
 </body>
 </html>
