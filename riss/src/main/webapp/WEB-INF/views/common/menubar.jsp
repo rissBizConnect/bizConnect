@@ -17,7 +17,7 @@
 	                <ul class="submenu" id="attendance-submenu">
 	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendance.do'; return false;">출퇴근</a></li>
 	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceCheck.do'; return false;">나의 근태현황</a></li>
-	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceCheckM.do'; return false;">근태 수정/현황</a></li>
+	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceUpdateM.do'; return false;">근태 수정/현황</a></li>
 	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceCheck.do'; return false;">연차</a></li>
 	                </ul>
 	            </li>

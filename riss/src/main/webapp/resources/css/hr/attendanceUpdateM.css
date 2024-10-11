@@ -28,7 +28,6 @@
     height: 47px;
     left: 62px;
     top: 100px;
-
 }
 
 .front{
@@ -41,8 +40,24 @@
 .row {
 	 text-align: center; /* 수평 중앙 배치 */
 }
-.paging{
+.paging {
 	top: 372px;
     position: absolute;
     left: 135px;
+}
+
+.categoryPos {
+position: absolute;
+    left: 120px;
+    top: 38px;
+}
+
+.category {
+	height: 26px;
+}
+
+.updateBTN {
+	height: 22px;
+	text-align: center;
+	13px;
 }
