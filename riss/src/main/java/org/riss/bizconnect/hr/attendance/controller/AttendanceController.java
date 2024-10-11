@@ -40,7 +40,7 @@ public class AttendanceController {
 		
 		logger.info("확인 : " + attendanceService.insertAttendance(loginUser));
 		if (attendance == null || attendance.getGoDate() == null) {
-			mv.addObject("gooutBTN", "출근");
+			mv.addObject("gooutBTN", "출 근");
 			mv.addObject("URL", "goWorkCheck.do");
 			logger.info("insert => go 활성화");
 			mv.addObject("common/error");
