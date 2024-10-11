@@ -92,11 +92,11 @@ public class Attendance implements Serializable {
 	}
 
 	public long calSTimestamp() { 
-		return this.time;
+		return this.time % 60;
 	}
 	
 	public long calMTimestamp() { 
-		return this.time / 60;
+		return (this.time / 60) % 60;
 	}
 	
 	public long calHTimestamp() { 

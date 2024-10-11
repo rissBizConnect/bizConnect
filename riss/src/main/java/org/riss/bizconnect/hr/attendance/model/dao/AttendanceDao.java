@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.common.model.dto.Search;
 import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
 import org.slf4j.Logger;
@@ -46,5 +47,37 @@ public class AttendanceDao {
 
 	public int selectListCount(Member loginUser) {
 		return sqlSessionTemplate.selectOne("attendanceMapper.selectListCount", loginUser);
+	}
+
+	public int selectComListCount(Member loginUser) {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectComListCount", loginUser);
+	}
+
+	public ArrayList<Attendance> selectComAttendance(Paging paging) {
+		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectComAttendance",paging);
+		return (ArrayList<Attendance>)list;
+	}
+
+	public int selectComFileterMListCount(Member loginUser) {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectComFileterMListCount", loginUser);
+	}
+
+	public ArrayList<Attendance> selectComFileterMAttendance(Paging paging) {
+		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectComFileterMAttendance",paging);
+		return (ArrayList<Attendance>)list;
+	}
+
+	public ArrayList<String> selectComMListCount(String comCode) {
+		List<String> list = sqlSessionTemplate.selectList("attendanceMapper.selectComMListCount", comCode);
+		return (ArrayList<String>)list;
+	}
+
+	public int selectComDateMListCount(Search search) {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectComDateMListCount", search);
+	}
+
+	public ArrayList<Attendance> selectComDateAttendance(Search search) {
+		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectComDateAttendance", search);
+		return (ArrayList<Attendance>)list;
 	}
 }
