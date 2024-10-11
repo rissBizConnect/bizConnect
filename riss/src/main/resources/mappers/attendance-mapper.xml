@@ -23,13 +23,14 @@
 	</resultMap> -->
 
 	<resultMap type="Attendance" id="reultGAttendance">
-		<result property="gId" column="GID" />
-		<result property="comCode" column="COM_CODE" />
 		<result property="day" column="GOOUTWORK_DATE" />
 		<result property="goDate" column="GOOUTWORK_GOD" />
 		<result property="outDate" column="GOOUTWORK_OUTD" />
 		<result property="time" column="GOOUTWORK_TIME" />
+		<result property="gId" column="GID" />
+		<result property="comCode" column="COM_CODE" />
 	</resultMap>
+	
 
 	<select id="selectTodayAttendance" parameterType="Member" resultMap="reultGAttendance">
 		select *
@@ -47,10 +48,63 @@
 		where rnum between #{ startRow } and #{ endRow } 
 	</select>
 	
+	<select id="selectComAttendance" parameterType="Paging" resultMap="reultGAttendance">
+		select *	
+		from (select rownum rnum, GID, COM_CODE, GOOUTWORK_DATE, GOOUTWORK_GOD, GOOUTWORK_OUTD, GOOUTWORK_TIME
+		from (SELECT *
+			FROM tb_gooutwork
+			where COM_CODE = #{comCode}
+			ORDER BY gooutwork_date DESC))
+		where rnum between #{ startRow } and #{ endRow } 
+	</select>
+	
+	<select id="selectComFileterMAttendance" parameterType="Paging" resultMap="reultGAttendance">
+		select *	
+		from (select rownum rnum, GID, COM_CODE, GOOUTWORK_DATE, GOOUTWORK_GOD, GOOUTWORK_OUTD, GOOUTWORK_TIME
+		from (SELECT *
+			FROM tb_gooutwork
+			where COM_CODE = #{comCode} and gid = #{gId}
+			ORDER BY gooutwork_date DESC))
+		where rnum between #{ startRow } and #{ endRow } 
+	</select>
+	
+	<select id="selectComDateAttendance" parameterType="Paging" resultMap="reultGAttendance">
+		select *	
+		from (select rownum rnum, GID, COM_CODE, GOOUTWORK_DATE, GOOUTWORK_GOD, GOOUTWORK_OUTD, GOOUTWORK_TIME
+		from (SELECT *
+			FROM tb_gooutwork
+			where COM_CODE = #{comCode} and gid = #{gId} and GOOUTWORK_DATE between #{ begin } and #{ end }
+			ORDER BY gooutwork_date DESC))
+		where rnum between #{ startRow } and #{ endRow } 
+	</select>
+	
 	<select id="selectListCount" resultType="_int" parameterType="Member">
 		select count(*) from tb_gooutwork
 		where gid = #{ gId } and COM_CODE = #{comCode}
 	</select>
+	
+	<select id="selectComListCount" resultType="_int" parameterType="Member">
+		select count(*) from tb_gooutwork
+		where COM_CODE = #{comCode}
+	</select>
+	
+	<select id="selectComMListCount" resultType="string" parameterType="string">
+		select DISTINCT gid
+		from tb_gooutwork
+		where COM_CODE = #{comCode}
+	</select>
+	
+	<select id="selectComDateMListCount" resultType="_int" parameterType="Search">
+		select count(*) from tb_gooutwork
+		where COM_CODE = #{comCode} and GOOUTWORK_DATE between #{ begin } and #{ end }
+	</select>
+	
+	<select id="selectComFileterMListCount" resultType="_int" parameterType="Member">
+		select count(*) from tb_gooutwork
+		where COM_CODE = #{comCode} and gid = #{ gId }
+	</select>
+	
+	
 
 	<insert id="insertAttendance" parameterType="Member">
 		INSERT INTO TB_GOOUTWORK (GOOUTWORK_DATE, GOOUTWORK_GOD, GOOUTWORK_OUTD, GOOUTWORK_TIME, GID, COM_CODE)
