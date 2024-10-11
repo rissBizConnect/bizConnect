@@ -25,7 +25,8 @@
 					<th class = "row">날 짜</th>
 					<th class = "row">출근 시간</th>
 					<th class = "row">퇴근 시간</th>
-					<th class = "row" >근무 시간</th>					
+					<th class = "row" >근무 시간</th>
+					
 				</tr>
 				<c:forEach items="${ requestScope.list }" var="att"><tr>
 					<td class = "row">${ att.day }</td>
