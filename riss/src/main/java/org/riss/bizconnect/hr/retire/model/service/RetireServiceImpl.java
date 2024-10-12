@@ -6,9 +6,10 @@ import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
 import org.riss.bizconnect.hr.retire.model.dto.Retire;
 import org.springframework.stereotype.Service;
 
-@Service("RetireService")
+@Service("retireService")
 public class RetireServiceImpl implements RetireService {
-    private RetireDAO retireDAO;
+    
+	private RetireDAO retireDAO;
 
     @Override
     public List<Retire> getAllRetires() {
