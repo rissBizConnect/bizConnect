@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+.updateData {
+	height: 50px;
+	width: 50px;
+}
+.updateBTN {
+    position: relative;
+    width: 90px;
+    height: 30px;
+    left: 166px;
+    top: 15px;
+}
