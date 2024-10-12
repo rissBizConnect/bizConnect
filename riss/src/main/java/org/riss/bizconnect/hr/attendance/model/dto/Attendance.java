@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 public class Attendance implements Serializable {
 	private static final long serialVersionUID = 505505501604098377L;
 	
-	private String gId; 		//아이디
+	private String gId; 			//아이디
 	private String comCode;		//회사코드
 	private Date day;
 	private Timestamp goDate;

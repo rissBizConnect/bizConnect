@@ -22,16 +22,31 @@ public class Member implements Serializable {
 	private String userCard;		//카드번호
 	private String userRole;		//권한
 	private String userFacePictPath;	//얼굴 사진 주소
-	private boolean status;				//사원(Y) -> 퇴직자(N)
+	private String status;
 	
 	public Member() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
+
+
+	public Member(String gId, String comCode, String userPW, String userName, String userRegNo, Date userEntry,
+			String userContract, String userRole, String status) {
+		super();
+		this.gId = gId;
+		this.comCode = comCode;
+		this.userPW = userPW;
+		this.userName = userName;
+		this.userRegNo = userRegNo;
+		this.userEntry = userEntry;
+		this.userContract = userContract;
+		this.userRole = userRole;
+		this.status = status;
+	}
+
+
 	public Member(String gId, String comCode, String userPW, String userName, String userJob, String userRegNo,
 			String userPhone, String userEmail, String userAddr, Date userEntry, int userPay, String userContract,
-			String userAccount, String userCard, String userRole, String userFacePictPath, boolean status) {
+			String userAccount, String userCard, String userRole, String userFacePictPath, String status) {
 		super();
 		this.gId = gId;
 		this.comCode = comCode;
@@ -51,111 +66,151 @@ public class Member implements Serializable {
 		this.userFacePictPath = userFacePictPath;
 		this.status = status;
 	}
+
+
 	public String getgId() {
 		return gId;
 	}
+
 	public void setgId(String gId) {
 		this.gId = gId;
 	}
+
 	public String getComCode() {
 		return comCode;
 	}
+
 	public void setComCode(String comCode) {
 		this.comCode = comCode;
 	}
+
 	public String getUserPW() {
 		return userPW;
 	}
+
 	public void setUserPW(String userPW) {
 		this.userPW = userPW;
 	}
+
 	public String getUserName() {
 		return userName;
 	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	public String getUserJob() {
 		return userJob;
 	}
+
 	public void setUserJob(String userJob) {
 		this.userJob = userJob;
 	}
+
 	public String getUserRegNo() {
 		return userRegNo;
 	}
+
 	public void setUserRegNo(String userRegNo) {
 		this.userRegNo = userRegNo;
 	}
+
 	public String getUserPhone() {
 		return userPhone;
 	}
+
 	public void setUserPhone(String userPhone) {
 		this.userPhone = userPhone;
 	}
+
 	public String getUserEmail() {
 		return userEmail;
 	}
+
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
+
 	public String getUserAddr() {
 		return userAddr;
 	}
+
 	public void setUserAddr(String userAddr) {
 		this.userAddr = userAddr;
 	}
+
 	public Date getUserEntry() {
 		return userEntry;
 	}
+
 	public void setUserEntry(Date userEntry) {
 		this.userEntry = userEntry;
 	}
+
 	public int getUserPay() {
 		return userPay;
 	}
+
 	public void setUserPay(int userPay) {
 		this.userPay = userPay;
 	}
+
 	public String getUserContract() {
 		return userContract;
 	}
+
 	public void setUserContract(String userContract) {
 		this.userContract = userContract;
 	}
+
 	public String getUserAccount() {
 		return userAccount;
 	}
+
 	public void setUserAccount(String userAccount) {
 		this.userAccount = userAccount;
 	}
+
 	public String getUserCard() {
 		return userCard;
 	}
+
 	public void setUserCard(String userCard) {
 		this.userCard = userCard;
 	}
+
 	public String getUserRole() {
 		return userRole;
 	}
+
 	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
+
 	public String getUserFacePictPath() {
 		return userFacePictPath;
 	}
+
 	public void setUserFacePictPath(String userFacePictPath) {
 		this.userFacePictPath = userFacePictPath;
 	}
-	public boolean isStatus() {
-		return status;
-	}
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Member [gId=" + gId + ", comCode=" + comCode + ", userPW=" + userPW + ", userName=" + userName
@@ -164,7 +219,7 @@ public class Member implements Serializable {
 				+ ", userContract=" + userContract + ", userAccount=" + userAccount + ", userCard=" + userCard
 				+ ", userRole=" + userRole + ", userFacePictPath=" + userFacePictPath + ", status=" + status + "]";
 	}
-	
+
 	
 	
 	
