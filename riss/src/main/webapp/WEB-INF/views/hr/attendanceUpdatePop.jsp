@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link href="/bizconnect/resources/css/hr/attendanceUpdatePop.css?after" rel="stylesheet"/>
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/hr/attendanceUpdatePop.js?after" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/resources/js/hr/attendanceUpdatePop.js" charset="utf-8"></script>
 
 </head>
 <body>
@@ -20,12 +20,12 @@
 		<th class = "row">출근 시간</th>
 		<th class = "row">퇴근 시간</th>
 	</tr>
-	</tr>
+	</tr> 
 		<tr>
 			<td class = "row"><input id="gId" name="gId" type="text" style="width: 50px" value="${gId }" readonly="readonly"></td>
 			<td class = "row"><input id="day" name="day" type="date" value="${day }" readonly="readonly"></td>
 			<td class = "row">
-				<input id="goDate" name="goDate" type="time" style="width: 105px" value="${goDate}">
+				<input id="goDate" name="goDate" type="time" style="width: 105px"  value="${goDate}">
 			</td>
 			<td class = "row">
 				<input id="outDate" name="outDate" type="time" style="width: 105px" value="${outDate}">

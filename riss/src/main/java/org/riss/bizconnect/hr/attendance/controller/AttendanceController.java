@@ -33,7 +33,7 @@ public class AttendanceController {
 	public ModelAndView moveAttendance(HttpSession session, ModelAndView mv) {
 
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
@@ -63,7 +63,7 @@ public class AttendanceController {
 	public String goWork(HttpSession session) {
 
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "YN");
 		session.setAttribute("loginUser", member);
 
 		Member loginUser = (Member) session.getAttribute("loginUser");
@@ -81,7 +81,7 @@ public class AttendanceController {
 	public String outWork(HttpSession session) {
 
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "N");
 		session.setAttribute("loginUser", member);
 
 		Member loginUser = (Member) session.getAttribute("loginUser");
@@ -102,7 +102,7 @@ public class AttendanceController {
 			@RequestParam(name = "limit", required = false) String slimit) {
 
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "N");
 		session.setAttribute("loginUser", member);
 
 		
@@ -150,7 +150,7 @@ public class AttendanceController {
 			@RequestParam(name = "end", required = false) Date end,
 			@RequestParam(name = "work", required = false) String work) {
 		Member mm = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "N");
 		session.setAttribute("loginUser", mm);
 		logger.info("page : " + page);
 		logger.info("limit : " + slimit);
@@ -261,25 +261,18 @@ public class AttendanceController {
 			ModelAndView mv,
 			@RequestParam(name = "gId", required = false) String gId,
 			@RequestParam(name = "day", required = false) Date day,
-			@RequestParam(name = "goDate", required = false) Timestamp goDate,
-			@RequestParam(name = "outDate", required = false) Timestamp outDate
+			@RequestParam(name = "goDate", required = false) String goDate,
+			@RequestParam(name = "outDate", required = false) String outDate
 			) {
-		logger.info("gId : " + gId);
-		logger.info("day : " + day);
-		logger.info("goDate : " + goDate);
-		logger.info("outDate : " + outDate);
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-		String goDateTime = sdf.format(goDate);
-		
-		
-		String outDateTime = sdf.format(outDate);
-		
-		
+
 		mv.addObject("gId", gId);
 		mv.addObject("day", day);
-		mv.addObject("goDate", goDateTime);
-		mv.addObject("outDate", outDateTime);
+		if(goDate != null && goDate.length() > 0) {
+			mv.addObject("goDate", goDate.substring(11,16).toString());
+		}
+		if(outDate != null && outDate.length() > 0) {
+			mv.addObject("outDate", outDate.substring(11,16).toString());
+		}
 		mv.setViewName("hr/attendanceUpdatePop");
 		
 		return mv;
@@ -293,7 +286,7 @@ public class AttendanceController {
 			@RequestParam(name = "outD", required = false) String outD
 			) {
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "N");
 		session.setAttribute("loginUser", member);
 		
 		Timestamp goDTS = Timestamp.valueOf(attendance.getDay().toString() + " " + goD + ":00.0");
