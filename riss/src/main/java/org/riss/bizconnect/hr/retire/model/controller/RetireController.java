@@ -24,54 +24,49 @@ public class RetireController {
 	@Autowired
     private RetireService retireService;
 
-	 @RequestMapping("retire.do")
-	    public String retirePage() {
-		 logger.info("adad");
-	        return "hr/retireList";
-	    }
+	// 퇴직자 목록을 가져오는 메서드
+    @RequestMapping("retList.do")
+    public ModelAndView retireList(
+    		ModelAndView mv, 
+    		@RequestParam("comCode") String comCode) {
+        logger.info("Fetching retiree list");
+        // 서비스 메서드를 호출하여 퇴직자 목록을 가져옴
+        List<Retire> retireList = retireService.getRetireList(comCode);
+        mv.addObject("retireList", retireList); // 모델에 퇴직자 목록 추가
+        mv.setViewName("hr/retireList"); // 반환할 뷰 이름 설정
+        return mv; // ModelAndView 반환
+    }
+
+    // 퇴직자를 추가하는 메서드
+    @RequestMapping("retAdd.do")
+    public ModelAndView addRetire(
+    		@ModelAttribute Retire retire) {
+        retireService.addRetire(retire); // 서비스 메서드를 호출하여 퇴직자 추가
+        return new ModelAndView("redirect:/retire/list"); // 추가 후 목록 페이지로 리다이렉트
+    }
+
+    // 퇴직자를 수정하는 메서드
+    @RequestMapping("retUpdate.do")
+    public ModelAndView updateRetire(
+    		@ModelAttribute Retire retire) {
+        retireService.updateRetire(retire); // 서비스 메서드를 호출하여 퇴직자 수정
+        return new ModelAndView("redirect:/retire/list"); // 수정 후 목록 페이지로 리다이렉트
+    }
+
+    // 퇴직자를 삭제하는 메서드
+    @RequestMapping("delete.do")
+    public ModelAndView deleteRetire(
+    		@RequestParam("retNo") String retNo) {
+        retireService.deleteRetire(retNo); // 서비스 메서드를 호출하여 퇴직자 삭제
+        return new ModelAndView("redirect:/retire/list"); // 삭제 후 목록 페이지로 리다이렉트
+    }
 	
-    public RetireController(RetireService retireService) {
-        this.retireService = retireService;
-    }
-
-
-    @RequestMapping("retireList.do")
-    public ModelAndView retirePage(ModelAndView mv) {
-    	logger.info("ada");
-        List<Retire> retireList = retireService.getAllRetires();
-        mv.addObject("retireList", retireList);
-        mv.setViewName("hr/retireList");
-        return mv;
-    }
-    
-    @RequestMapping("retupdate.do")
-    public ModelAndView updateRetire(@ModelAttribute Retire retire, HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("redirect:/retire/list");
-        try {
-            retireService.updateRetire(retire);
-        } catch (Exception e) {
-            mav.addObject("errorMessage", "Error updating retire: " + e.getMessage());
-        }
-        return mav;
-    }
-    
-    @RequestMapping(value = "/retire/delete", method = RequestMethod.POST)
-    public ModelAndView deleteRetire(@RequestParam("retNo") String retNo, HttpServletRequest request) {
-        ModelAndView mav = new ModelAndView("redirect:/retire/list");
-        try {
-            retireService.deleteRetire(retNo);
-        } catch (Exception e) {
-            mav.addObject("errorMessage", "Error deleting retire: " + e.getMessage());
-        }
-        return mav;
-    }
-
        // 퇴직자 변환 페이지 호출
        @RequestMapping("convertRetire.do")
        public ModelAndView showConvertPage(
     		   HttpServletRequest request, ModelAndView mv) {
            // 필요한 데이터 처리
-           List<Retire> retireeList = retireService.getAllRetires();  // 모든 퇴직자 정보 가져오기
+           List<Retire> retireeList = retireService.selectRetireList();  // 모든 퇴직자 정보 가져오기
            mv.addObject("retireeList", retireeList);
            mv.setViewName("retire/retireConvert"); // retireConvert.jsp 호출
            return mv;
