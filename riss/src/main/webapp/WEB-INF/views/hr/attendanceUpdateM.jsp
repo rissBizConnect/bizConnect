@@ -16,7 +16,7 @@
 <title>attendance</title>
 <link href="${path}/resources/css/hr/attendanceUpdateM.css?after" rel="stylesheet"/> 
 <script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/hr/attendanceUpdateM.js" charset="utf-8"></script>
+<script src="${pageContext.request.contextPath}/resources/js/hr/attendanceUpdateM.js?var=1" charset="utf-8"></script>
 
 
 </head>
