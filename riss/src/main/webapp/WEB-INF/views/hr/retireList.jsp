@@ -156,7 +156,7 @@
                     <td><input type="checkbox" class="retire-checkbox" value="${retire.retNo}" /></td>
                     <td>${retire.retNo}</td>
                     <td>${retire.gid}</td>
-                    <td>${retire.userEntryDate}</td>
+                    <td>${retire.user.userEntryDate}</td>
                     <td>${retire.retDate}</td>
                     <td>${retire.retTotalDate}</td>
                     <td>${retire.exitreason}</td>

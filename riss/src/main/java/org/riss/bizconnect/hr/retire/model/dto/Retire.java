@@ -3,13 +3,14 @@ package org.riss.bizconnect.hr.retire.model.dto;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.riss.bizconnect.common.model.dto.Member;
+
 public class Retire implements Serializable {
    
 	private static final long serialVersionUID = -4691352981300651599L;
 	
 	private String retNo; 		// 퇴직자 사번
     private String gid; 		// 유저 GID
-    private Date userEntryDate; // 입사일
     private Date retDate; 		// 퇴사일
     private int retTotalDate; 	// 총 근무일
     private String retType;		// 고용형태
@@ -21,13 +22,14 @@ public class Retire implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Retire(String retNo, String gid, Date userEntryDate, Date retDate, int retTotalDate, String retType,
-			String exitReason, String comCode, String status) {
+	
+	private Member member;
+	
+	public Retire(String retNo, String gid, Date retDate, int retTotalDate, String retType, String exitReason,
+			String comCode, String status) {
 		super();
 		this.retNo = retNo;
 		this.gid = gid;
-		this.userEntryDate = userEntryDate;
 		this.retDate = retDate;
 		this.retTotalDate = retTotalDate;
 		this.retType = retType;
@@ -50,14 +52,6 @@ public class Retire implements Serializable {
 
 	public void setGid(String gid) {
 		this.gid = gid;
-	}
-
-	public Date getUserEntryDate() {
-		return userEntryDate;
-	}
-
-	public void setUserEntryDate(Date userEntryDate) {
-		this.userEntryDate = userEntryDate;
 	}
 
 	public Date getRetDate() {
@@ -106,6 +100,14 @@ public class Retire implements Serializable {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}	
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
 
 	public static long getSerialversionuid() {
@@ -114,10 +116,14 @@ public class Retire implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Retire [retNo=" + retNo + ", gid=" + gid + ", userEntryDate=" + userEntryDate + ", retDate=" + retDate
-				+ ", retTotalDate=" + retTotalDate + ", retType=" + retType + ", ExitReason=" + ExitReason
-				+ ", comCode=" + comCode + ", status=" + status + "]";
+		return "Retire [retNo=" + retNo + ", gid=" + gid + ", retDate=" + retDate + ", retTotalDate=" + retTotalDate
+				+ ", retType=" + retType + ", ExitReason=" + ExitReason + ", comCode=" + comCode + ", status=" + status
+				+ "]";
 	}
+
+	
+	
+	
 	
 	
 }
