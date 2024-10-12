@@ -80,4 +80,31 @@ public class AttendanceDao {
 		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectComDateAttendance", search);
 		return (ArrayList<Attendance>)list;
 	}
+
+	public int selectComFileterWorkNListCount(Member member) {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectComFileterWorkNListCount", member);
+	}
+
+	public int selectComFileterWorkANListCount(Member member) {
+		return sqlSessionTemplate.selectOne("attendanceMapper.selectComFileterWorkANListCount", member);
+	}
+
+	public ArrayList<Attendance> selectComFileterWorkNAttendance(Paging paging) {
+		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectComFileterWorkNAttendance",paging);
+		return (ArrayList<Attendance>)list;
+	}
+
+	public ArrayList<Attendance> selectComFileterWorkANAttendance(Paging paging) {
+		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectComFileterWorkANAttendance",paging);
+		return (ArrayList<Attendance>)list;
+	}
+
+	public ArrayList<Attendance> selectComList(Member member) {
+		List<Attendance> list = sqlSessionTemplate.selectList("attendanceMapper.selectComList",member);
+		return (ArrayList<Attendance>)list;
+	}
+
+	public int updateAttendnce(Attendance attendance) {
+		return sqlSessionTemplate.update("attendanceMapper.updateAttendnce",attendance);
+	}
 }

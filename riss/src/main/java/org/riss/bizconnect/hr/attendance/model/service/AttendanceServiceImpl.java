@@ -84,4 +84,14 @@ public class AttendanceServiceImpl implements AttendanceService {
 		return attendanceDao.selectComDateAttendance(search);
 	}
 
+	@Override
+	public ArrayList<Attendance> selectComList(Member member) {
+		return attendanceDao.selectComList(member);
+	}
+
+	@Override
+	public int updateAttendnce(Attendance attendance) {
+		return attendanceDao.updateAttendnce(attendance);
+	}
+
 }

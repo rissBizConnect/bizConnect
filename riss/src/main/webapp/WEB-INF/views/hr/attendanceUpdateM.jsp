@@ -19,13 +19,11 @@
 <script src="${pageContext.request.contextPath}/resources/js/hr/attendanceUpdateM.js" charset="utf-8"></script>
 
 
-
 </head>
 <body>
 	<div class="front">
 		<c:import url="/WEB-INF/views/common/header.jsp" />
 		<c:import url="/WEB-INF/views/common/menubar.jsp" />
-		
 		<div class = contentPos>
 			<div class = "categoryPos">
 			필 터
@@ -40,18 +38,23 @@
 			사 원
 			    <select id="memberCg" name="memberCg" onchange="memberChange(); return false;">
 			    	<option value="" hidden="">선택하세요</option>
-				    <c:forEach items="${ requestScope.memberlist }" var="mnames">
-				    	<option value="${ mnames }" >${ mnames }</option>
+				    <c:forEach items="${ requestScope.memberlist }" var="mname">
+				    	<option value="${ mname }" <c:if test="${ mname eq smember }">selected="selected"</c:if>>${ mname }</option>
 				    </c:forEach>
 				</select>
 			</span>
 			
 			<span id="dateFileter" name="dateFileter" <c:if test="${!(fileter eq 'date') }">style="display: none;"</c:if>>
-			날 짜 <input type="date" id="startD" name="startD" > ~ <input type="date" id="endD" name="endD" >
-	
+			날 짜 <input type="date" id="begin" name="begin" value="${begin }" onchange="dateChange(); return false;" > ~ <input type="date" id="end" name="end" value="${end }" onchange="dateChange();  return false;" >
 			</span>
+			<span id="workFileter" name="workFileter" <c:if test="${!(fileter eq 'work') }">style="display: none;"</c:if>>
+			근무 상태 <select id="workCg" name="workCg" onchange="workChange(); return false;">
+			    	<option value="" hidden="">선택하세요</option>
+					<option value="nwork" <c:if test="${work eq 'nwork' }">selected="selected"</c:if>>정 상</option>
+					<option value="abwork" <c:if test="${work eq 'abwork' }">selected="selected"</c:if>>이 상</option>
+				 </select>
+			</span>	
 		    </div>
-		    
 			<h4>근태 수정/확인</h4>
 			<hr>
 			<div id="tables">
@@ -65,14 +68,15 @@
 					<th class = "row" >수 정</th>
 				</tr>
 				<c:forEach items="${ requestScope.list }" var="att"><tr>
-					<td class = "row">${ att.gId }</td>
+					<td class = "row">${att.gId}</td>
 					<td class = "row">${ att.day }</td>
 					<td class = "row"><c:if test="${!empty att.goDate }">${ att.goDate.toLocalDateTime().getHour() } 시 ${ att.goDate.toLocalDateTime().getMinute() } 분</c:if></td>
 					<td class = "row"><c:if test="${!empty att.outDate }">${ att.outDate.toLocalDateTime().getHour() } 시 ${ att.outDate.toLocalDateTime().getMinute() } 분</c:if></td>
 					<td class = "row"><c:if test="${!empty att.time }">${ att.calHTimestamp() } 시 ${ att.calMTimestamp() } 분 ${ att.calSTimestamp() } 초</c:if></td>
-					<td class = "row"><button class="updateBTN">수 정</button></td>
+					<td class = "row"><button class="updateBTN" onclick="moveAttendanceUpdateW('${ att.gId }', '${ att.day }', '${ att.goDate }', '${ att.outDate }', '${ att.time }'); return false;">수 정</button></td>
 				</tr></c:forEach>
 		        </table>
+		        <c:if test="${error != null }">${ error }</c:if>
     		</div>
 			<div class = "paging"><c:import url="/WEB-INF/views/common/pagingView.jsp" /></div>
 		</div>

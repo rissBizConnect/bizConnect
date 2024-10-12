@@ -35,6 +35,7 @@
 					<td class = "row"><c:if test="${!empty att.time }">${ att.calHTimestamp() } 시 ${ att.calMTimestamp() } 분 ${ att.calSTimestamp() } 초</c:if></td>
 				</tr></c:forEach>
 			</table>
+			<c:if test="${error != null }">${ error }</c:if>
 			<div class = "paging"><c:import url="/WEB-INF/views/common/pagingView.jsp" /></div>
 		</div>
 	</div>

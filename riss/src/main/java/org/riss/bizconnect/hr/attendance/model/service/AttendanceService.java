@@ -34,4 +34,8 @@ public interface AttendanceService {
 
 	ArrayList<Attendance> selectComDateAttendance(Search search);
 
+	ArrayList<Attendance> selectComList(Member member);
+
+	int updateAttendnce(Attendance attendance);
+
 }
