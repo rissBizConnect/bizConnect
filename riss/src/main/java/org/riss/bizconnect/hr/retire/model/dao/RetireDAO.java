@@ -1,16 +1,15 @@
 package org.riss.bizconnect.hr.retire.model.dao;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.riss.bizconnect.hr.retire.model.dto.Retire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository("retireDAO")
 public class RetireDAO {
+	
 	@Autowired
     private SqlSessionTemplate sqlSessionTemplate;
 
