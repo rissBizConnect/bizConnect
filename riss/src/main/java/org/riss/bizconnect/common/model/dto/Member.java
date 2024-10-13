@@ -23,6 +23,7 @@ public class Member implements Serializable {
 	private String userRole;		//권한
 	private String userFacePictPath;	//얼굴 사진 주소
 	private String status;
+	private String userCertificate;
 	
 	public Member() {
 		super();
@@ -30,7 +31,7 @@ public class Member implements Serializable {
 
 
 	public Member(String gId, String comCode, String userPW, String userName, String userRegNo, Date userEntry,
-			String userContract, String userRole, String status) {
+			String userContract, String userRole) {
 		super();
 		this.gId = gId;
 		this.comCode = comCode;
@@ -40,13 +41,12 @@ public class Member implements Serializable {
 		this.userEntry = userEntry;
 		this.userContract = userContract;
 		this.userRole = userRole;
-		this.status = status;
 	}
 
 
 	public Member(String gId, String comCode, String userPW, String userName, String userJob, String userRegNo,
 			String userPhone, String userEmail, String userAddr, Date userEntry, int userPay, String userContract,
-			String userAccount, String userCard, String userRole, String userFacePictPath, String status) {
+			String userAccount, String userCard, String userRole, String userFacePictPath, String status, String userCertificate) {
 		super();
 		this.gId = gId;
 		this.comCode = comCode;
@@ -65,6 +65,7 @@ public class Member implements Serializable {
 		this.userRole = userRole;
 		this.userFacePictPath = userFacePictPath;
 		this.status = status;
+		this.userCertificate = userCertificate;
 	}
 
 
@@ -211,16 +212,23 @@ public class Member implements Serializable {
 	}
 
 
+	public String getuserCertificate() {
+		return userCertificate;
+	}
+
+	public void setuserCertificate(String userCertificate) {
+		this.userCertificate = userCertificate;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [gId=" + gId + ", comCode=" + comCode + ", userPW=" + userPW + ", userName=" + userName
 				+ ", userJob=" + userJob + ", userRegNo=" + userRegNo + ", userPhone=" + userPhone + ", userEmail="
 				+ userEmail + ", userAddr=" + userAddr + ", userEntry=" + userEntry + ", userPay=" + userPay
 				+ ", userContract=" + userContract + ", userAccount=" + userAccount + ", userCard=" + userCard
-				+ ", userRole=" + userRole + ", userFacePictPath=" + userFacePictPath + ", status=" + status + "]";
+				+ ", userRole=" + userRole + ", userFacePictPath=" + userFacePictPath + ", status=" + status
+				+ ", userCertificate=" + userCertificate + "]";
 	}
 
-	
-	
 	
 }
