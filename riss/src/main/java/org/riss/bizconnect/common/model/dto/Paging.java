@@ -16,6 +16,16 @@ public class Paging implements java.io.Serializable {
 	private String urlMapping;	//페이지 숫자 클릭시 요청할 url 저장용 (여러 기능에서 사용하기 위함) (뷰페이지에서 사용)
 	
 	
+	public Paging(String comCode, int listCount, int limit, int currentPage, String urlMapping) {
+		super();
+		this.comCode = comCode;
+		this.listCount = listCount;
+		this.limit = limit;
+		this.currentPage = currentPage;
+		this.urlMapping = urlMapping;
+		calculate();
+	}
+	
 	public Paging(String gId, String comCode, int listCount, int limit, int currentPage, String urlMapping) {
 		super();
 		this.gId = gId;
@@ -24,6 +34,7 @@ public class Paging implements java.io.Serializable {
 		this.limit = limit;
 		this.currentPage = currentPage;
 		this.urlMapping = urlMapping;
+		calculate();
 	}
 
 	//페이지 계산 메소드

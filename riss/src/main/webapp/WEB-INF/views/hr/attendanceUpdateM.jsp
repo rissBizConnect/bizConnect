@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <c:url var="maupdateM" value="moveAttendanceUpdateM.do">
 	<c:param name="fileter" value="member" />
 </c:url>
@@ -15,8 +14,8 @@
 <meta charset="UTF-8">
 <title>attendance</title>
 <link href="${path}/resources/css/hr/attendanceUpdateM.css?after" rel="stylesheet"/> 
-<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/hr/attendanceUpdateM.js" charset="utf-8"></script>
+<script type="text/javascript" src="${path}/resources/js/jquery-3.7.1.min.js"></script>
+<script src="${path}/resources/js/hr/attendanceUpdateM.js" charset="utf-8"></script>
 
 
 </head>
@@ -76,7 +75,6 @@
 					<td class = "row"><button class="updateBTN" onclick="moveAttendanceUpdateW('${ att.gId }', '${ att.day }', '${ att.goDate }', '${ att.outDate }', '${ att.time }'); return false;">수 정</button></td>
 				</tr></c:forEach>
 		        </table>
-		        <c:if test="${error != null }">${ error }</c:if>
     		</div>
 			<div class = "paging"><c:import url="/WEB-INF/views/common/pagingView.jsp" /></div>
 		</div>

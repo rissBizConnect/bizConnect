@@ -20,6 +20,7 @@
         <typeAlias type="org.riss.bizconnect.pd.order.model.dto.OrderDTO" alias="OrderDTO" />
         <typeAlias type="org.riss.bizconnect.pd.client.model.dto.ClientDTO" alias="ClientDTO" />
         <typeAlias type="org.riss.bizconnect.common.model.dto.Search" alias="Search" />
+        <typeAlias type="org.riss.bizconnect.hr.salary.model.dto.Salary" alias="Salary" />
 	</typeAliases>
 
     <mappers>
@@ -31,6 +32,7 @@
         <mapper resource="mappers/product-mapper.xml" />
         <mapper resource="mappers/memberMapper.xml" />
         <mapper resource="mappers/info-mapper.xml" />
+        <mapper resource="mappers/salary-mapper.xml" />
     </mappers>
 
 </configuration>
