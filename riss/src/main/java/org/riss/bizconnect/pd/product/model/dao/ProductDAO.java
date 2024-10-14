@@ -23,4 +23,8 @@ public class ProductDAO {
 		return sqlSessionTemplate.insert("productMapper.insertproduct", prod);
 	}
 
+    public int getMaxProductNum(String orderType) {
+        Integer maxNum = sqlSessionTemplate.selectOne("productMapper.selectMaxProductNumber", orderType);
+        return (maxNum != null) ? maxNum : 0;
+    }
 }
