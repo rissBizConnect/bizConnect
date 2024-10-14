@@ -63,44 +63,4 @@ public class ProductServiceImpl implements ProductService {
 	public ArrayList<ProductDTO> selectAllList() {
 		return productDAO.selectAllList();
 	}
-	
-	// 재고 상태 (경고 임계치)
-	@Override
-	public ArrayList<ProductDTO> filterProductStockStatus(String status) {
-		ArrayList<ProductDTO> allProducts = productDAO.selectAllList(); // 모든 제품 조회
-		ArrayList<ProductDTO> filteredProducts = new ArrayList<>(); // 필터링된 제품 리스트
-		
-		// 각 제품의 재고 상태 확인 -> 필터링
-		for (ProductDTO product : allProducts) {
-			String stockStatus = getProductStockStatus(product); // 재고 상태 계산
-			
-			if (stockStatus.equals(status)) {
-				filteredProducts.add(product);
-			}
-		}
-		return filteredProducts; // 필터링된 제품 반환
-	}
-
-	// 재고 상태 계산 메서드
-	private String getProductStockStatus(ProductDTO product) {
-		if (product.getProductcStock() <= product.getProductStockWarn()) {
-			return "부족";
-		} else {
-			return "안전";
-		}
-	}
-	
-	@Override
-	public int getNextProductNum(String orderType) {
-		return productDAO.getMaxProductNum(orderType) + 1;
-	}
-	
-	public String generProductNo(String orderType) {
-		if (orderType == null) {
-			throw new IllegalArgumentException("OrderType is required");
-		}
-	    String prefix = orderType.equals("P") ? "P" : "O";
-	    int nextNumber = getNextProductNum(orderType);
-	    return prefix + String.format("%03d", nextNumber); 
-	}
 }

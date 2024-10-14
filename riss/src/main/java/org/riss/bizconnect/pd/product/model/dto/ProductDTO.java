@@ -7,285 +7,157 @@ public class ProductDTO implements Serializable {
 	
 	private static final long serialVersionUID = 3765759391170591356L;
 	
-	private String productNo; //발주-제품번호
-	private String licenseCode; //회사코드
-	private String porderNo; //발주번호
-	private String clientCode; //거래처코드
-	private String productName; //발주-제품명
-	private double productPrice; //발주-판매가
-	private double productPurPrice; //발주-매입가
-	private double productVat; //부가세 (안 쓸지도)
-	private String orderType; //발주/수주구분 (P/O)
-	private int productCnt; //제품수량 (=등록할 개수)
-	private int productiStock; //초기재고량
-	private int productcStock; //현재재고량
-	private int productStockWarn; //재고경고임계치
-	private LocalDate productiDate; //발주제품-입고일
-	private String productCri; //발주제품-규격기준(전체)
-	private String productSize; //발주제품-크기
-	private int productLength; //가로
-	private int productWidth; //세로
-	private int productHeight; //높이
-	private String productWeight; //발주제품-중량(g)
-	private String productVolume; //발주제품-용량(ml)
-	private String productStatus; //제품상태
-	private String fieldNum; //창고번호
-	private String empName; //담당자명
+	private String ProductNo; //발주-제품번호
+	private String LicenseCode; //회사코드
+	private String PorderNo; //발주번호
+	private String ClientCode; //거래처번호
+	private String ProductName; //발주-제품명
+	private double ProductPrice; //발주-판매단가
+	private double ProductPurPrice; //발주-구매단가
+	private int ProductCnt; //제품수량
+	private LocalDate ProductiDate; //발주제품-입고일
+	private LocalDate ProductoDate; //발주제품-출고일
+	private String ProductSize; //발주제품-규격
+	private String ProductStatus; //제품상태
+	private String FieldNum; //창고번호
 	
-	public String productStockStatus() {
-	    if (productcStock <= productStockWarn) {
-	        return "부족"; // 재고 <= 경고 임계치
-	    } else {
-	        return "안전"; // 재고 > 경고 임계치
-	    }
-	}
-
 	public ProductDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public ProductDTO(String productNo, String licenseCode, String porderNo, String clientCode, String productName,
-			double productPrice, double productPurPrice, double productVat, String orderType, int productCnt,
-			int productiStock, int productcStock, int productStockWarn, LocalDate productiDate, String productCri,
-			String productSize, int productLength, int productWidth, int productHeight, String productWeight,
-			String productVolume, String productStatus, String fieldNum, String empName) {
+			double productPrice, double productPurPrice, int productCnt, LocalDate productiDate, LocalDate productoDate,
+			String productSize, String productStatus, String fieldNum) {
 		super();
-		this.productNo = productNo;
-		this.licenseCode = licenseCode;
-		this.porderNo = porderNo;
-		this.clientCode = clientCode;
-		this.productName = productName;
-		this.productPrice = productPrice;
-		this.productPurPrice = productPurPrice;
-		this.productVat = productVat;
-		this.orderType = orderType;
-		this.productCnt = productCnt;
-		this.productiStock = productiStock;
-		this.productcStock = productcStock;
-		this.productStockWarn = productStockWarn;
-		this.productiDate = productiDate;
-		this.productCri = productCri;
-		this.productSize = productSize;
-		this.productLength = productLength;
-		this.productWidth = productWidth;
-		this.productHeight = productHeight;
-		this.productWeight = productWeight;
-		this.productVolume = productVolume;
-		this.productStatus = productStatus;
-		this.fieldNum = fieldNum;
-		this.empName = empName;
+		ProductNo = productNo;
+		LicenseCode = licenseCode;
+		PorderNo = porderNo;
+		ClientCode = clientCode;
+		ProductName = productName;
+		ProductPrice = productPrice;
+		ProductPurPrice = productPurPrice;
+		ProductCnt = productCnt;
+		ProductiDate = productiDate;
+		ProductoDate = productoDate;
+		ProductSize = productSize;
+		ProductStatus = productStatus;
+		FieldNum = fieldNum;
 	}
 
 	public String getProductNo() {
-		return productNo;
+		return ProductNo;
 	}
 
 	public void setProductNo(String productNo) {
-		this.productNo = productNo;
+		ProductNo = productNo;
 	}
 
 	public String getLicenseCode() {
-		return licenseCode;
+		return LicenseCode;
 	}
 
 	public void setLicenseCode(String licenseCode) {
-		this.licenseCode = licenseCode;
+		LicenseCode = licenseCode;
 	}
 
 	public String getPorderNo() {
-		return porderNo;
+		return PorderNo;
 	}
 
 	public void setPorderNo(String porderNo) {
-		this.porderNo = porderNo;
+		PorderNo = porderNo;
 	}
 
 	public String getClientCode() {
-		return clientCode;
+		return ClientCode;
 	}
 
 	public void setClientCode(String clientCode) {
-		this.clientCode = clientCode;
+		ClientCode = clientCode;
 	}
 
 	public String getProductName() {
-		return productName;
+		return ProductName;
 	}
 
 	public void setProductName(String productName) {
-		this.productName = productName;
+		ProductName = productName;
 	}
 
 	public double getProductPrice() {
-		return productPrice;
+		return ProductPrice;
 	}
 
 	public void setProductPrice(double productPrice) {
-		this.productPrice = productPrice;
+		ProductPrice = productPrice;
 	}
 
 	public double getProductPurPrice() {
-		return productPurPrice;
+		return ProductPurPrice;
 	}
 
 	public void setProductPurPrice(double productPurPrice) {
-		this.productPurPrice = productPurPrice;
-	}
-
-	public double getProductVat() {
-		return productVat;
-	}
-
-	public void setProductVat(double productVat) {
-		this.productVat = productVat;
-	}
-
-	public String getOrderType() {
-		return orderType;
-	}
-
-	public void setOrderType(String orderType) {
-		this.orderType = orderType;
+		ProductPurPrice = productPurPrice;
 	}
 
 	public int getProductCnt() {
-		return productCnt;
+		return ProductCnt;
 	}
 
 	public void setProductCnt(int productCnt) {
-		this.productCnt = productCnt;
-	}
-
-	public int getProductiStock() {
-		return productiStock;
-	}
-
-	public void setProductiStock(int productiStock) {
-		this.productiStock = productiStock;
-	}
-
-	public int getProductcStock() {
-		return productcStock;
-	}
-
-	public void setProductcStock(int productcStock) {
-		this.productcStock = productcStock;
-	}
-
-	public int getProductStockWarn() {
-		return productStockWarn;
-	}
-
-	public void setProductStockWarn(int productStockWarn) {
-		this.productStockWarn = productStockWarn;
+		ProductCnt = productCnt;
 	}
 
 	public LocalDate getProductiDate() {
-		return productiDate;
+		return ProductiDate;
 	}
 
 	public void setProductiDate(LocalDate productiDate) {
-		this.productiDate = productiDate;
+		ProductiDate = productiDate;
 	}
 
-	public String getProductCri() {
-		return productCri;
+	public LocalDate getProductoDate() {
+		return ProductoDate;
 	}
 
-	public void setProductCri(String productCri) {
-		this.productCri = productCri;
+	public void setProductoDate(LocalDate productoDate) {
+		ProductoDate = productoDate;
 	}
 
 	public String getProductSize() {
-		return productSize;
+		return ProductSize;
 	}
 
 	public void setProductSize(String productSize) {
-		this.productSize = productSize;
-	}
-
-	public int getProductLength() {
-		return productLength;
-	}
-
-	public void setProductLength(int productLength) {
-		this.productLength = productLength;
-	}
-
-	public int getProductWidth() {
-		return productWidth;
-	}
-
-	public void setProductWidth(int productWidth) {
-		this.productWidth = productWidth;
-	}
-
-	public int getProductHeight() {
-		return productHeight;
-	}
-
-	public void setProductHeight(int productHeight) {
-		this.productHeight = productHeight;
-	}
-
-	public String getProductWeight() {
-		return productWeight;
-	}
-
-	public void setProductWeight(String productWeight) {
-		this.productWeight = productWeight;
-	}
-
-	public String getProductVolume() {
-		return productVolume;
-	}
-
-	public void setProductVolume(String productVolume) {
-		this.productVolume = productVolume;
+		ProductSize = productSize;
 	}
 
 	public String getProductStatus() {
-		return productStatus;
+		return ProductStatus;
 	}
 
 	public void setProductStatus(String productStatus) {
-		this.productStatus = productStatus;
+		ProductStatus = productStatus;
 	}
 
 	public String getFieldNum() {
-		return fieldNum;
+		return FieldNum;
 	}
 
 	public void setFieldNum(String fieldNum) {
-		this.fieldNum = fieldNum;
-	}
-
-	public String getEmpName() {
-		return empName;
-	}
-
-	public void setEmpName(String empName) {
-		this.empName = empName;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+		FieldNum = fieldNum;
 	}
 
 	@Override
 	public String toString() {
-		return "ProductDTO [productNo=" + productNo + ", licenseCode=" + licenseCode + ", porderNo=" + porderNo
-				+ ", clientCode=" + clientCode + ", productName=" + productName + ", productPrice=" + productPrice
-				+ ", productPurPrice=" + productPurPrice + ", productVat=" + productVat + ", orderType=" + orderType
-				+ ", productCnt=" + productCnt + ", productiStock=" + productiStock + ", productcStock=" + productcStock
-				+ ", productStockWarn=" + productStockWarn + ", productiDate=" + productiDate + ", productCri="
-				+ productCri + ", productSize=" + productSize + ", productLength=" + productLength + ", productWidth="
-				+ productWidth + ", productHeight=" + productHeight + ", productWeight=" + productWeight
-				+ ", productVolume=" + productVolume + ", productStatus=" + productStatus + ", fieldNum=" + fieldNum
-				+ ", empName=" + empName + "]";
+		return "ProductDTO [ProductNo=" + ProductNo + ", LicenseCode=" + LicenseCode + ", PorderNo=" + PorderNo
+				+ ", ClientCode=" + ClientCode + ", ProductName=" + ProductName + ", ProductPrice=" + ProductPrice
+				+ ", ProductPurPrice=" + ProductPurPrice + ", ProductCnt=" + ProductCnt + ", ProductiDate="
+				+ ProductiDate + ", ProductoDate=" + ProductoDate + ", ProductSize=" + ProductSize + ", ProductStatus="
+				+ ProductStatus + ", FieldNum=" + FieldNum + "]";
 	}
-
+	
 	
 	
 }
