@@ -2,7 +2,7 @@ package org.riss.bizconnect.pd.order.model.controller;
 
 import org.riss.bizconnect.pd.order.model.dto.OrderDTO;
 import org.riss.bizconnect.pd.order.model.service.OrderService;
-import org.riss.bizconnect.pd.product.model.controller.ProductController;
+import org.riss.bizconnect.pd.product.model.dto.ProductDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -19,11 +20,29 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+	@RequestMapping("prMenu_order.do")
+	public ModelAndView orderhome(ModelAndView mv) {
+		
+		mv.setViewName("pr/prMenubar/prMenu_order");
+		ArrayList<OrderDTO> order = orderService.listAllOrders();
+		
+		mv.addObject("all", order);
+		
+		return mv;
+	}
+    
     @RequestMapping("order.do")
     public ModelAndView orderTest(ModelAndView mv) {
-        mv.setViewName("stock/order");
+        mv.setViewName("pr/stock/order/order");
         List<OrderDTO> order = orderService.listAllOrders();
         mv.addObject("all", order);
+        return mv;
+    }
+    
+    @RequestMapping("addorder.do")
+    public ModelAndView addOrder(ModelAndView mv) {
+        mv.setViewName("pr/stock/order/addorder"); // JSP ���Ϸ� ����Ǵ� ���
+        
         return mv;
     }
 }
