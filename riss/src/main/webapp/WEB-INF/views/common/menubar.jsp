@@ -21,11 +21,11 @@
 	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveAttendanceCheck.do'; return false;">연차</a></li>
 	                </ul>
 	            </li>
-	            <li><a href="#" onclick="loadPage('사원명'); return false;">사원명부</a></li>
+	            <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveInfo.do'; return false;">사원명부</a></li>
 	            <li class="has-submenu" id="salary">
 	                <a href="#" onclick="toggleSubmenu('salary'); return false;">급여관리</a>
 	                <ul class="submenu" id="salary-submenu">
-	                    <li><a href="#" onclick="loadPage('급여'); return false;">급여</a></li>
+	                    <li><a href="#" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveSalary.do'; return false;">급여</a></li>
 	                </ul>
 	            </li>
 	            

@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>attendance</title>
 <link href="${path}/resources/css/hr/attendanceCheck.css?after" rel="stylesheet"/> 
-<script type="text/javascript" src="${pageContext.servletContext.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="${path}/resources/js/jquery-3.7.1.min.js"></script>
 
 </head>
 <body>

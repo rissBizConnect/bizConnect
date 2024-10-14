@@ -231,6 +231,59 @@
 </div>
 </c:if>
 
+<!-- 키워드 -->
+<c:if test="${ !empty fileter and fileter eq 'keyword'}">
+<div style="text-align: center;">
+	<%-- 1page 로 이동 --%>
+	<c:if test="${ currentPage eq 1 }">
+		[첫페이지로] &nbsp;
+	</c:if>
+	<c:if test="${ currentPage gt 1 }">
+		<a href="/bizconnect/${ urlMapping }?page=1&fileter=${ fileter }&keyword=${keyword}">[첫페이지로]</a> &nbsp;
+	</c:if>
+	
+	<%-- 이전 페이지그룹으로 이동 --%>
+	<%-- 이전 그룹이 있다면 --%>
+	<c:if test="${ (currentPage - 10) lt startPage and (currentPage - 10) ge 1 }">
+		<a href="/bizconnect/${ urlMapping }?page=${ startPage - 10 }&fileter=${ fileter }&keyword=${keyword}">[이전그룹]</a> &nbsp;
+	</c:if>
+	<%-- 이전 그룹이 없다면 --%>
+	<c:if test="${ !((currentPage - 10) lt startPage and (currentPage - 10) ge 1) }">
+		[이전그룹] &nbsp;
+	</c:if>
+	
+	<%-- 현재 페이지그룹 출력 and currentPage 표시 --%>
+	<c:forEach begin="${ startPage }" end="${ endPage }" step="1" var="p">
+		<c:if test="${ p eq currentPage }">
+			<font color="blue" size="4"><b>${ p }</b></font>
+		</c:if>
+		<c:if test="${ p ne currentPage }">
+			<a href="/bizconnect/${ urlMapping }?page=${ p }&fileter=${ fileter }&keyword=${keyword}">${ p }</a>
+			<%-- 예: 페이지 7 클릭시 href="/bizconnect/nlist.do?page=7" 요청 처리됨 --%>
+		</c:if>
+	</c:forEach>
+	
+	<%-- 다을 페이지그룹으로 이동 --%>
+	<%-- 다음 그룹이 있다면 --%>
+	<c:if test="${ (currentPage + 10) gt endPage and (currentPage + 10) lt maxPage }">
+		<a href="/bizconnect/${ urlMapping }?page=${ startPage + 10 }&fileter=${ fileter }&keyword=${keyword}">[다음그룹]</a> &nbsp;
+	</c:if>
+	<%-- 다음 그룹이 없다면 --%>
+	<c:if test="${ !((currentPage + 10) gt endPage and (currentPage + 10) lt maxPage) }">
+		[다음그룹] &nbsp;
+	</c:if>
+	
+	<%-- maxPage 로 이동 --%>
+	<c:if test="${ currentPage ge maxPage }">
+		[맨끝페이지로] &nbsp;
+	</c:if>
+	<c:if test="${ currentPage lt maxPage }">
+		<a href="/bizconnect/${ urlMapping }?page=${ maxPage }&fileter=${ fileter }&keyword=${keyword}">[맨끝페이지로]</a> &nbsp;
+	</c:if>
+</div>
+</c:if>
+
+
 
 </body>
 </html>
