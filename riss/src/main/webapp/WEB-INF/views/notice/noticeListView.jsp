@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지</title>
+<title>고객센터 게시판</title>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -60,28 +60,39 @@
         padding: 20px;
     }
 
-    .profile-photo {
+    .right-sidebar {
+        width: 200px;
+        background-color: #f9f9f9;
+        position: fixed;
+        top: 60px;
+        right: 0;
+        height: calc(100% - 60px);
+        border-left: 1px solid #ddd;
+        padding: 15px;
+    }
+
+    .right-sidebar ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .right-sidebar ul li {
+        margin: 10px 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
         text-align: center;
-        margin-bottom: 20px;
     }
 
-    .profile-photo img {
-        width: 120px;
-        height: auto;
-        border-radius: 50%;
-    }
-
-    .form-section {
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .profile-info {
-        position: absolute;
-        left: 20px;
-        top: 10px;
-        font-size: 20px;
+    th {
+        background-color: #f2f2f2;
         font-weight: bold;
     }
 
@@ -89,16 +100,14 @@
 </head>
 <body>
 
+<!-- 상단 헤더 -->
 <div class="header">
-    <!-- 프로필 정보를 왼쪽 상단으로 이동 -->
     <div class="profile-info">BizConnect</div>
     <button onclick="location.href='/bizconnect/menu.do'">전체메뉴</button>
 </div>
 
+<!-- 왼쪽 사이드바 -->
 <div class="sidebar">
-    <div class="profile-photo">
-        <img src="https://via.placeholder.com/120" alt="Profile Photo">
-    </div>
     <ul>
         <li><a href="/bizconnect/main.do">프로필 정보</a></li>
         <li><a href="/bizconnect/profileUpdate.do">개인정보 변경</a></li>
@@ -107,45 +116,35 @@
     </ul>
 </div>
 
+<!-- 콘텐츠 영역 -->
 <div class="content">
-    <!-- 마이페이지 내용 -->
-    <div class="form-section">
-        <table>
+    <h1>고객센터 게시판</h1>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>등록일</th>
+            <th>조회수</th>
+            <th>중요도</th>
+        </tr>
+        <c:forEach var="notice" items="${list}">
             <tr>
-                <td>이름:</td>
-                <td>${loginUser.userName}</td>
+                <td>${notice.noticeNo}</td>
+                <td><a href="noticeDetail.do?no=${notice.noticeNo}">${notice.noticeTitle}</a></td>
+                <td>${notice.noticeWriter}</td>
+                <td>${notice.noticeDate}</td>
+                <td>${notice.readCount}</td>
+                <td>${notice.importance}</td>
             </tr>
-            <tr>
-                <td>GID:</td>
-                <td>${loginUser.gID}</td>
-            </tr>
-            <tr>
-                <td>소속:</td>
-                <td>${loginUser.comCode}</td>
-            </tr>
-            <tr>
-                <td>역할:</td>
-                <td>${loginUser.userRole}</td>
-            </tr>
-            <tr>
-                <td>직무:</td>
-                <td>${loginUser.userJob}</td>
-            </tr>
-            <tr>
-                <td>입사일:</td>
-                <td>${loginUser.userEntryDate}</td>
-            </tr>
-            <tr>
-                <td>전화번호:</td>
-                <td>${loginUser.userPhone}</td>
-            </tr>
-            <tr>
-                <td>이메일:</td>
-                <td>${loginUser.userEmail}</td>
-            </tr>
-        </table>
-    </div>
+        </c:forEach>
+    </table>
+
+    <!-- 게시글 추가 버튼 -->
+    <button onclick="location.href='/bizconnect/moveNoticeWrite.do'">게시글 추가</button>
 </div>
+
+
 
 </body>
 </html>

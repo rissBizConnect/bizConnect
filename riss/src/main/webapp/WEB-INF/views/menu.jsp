@@ -13,7 +13,7 @@
     <!-- 전체 메뉴 표시 -->
     <div id="menuContainer">
         <ul>
-            <li><a href="moveAttendance.do">인사관리</a></li>
+            <li><a href="/bizconnect/hrManagement.do">인사관리</a></li>
             <li><a href="/bizconnect/prManagement.do">재고관리</a></li>
         </ul>
     </div>

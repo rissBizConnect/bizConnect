@@ -17,34 +17,17 @@ body {
     padding: 10px 20px;
     flex-wrap: nowrap;
 }
-
-@media (min-width: 1201px) {
-    .login-mypage {
-	    position: absolute;
-	    top: 19px;
-	    right: 5px;
-	     display: flex;
-        width: 166px;
-        justify-content: space-between;
-    }
+.login-mypage {
+    position: relative;
+    width: 200px;
+    right: -44px;
+    top: -25px;
 }
-
-@media (max-width: 1200px) {
-    .login-mypage {
-		position: absolute;
-        top: 19px;
-        left: 1030px;
-        display: flex;
-        width: 166px;
-        justify-content: space-between;
-    }
-}
-
 .menu-sub {
-    position: absolute;
+    position: relative;
     width: 800px;
-    top: 86px;
-    left: 277px;
+    top: 32px;
+    left: 0px;
 }
     
 }
