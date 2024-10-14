@@ -23,9 +23,20 @@ public class PorderController {
 	@Autowired
 	private PorderService porderService;
 	
+	@RequestMapping("prMenu_porder.do")
+	public ModelAndView producthome(ModelAndView mv) {
+		
+		mv.setViewName("pr/prMenubar/prMenu_porder");
+		ArrayList<PorderDTO> porder = porderService.listAllPorders();
+		
+		mv.addObject("all", porder);
+		
+		return mv;
+	}
+	
 	@RequestMapping("porder.do")
 	public ModelAndView Pordertest(ModelAndView mv) {
-		mv.setViewName("stock/porder");
+		mv.setViewName("pr/stock/porder/porder");
 		ArrayList<PorderDTO> porder = porderService.listAllPorders();
 		
 		mv.addObject("all", porder);
@@ -47,11 +58,11 @@ public class PorderController {
 		pord.setPorderNo(Integer.parseInt(request.getParameter("PorderNo")));
 
 		if(porderService.insertporder(pord) > 0) {
-			mv.setViewName("stock/porder");
+			mv.setViewName("pr/stock/porder/porder");
 		}else {
 			mv.setViewName("common/error");
 		}
-		mv.setViewName("stock/porder");
+		mv.setViewName("pr/stock/porder/porder");
 		return mv;
 
 	}

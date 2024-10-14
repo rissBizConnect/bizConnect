@@ -6,12 +6,7 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
+    
     .header {
         display: flex;
         justify-content: flex-end; /* Aligns the content to the right */
@@ -27,6 +22,12 @@
         border: 1px solid #ccc;
         cursor: pointer;
         font-weight: bold;
+    }       
+    
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
     }
 
     .sidebar {

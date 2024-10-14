@@ -7,7 +7,8 @@
 <title></title>
 </head>
 <body>
- 안녕하세요 배달의 민족 주문입니다
+ 안녕하세요 교환환불 ~~
+ 	<button onclick="javascript:location.href='/bizconnect/ref.do'; return false;">교환/환불관리</button> 
 </body>
 
 </html>

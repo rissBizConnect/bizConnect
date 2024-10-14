@@ -5,12 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>bizconnect-거래처관리</title>
+<title>bizconnect-환불</title>
 </head>
 <body>
+뇽뇽
 
 <c:forEach items="${ requestScope.one1}" var="n">
 	${ n.test }
-</c:forEach> 거래처관리 만드는중,,-인경
+</c:forEach> 환불테이블 tb_ref 만드는중,,-인경
 </body>
 </html>
