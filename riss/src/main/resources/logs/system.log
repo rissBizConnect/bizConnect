@@ -21,3 +21,35 @@
 [11:01:57][INFO ][SalaryController.java: 98] - asd2
 [11:01:57][INFO ][SalaryController.java: 96] - asd
 [11:02:00][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /bizconnect/moveSalaryUpdate.do
+[11:49:04][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:49:04][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 495 ms
+[11:49:04][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:49:05][INFO ][FrameworkServlet.java: 547] - Completed initialization in 525 ms
+[11:50:39][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:50:39][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 385 ms
+[11:50:39][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:50:40][INFO ][FrameworkServlet.java: 547] - Completed initialization in 459 ms
+[11:50:41][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:50:42][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 519 ms
+[11:50:42][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:50:42][INFO ][FrameworkServlet.java: 547] - Completed initialization in 513 ms
+[11:51:12][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:51:13][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 571 ms
+[11:51:13][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:51:13][INFO ][FrameworkServlet.java: 547] - Completed initialization in 627 ms
+[11:51:29][INFO ][MemberController.java: 55] - loginUser : null
+[11:53:13][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:53:14][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 595 ms
+[11:53:14][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:53:15][INFO ][FrameworkServlet.java: 547] - Completed initialization in 583 ms
+[11:53:47][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:53:48][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 591 ms
+[11:53:48][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:53:48][INFO ][FrameworkServlet.java: 547] - Completed initialization in 601 ms
+[11:53:52][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /bizconnect/prMenu_product.do
+[11:54:06][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /bizconnect/prMenu_product.do
+[11:58:21][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:58:21][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 596 ms
+[11:58:21][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:58:22][INFO ][FrameworkServlet.java: 547] - Completed initialization in 667 ms
+[11:59:01][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /bizconnect/ordreport.do
