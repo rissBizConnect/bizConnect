@@ -2,12 +2,15 @@ package org.riss.bizconnect.pd.order.model.service;
 
 import org.riss.bizconnect.pd.order.model.dto.OrderDTO;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Optional;
 
 public interface OrderService {
-    void createOrder(OrderDTO order);
-    List<OrderDTO> getAllOrders();
-    OrderDTO getOrderById(Long orderCd);
-    void updateOrder(OrderDTO order);
-    void deleteOrder(Long orderCd);
+	ArrayList<OrderDTO> listAllOrders();
+	Optional<OrderDTO> selectorderNo(String orderNo);
+	void addorder(OrderDTO order);
+	void modifyorder(OrderDTO order);
+	void removeorder(String orderNo);
+	OrderDTO getorder(String orderNo);
+    
 }

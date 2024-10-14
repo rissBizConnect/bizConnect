@@ -42,7 +42,7 @@ public class OrdreportDAOImpl implements OrdreportDAO {
 
     @Override
     public void updateOrdreport(OrdreportDTO ordreport) {
-        String sql = "UPDATE TB_ORDREPORT SET ORDER_TYPE = ?, ORDER_DATE = ?, ORDER_RECEIVE_DATE = ?, " +
+        String sql = "UPDATE TB_ORDREPORT SET ORDER_TYPE = ?, ORDER_DATE = ?, ODER_RECEIVE_DATE = ?, " +
                      "ORDER_AMOUNT = ?, ORDER_TAX = ?, ORDER_PAYMENT_YN = ?, ORDER_CANCEL_YN = ?, " +
                      "PRODUCT_CD = ?, COM_CODE = ?, REPORT_TYPE = ?, ORDER_STATUS = ?, " +
                      "PAYMENT_METHOD = ?, CUSTOMER_TYPE = ? WHERE ORDER_CD = ?";
