@@ -15,7 +15,4 @@ public interface ProductService {
 	int insertproduct(ProductDTO prod);
 	
 	ArrayList<ProductDTO> selectAllList();
-	ArrayList<ProductDTO> filterProductStockStatus(String status);
-	String generProductNo(String orderType);
-	int getNextProductNum(String orderType);
 }

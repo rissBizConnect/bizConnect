@@ -6,162 +6,123 @@ import java.time.LocalDate;
 public class PorderDTO implements Serializable {
 	private static final long serialVersionUID = 4097767075615912169L;
 	
-	private int porderNo; //발주번호
-	private String licenseCode; //회사코드
-	private String productNo; //제품번호
-	private String productName; //제품이름
-	private String clientCode; //거래처번호
-	private String porderName; //발주제품명
-	private double porderPrice; //발주금액
-	private double porderTax; //발주제품 부가세
-	private int porderCnt; //발주수량
-	private LocalDate porderDate; //발주일
-	private LocalDate sueDate; //납기일
-	private String porderStatus; //발주상태
-	private String fieldNum;
+	private int PorderNo; //발주번호
+	private String LicenseCode; //회사코드
+	private String ProductNo; //제품번호
+	private String ClientCode; //거래처번호
+	private String PorderName; //발주제품명
+	private double PorderPrice; //발주금액
+	private double PorderTax; //발주제품 부가세
+	private int PorderCnt; //발주수량
+	private LocalDate PorderDate; //발주일
+	private LocalDate DueDate; //납기일
+	private String PorderStatus; //발주상태
+	private String FieldNum; //창고번호
 	
 	public PorderDTO() {
 		super();
 		// TODO Auto-generated constructor stub
-	} //창고번호
-
-	public PorderDTO(int porderNo, String licenseCode, String productNo, String productName, String clientCode,
-			String porderName, double porderPrice, double porderTax, int porderCnt, LocalDate porderDate,
-			LocalDate sueDate, String porderStatus, String fieldNum) {
+	}
+	public PorderDTO(int porderNo, String licenseCode, String productNo, String clientCode, String porderName,
+			double porderPrice, double porderTax, int porderCnt, LocalDate porderDate, LocalDate dueDate,
+			String porderStatus, String fieldNum) {
 		super();
-		this.porderNo = porderNo;
-		this.licenseCode = licenseCode;
-		this.productNo = productNo;
-		this.productName = productName;
-		this.clientCode = clientCode;
-		this.porderName = porderName;
-		this.porderPrice = porderPrice;
-		this.porderTax = porderTax;
-		this.porderCnt = porderCnt;
-		this.porderDate = porderDate;
-		this.sueDate = sueDate;
-		this.porderStatus = porderStatus;
-		this.fieldNum = fieldNum;
+		PorderNo = porderNo;
+		LicenseCode = licenseCode;
+		ProductNo = productNo;
+		ClientCode = clientCode;
+		PorderName = porderName;
+		PorderPrice = porderPrice;
+		PorderTax = porderTax;
+		PorderCnt = porderCnt;
+		PorderDate = porderDate;
+		DueDate = dueDate;
+		PorderStatus = porderStatus;
+		FieldNum = fieldNum;
 	}
-
 	public int getPorderNo() {
-		return porderNo;
+		return PorderNo;
 	}
-
 	public void setPorderNo(int porderNo) {
-		this.porderNo = porderNo;
+		PorderNo = porderNo;
 	}
-
 	public String getLicenseCode() {
-		return licenseCode;
+		return LicenseCode;
 	}
-
 	public void setLicenseCode(String licenseCode) {
-		this.licenseCode = licenseCode;
+		LicenseCode = licenseCode;
 	}
-
 	public String getProductNo() {
-		return productNo;
+		return ProductNo;
 	}
-
 	public void setProductNo(String productNo) {
-		this.productNo = productNo;
+		ProductNo = productNo;
 	}
-
-	public String getProductName() {
-		return productName;
-	}
-
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-
 	public String getClientCode() {
-		return clientCode;
+		return ClientCode;
 	}
-
 	public void setClientCode(String clientCode) {
-		this.clientCode = clientCode;
+		ClientCode = clientCode;
 	}
-
 	public String getPorderName() {
-		return porderName;
+		return PorderName;
 	}
-
 	public void setPorderName(String porderName) {
-		this.porderName = porderName;
+		PorderName = porderName;
 	}
-
 	public double getPorderPrice() {
-		return porderPrice;
+		return PorderPrice;
 	}
-
 	public void setPorderPrice(double porderPrice) {
-		this.porderPrice = porderPrice;
+		PorderPrice = porderPrice;
 	}
-
 	public double getPorderTax() {
-		return porderTax;
+		return PorderTax;
 	}
-
 	public void setPorderTax(double porderTax) {
-		this.porderTax = porderTax;
+		PorderTax = porderTax;
 	}
-
 	public int getPorderCnt() {
-		return porderCnt;
+		return PorderCnt;
 	}
-
 	public void setPorderCnt(int porderCnt) {
-		this.porderCnt = porderCnt;
+		PorderCnt = porderCnt;
 	}
-
 	public LocalDate getPorderDate() {
-		return porderDate;
+		return PorderDate;
 	}
-
 	public void setPorderDate(LocalDate porderDate) {
-		this.porderDate = porderDate;
+		PorderDate = porderDate;
 	}
-
-	public LocalDate getSueDate() {
-		return sueDate;
+	public LocalDate getDueDate() {
+		return DueDate;
 	}
-
-	public void setSueDate(LocalDate sueDate) {
-		this.sueDate = sueDate;
+	public void setDueDate(LocalDate dueDate) {
+		DueDate = dueDate;
 	}
-
 	public String getPorderStatus() {
-		return porderStatus;
+		return PorderStatus;
 	}
-
 	public void setPorderStatus(String porderStatus) {
-		this.porderStatus = porderStatus;
+		PorderStatus = porderStatus;
 	}
-
 	public String getFieldNum() {
-		return fieldNum;
+		return FieldNum;
 	}
-
 	public void setFieldNum(String fieldNum) {
-		this.fieldNum = fieldNum;
+		FieldNum = fieldNum;
 	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
 	@Override
 	public String toString() {
-		return "PorderDTO [porderNo=" + porderNo + ", licenseCode=" + licenseCode + ", productNo=" + productNo
-				+ ", productName=" + productName + ", clientCode=" + clientCode + ", porderName=" + porderName
-				+ ", porderPrice=" + porderPrice + ", porderTax=" + porderTax + ", porderCnt=" + porderCnt
-				+ ", porderDate=" + porderDate + ", sueDate=" + sueDate + ", porderStatus=" + porderStatus
-				+ ", fieldNum=" + fieldNum + "]";
+		return "PorderDTO [PorderNo=" + PorderNo + ", LicenseCode=" + LicenseCode + ", ProductNo=" + ProductNo
+				+ ", ClientCode=" + ClientCode + ", PorderName=" + PorderName + ", PorderPrice=" + PorderPrice
+				+ ", PorderTax=" + PorderTax + ", PorderCnt=" + PorderCnt + ", PorderDate=" + PorderDate + ", DueDate="
+				+ DueDate + ", PorderStatus=" + PorderStatus + ", FieldNum=" + FieldNum + "]";
 	}
 	
 	
-}	
-	
-	
+
+}
