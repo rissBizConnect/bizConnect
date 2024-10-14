@@ -1,11 +1,11 @@
-function memberDelete(...salary) {
+function salaryDelete(...salary) {
 	const[gId, salaryno] = salary;
 	location.href = "salaryDelete.do?gId=" + gId + "&salaryno=" + salaryno;
 }
 
-function memberUpdate(...salary) {
-	const[gId, salaryno] = salary;
-	location.href = "moveSalaryUpdate.do?gId=" + gId + "&salaryno=" + salaryno;
+function salaryUpdate(...salary) {
+	const[gId, salaryNo, name] = salary;
+	location.href = "moveSalaryUpdate.do?gId=" + gId + "&salaryNo=" + salaryNo + "&name=" + name;
 }
 
 function test() {

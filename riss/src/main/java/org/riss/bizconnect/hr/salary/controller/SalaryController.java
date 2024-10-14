@@ -20,7 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -29,42 +31,6 @@ public class SalaryController {
 	
 	@Autowired
 	private SalaryService salaryService;
-	
-//	@RequestMapping("moveSalary.do")
-//	public ModelAndView moveSalary(
-//			HttpSession session, 
-//			ModelAndView mv,
-//			@RequestParam(name = "page", required = false) String page,
-//			@RequestParam(name = "limit", required = false) String slimit,
-//			@RequestParam(name = "fileter", required = false) String fileter) {
-//		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-//				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
-//		session.setAttribute("loginUser", member);
-//		
-//		int currentPage = 1;
-//		if (page != null) {
-//			currentPage = Integer.parseInt(page);
-//		}
-//
-//		int limit = 10;
-//		if (slimit != null) {
-//			limit = Integer.parseInt(slimit);
-//		}
-//		if (fileter == null) {
-//			fileter = "all";
-//		}
-//		
-//		Salary salary = new Salary(((Member)session.getAttribute("loginUser")).getgId(), 
-//				((Member)session.getAttribute("loginUser")).getComCode());
-//		int listCount = salaryService.selectAllCount(salary.getComCode());
-//		Paging paging = new Paging(salary.getComCode(), listCount, limit, currentPage, "moveSalary.do");
-//		ArrayList<Salary> list = salaryService.selectAll(paging);
-//
-//		mv.addObject("list",list);
-//		mv.addObject("paging", paging);
-//		mv.setViewName("hr/salary");
-//		return mv;
-//	}
 	
 	@RequestMapping("moveSalary.do")
 	public ModelAndView moveSalary(
@@ -77,7 +43,7 @@ public class SalaryController {
 			ModelAndView mv) {
 
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 
 		String myCom = ((Member) session.getAttribute("loginUser")).getComCode();
@@ -137,7 +103,7 @@ public class SalaryController {
 			@RequestParam("salaryno") int salaryno) {
 		
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 		
 		String myCom = ((Member)session.getAttribute("loginUser")).getComCode();
@@ -153,4 +119,82 @@ public class SalaryController {
 					
 		return "redirect:moveSalary.do";
 	}
+	
+	@RequestMapping("moveSalaryInsert.do")
+	public ModelAndView moveSalaryInsert(HttpSession session, ModelAndView mv, Member mem) {
+		mv.setViewName("hr/salaryInsert");
+		return mv;
+	}
+	
+	@RequestMapping("salaryInsert.do")
+	public ModelAndView salaryInsert(HttpSession session, ModelAndView mv, Member mem) {
+		mv.setViewName("hr/salaryInsert");
+		return mv;
+	}
+	
+	@RequestMapping(value = "salaryInsert.do", method = RequestMethod.POST)
+	public String salaryInsert(
+			HttpSession session,
+			HttpServletRequest request,
+			Salary salary){
+		
+		
+		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
+		session.setAttribute("loginUser", member);
+
+		salary.setComCode(((Member)session.getAttribute("loginUser")).getComCode());
+		if(salaryService.insertSalary(salary) != 1) {
+			return "common/error";
+		}
+	
+		return "redirect:moveInfo.do";
+	}
+	
+	@RequestMapping("moveSalaryUpdate.do")
+	public ModelAndView moveSalaryUpdate(
+			HttpSession session,
+			HttpServletRequest request,
+			Salary salary,
+			ModelAndView mv) {
+	
+		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
+		session.setAttribute("loginUser", member);
+		
+		String myCom = ((Member)session.getAttribute("loginUser")).getComCode();
+		
+		salary.setComCode(myCom);
+		String name = salary.getName();
+
+		salary = salaryService.selectMember(salary);
+		salary.setName(name);
+		
+		mv.addObject("salary", salary);
+		mv.setViewName("hr/salaryUpdate");
+		return mv;
+	}
+	
+	@RequestMapping("salaryUpdate.do")
+	public String moveInfoUpdate(
+			HttpSession session,
+			HttpServletRequest request,
+			Salary salary) {
+		
+		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
+		session.setAttribute("loginUser", member);
+		
+		salary.setComCode(((Member)session.getAttribute("loginUser")).getComCode());
+		
+		logger.info("salary : " + salary);
+		if(salaryService.updateSalary(salary) != 1) {
+			return "common/error";
+		}
+
+			
+		return "redirect:moveInfo.do";
+	}
+	
+	
 }

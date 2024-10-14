@@ -1,7 +1,8 @@
 package org.riss.bizconnect.hr.salary.model.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
+
 
 public class Salary implements Serializable {
 
@@ -233,6 +234,4 @@ public class Salary implements Serializable {
 				+ salaryPayDate + ", salaryPay=" + salaryPay + ", accountNumber=" + accountNumber + ", name=" + name
 				+ "]";
 	}
-
-
 }
