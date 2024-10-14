@@ -10,7 +10,6 @@ function memberRetireUpdate(gid) {
 	location.href = "memberRetireUpdate.do?gId=" + gid;
 }
 
-
 function test() {
 	alert('전송에 실패했습니다.');
 }

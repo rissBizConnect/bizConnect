@@ -15,7 +15,7 @@
 
 <div class="form-container">
   <h2>사원 등록</h2>
-<form action="InfoInsert.do" method="post" onsubmit="return validate();" enctype="multipart/form-data"><br>
+<form action="InfoInsert.do" method="post" enctype="multipart/form-data"><br>
     <div class="form-group">
       <label for="gId">*아이디</label>
       <input type="text" id="gId" name="gId" required>
