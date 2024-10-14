@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.common.model.dto.Search;
 import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.attendance.model.dao.AttendanceDao;
 import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
@@ -24,8 +25,8 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public int insertAttendance(Attendance attendance) {
-		return attendanceDao.insertAttendance(attendance);
+	public int insertAttendance(Member member) {
+		return attendanceDao.insertAttendance(member);
 	}
 
 	@Override
@@ -44,7 +45,53 @@ public class AttendanceServiceImpl implements AttendanceService {
 	}
 
 	@Override
-	public int selectListCount() {
-		return attendanceDao.selectListCount();
+	public int selectListCount(Member loginUser) {
+		return attendanceDao.selectListCount(loginUser);
 	}
+
+	@Override
+	public int selectComListCount(Member loginUser) {
+		return attendanceDao.selectComListCount(loginUser);
+	}
+
+	@Override
+	public ArrayList<Attendance> selectComAttendance(Paging paging) {
+		return attendanceDao.selectComAttendance(paging);
+	}
+
+	@Override
+	public int selectComFileterMListCount(Member loginUser) {
+		return attendanceDao.selectComFileterMListCount(loginUser);
+	}
+
+	@Override
+	public ArrayList<Attendance> selectComFileterMAttendance(Paging paging) {
+		return attendanceDao.selectComFileterMAttendance(paging);
+	}
+
+	@Override
+	public ArrayList<String> selectComMListCount(String comCode) {
+		return attendanceDao.selectComMListCount(comCode);
+	}
+
+	@Override
+	public int selectComDateMListCount(Search search) {
+		return attendanceDao.selectComDateMListCount(search);
+	}
+
+	@Override
+	public ArrayList<Attendance> selectComDateAttendance(Search search) {
+		return attendanceDao.selectComDateAttendance(search);
+	}
+
+	@Override
+	public ArrayList<Attendance> selectComList(Member member) {
+		return attendanceDao.selectComList(member);
+	}
+
+	@Override
+	public int updateAttendnce(Attendance attendance) {
+		return attendanceDao.updateAttendnce(attendance);
+	}
+
 }

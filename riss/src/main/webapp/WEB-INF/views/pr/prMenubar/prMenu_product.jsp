@@ -258,15 +258,6 @@
         </div>
 
     </div>
-    
-   <script>
-	// 추가된 자바스크립트 부분 시작**
-	document.getElementById('ProductCri').addEventListener('change', function() {
-	    var criValue = this.value;
-	    document.getElementById('sizeInput').style.display = criValue === 'size' ? 'block' : 'none';
-	    document.getElementById('weightInput').style.display = criValue === 'weight' ? 'block' : 'none';
-	    document.getElementById('volumeInput').style.display = criValue === 'volume' ? 'block' : 'none';
-});
 
 </body>
 </html>

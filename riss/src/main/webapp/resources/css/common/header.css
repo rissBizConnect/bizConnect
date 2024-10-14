@@ -17,17 +17,35 @@ body {
     padding: 10px 20px;
     flex-wrap: nowrap;
 }
-.login-mypage {
- 	position: absolute;
-    width: 200px;
-    right: -30px;
-    top: 30px;
+
+@media (min-width: 1201px) {
+    .login-mypage {
+	    position: absolute;
+	    top: 19px;
+	    right: 5px;
+	     display: flex;
+        width: 166px;
+        justify-content: space-between;
+    }
 }
+
+@media (max-width: 1200px) {
+    .login-mypage {
+		position: absolute;
+        top: 19px;
+        left: 1030px;
+        display: flex;
+        width: 166px;
+        justify-content: space-between;
+    }
+}
+
 .menu-sub {
-	position: absolute;
-	width: 500px;
-    top: 32px;
-    left: 300px;
+    position: absolute;
+    width: 800px;
+    top: 86px;
+    left: 277px;
+}
     
 }
 .menu-sub a {
@@ -43,5 +61,9 @@ body {
 .menu-sub a:hover {
     color: #FFCC00; /* 마우스 오버 시 노란색 */
     transform: scale(1.1); /* 살짝 확대 효과 */
+}
+
+.bar {
+	margin: 90px;
 }
 

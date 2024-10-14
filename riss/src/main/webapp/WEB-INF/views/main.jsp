@@ -6,7 +6,12 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <style>
-    
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
     .header {
         display: flex;
         justify-content: flex-end; /* Aligns the content to the right */
@@ -22,12 +27,6 @@
         border: 1px solid #ccc;
         cursor: pointer;
         font-weight: bold;
-    }       
-    
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
     }
 
     .sidebar {
@@ -79,7 +78,9 @@
 </style>
 </head>
 <body>
-
+<hr>
+<c:import url="/WEB-INF/views/common/menubar.jsp" />
+<br>
 <div class="header">
     <!-- 전체메뉴 버튼 (상단 오른쪽에 배치됨) -->
     <button onclick="location.href='/bizconnect/menu.do'">전체메뉴</button>
@@ -121,6 +122,8 @@
         </table>
     </div>
 </div>
-
+<footer>
+<c:import url="/WEB-INF/views/common/footer.jsp" />
+</footer>
 </body>
 </html>
