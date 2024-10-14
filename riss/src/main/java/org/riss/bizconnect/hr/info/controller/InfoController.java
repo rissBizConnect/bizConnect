@@ -45,7 +45,7 @@ public class InfoController {
 			ModelAndView mv) {
 
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 
 		String myCom = ((Member) session.getAttribute("loginUser")).getComCode();
@@ -104,42 +104,24 @@ public class InfoController {
 			HttpSession session,
 			HttpServletRequest request,
 			Member mem,
-			@RequestParam(name = "muserContract", required = false) MultipartFile muserContract,
-			@RequestParam(name = "muserFacePictPath", required = false) MultipartFile muserFacePictPath,
-			@RequestParam(name = "muserCertificate", required = false) MultipartFile muserCertificate){
+			@RequestParam(name = "muserFacePictPath", required = false) MultipartFile muserFacePictPath){
 		
 		
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 		
 		String myCom = ((Member)session.getAttribute("loginUser")).getComCode();
 		mem.setComCode(myCom);
 
-		String muserContractSavePath = request.getSession().getServletContext().getRealPath("resources/contract_files/") 
-				+ mem.getComCode() + "_" + mem.getgId() + "_Contract" 
-				+ muserContract.getOriginalFilename().substring(muserContract.getOriginalFilename().lastIndexOf("."));
+
 		String muserFacePictSavePath = request.getSession().getServletContext().getRealPath("resources/face_files/") 
 				+ mem.getComCode() + "_" + mem.getgId() + "_FacePict" 
 				+ muserFacePictPath.getOriginalFilename().substring(muserFacePictPath.getOriginalFilename().lastIndexOf("."));
-		String muserCertificateSavePath = request.getSession().getServletContext().getRealPath("resources/certificate_files/") 
-				+ mem.getComCode() + "_" + mem.getgId() + "_Certificate" 
-				+ muserCertificate.getOriginalFilename().substring(muserCertificate.getOriginalFilename().lastIndexOf("."));
-		
-		
-		mem.setUserContract(muserContract.getOriginalFilename().substring(muserContract.getOriginalFilename().lastIndexOf(".")));
+
 		mem.setUserFacePictPath(muserFacePictPath.getOriginalFilename().substring(muserFacePictPath.getOriginalFilename().lastIndexOf(".")));
-		mem.setuserCertificate(muserCertificate.getOriginalFilename().substring(muserCertificate.getOriginalFilename().lastIndexOf(".")));
 		if(infoService.insertMember(mem) != 1) {
 			return "common/error";
-		}
-		
-		if (!muserContract.isEmpty()) {		
-			try {
-				muserContract.transferTo(new File(muserContractSavePath));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}
 		
 		if (!muserFacePictPath.isEmpty()) {
@@ -150,13 +132,6 @@ public class InfoController {
 			}
 		}
 		
-		if (!muserCertificate.isEmpty()) {
-			try {
-				muserCertificate.transferTo(new File(muserCertificateSavePath));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 		return "redirect:moveInfo.do";
 	}
 	
@@ -167,7 +142,7 @@ public class InfoController {
 			@RequestParam("gId") String gId) {
 		
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 		
 		String myCom = ((Member)session.getAttribute("loginUser")).getComCode();
@@ -180,23 +155,6 @@ public class InfoController {
 		
 		if(infoService.deleteMember(mem) != 1) {
 			return "common/error";
-		}
-		
-		if(mem.getUserContract() != null && mem.getUserContract().length() > 0) {
-			String muserContractSavePath = request.getSession().getServletContext().getRealPath("resources/contract_files/")
-					+ mem.getComCode() + "_" + mem.getgId() + "_Contract" + mem.getUserContract();
-			
-			File file = new File(muserContractSavePath);
-			if(file.exists()) {
-				if(file.delete()) {
-					logger.info("Contract 파일삭제");
-				}else {
-					logger.info("Error : Contract 파일삭제");
-					return "common/error";
-				}
-			}else {
-				logger.info("Contract 저장 파일 없음");
-			}
 		}
 		
 		if(mem.getUserFacePictPath() != null && mem.getUserFacePictPath().length() > 0) {
@@ -216,22 +174,6 @@ public class InfoController {
 			}
 		}
 
-		if(mem.getuserCertificate() != null && mem.getuserCertificate().length() > 0) {
-			String muserCertificateSavePath = request.getSession().getServletContext().getRealPath("resources/certificate_files/")
-					+ mem.getComCode() + "_" + mem.getgId() + "_Certificate" + mem.getuserCertificate();
-			File file = new File(muserCertificateSavePath);
-			if(file.exists()) {
-				if(file.delete()) {
-					logger.info("Certificate 파일삭제");
-				}else {
-					logger.info("Error : Certificate 파일삭제");
-					return "common/error";
-				}
-			}else {
-				logger.info("Certificate 저장 파일 없음");
-			}
-		}
-		
 		return "redirect:moveInfo.do";
 	}
 	
@@ -243,7 +185,7 @@ public class InfoController {
 			ModelAndView mv) {
 	
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 		
 		String myCom = ((Member)session.getAttribute("loginUser")).getComCode();
@@ -264,53 +206,27 @@ public class InfoController {
 			HttpSession session,
 			HttpServletRequest request,
 			Member mem,
-			@RequestParam(name = "muserContract", required = false) MultipartFile muserContract,
 			@RequestParam(name = "muserFacePictPath", required = false) MultipartFile muserFacePictPath,
-			@RequestParam(name = "muserCertificate", required = false) MultipartFile muserCertificate,
-			@RequestParam(name = "oContract", required = false) String oContract,
-			@RequestParam(name = "oFacePictPath", required = false) String oFacePictPath,
-			@RequestParam(name = "oCertificate", required = false) String oCertificate) {
+			@RequestParam(name = "oFacePictPath", required = false) String oFacePictPath) {
 		
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 		
 		String myCom = ((Member)session.getAttribute("loginUser")).getComCode();
 		mem.setComCode(myCom);
 
-		if(!muserContract.isEmpty() && muserContract.getOriginalFilename() != null && muserContract.getOriginalFilename().length() > 0) {	
-			mem.setUserContract(muserContract.getOriginalFilename().substring(muserContract.getOriginalFilename().lastIndexOf(".")));
-		}else {
-			mem.setUserContract(oContract);
-		}
 		
 		if(!muserFacePictPath.isEmpty() && muserFacePictPath.getOriginalFilename() != null && muserFacePictPath.getOriginalFilename().length() > 0) {
 			mem.setUserFacePictPath(muserFacePictPath.getOriginalFilename().substring(muserFacePictPath.getOriginalFilename().lastIndexOf(".")));
 		}else {
 			mem.setUserFacePictPath(oFacePictPath);
 		}
-		
-		if(!muserCertificate.isEmpty() && muserCertificate.getOriginalFilename() != null && muserCertificate.getOriginalFilename().length() > 0) {
-			mem.setuserCertificate(muserCertificate.getOriginalFilename().substring(muserCertificate.getOriginalFilename().lastIndexOf(".")));
-		}else {
-			mem.setuserCertificate(oCertificate);
-		}
-		
+
 		if(infoService.updateMember(mem) != 1) {
 			return "common/error";
 		}
-		
-		if(!muserContract.isEmpty() && muserContract.getOriginalFilename() != null && muserContract.getOriginalFilename().length() > 0) {
-			try {
-				String muserContractSavePath = request.getSession().getServletContext().getRealPath("resources/contract_files/") 
-						+ mem.getComCode() + "_" + mem.getgId() + "_Contract" 
-						+ muserContract.getOriginalFilename().substring(muserContract.getOriginalFilename().lastIndexOf("."));
 
-				muserContract.transferTo(new File(muserContractSavePath));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 		
 		if(!muserFacePictPath.isEmpty() && muserFacePictPath.getOriginalFilename() != null && muserFacePictPath.getOriginalFilename().length() > 0) {
 			try {
@@ -324,17 +240,6 @@ public class InfoController {
 			}
 		}
 		
-		if(!muserCertificate.isEmpty() && muserCertificate.getOriginalFilename() != null && muserCertificate.getOriginalFilename().length() > 0) {
-			try {
-				String muserCertificateSavePath = request.getSession().getServletContext().getRealPath("resources/certificate_files/") 
-						+ mem.getComCode() + "_" + mem.getgId() + "_Certificate" 
-						+ muserCertificate.getOriginalFilename().substring(muserCertificate.getOriginalFilename().lastIndexOf("."));
-
-				muserCertificate.transferTo(new File(muserCertificateSavePath));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
 		return "redirect:moveInfo.do";
 	}
 	
@@ -344,7 +249,7 @@ public class InfoController {
 			@RequestParam("gId") String gId) {
 		
 		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 		
 		Member mem = new Member();
