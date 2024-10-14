@@ -32,7 +32,7 @@
 	            <li class="has-submenu" id="retire">
 	                <a href="#" onclick="toggleSubmenu('retire'); return false;">퇴직자관리</a>
 	                <ul class="submenu" id="retire-submenu">
-	                   	<li><a href="${pageContext.request.contextPath}/retire.do">퇴직자</a></li>
+	                   	<li><a href="retList.do?page=1">퇴직자</a></li>
 	                    <li><a href="${pageContext.request.contextPath}/convertPage.do" onclick="loadPage('퇴직자->사원'); return=false;">퇴직자 -> 사원</a></li>
 	                </ul>
 	            </li>
