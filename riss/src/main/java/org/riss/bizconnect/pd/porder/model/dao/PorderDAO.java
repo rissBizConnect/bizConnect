@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.riss.bizconnect.pd.porder.model.dto.PorderDTO;
-import org.riss.bizconnect.pd.product.model.dto.ProductDTO;
+import org.riss.bizconnect.product.model.dto.Testa4;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

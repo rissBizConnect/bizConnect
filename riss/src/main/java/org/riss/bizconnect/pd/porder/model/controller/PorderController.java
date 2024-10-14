@@ -34,8 +34,8 @@ public class PorderController {
 	public ModelAndView insertporder(ModelAndView mv, HttpSession session, HttpServletRequest request) {
 		
 		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "Y");
-	    session.setAttribute("loginUser", member);//너도!!!!!!!!!!!!!!!!!!!!!!!!
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
+	    session.setAttribute("loginUser", member);//�꼫�룄!!!!!!!!!!!!!!!!!!!!!!!!
 	     
 	    member = (Member)session.getAttribute("loginUser");
 		PorderDTO pord = new PorderDTO();

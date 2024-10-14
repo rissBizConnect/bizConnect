@@ -1,13 +1,17 @@
 package org.riss.bizconnect.pd.order.model.controller;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import java.time.LocalDate;
+
 import org.riss.bizconnect.pd.order.model.dto.OrderDTO;
 import org.riss.bizconnect.pd.order.model.service.OrderService;
-import org.riss.bizconnect.pd.product.model.controller.ProductController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -21,11 +25,36 @@ public class OrderController {
 
     @RequestMapping("order.do")
     public ModelAndView orderTest(ModelAndView mv) {
-        mv.setViewName("stock/order");
+        mv.setViewName("pr/stock/order/order");
         List<OrderDTO> order = orderService.listAllOrders();
         mv.addObject("all", order);
         return mv;
     }
+    
+    
+    @RequestMapping("addorder.do")
+    public ModelAndView addorder(@ModelAttribute OrderDTO order, ModelAndView mv) {
+        // ��û�� `GET` ����� ��, ���� �����ֱ�
+        if (order.getOrderCd() == null) {
+            mv.setViewName("pr/stock/order/addorder");
+            return mv;
+        }
+
+        // �ʼ� �� ����
+        if (order.getOrderType() == null || order.getOrderType().isEmpty()) {
+            mv.addObject("error", "�ֹ� Ÿ���� �ʼ� �׸��Դϴ�.");
+            mv.setViewName("stock/order/addorder");
+            return mv;
+        }
+
+        // �ֹ� ��� ó��
+        orderService.addorder(order);
+
+        // ���� �� �ֹ� ��ȸ �������� �����̷�Ʈ
+        mv.setViewName("redirect:/bizconnect/order.do");
+        return mv;
+    }
+    
 }
 /*@RestController
 @RequestMapping("/orders")

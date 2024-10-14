@@ -1,32 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import="java.util.List" %>
- <%@ page import="org.riss.bizconnect.pd.order.model.dto.OrderDTO" %>
+<%@ page import="java.util.List" %>
+<%@ page import="org.riss.bizconnect.pd.order.model.dto.OrderDTO" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>재고관리 HOME</title>
+    <title>수주 관리</title>
     <style>
-    
-    .header {
-        display: flex;
-        justify-content: flex-end; /* Aligns the content to the right */
-        align-items: center;
-        background-color: #f4f4f4;
-        padding: 10px 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .header button {
-        padding: 10px 20px;
-        background-color: #ffffff;
-        border: 1px solid #ccc;
-        cursor: pointer;
-        font-weight: bold;
-    }        
-    
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -140,21 +122,20 @@
             cursor: pointer;
         }
     </style>
+    <script>
+        function showOrderSuccessPopup() {
+            alert("주문이 완료되었습니다."); // 주문 완료 메시지 팝업
+        }
+    </script>
 </head>
 <body>
 
-	<div class="header">
-    <!-- 전체메뉴 버튼 (상단 오른쪽에 배치됨) -->
-    <button onclick="location.href='/bizconnect/prManagement.do'">재고관리 Home</button>
-	</div>
-
     <div class="sidebar">
         <ul>
-            <li><a href="/bizconnect/prMenu_product.do">제품관리</a></li>
-            <li class="active"><a href="/bizconnect/prMenu_porder.do">발주관리</a></li>
-            <li><a href="/bizconnect/order.do">수주관리</a></li>
-            <li><a href="/bizconnect/prMenu_check.do">교환/환불관리</a></li>
-            <li><a href="/bizconnect/prMenu_client.do">거래처관리</a></li>
+            <li><a href="/bizconnect/">재고관리</a></li>
+            <li><a href="/bizconnect/porder.do">발주관리</a></li>
+            <li class="active"><a href="#">수주관리</a></li>
+            <li><a href="/bizconnect/erpclient.do">거래처관리</a></li>
         </ul>
     </div>
 
@@ -186,7 +167,7 @@
                 </tr>
             </thead>
             <tbody>
-              
+               <!-- 주문 데이터가 여기에 삽입될 예정 -->
             </tbody>
             <tfoot>
                 <tr class="summary-row">
@@ -201,7 +182,7 @@
 
         <div class="button-group">
             <button class="btn-black">전체선택</button>
-            <button class="btn-blue">주문하기</button>
+            <button class="btn-blue" onclick="showOrderSuccessPopup(); return false;">주문하기</button> <!-- 주문하기 버튼 -->
             <button class="btn-red" onclick="javascript:location.href='/bizconnect/addorder.do'; return false;">주문 등록</button>
             <button class="btn-blue" onclick="javascript:location.href='/bizconnect/ordreport.do'; return false;">거래명세서 작성</button>
         </div>
