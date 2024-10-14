@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.riss.bizconnect.pd.porder.model.dto.PorderDTO;
-import org.riss.bizconnect.product.model.dto.Testa4;
 
 public interface PorderService {
 	ArrayList<PorderDTO> listAllPorders();
