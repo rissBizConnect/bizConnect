@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository("orderDAO")
 public class OrderDAO {
@@ -22,31 +21,4 @@ public class OrderDAO {
 		List<OrderDTO> list = sqlSessionTemplate.selectList("orderMapper.select");
 		return (ArrayList<OrderDTO>)list;
 	}
-	
-	 // Ư�� �ֹ� �������� (orderNo�� ��ȸ)
-    public Optional<OrderDTO> selectorderNo(String orderNo) {
-        OrderDTO order = sqlSessionTemplate.selectOne("orderMapper.selectByOrderNo", orderNo);
-        return Optional.ofNullable(order);
-    }
-
-    // �ֹ� �߰�
-    public void addorder(OrderDTO order) {
-        sqlSessionTemplate.insert("orderMapper.insertOrder", order);
-    }
-
-    // �ֹ� ����
-    public void modifyorder(OrderDTO order) {
-        sqlSessionTemplate.update("orderMapper.updateOrder", order);
-    }
-
-    // �ֹ� ���� (orderNo�� ����)
-    public void removeorder(String orderNo) {
-        sqlSessionTemplate.delete("orderMapper.deleteOrder", orderNo);
-    }
-
-    // Ư�� �ֹ� ���� ��������
-    public OrderDTO getorder(String orderNo) {
-        return sqlSessionTemplate.selectOne("orderMapper.selectByOrderNo", orderNo);
-    }
-	
 }

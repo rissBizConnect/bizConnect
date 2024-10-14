@@ -38,7 +38,7 @@ public class RetireController {
 			@RequestParam(required = false) String retType, @RequestParam(name = "page", required = false) String page,
 			@RequestParam(name = "slimit", required = false) String slimit, HttpSession session) {
 		Member mm = new Member("GID009", "COM010", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Marketing Manager", "N");
+				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "N");
 		session.setAttribute("loginUser", mm);
 
 		Member member = (Member) session.getAttribute("loginUser");

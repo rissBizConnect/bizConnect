@@ -26,7 +26,7 @@ public class Member implements Serializable {
 	public Member() {
 		super();
 	}
-	
+
 	
 	public Member(String gId, String comCode, String userPW, String userName, String userRegNo, Date userEntry,
 			String userRole, String status) {
