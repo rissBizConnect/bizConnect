@@ -258,6 +258,7 @@
         </div>
 
     </div>
+<<<<<<< HEAD
     
    <script>
 	// 추가된 자바스크립트 부분 시작**
@@ -267,6 +268,8 @@
 	    document.getElementById('weightInput').style.display = criValue === 'weight' ? 'block' : 'none';
 	    document.getElementById('volumeInput').style.display = criValue === 'volume' ? 'block' : 'none';
 });
+=======
+>>>>>>> main
 
 </body>
 </html>

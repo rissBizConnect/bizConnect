@@ -1,17 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>bizconnect</title>
+	<title>Home</title>
 </head>
 <body>
+<h1>
+	Hello world!  
+</h1>
 
-
-<c:forEach items="${ requestScope.one1}" var="n">
-	${ n.test }
-</c:forEach> home,, 만드는중,,-인경
+<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

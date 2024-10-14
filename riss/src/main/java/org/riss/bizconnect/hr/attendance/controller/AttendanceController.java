@@ -2,12 +2,15 @@ package org.riss.bizconnect.hr.attendance.controller;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpSession;
 
 import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.common.model.dto.Search;
 import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
 import org.riss.bizconnect.hr.attendance.model.service.AttendanceService;
 import org.slf4j.Logger;
@@ -29,14 +32,15 @@ public class AttendanceController {
 	@RequestMapping("moveAttendance.do")
 	public ModelAndView moveAttendance(HttpSession session, ModelAndView mv) {
 
-		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 		
 		Member loginUser = (Member)session.getAttribute("loginUser");
 		Attendance attendance = attendanceService.selectTodayAttendance(loginUser);
-
-		logger.info("확인 : " + attendanceService.insertAttendance(attendance));
+		logger.info("attendance : " + attendance);
+		
+		logger.info("확인 : " + attendanceService.insertAttendance(loginUser));
 		if (attendance == null || attendance.getGoDate() == null) {
 			mv.addObject("gooutBTN", "출 근");
 			mv.addObject("URL", "goWorkCheck.do");
@@ -58,8 +62,8 @@ public class AttendanceController {
 	@RequestMapping("goWorkCheck.do")
 	public String goWork(HttpSession session) {
 
-		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 
 		Member loginUser = (Member) session.getAttribute("loginUser");
@@ -76,15 +80,15 @@ public class AttendanceController {
 	@RequestMapping("outWorkCheck.do")
 	public String outWork(HttpSession session) {
 
-		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 
 		Member loginUser = (Member) session.getAttribute("loginUser");
 		Attendance attendance = attendanceService.selectTodayAttendance(loginUser);
 		attendance.setOutDate(new Timestamp(System.currentTimeMillis()));
 		attendance.calTimestamp();
-		
+		logger.info("attendance : " + attendance);
 		if (attendanceService.updateOutD(attendance) > 0) {
 			return "redirect:moveAttendance.do";
 		} else {
@@ -97,27 +101,25 @@ public class AttendanceController {
 			@RequestParam(name = "page", required = false) String page,
 			@RequestParam(name = "limit", required = false) String slimit) {
 
-		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
+		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
 		session.setAttribute("loginUser", member);
 
 		
 		Member loginUser = (Member) session.getAttribute("loginUser");
-		// 페이징 처리
+
 		int currentPage = 1;
 		if (page != null) {
 			currentPage = Integer.parseInt(page);
 		}
 
-		// 한 페이지에 출력할 공지 갯수 10개로 지정
 		int limit = 10;
 		if (slimit != null) {
 			limit = Integer.parseInt(slimit);
 		}
 
-		// 총 목록갯수 조회해서 총 페이지 수 계산함
-		int listCount = attendanceService.selectListCount();
-		// 페이지 관련 항목 계산 처리
+		int listCount = attendanceService.selectListCount(loginUser);
+
 		Paging paging = new Paging(loginUser.getgId(), loginUser.getComCode(), listCount, limit, currentPage, "moveAttendanceCheck.do");
 		paging.calculate();
 
@@ -130,25 +132,178 @@ public class AttendanceController {
 			mv.addObject("currentPage", currentPage);
 			mv.setViewName("hr/attendanceCheck");
 		} else {
-			mv.addObject("message", currentPage + " 페이지 목록 조회 실패!");
-			mv.setViewName("common/error");
+			mv.addObject("error", "조회 정보가 없습니다.");
+			mv.setViewName("hr/attendanceUpdateM");
 		}
 		return mv;
 	}
-
-/*	@RequestMapping("moveAttendanceUpdate.do")
-	public ModelAndView moveAttendanceUpdate(HttpSession session, ModelAndView mv) {
-
-		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
+	
+	@RequestMapping("moveAttendanceUpdateM.do")
+	public ModelAndView moveAttendanceUpdateM(
+			HttpSession session, 
+			ModelAndView mv,
+			@RequestParam(name = "page", required = false) String page,
+			@RequestParam(name = "limit", required = false) String slimit,
+			@RequestParam(name = "fileter", required = false) String fileter,
+			@RequestParam(name = "smember", required = false) String smember,
+			@RequestParam(name = "begin", required = false) Date begin,
+			@RequestParam(name = "end", required = false) Date end,
+			@RequestParam(name = "work", required = false) String work) {
+		Member mm = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
 				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager");
-		session.setAttribute("loginUser", member);
+		session.setAttribute("loginUser", mm);
+		logger.info("page : " + page);
+		logger.info("limit : " + slimit);
+		logger.info("fileter : " + fileter);
+		logger.info("smember : " + smember);
+		logger.info("begin : " + begin);
+		logger.info("end : " + end);
+		logger.info("work : " + work);
+		
+		int listCount = 0, currentPage = 1, limit = 10;
+		ArrayList<Attendance> list = new ArrayList<Attendance>();
+		ArrayList<String> memberlist = new ArrayList<String>();
+		Search search = new Search();
+		if(fileter == null) {
+			fileter = "all";
+		}
+		
+		Member member = (Member) session.getAttribute("loginUser");
+		memberlist = attendanceService.selectComMListCount(member.getComCode());
+		
+		if(smember != null) {
+			member.setgId(smember);
+		} 
+		
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
+		}
 
-		Member loginUser = (Member) session.getAttribute("loginUser");
-		ArrayList<Attendance> myAttendance = attendanceService.selectMyAttendance(loginUser);
+		if (slimit != null) {
+			limit = Integer.parseInt(slimit);
+		}
 
-		mv.addObject("list", myAttendance);
-
-		mv.setViewName("hr/attendanceCheck");
+		if(fileter.equals("date") && begin != null && end != null) {
+			search.setBegin(begin);
+			search.setEnd(end);
+			search.setComCode(member.getComCode());
+		}
+		
+		if(fileter == null || fileter.equals("all")) {
+			listCount = attendanceService.selectComListCount(member);
+		} else if(fileter.equals("member")) {
+			listCount = attendanceService.selectComFileterMListCount(member);
+		} else if(fileter.equals("date")) {
+			listCount = attendanceService.selectComDateMListCount(search);
+		} else if(fileter.equals("work")) {
+			ArrayList<Attendance> tlist = attendanceService.selectComList(member);
+			for(Attendance l : tlist) {
+				if(work.equals("nwork") && l.calHTimestamp() >= 8) {
+					listCount++;
+				} else if(work.equals("abwork") && l.calHTimestamp() < 8) {
+					listCount++;
+				}
+			}
+		} else {
+			mv.setViewName("common/error");
+		} 
+		
+		Paging paging = new Paging(member.getgId(), member.getComCode(), listCount, limit, currentPage, "moveAttendanceUpdateM.do");
+		paging.calculate();
+		
+		
+		if(fileter == null || fileter.equals("all")) {
+			list = attendanceService.selectComAttendance(paging);
+		} else if(fileter.equals("member")) {
+			list = attendanceService.selectComFileterMAttendance(paging);
+		}  else if(fileter.equals("date")) {
+			search.setStartRow(paging.getStartRow());
+			search.setEndRow(paging.getEndRow());
+			list = attendanceService.selectComDateAttendance(search);
+		} else if(fileter.equals("work")){
+			list = attendanceService.selectComAttendance(paging);
+			ArrayList<Attendance> tlist = new ArrayList<Attendance>();
+			for(Attendance l : list) {
+				if(work.equals("nwork") && l.calHTimestamp() >= 8) {
+					logger.info("calHTimestamp1 " + l.calHTimestamp());
+					tlist.add(l);
+				} else if(work.equals("abwork") && l.calHTimestamp() < 8) {
+					logger.info("calHTimestamp2 " + l.calHTimestamp());
+					tlist.add(l);
+				}
+			}
+			logger.info("tlist " + tlist);
+			list = tlist;
+		} else {
+			mv.setViewName("common/error");
+		}
+		
+		mv.addObject("list", list);
+		mv.addObject("paging", paging);
+		mv.addObject("currentPage", currentPage);
+		mv.addObject("fileter", fileter);
+		mv.addObject("memberlist", memberlist);
+		mv.addObject("smember", smember);
+		mv.addObject("work", work);
+		if(fileter.equals("date")) {
+			mv.addObject("begin", search.getBegin());
+			mv.addObject("end", search.getEnd());
+		}
+		mv.setViewName("hr/attendanceUpdateM");
+		if (list == null && list.size() == 0) {	
+			mv.addObject("error", "조회 정보가 없습니다.");
+		} 
 		return mv;
-	}*/
+	}
+	
+	@RequestMapping("attendanceUpdatePop.do")
+	public ModelAndView moveAttendanceUpdatePop(
+			ModelAndView mv,
+			@RequestParam(name = "gId", required = false) String gId,
+			@RequestParam(name = "day", required = false) Date day,
+			@RequestParam(name = "goDate", required = false) String goDate,
+			@RequestParam(name = "outDate", required = false) String outDate
+			) {
+
+		mv.addObject("gId", gId);
+		mv.addObject("day", day);
+		if(goDate != null && goDate.length() > 0) {
+			mv.addObject("goDate", goDate.substring(11,16).toString());
+		}
+		if(outDate != null && outDate.length() > 0) {
+			mv.addObject("outDate", outDate.substring(11,16).toString());
+		}
+		mv.setViewName("hr/attendanceUpdatePop");
+		
+		return mv;
+	}
+	
+	@RequestMapping("updateAttendance.do")
+	public String updateAttendance(
+			HttpSession session, 
+			Attendance attendance,
+			@RequestParam(name = "goD", required = false) String goD,
+			@RequestParam(name = "outD", required = false) String outD
+			) {
+		Member member = new Member("GID009", "COM009", "password012", "Ella Harris", "861010-0123456",
+				Date.valueOf("2023-10-10"), "Marketing Manager", "Y");
+		session.setAttribute("loginUser", member);
+		
+		Timestamp goDTS = Timestamp.valueOf(attendance.getDay().toString() + " " + goD + ":00.0");
+		Timestamp outDTS = Timestamp.valueOf(attendance.getDay().toString() + " " + outD + ":00.0");
+		
+		attendance.setComCode(((Member)session.getAttribute("loginUser")).getComCode());
+		attendance.setGoDate(goDTS);
+		attendance.setOutDate(outDTS);
+		
+		attendance.calTimestamp();
+		logger.info("attendance : " + attendance);
+		int as = attendanceService.updateAttendnce(attendance);
+		logger.info("as : " + as);
+		if(as == 1) {
+			return "redirect:moveAttendanceUpdateM.do";
+		}
+		
+		return "common/error";
+	}
 }
