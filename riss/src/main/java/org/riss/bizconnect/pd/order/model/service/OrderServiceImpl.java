@@ -16,8 +16,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void addorder(OrderDTO order) {
-        orderDAO.addorder(order);  // DAO의 addOrder 메서드를 호출
-    }
+    };
 
     @Override
     public void modifyorder(OrderDTO order) {

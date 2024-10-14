@@ -6,18 +6,18 @@ import java.time.LocalDate;
 public class PorderDTO implements Serializable {
 	private static final long serialVersionUID = 4097767075615912169L;
 	
-	private int PorderNo; //¹ßÁÖ¹øÈ£
-	private String LicenseCode; //È¸»çÄÚµå
-	private String ProductNo; //Á¦Ç°¹øÈ£
-	private String ClientCode; //°Å·¡Ã³¹øÈ£
-	private String PorderName; //¹ßÁÖÁ¦Ç°¸í
-	private double PorderPrice; //¹ßÁÖ±İ¾×
-	private double PorderTax; //¹ßÁÖÁ¦Ç° ºÎ°¡¼¼
-	private int PorderCnt; //¹ßÁÖ¼ö·®
-	private LocalDate PorderDate; //¹ßÁÖÀÏ
-	private LocalDate DueDate; //³³±âÀÏ
-	private String PorderStatus; //¹ßÁÖ»óÅÂ
-	private String FieldNum; //Ã¢°í¹øÈ£
+	private int PorderNo; //ë°œì£¼ë²ˆí˜¸
+	private String LicenseCode; //íšŒì‚¬ì½”ë“œ
+	private String ProductNo; //ì œí’ˆë²ˆí˜¸
+	private String ClientCode; //ê±°ë˜ì²˜ë²ˆí˜¸
+	private String PorderName; //ë°œì£¼ì œí’ˆëª…
+	private double PorderPrice; //ë°œì£¼ê¸ˆì•¡
+	private double PorderTax; //ë°œì£¼ì œí’ˆ ë¶€ê°€ì„¸
+	private int PorderCnt; //ë°œì£¼ìˆ˜ëŸ‰
+	private LocalDate PorderDate; //ë°œì£¼ì¼
+	private LocalDate DueDate; //ë‚©ê¸°ì¼
+	private String PorderStatus; //ë°œì£¼ìƒíƒœ
+	private String FieldNum; //ì°½ê³ ë²ˆí˜¸
 	
 	public PorderDTO() {
 		super();

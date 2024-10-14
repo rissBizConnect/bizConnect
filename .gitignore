@@ -20,8 +20,3 @@ target/
 
 # Logs
 *.logs
-
-# 기타 IDE 또는 개인 설정 파일들
-.DS_Store
-*.swp
-*.jar

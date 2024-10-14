@@ -1,17 +1,13 @@
 package org.riss.bizconnect.pd.order.model.controller;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import java.time.LocalDate;
-
 import org.riss.bizconnect.pd.order.model.dto.OrderDTO;
 import org.riss.bizconnect.pd.order.model.service.OrderService;
+import org.riss.bizconnect.pd.product.model.controller.ProductController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -25,36 +21,11 @@ public class OrderController {
 
     @RequestMapping("order.do")
     public ModelAndView orderTest(ModelAndView mv) {
-        mv.setViewName("stock/order/order");
+        mv.setViewName("stock/order");
         List<OrderDTO> order = orderService.listAllOrders();
         mv.addObject("all", order);
         return mv;
     }
-    
-    
-    @RequestMapping("addorder.do")
-    public ModelAndView addorder(@ModelAttribute OrderDTO order, ModelAndView mv) {
-        // ¿äÃ»ÀÌ `GET` ¹æ½ÄÀÏ ¶§, ÆûÀ» º¸¿©ÁÖ±â
-        if (order.getOrderCd() == null) {
-            mv.setViewName("stock/order/addorder");
-            return mv;
-        }
-
-        // ÇÊ¼ö °ª °ËÁõ
-        if (order.getOrderType() == null || order.getOrderType().isEmpty()) {
-            mv.addObject("error", "ÁÖ¹® Å¸ÀÔÀº ÇÊ¼ö Ç×¸ñÀÔ´Ï´Ù.");
-            mv.setViewName("stock/order/addorder");
-            return mv;
-        }
-
-        // ÁÖ¹® µî·Ï Ã³¸®
-        orderService.addorder(order);
-
-        // ¼º°ø ÈÄ ÁÖ¹® Á¶È¸ ÆäÀÌÁö·Î ¸®´ÙÀÌ·ºÆ®
-        mv.setViewName("redirect:/bizconnect/order.do");
-        return mv;
-    }
-    
 }
 /*@RestController
 @RequestMapping("/orders")
@@ -72,7 +43,7 @@ public class OrderController {
 
     @PutMapping("/{orderCd}")
     public void updateOrder(@PathVariable Long orderCd, @RequestBody OrderDTO order) {
-        order.setOrderCd(orderCd); // ¿äÃ»µÈ orderCd¸¦ DTO¿¡ ¼³Á¤
+        order.setOrderCd(orderCd); // ï¿½ï¿½Ã»ï¿½ï¿½ orderCdï¿½ï¿½ DTOï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         orderService.modifyOrder(order);
     }
 
