@@ -1,7 +1,6 @@
 package org.riss.bizconnect.hr.attendance.model.dto;
 
 import java.io.Serializable;
-import java.lang.System.Logger;
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -13,13 +12,13 @@ public class Attendance implements Serializable {
 	private Date day;
 	private Timestamp goDate;
 	private Timestamp outDate;
-	private long time;
+	private Timestamp time;
 	
 	public Attendance() {
 		super();
 	}
 
-	public Attendance(String gId, String comCode, Date day, Timestamp goDate, Timestamp outDate, long time) {
+	public Attendance(String gId, String comCode, Date day, Timestamp goDate, Timestamp outDate, Timestamp time) {
 		super();
 		this.gId = gId;
 		this.comCode = comCode;
@@ -69,11 +68,11 @@ public class Attendance implements Serializable {
 		this.outDate = outDate;
 	}
 
-	public long getTime() {
+	public Timestamp getTime() {
 		return time;
 	}
 
-	public void setTime(long time) {
+	public void setTime(Timestamp time) {
 		this.time = time;
 	}
 
@@ -86,20 +85,8 @@ public class Attendance implements Serializable {
 		return "Attendance [gId=" + gId + ", comCode=" + comCode + ", day=" + day + ", goDate=" + goDate + ", outDate="
 				+ outDate + ", time=" + time + "]";
 	}
-	
-	public void calTimestamp() { 
-		this.time = (this.outDate.getTime() - this.goDate.getTime()) / 1000;
-	}
 
-	public long calSTimestamp() { 
-		return this.time % 60;
-	}
-	
-	public long calMTimestamp() { 
-		return (this.time / 60) % 60;
-	}
-	
-	public long calHTimestamp() { 
-		return this.time / (60 * 60);
+	public void calTimestamp() {
+		this.time = new Timestamp(this.outDate.getTime() - this.goDate.getTime());
 	}
 }

@@ -48,12 +48,7 @@ public class ProductController {
 	@RequestMapping("insertproduct.do")
 	public ModelAndView insertproduct(ModelAndView mv, HttpSession session, HttpServletRequest request) {
 		
-<<<<<<< HEAD
 	    Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");//지워!!!!!!!!!!!!!!!!!!!!
-=======
-		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "Y");
->>>>>>> main
 	    session.setAttribute("loginUser", member);//너도!!!!!!!!!!!!!!!!!!!!!!!!
 	     
 	    member = (Member)session.getAttribute("loginUser");

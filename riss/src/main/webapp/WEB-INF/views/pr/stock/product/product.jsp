@@ -65,13 +65,8 @@
   <h2>제품 등록</h2>
   <form action="insertproduct.do" method="post" onsubmit="return validate();" enctype="multipart/form-data">
     <div class="form-group">
-<<<<<<< HEAD
       <label for="orderType">발주/수주 구분</label>
 	    <select id="orderType" name="orderType">
-=======
-      <label for="OrderType">발주/수주 구분</label>
-	    <select id="OrderType" name="OrderType">
->>>>>>> main
 	        <option value="P">발주</option>
 	        <option value="O">수주</option>
 	    </select>            
@@ -83,41 +78,24 @@
     </div>
 
     <div class="form-group">
-<<<<<<< HEAD
       <label for="productfileter">규격</label>
       <input type="text" id="productfileter" name="productfileter" required>
     </div>
 		<!-- 크기 입력 필드 -->
 		<div class="form-group dynamic-field" id="sizeInput" style="display:none;">
 		  <label for="size">크기 (cm)</label>
-=======
-      <label for="ProductCri">규격</label>
-      <input type="text" id="ProductCri" name="ProductCri" required>
-    </div>
-		<!-- 크기 입력 필드 -->
-		<div class="form-group dynamic-field" id="sizeInput" style="display:none;">
-		  <label for="ProductSize">크기 (cm)</label>
->>>>>>> main
 		  <input type="text" id="ProductSize" name="ProductSize">
 		</div>
 		
 		<!-- 중량 입력 필드 -->
 		<div class="form-group dynamic-field" id="weightInput" style="display:none;">
-<<<<<<< HEAD
 		  <label for="weight">중량 (kg)</label>
-=======
-		  <label for="ProductWeight">중량 (kg)</label>
->>>>>>> main
 		  <input type="text" id="ProductWeight" name="ProductWeight">
 		</div>
 		
 		<!-- 용량 입력 필드 -->
 		<div class="form-group dynamic-field" id="volumeInput" style="display:none;">
-<<<<<<< HEAD
 		  <label for="volume">용량 (L)</label>
-=======
-		  <label for="ProductVolume">용량 (L)</label>
->>>>>>> main
 		  <input type="text" id="ProductVolume" name="ProductVolume">
 		</div>
     
@@ -133,7 +111,6 @@
     </div>
 
     <div class="form-group">
-<<<<<<< HEAD
 	<form action="filterProductStockStatus.do" method="get">
 	    <label for="stockStatus">재고 상태(현재 재고량)</label>
 	    <select id="stockStatus" name="stockStatus">
@@ -143,10 +120,6 @@
 	    </select>
 	    <input type="submit" value="필터링">
 </form>
-=======
-      <label for="ProductcStock">재고수량(현재 재고량)</label>
-      <input type="text" id="ProductcStock" name="ProductcStock" required>
->>>>>>> main
     </div>
     
     <div class="form-group">

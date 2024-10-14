@@ -10,9 +10,9 @@ public class Company implements Serializable{
 	String comShop;		//상호
 	String comType;		//업종
 	String comName;		//대표자이름
-	String comTel;		//번호
+	String comTel;			//번호
 	String comCBR;		//사업자등록번호
-	String comAddress;	//주소
+	String comAddress;		//주소
 	String comMail;		//메일
 	String comBank;		//계좌
 }
