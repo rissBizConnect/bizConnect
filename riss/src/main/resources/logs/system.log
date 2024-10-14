@@ -1,0 +1,41 @@
+[09:57:09][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[09:57:09][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 538 ms
+[09:57:09][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[09:57:10][INFO ][FrameworkServlet.java: 547] - Completed initialization in 538 ms
+[09:57:15][INFO ][MemberController.java: 49] - loginUser : null
+[10:15:15][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[10:15:15][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 495 ms
+[10:15:15][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[10:15:16][INFO ][FrameworkServlet.java: 547] - Completed initialization in 525 ms
+[10:19:04][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[10:19:04][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 367 ms
+[10:19:04][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[10:19:05][INFO ][FrameworkServlet.java: 547] - Completed initialization in 442 ms
+[10:34:58][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[10:34:58][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 364 ms
+[10:34:58][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[10:34:59][INFO ][FrameworkServlet.java: 547] - Completed initialization in 442 ms
+[10:46:34][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[10:46:35][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 376 ms
+[10:46:35][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[10:46:35][INFO ][FrameworkServlet.java: 547] - Completed initialization in 498 ms
+[11:00:04][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:00:04][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 356 ms
+[11:00:04][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:00:05][INFO ][FrameworkServlet.java: 547] - Completed initialization in 468 ms
+[11:03:12][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:03:12][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 346 ms
+[11:03:12][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:03:13][INFO ][FrameworkServlet.java: 547] - Completed initialization in 401 ms
+[11:03:34][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:03:34][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 334 ms
+[11:03:34][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:03:35][INFO ][FrameworkServlet.java: 547] - Completed initialization in 433 ms
+[11:04:58][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:04:59][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 369 ms
+[11:04:59][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:04:59][INFO ][FrameworkServlet.java: 547] - Completed initialization in 428 ms
+[11:06:21][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[11:06:22][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 537 ms
+[11:06:22][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[11:06:22][INFO ][FrameworkServlet.java: 547] - Completed initialization in 563 ms
