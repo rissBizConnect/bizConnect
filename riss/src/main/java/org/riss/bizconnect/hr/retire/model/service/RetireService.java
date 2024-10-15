@@ -21,6 +21,5 @@ public interface RetireService {
 		Retire selectRetireByGidAndComCode(Retire retire);
 		int deleteRetireChange(Retire retire);
 		// 총근무일
-		int calculateTotalWorkingDays(Date userEntryDate, Date retDate);
-	    void addRetire(Retire retire);
+		
 }
