@@ -43,4 +43,14 @@ public class SalaryServiceImpl implements SalaryService {
 	public int deleteMember(Salary salary) {
 		return salaryDao.deleteMember(salary);
 	}
+
+	@Override
+	public int insertSalary(Salary salary) {
+		return salaryDao.insertSalary(salary);
+	}
+
+	@Override
+	public int updateSalary(Salary salary) {
+		return salaryDao.updateSalary(salary);
+	}
 }

@@ -46,4 +46,12 @@ public class SalaryDao {
 		return sqlSessionTemplate.delete("salaryMapper.deleteMember", salary);
 	}
 
+	public int insertSalary(Salary salary) {
+		return sqlSessionTemplate.insert("salaryMapper.insertSalary", salary);
+	}
+
+	public int updateSalary(Salary salary) {
+		return sqlSessionTemplate.update("salaryMapper.updateSalary", salary);
+	}
+
 }
