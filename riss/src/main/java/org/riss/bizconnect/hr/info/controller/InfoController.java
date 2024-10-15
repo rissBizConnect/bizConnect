@@ -261,4 +261,27 @@ public class InfoController {
 		}
 		return "redirect:moveInfo.do";
 	}
+	
+	 // 사원을 퇴직자로 전환
+    @RequestMapping(value = "convertMemberToRetire.do", method = RequestMethod.POST)
+    public ModelAndView convertMemberToRetire(
+            @RequestParam("gId") String gid, 
+            @RequestParam("comCode") String comCode){
+    		logger.info("adsas");
+        Member member = new Member();
+        member.setgId(gid);
+        member.setComCode(comCode);
+        // 기타 필요한 필드 설정
+
+        int result = infoService.convertMemberToRetire(member);
+
+        ModelAndView mav = new ModelAndView();
+        if (result > 0) {
+            mav.setViewName("redirect:/retList.do"); // 성공 시 리다이렉트
+        } else {
+            mav.setViewName("errorPage"); // 실패 시 에러 페이지로 리다이렉트
+            mav.addObject("message", "사원을 퇴직자로 전환하는 데 실패했습니다.");
+        }
+        return mav;
+    }
 }

@@ -25,5 +25,14 @@ public interface InfoService {
 	int selectKeywordCount(Search search);
 
 	ArrayList<Member> selectKeyword(Search search);
+	
+	// 사원 퇴직자 변환
+    int insertMemberChange(Member member);
+    int updateMemberChange(Member member);
+    int deleteMemberChange(Member member);
+    int convertMemberToRetire(Member member);
+	Member selectMemberByGidAndComCode(Member member);
 
+	
+	
 }
