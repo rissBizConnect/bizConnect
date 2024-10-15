@@ -27,7 +27,7 @@ public class Member implements Serializable {
 		super();
 	}
 
-	
+
 	public Member(String gId, String comCode, String userPW, String userName, String userRegNo, Date userEntry,
 			String userRole, String status) {
 		super();
@@ -63,13 +63,16 @@ public class Member implements Serializable {
 		this.status = status;
 	}
 
-
+	public Member(String gId, String comCode, String status) {
+		super();
+		this.gId = gId;
+		this.comCode = comCode;
+		this.status = status;
+	}
 
 	public String getgId() {
 		return gId;
 	}
-
-
 
 	public void setgId(String gId) {
 		this.gId = gId;
