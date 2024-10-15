@@ -12,6 +12,8 @@ import org.riss.bizconnect.common.model.dto.Paging;
 import org.riss.bizconnect.common.model.dto.Search;
 import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.info.model.service.InfoService;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.riss.bizconnect.hr.retire.model.service.RetireService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,9 @@ public class InfoController {
 
 	@Autowired
 	private InfoService infoService;
+	
+	@Autowired
+	private RetireService retireService;
 
 	@RequestMapping("moveInfo.do")
 	public ModelAndView moveInfo(
@@ -118,11 +123,17 @@ public class InfoController {
 		String muserFacePictSavePath = request.getSession().getServletContext().getRealPath("resources/face_files/") 
 				+ mem.getComCode() + "_" + mem.getgId() + "_FacePict" 
 				+ muserFacePictPath.getOriginalFilename().substring(muserFacePictPath.getOriginalFilename().lastIndexOf("."));
-
+		
+		Retire retire = new Retire();
+		retire.setComCode(mem.getComCode());
+		retire.setGid(mem.getgId());
+		retire.setUserEntryDate(mem.getUserEntry());
+		
 		mem.setUserFacePictPath(muserFacePictPath.getOriginalFilename().substring(muserFacePictPath.getOriginalFilename().lastIndexOf(".")));
 		if(infoService.insertMember(mem) != 1) {
 			return "common/error";
 		}
+		retireService.insertRetire(retire);
 		
 		if (!muserFacePictPath.isEmpty()) {
 			try {

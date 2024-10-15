@@ -20,4 +20,8 @@ public interface SalaryService {
 
 	int deleteMember(Salary salary);
 
+	int insertSalary(Salary salary);
+
+	int updateSalary(Salary salary);
+
 }
