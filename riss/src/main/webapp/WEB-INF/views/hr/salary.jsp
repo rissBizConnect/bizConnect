@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <link href="/bizconnect/resources/css/hr/salary.css?after" rel="stylesheet"/>
 <script type="text/javascript" src="${path}/resources/js/jquery-3.7.1.min.js"></script>
-<script src="${path}/resources/js/hr/salary.js" charset="utf-8"></script>
+<script src="${path}/resources/js/hr/salary.js?after" charset="utf-8"></script>
   
 </head>
 <body>
@@ -17,14 +17,14 @@
 		<c:import url="/WEB-INF/views/common/header.jsp" />
 		<c:import url="/WEB-INF/views/common/menubar.jsp" />
 		<div class = contentPos>
-			<h4>사원명부</h4>
+			<h4>급여</h4>
 			<hr>
 			<form action="moveSalary.do">
 				<input type="hidden" id="fileter" name="fileter" value="keyword" >
 				<input type="text" class="searchText" id="keyword" name="keyword" placeholder="사원이름 검색">
 				<input type="submit" class="searchBTN" value="검 색">
 			</form>
-			<button class="insertBTN" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveSalary.do'; return false;">추 가</button>
+			<button class="insertBTN" onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/moveSalaryInsert.do'; return false;">추 가</button>
 
 			<div id="tables">
 		        <table class="table" id="table1" border="1" cellspacing="0"">
@@ -43,8 +43,8 @@
 					<td class = "row">${salaryData.accountNumber }</td>
 					<td class = "row">${salaryData.salaryPay }</td>
 					<td class = "row">
-						<button class="updateBTN" onclick="memberUpdate('${salaryData.gId }'); return false;">수 정</button>
-						<button class="deleteBTN" onclick="memberDelete('${salaryData.gId }', '${salaryData.salaryNo }'); return false;">삭 제</button>
+						<button class="updateBTN" onclick="salaryUpdate('${salaryData.gId }','${salaryData.salaryNo }', '${salaryData.name }'); return false;">수 정</button>
+						<button class="deleteBTN" onclick="salaryDelete('${salaryData.gId }', '${salaryData.salaryNo }'); return false;">삭 제</button>
 					</td>
 				</tr></c:forEach>
 		        </table>
