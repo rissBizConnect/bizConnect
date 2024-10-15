@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.common.model.dto.Paging;
 import org.riss.bizconnect.hr.retire.model.dto.Retire;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,33 @@ public class RetireDAO {
 		List<Retire> list = sqlSessionTemplate.selectList("retireMapper.selectRetireList", paging);
 		return (ArrayList<Retire>)list;
 	}
-  
-   
+
+	
+	// 퇴직자 사원 변환
+    public Retire selectRetireByGidAndComCode(Retire retire) {
+        return sqlSessionTemplate.selectOne("retireMapper.selectRetireByGidAndComCode", retire);
+    }
+
+    public int insertRetireChange(Retire retire) {
+        return sqlSessionTemplate.insert("retireMapper.insertRetire", retire);
+    }
+
+    public int updateRetireChange(Retire retire) {
+        return sqlSessionTemplate.update("retireMapper.updateRetire", retire);
+    }
+
+    public int deleteRetireChange(Retire retire) {
+        return sqlSessionTemplate.delete("retireMapper.deleteRetire", retire);
+    }
+
+	public Retire selectRetireList(Retire retire) {
+		return sqlSessionTemplate.selectOne("retireMapper.selectRetireList", retire);
+	}
+
+	public int convertRetireToMember(Retire retire) {
+		return sqlSessionTemplate.update("retireMapper.convertRetireToMember", retire);
+	}
+
+
+	
 }

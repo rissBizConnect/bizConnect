@@ -21,6 +21,15 @@ public class Retire implements Serializable {
 		super();
 	}
 
+	
+	public Retire(String gid, String comCode, String status) {
+		super();
+		this.gid = gid;
+		this.comCode = comCode;
+		this.status = status;
+	}
+
+
 	public Retire(String retNo, String gid, Date retDate, String retType, String comCode, Date userEntryDate) {
 		super();
 		this.retNo = retNo;

@@ -2,20 +2,19 @@ package org.riss.bizconnect.hr.retire.model.controller;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.common.model.dto.Paging;
-import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.retire.model.dto.Retire;
 import org.riss.bizconnect.hr.retire.model.service.RetireService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,15 +28,21 @@ public class RetireController {
 	@Autowired
 	private RetireService retireService; // RetireService 의존성 주입
 
+	
 	// 퇴직자 목록을 조회하는 메서드
 	@RequestMapping("retList.do")
-	public ModelAndView selectRetireList(HttpServletRequest request, @RequestParam(required = false) String gid,
-			@RequestParam(required = false) String comCode, @RequestParam(required = false) String retNo,
-			@RequestParam(required = false) Date userEntryDate, @RequestParam(required = false) Date retDate,
-			@RequestParam(required = false) String retType, @RequestParam(name = "page", required = false) String page,
+	public ModelAndView selectRetireList(
+			HttpServletRequest request, 
+			@RequestParam(required = false) String gid,
+			@RequestParam(required = false) String comCode, 
+			@RequestParam(required = false) String retNo,
+			@RequestParam(required = false) Date userEntryDate, 
+			@RequestParam(required = false) Date retDate,
+			@RequestParam(required = false) String retType, 
+			@RequestParam(name = "page", required = false) String page,
 			@RequestParam(name = "slimit", required = false) String slimit, HttpSession session) {
 		Member mm = new Member("GID009", "COM010", "password012", "Ella Harris", "861010-0123456",
-				Date.valueOf("2023-10-10"), "Full-time", "Marketing Manager", "N");
+				Date.valueOf("2023-10-10"), "Marketing Manager", "N");
 		session.setAttribute("loginUser", mm);
 
 		Member member = (Member) session.getAttribute("loginUser");
@@ -107,8 +112,38 @@ public class RetireController {
 
 	// 퇴직자를 삭제합니다.
 	@RequestMapping("retDelete.do")
-	public ModelAndView deleteRetire(@RequestParam("retNo") String retNo) {
+	public ModelAndView deleteRetire(
+			@RequestParam("retNo") String retNo) {
 		retireService.deleteRetire(retNo); // 서비스 호출하여 퇴직자 삭제
 		return new ModelAndView("redirect:/retList.do"); // 목록 페이지로 리다이렉트
 	}
+
+    // 퇴직자를 사원으로 전환
+    @RequestMapping(value = "convertRetireToMember.do", method = RequestMethod.POST)
+    public ModelAndView convertRetireToMember(
+            @RequestParam(value = "gId") String gid, 
+            @RequestParam(value = "comCode") String comCode) {
+        Retire retire = new Retire();
+        retire.setGid(gid);
+        retire.setComCode(comCode);
+        // 기타 필요한 필드 설정
+
+        int result = retireService.convertRetireToMember(retire);
+
+        ModelAndView mav = new ModelAndView();
+        if (result > 0) {
+            mav.setViewName("redirect:/retList.do"); // 성공 시 리다이렉트
+        } else {
+            mav.setViewName("errorPage"); // 실패 시 에러 페이지로 리다이렉트
+            mav.addObject("message", "퇴직자를 사원으로 전환하는 데 실패했습니다.");
+        }
+        return mav;
+    }
+    
+    //총 근무일
+    @RequestMapping(value = "addTimeRetire")
+    public ModelAndView addRetire(Retire retire) {
+        retireService.addRetire(retire);
+        return new ModelAndView("redirect:/retList.do");
+    }
 }

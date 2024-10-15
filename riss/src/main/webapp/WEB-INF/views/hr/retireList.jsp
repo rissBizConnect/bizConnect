@@ -39,6 +39,7 @@
             <th>총 근무일</th>
             <th>수정</th>
             <th>삭제</th>
+            <th>사원 전환</th>
         </tr>
     </thead>
     <tbody>
@@ -48,13 +49,16 @@
                 <td>${retire.retType}</td>
                 <td>${retire.exitReason}</td>
                 <td>${retire.retDate}</td>
-                <td>${retire.retTotalDate}</td>
-                <td>
-                    <a href="retireEditForm.do?retNo=${retire.retNo}">수정</a>
-                </td>
-                <td>
-                    <a href="retDelete.do?retNo=${retire.retNo}" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
-                </td>
+                <td>${retire.retTotalDate}</td>            
+                <td><a href="retireEditForm.do?retNo=${retire.retNo}">수정</a></td>
+                <td><a href="retDelete.do?retNo=${retire.retNo}" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a></td>
+                <td><form action="convertRetireToMember.do" method="post">
+   						<input type="text" name="gId" placeholder="GID 입력하세요" required />
+    					<input type="text" name="comCode" placeholder="comCode 입력하세요" required />
+    					<button type="submit">퇴직자에서 사원 변환</button>
+					</form>
+                             
+               </td>
             </tr>
         </c:forEach>
     </tbody>
