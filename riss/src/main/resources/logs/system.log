@@ -424,3 +424,41 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 [16:39:09][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 935 ms
 [16:39:09][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
 [16:39:10][INFO ][FrameworkServlet.java: 547] - Completed initialization in 884 ms
+[17:16:13][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[17:16:14][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 902 ms
+[17:16:14][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[17:16:15][INFO ][FrameworkServlet.java: 547] - Completed initialization in 876 ms
+[17:24:18][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[17:24:19][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 898 ms
+[17:24:19][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[17:24:20][INFO ][FrameworkServlet.java: 547] - Completed initialization in 903 ms
+[17:28:52][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[17:28:53][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 877 ms
+[17:28:53][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[17:28:54][INFO ][FrameworkServlet.java: 547] - Completed initialization in 880 ms
+[17:29:04][INFO ][MemberController.java: 56] - loginUser : null
+[17:29:09][INFO ][MemberController.java: 56] - loginUser : null
+[17:29:48][INFO ][MemberController.java: 56] - loginUser : null
+[17:30:19][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[17:30:20][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 895 ms
+[17:30:20][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[17:30:20][INFO ][FrameworkServlet.java: 547] - Completed initialization in 875 ms
+[17:30:25][INFO ][MemberController.java: 56] - loginUser : null
+[17:35:56][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[17:35:57][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 908 ms
+[17:35:57][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[17:35:58][INFO ][FrameworkServlet.java: 547] - Completed initialization in 899 ms
+[17:36:36][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[17:36:36][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 886 ms
+[17:36:36][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[17:36:37][INFO ][FrameworkServlet.java: 547] - Completed initialization in 889 ms
+[17:36:57][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[17:36:58][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 897 ms
+[17:36:58][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[17:36:59][INFO ][FrameworkServlet.java: 547] - Completed initialization in 896 ms
+[17:37:20][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[17:37:21][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 900 ms
+[17:37:21][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[17:37:21][INFO ][FrameworkServlet.java: 547] - Completed initialization in 880 ms
+[17:37:27][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /bizconnect/getUserDetails.do
+[17:37:45][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /bizconnect/getUserDetails.do
