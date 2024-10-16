@@ -31,7 +31,7 @@ public class AttendanceController {
 			HttpSession session, 
 			ModelAndView mv) {
 		
-		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");
+		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Marketing Manager");
 		session.setAttribute("loginUser", member);
 		
 		Member loginUser = (Member) session.getAttribute("loginUser");
@@ -59,7 +59,7 @@ public class AttendanceController {
 	public String goWork(
 			HttpSession session) {
 		
-		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Full-time", "Marketing Manager");
+		Member member = new Member("GID010", "COM010", "password012", "Ella Harris", "861010-0123456", "Marketing Manager");
 		session.setAttribute("loginUser", member);
 	
 		Member loginUser = (Member) session.getAttribute("loginUser");

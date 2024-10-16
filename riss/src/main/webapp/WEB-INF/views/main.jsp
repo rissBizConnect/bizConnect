@@ -103,7 +103,7 @@
         <li><a href="/bizconnect/main.do">프로필 정보</a></li>
         <li><a href="/bizconnect/profileUpdate.do">개인정보 변경</a></li>
         <li><a href="/bizconnect/companyInfo.do">기업 등록 및 정보</a></li>
-        <li><a href="/bizconnect/noticeList.do">고객센터</a></li>
+        <li><a href="/bizconnect/supportList.do">고객센터</a></li>
     </ul>
 </div>
 
@@ -117,7 +117,7 @@
             </tr>
             <tr>
                 <td>GID:</td>
-                <td>${loginUser.gID}</td>
+                <td>${loginUser.gId}</td>
             </tr>
             <tr>
                 <td>소속:</td>
@@ -133,7 +133,7 @@
             </tr>
             <tr>
                 <td>입사일:</td>
-                <td>${loginUser.userEntryDate}</td>
+                <td>${loginUser.userEntry}</td>
             </tr>
             <tr>
                 <td>전화번호:</td>

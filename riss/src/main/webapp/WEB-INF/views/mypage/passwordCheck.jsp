@@ -9,8 +9,8 @@
     <h1>개인정보 수정</h1>
     <p>개인정보 수정을 위해서 비밀번호를 다시한번 입력해주세요</p>
     <form action="/bizconnect/profileUpdateCheck.do" method="post">
-	    <label for="userPw">비밀번호 입력:</label>
-	    <input type="password" id="userPw" name="userPw" required>
+	    <label for="userPW">비밀번호 입력:</label>
+	    <input type="password" id="userPW" name="userPW" required>
 	    <button type="submit">확인</button>
 	</form>
 

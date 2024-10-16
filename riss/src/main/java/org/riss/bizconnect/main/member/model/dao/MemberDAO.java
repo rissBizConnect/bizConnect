@@ -3,8 +3,8 @@ package org.riss.bizconnect.main.member.model.dao;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.riss.bizconnect.main.member.model.dto.Member;
-import org.riss.bizconnect.main.member.model.dto.User;
+import org.riss.bizconnect.common.model.dto.Member;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -18,13 +18,13 @@ public class MemberDAO {
         return sqlSessionTemplate.selectOne("memberMapper.selectMember", userId);
     }
 
-    public User selectLogin(User user) {
+    public Member selectLogin(Member user) {
         return sqlSessionTemplate.selectOne("memberMapper.selectLogin", user);
     }
 
     // GID가 null이 아닌지 확인하고 업데이트 실행
-    public int updateProfile(User user) {
-        if (user.getgID() != null) {
+    public int updateProfile(Member user) {
+        if (user.getgId() != null) {
             return sqlSessionTemplate.update("memberMapper.updateProfile", user); // 업데이트 실행
         } else {
             // GID 값이 없으면 로그 출력
@@ -33,17 +33,17 @@ public class MemberDAO {
         }
     }
     // 모든 사용자를 조회하는 DAO 메소드
-    public List<User> findAllUsers() {
+    public List<Member> findAllUsers() {
         return sqlSessionTemplate.selectList("memberMapper.findAllUsers");
     }
 
     // 사용자 ID로 특정 사용자를 조회하는 DAO 메소드
-    public User findUserById(String userId) {
+    public Member findUserById(String userId) {
         return sqlSessionTemplate.selectOne("memberMapper.findUserById", userId);
     }
 
     // 사용자 정보를 업데이트하는 DAO 메소드
-    public void updateUser(User user) {
+    public void updateUser(Member user) {
         sqlSessionTemplate.update("memberMapper.updateUser", user);
     }
 }

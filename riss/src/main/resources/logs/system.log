@@ -1,23 +1,26 @@
-[10:52:06][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[10:52:07][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 867 ms
-[10:52:07][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[10:52:08][INFO ][FrameworkServlet.java: 547] - Completed initialization in 843 ms
-[10:52:08][INFO ][SalaryController.java: 96] - asd
-[10:52:08][INFO ][SalaryController.java: 96] - asd
-[10:52:13][INFO ][SalaryController.java: 96] - asd
-[10:52:13][INFO ][SalaryController.java: 98] - asd2
-[10:52:14][INFO ][SalaryController.java: 96] - asd
-[10:52:16][INFO ][SalaryController.java: 96] - asd
-[10:52:16][INFO ][SalaryController.java: 98] - asd2
-[10:52:53][INFO ][SalaryController.java: 96] - asd
-[10:52:53][INFO ][SalaryController.java: 98] - asd2
-[11:01:51][INFO ][SalaryController.java: 96] - asd
-[11:01:51][INFO ][SalaryController.java: 98] - asd2
-[11:01:55][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
-[11:01:56][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 847 ms
-[11:01:56][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
-[11:01:57][INFO ][FrameworkServlet.java: 547] - Completed initialization in 839 ms
-[11:01:57][INFO ][SalaryController.java: 96] - asd
-[11:01:57][INFO ][SalaryController.java: 98] - asd2
-[11:01:57][INFO ][SalaryController.java: 96] - asd
-[11:02:00][WARN ][DispatcherServlet.java: 1278] - No mapping for GET /bizconnect/moveSalaryUpdate.do
+[14:26:18][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[14:26:19][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 909 ms
+[14:26:19][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[14:26:20][INFO ][FrameworkServlet.java: 547] - Completed initialization in 896 ms
+[14:26:30][INFO ][SupportController.java: 56] - Í≥µÏßÄÏÇ¨Ìï≠ Î™©Î°ù Ï°∞Ìöå ÏãúÏûë
+[14:26:31][INFO ][SupportController.java: 103] - supportdetail.do : 2111
+[14:31:35][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[14:31:35][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 509 ms
+[14:31:35][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[14:31:36][INFO ][FrameworkServlet.java: 547] - Completed initialization in 643 ms
+[14:31:56][WARN ][AbstractHandlerExceptionResolver.java: 208] - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'successMessage' for method parameter type String is not present]
+[14:32:05][WARN ][AbstractHandlerExceptionResolver.java: 208] - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+[14:32:14][INFO ][SupportController.java: 56] - Í≥µÏ??Ç¨?ï≠ Î™©Î°ù Ï°∞Ìöå ?ãú?ûë
+[14:32:14][INFO ][SupportController.java: 56] - Í≥µÏ??Ç¨?ï≠ Î™©Î°ù Ï°∞Ìöå ?ãú?ûë
+[14:32:15][INFO ][SupportController.java: 103] - supportdetail.do : 2111
+[14:32:16][INFO ][SupportController.java: 103] - supportdetail.do : 2111
+[14:32:51][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[14:32:52][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 623 ms
+[14:32:52][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[14:32:53][INFO ][FrameworkServlet.java: 547] - Completed initialization in 732 ms
+[14:32:55][INFO ][SupportController.java: 56] - Í≥µÏ??Ç¨?ï≠ Î™©Î°ù Ï°∞Ìöå ?ãú?ûë
+[14:32:57][INFO ][SupportController.java: 56] - Í≥µÏ??Ç¨?ï≠ Î™©Î°ù Ï°∞Ìöå ?ãú?ûë
+[14:32:58][INFO ][SupportController.java: 103] - supportdetail.do : 15
+[14:32:58][INFO ][SupportController.java: 103] - supportdetail.do : 15
+[14:33:00][INFO ][SupportController.java: 103] - supportdetail.do : 13
+[14:33:00][INFO ][SupportController.java: 103] - supportdetail.do : 13

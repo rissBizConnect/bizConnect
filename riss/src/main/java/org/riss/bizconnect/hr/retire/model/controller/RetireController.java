@@ -31,7 +31,8 @@ public class RetireController {
 
 	// 퇴직자 목록을 조회하는 메서드
 	@RequestMapping("retList.do")
-	public ModelAndView selectRetireList(HttpServletRequest request, @RequestParam(required = false) String gid,
+	public ModelAndView selectRetireList(HttpServletRequest request, 
+			@RequestParam(required = false) String gid,
 			@RequestParam(required = false) String comCode, @RequestParam(required = false) String retNo,
 			@RequestParam(required = false) Date userEntryDate, @RequestParam(required = false) Date retDate,
 			@RequestParam(required = false) String retType, @RequestParam(name = "page", required = false) String page,

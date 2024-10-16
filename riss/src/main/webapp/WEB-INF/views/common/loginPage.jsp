@@ -11,8 +11,8 @@
 
 <div id="loginForm">    
     <form action="/bizconnect/login.do" method="post">
-        <label>아이디: <input type="text" name="gID"></label><br>
-        <label>암호: <input type="password" name="userPw"></label><br>
+        <label>아이디: <input type="text" name="gId"></label><br>
+        <label>암호: <input type="password" name="userPW"></label><br>
         <label>회사 코드: <input type="text" name="comCode"></label><br> 
         <input type="submit" value="로그인">
     </form>

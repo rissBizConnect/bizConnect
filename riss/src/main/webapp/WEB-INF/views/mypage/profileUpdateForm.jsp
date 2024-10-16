@@ -89,15 +89,15 @@
 
         <tr>
             <td>이전 비밀번호:</td>
-            <td><input type="password" name="oldPw"></td>
+            <td><input type="password" name="oldPW"></td>
         </tr>
         <tr>
             <td>신규 비밀번호:</td>
-            <td><input type="password" name="newPw"></td>
+            <td><input type="password" name="newPW"></td>
         </tr>
         <tr>
             <td>신규 비밀번호 확인:</td>
-            <td><input type="password" name="confirmPw"></td>
+            <td><input type="password" name="confirmPW"></td>
         </tr>
 	    </table>
 	    <button type="submit">저장</button>

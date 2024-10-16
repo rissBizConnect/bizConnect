@@ -105,7 +105,7 @@
 <div class="sidebar">
     <ul>
         <li><a href="#">사용자 목록</a></li>
-        <li><a href="/bizconnect/supportCenter.do">고객센터</a></li>
+        <li><a href="/bizconnect/supportList.do">고객센터</a></li>
     </ul>
 </div>
 
@@ -125,12 +125,12 @@
             <!-- userList가 비어있지 않은 경우 사용자 목록을 표시 -->
             <c:if test="${not empty userList}">
                 <c:forEach var="user" items="${userList}" varStatus="status">
-                    <tr onclick="showUserDetails('${user.gID}')">
+                    <tr onclick="showUserDetails('${user.gId}')">
                         <td>${status.index + 1}</td>
-                        <td>${user.gID}</td>
+                        <td>${user.gId}</td>
                         <td>${user.userName}</td>
                         <td>${user.userAddr}</td>
-                        <td>${user.userEntryDate}</td>
+                        <td>${user.userEntry}</td>
                     </tr>
                 </c:forEach>
             </c:if>

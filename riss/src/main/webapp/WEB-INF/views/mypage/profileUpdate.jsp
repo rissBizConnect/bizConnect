@@ -10,7 +10,7 @@
 
 	<form action="/bizconnect/profileUpdateCheck.do" method="post">
 	    <label>비밀번호를 입력하세요:</label>
-	    <input type="password" name="userPw">
+	    <input type="password" name="userPW">
 	    <button type="submit">확인</button>
 	</form>
 

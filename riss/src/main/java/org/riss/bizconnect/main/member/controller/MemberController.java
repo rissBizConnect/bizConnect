@@ -2,11 +2,12 @@ package org.riss.bizconnect.main.member.controller;
 
 import javax.servlet.http.HttpSession;
 
-import org.riss.bizconnect.main.member.model.dto.User;
+import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.main.member.model.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,12 +36,12 @@ public class MemberController {
 
     // 로그인 처리 메소드 (POST 요청)
     @PostMapping("/login.do")
-    public String loginMethod(User user, HttpSession session, SessionStatus status, Model model) {
+    public String loginMethod(Member user, HttpSession session, SessionStatus status, Model model) {
         // 서비스에서 로그인 처리 후 결과 받음
-        User loginUser = memberService.selectLogin(user);
+    	Member loginUser = memberService.selectLogin(user);
 
         // 로그인 성공 시
-        if (loginUser != null && user.getUserPw().equals(loginUser.getUserPw())) {
+        if (loginUser != null && user.getUserPW().equals(loginUser.getUserPW())) {
             session.setAttribute("loginUser", loginUser); // 유저 정보를 세션에 저장
             status.setComplete();
 
@@ -62,7 +63,7 @@ public class MemberController {
     @GetMapping("/main.do")
     public String showMyPage(HttpSession session, Model model) {
         // 세션에서 로그인된 사용자 정보를 가져옴
-        User loginUser = (User) session.getAttribute("loginUser");
+    	Member loginUser = (Member) session.getAttribute("loginUser");
 
         if (loginUser == null) {
             // 로그인이 되어있지 않다면 로그인 페이지로 리다이렉트
