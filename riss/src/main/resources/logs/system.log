@@ -420,3 +420,7 @@ Caused by: java.lang.Error: Unresolved compilation problems:
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
 	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:211)
 	... 56 more
+[16:39:09][INFO ][ContextLoader.java: 271] - Root WebApplicationContext: initialization started
+[16:39:09][INFO ][ContextLoader.java: 307] - Root WebApplicationContext initialized in 935 ms
+[16:39:09][INFO ][FrameworkServlet.java: 525] - Initializing Servlet 'appServlet'
+[16:39:10][INFO ][FrameworkServlet.java: 547] - Completed initialization in 884 ms
