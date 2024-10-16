@@ -54,6 +54,12 @@ public class RetireDAO {
 		List<Retire> list = sqlSessionTemplate.selectList("retireMapper.selectRetireList", paging);
 		return (ArrayList<Retire>)list;
 	}
+	
+	//퇴직자 사원 변환
+	public int updateRetireToMember(Retire retire) {
+		return sqlSessionTemplate.update("retireMapper.updateRetireToMember", retire);
+		
+	}
   
    
 }

@@ -36,16 +36,7 @@ public class Paging implements java.io.Serializable {
 		this.urlMapping = urlMapping;
 		calculate();
 	}
-	
-	public Paging(int listCount, int limit, int currentPage, String urlMapping) {
-	    this.listCount = listCount;
-	    this.limit = limit;
-	    this.currentPage = currentPage;
-	    this.urlMapping = urlMapping;
-	    calculate();
-	}
 
-	
 	//페이지 계산 메소드
 	public void calculate() {
 		//총 페이지 수 계산 : 

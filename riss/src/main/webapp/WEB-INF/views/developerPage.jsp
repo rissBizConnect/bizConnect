@@ -105,7 +105,7 @@
 <div class="sidebar">
     <ul>
         <li><a href="#">사용자 목록</a></li>
-        <li><a href="/bizconnect/supportList.do">고객센터</a></li>
+        <li><a href="/bizconnect/supportCenter.do">고객센터</a></li>
     </ul>
 </div>
 

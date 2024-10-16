@@ -15,8 +15,6 @@ public class User implements java.io.Serializable {
     private String userCard; // 계좌번호 필드 추가
     private String userAddr;
 
-	
-
     // Constructors, getters, setters, toString...
 
     public User() {

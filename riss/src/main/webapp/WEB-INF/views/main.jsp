@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,12 +14,11 @@
 
     .header {
         display: flex;
-        justify-content: flex-end;
+        justify-content: flex-end; /* Aligns the content to the right */
         align-items: center;
         background-color: #f4f4f4;
         padding: 10px 20px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        position: relative;
     }
 
     .header button {
@@ -36,7 +34,7 @@
         background-color: #f4f4f4;
         padding: 20px;
         box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        height: 100vh;
+        height: 100vh; /* Full height */
         float: left;
     }
 
@@ -56,7 +54,7 @@
     }
 
     .content {
-        margin-left: 240px;
+        margin-left: 240px; /* Leaves space for the sidebar */
         padding: 20px;
     }
 
@@ -77,75 +75,55 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .profile-info {
-        position: absolute;
-        left: 20px;
-        top: 10px;
-        font-size: 20px;
-        font-weight: bold;
-    }
-
 </style>
 </head>
 <body>
-
+<hr>
+<c:import url="/WEB-INF/views/common/menubar.jsp" />
+<br>
 <div class="header">
-    <!-- 프로필 정보를 왼쪽 상단으로 이동 -->
-    <div class="profile-info">BizConnect</div>
+    <!-- 전체메뉴 버튼 (상단 오른쪽에 배치됨) -->
     <button onclick="location.href='/bizconnect/menu.do'">전체메뉴</button>
 </div>
 
 <div class="sidebar">
     <div class="profile-photo">
+        <!-- Placeholder for profile photo -->
         <img src="https://via.placeholder.com/120" alt="Profile Photo">
     </div>
     <ul>
-        <li><a href="/bizconnect/main.do">프로필 정보</a></li>
-        <li><a href="/bizconnect/profileUpdate.do">개인정보 변경</a></li>
-        <li><a href="/bizconnect/companyInfo.do">기업 등록 및 정보</a></li>
-        <li><a href="/bizconnect/supportList.do">고객센터</a></li>
+        <li><a href="#">프로필 정보</a></li>
+        <li><a href="#">개인정보 변경</a></li>
+        <li><a href="#">기업 등록 및 정보</a></li>
+        <li><a href="#">고객센터</a></li>
     </ul>
 </div>
 
 <div class="content">
-    <!-- 마이페이지 내용 -->
+    <!-- Main content area -->
+    <h1>마이페이지</h1>
+    
     <div class="form-section">
+        <!-- Form content goes here -->
         <table>
             <tr>
                 <td>이름:</td>
-                <td>${loginUser.userName}</td>
-            </tr>
-            <tr>
-                <td>GID:</td>
-                <td>${loginUser.gID}</td>
+                <td>홍길동</td>
             </tr>
             <tr>
                 <td>소속:</td>
-                <td>${loginUser.comCode}</td>
+                <td>기획팀</td>
             </tr>
             <tr>
-                <td>역할:</td>
-                <td>${loginUser.userRole}</td>
+                <td>직위:</td>
+                <td>부장</td>
             </tr>
-            <tr>
-                <td>직무:</td>
-                <td>${loginUser.userJob}</td>
-            </tr>
-            <tr>
-                <td>입사일:</td>
-                <td>${loginUser.userEntryDate}</td>
-            </tr>
-            <tr>
-                <td>전화번호:</td>
-                <td>${loginUser.userPhone}</td>
-            </tr>
-            <tr>
-                <td>이메일:</td>
-                <td>${loginUser.userEmail}</td>
-            </tr>
+            <!-- Add other fields as necessary -->
         </table>
     </div>
 </div>
-
+<footer>
+<c:import url="/WEB-INF/views/common/footer.jsp" />
+</footer>
 </body>
 </html>

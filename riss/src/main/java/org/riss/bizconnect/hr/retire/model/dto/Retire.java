@@ -3,35 +3,40 @@ package org.riss.bizconnect.hr.retire.model.dto;
 import java.io.Serializable;
 import java.sql.Date;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+
 public class Retire implements Serializable {
    
 	private static final long serialVersionUID = -4691352981300651599L;
 	
 	private String retNo; 		// 퇴직자 사번
     private String gid; 		// 유저 GID
+	private Date userEntryDate; // 입사일
     private Date retDate; 		// 퇴사일
-    private String retTotalDate; 	// 총 근무일
+    private int retTotalDate; 	// 총 근무일
     private String retType;		// 고용형태
     private String exitReason;	// 비고
     private String comCode;		// 회사코드
 	private String status;		// 퇴직자 -> 사원
-	private Date userEntryDate;
+
 	
 	public Retire() {
 		super();
 	}
 
-	public Retire(String retNo, String gid, Date retDate, String retType, String comCode, Date userEntryDate) {
-		super();
-		this.retNo = retNo;
-		this.gid = gid;
-		this.retDate = retDate;
-		this.retType = retType;
-		this.comCode = comCode;
-		this.userEntryDate = userEntryDate;
-	}
+	public Retire(String retNo, String gid, Date retDate, String retType, String comCode, Date userEntryDate, String status) {
+        this.retNo = retNo;
+        this.gid = gid;
+        this.retDate = retDate;
+        this.retType = retType;
+        this.comCode = comCode;
+        this.userEntryDate = userEntryDate;
+        this.status = status;
+    }
 
-	public Retire(String retNo, String gid, Date retDate, String retTotalDate, String retType, String exitReason,
+	public Retire(String retNo, String gid, Date retDate, int retTotalDate, String retType, String exitReason,
 			String comCode, String status, Date userEntryDate) {
 		super();
 		this.retNo = retNo;
@@ -61,6 +66,14 @@ public class Retire implements Serializable {
 		this.gid = gid;
 	}
 
+	public Date getUserEntryDate() {
+		return userEntryDate;
+	}
+
+	public void setUserEntryDate(Date userEntryDate) {
+		this.userEntryDate = userEntryDate;
+	}
+
 	public Date getRetDate() {
 		return retDate;
 	}
@@ -69,11 +82,11 @@ public class Retire implements Serializable {
 		this.retDate = retDate;
 	}
 
-	public String getRetTotalDate() {
+	public int getRetTotalDate() {
 		return retTotalDate;
 	}
 
-	public void setRetTotalDate(String retTotalDate) {
+	public void setRetTotalDate(int retTotalDate) {
 		this.retTotalDate = retTotalDate;
 	}
 
@@ -109,25 +122,16 @@ public class Retire implements Serializable {
 		this.status = status;
 	}
 
-	public Date getUserEntryDate() {
-		return userEntryDate;
-	}
-
-	public void setUserEntryDate(Date userEntryDate) {
-		this.userEntryDate = userEntryDate;
-	}
-
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "Retire [retNo=" + retNo + ", gid=" + gid + ", retDate=" + retDate + ", retTotalDate=" + retTotalDate
-				+ ", retType=" + retType + ", exitReason=" + exitReason + ", comCode=" + comCode + ", status=" + status
-				+ ", userEntryDate=" + userEntryDate + "]";
+		return "Retire [retNo=" + retNo + ", gid=" + gid + ", userEntryDate=" + userEntryDate + ", retDate=" + retDate
+				+ ", retTotalDate=" + retTotalDate + ", retType=" + retType + ", exitReason=" + exitReason
+				+ ", comCode=" + comCode + ", status=" + status + "]";
 	}
-	
-	
+
 	
 }

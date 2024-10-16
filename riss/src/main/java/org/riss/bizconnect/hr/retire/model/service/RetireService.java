@@ -13,5 +13,6 @@ public interface RetireService {
 	    void deleteRetire(String retNo);
 		int selectRetireCount(Retire retire);
 		ArrayList<Retire> selectRetireList(Paging paging);
+		void updateRetireToMember(Retire retire);
 	
 }

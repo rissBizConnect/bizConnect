@@ -3,6 +3,8 @@ package org.riss.bizconnect.hr.attendance.model.service;
 import java.util.ArrayList;
 
 import org.riss.bizconnect.common.model.dto.Member;
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.common.model.dto.Search;
 import org.riss.bizconnect.hr.attendance.controller.AttendanceController;
 import org.riss.bizconnect.hr.attendance.model.dao.AttendanceDao;
 import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
@@ -18,27 +20,78 @@ public class AttendanceServiceImpl implements AttendanceService {
 	private AttendanceDao attendanceDao;
 
 	@Override
-	public Attendance selectTodayAttendance(Member loginUser) {
-		return attendanceDao.selectTodayAttendance(loginUser);
+	public Attendance selectTodayAttendance(Member member) {
+		return attendanceDao.selectTodayAttendance(member);
 	}
 
 	@Override
-	public int insertAttendance(Member loginUser) {
-		return attendanceDao.insertAttendance(loginUser);
+	public int insertAttendance(Member member) {
+		return attendanceDao.insertAttendance(member);
 	}
 
 	@Override
-	public int updateGoD(Member loginUser) {
-		return attendanceDao.updateGoD(loginUser);
+	public int updateGoD(Attendance attendance) {
+		return attendanceDao.updateGoD(attendance);
 	}
 
 	@Override
-	public int updateOutD(Member loginUser) {
-		return attendanceDao.updateOutD(loginUser);
+	public int updateOutD(Attendance attendance) {
+		return attendanceDao.updateOutD(attendance);
 	}
 
 	@Override
-	public ArrayList<Attendance> selectMyAttendance(Member loginUser) {
-		return attendanceDao.selectMyAttendance(loginUser);
+	public ArrayList<Attendance> selectMyAttendance(Paging paging) {
+		return attendanceDao.selectMyAttendance(paging);
 	}
+
+	@Override
+	public int selectListCount(Member loginUser) {
+		return attendanceDao.selectListCount(loginUser);
+	}
+
+	@Override
+	public int selectComListCount(Member loginUser) {
+		return attendanceDao.selectComListCount(loginUser);
+	}
+
+	@Override
+	public ArrayList<Attendance> selectComAttendance(Paging paging) {
+		return attendanceDao.selectComAttendance(paging);
+	}
+
+	@Override
+	public int selectComFileterMListCount(Member loginUser) {
+		return attendanceDao.selectComFileterMListCount(loginUser);
+	}
+
+	@Override
+	public ArrayList<Attendance> selectComFileterMAttendance(Paging paging) {
+		return attendanceDao.selectComFileterMAttendance(paging);
+	}
+
+	@Override
+	public ArrayList<String> selectComMListCount(String comCode) {
+		return attendanceDao.selectComMListCount(comCode);
+	}
+
+	@Override
+	public int selectComDateMListCount(Search search) {
+		return attendanceDao.selectComDateMListCount(search);
+	}
+
+	@Override
+	public ArrayList<Attendance> selectComDateAttendance(Search search) {
+		return attendanceDao.selectComDateAttendance(search);
+	}
+
+	@Override
+	public ArrayList<Attendance> selectComList(Member member) {
+		return attendanceDao.selectComList(member);
+	}
+
+	@Override
+	public int updateAttendnce(Attendance attendance) {
+		return attendanceDao.updateAttendnce(attendance);
+	}
+
 }

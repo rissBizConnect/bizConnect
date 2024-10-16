@@ -7,7 +7,6 @@
 </head>
 <body>
 <h1>퇴직자 수정</h1>
-
 <form action="retEdit.do" method="get">
     <input type="hidden" name="retNo" value="${retire.retNo}"/>
     GID: <input type="text" name="gid" value="${retire.gid}" required/><br/>

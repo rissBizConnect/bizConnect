@@ -61,6 +61,10 @@
       <input type="number" id="userPay" name="userPay" min="0">
     </div>
     
+    <div class="form-group">
+      <label for="muserContract">계약서</label>
+      <input type="file" id="muserContract" name="muserContract">
+    </div>
     
     <div class="form-group">
       <label for="userAccount">계좌번호</label>
@@ -80,6 +84,11 @@
     <div class="form-group">
       <label for="muserFacePictPath">사 진</label>
       <input type="file" id="muserFacePictPath" name="muserFacePictPath">
+    </div>
+    
+    <div class="form-group">
+      <label for="muserCertificate">증명서</label>
+      <input type="file" id="muserCertificate" name="muserCertificate" >
     </div>
     
     <div class="form-group">

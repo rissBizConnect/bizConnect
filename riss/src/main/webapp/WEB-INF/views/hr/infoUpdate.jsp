@@ -18,7 +18,9 @@
   <h2>사원 수정</h2>
 <form action="InfoUpdate.do" method="post" onsubmit="return validate();" enctype="multipart/form-data"><br>
 <input type="hidden" id="gId" name="gId" value="${member.gId }">
+<input type="hidden" id="oContract" name="oContract" value="${member.userContract }">
 <input type="hidden" id="oFacePictPath" name="oFacePictPath" value="${member.userFacePictPath }">
+<input type="hidden" id="oCertificate" name="oCertificate" value="${member.userCertificate }">
     <div class="form-group">
       <label for="userName">*이 름</label>
       <input type="text" id="userName" value="${member.userName }" name="userName" required>
@@ -60,6 +62,12 @@
     </div>
     
     <div class="form-group">
+      <label for="muserContract">계약서</label>
+      <img id="Contract_Img" alt="수정된 파일이 없습니다" src="${path}/resources/contract_files/${member.comCode}_${member.gId}_Contract${member.userContract}"><br>
+      <input type="file" id="muserContract" onchange="updateFile('#Contract_Img'); return false;" name="muserContract">
+    </div>
+    
+    <div class="form-group">
       <label for="userAccount">계좌번호</label>
       <input type="text" id="userAccount" value="${member.userAccount }" name="userAccount" >
     </div>
@@ -79,7 +87,13 @@
       <img id="FacePict_Img" alt="수정된 파일이 없습니다" src="${path}/resources/face_files/${member.comCode}_${member.gId}_FacePict${member.userFacePictPath}"><br>
       <input type="file" id="muserFacePictPath" onchange="updateFile('#FacePict_Img'); return false;" value="${member.userFacePictPath }" name="muserFacePictPath" >
     </div>
-
+    
+    <div class="form-group">
+      <label for="muserCertificate">증명서</label>
+      <img id="Certificate_Img" alt="수정된 파일이 없습니다" src="${path}/resources/certificate_files/${member.comCode}_${member.gId}_Certificate${member.userCertificate}"><br>      
+      <input type="file" id="muserCertificate" onchange="updateFile('#Certificate_Img'); return false;" value="${member.userCertificate }" name="muserCertificate" >
+    </div>
+    
     <div class="form-group">
       <input type="submit" value="수 정">
     </div>

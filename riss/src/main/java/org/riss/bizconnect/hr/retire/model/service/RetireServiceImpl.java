@@ -1,9 +1,11 @@
 package org.riss.bizconnect.hr.retire.model.service;
 
+
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Date;
 
 import org.riss.bizconnect.common.model.dto.Paging;
 import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
@@ -49,6 +51,17 @@ public class RetireServiceImpl implements RetireService {
 			return retireDAO.selectRetireList(paging);
 		}
 
+		
+		//퇴직자 사원 변환
+		@Override
+		public void updateRetireToMember(Retire retire) {
+			retireDAO.updateRetireToMember(retire);
+			
+		}
+
+		
+		
+		
 
  
 	
