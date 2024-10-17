@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript" src="/bizconnect/resources/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="/bizconnect/resources/js/pr/prMenu_client.js"></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>재고관리 HOME</title>
     <style>
-
+    
     .header {
         display: flex;
         justify-content: flex-end; /* Aligns the content to the right */
@@ -24,9 +26,8 @@
         border: 1px solid #ccc;
         cursor: pointer;
         font-weight: bold;
-    }          
-        
-        
+    }       
+    
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -145,22 +146,85 @@
 
 	<div class="header">
     <!-- 전체메뉴 버튼 (상단 오른쪽에 배치됨) -->
-    <button onclick="location.href='/bizconnect/menu.do'">전체메뉴 Home</button>
+    <button onclick="location.href='/bizconnect/prManagement.do'">재고관리 Home</button>
 	</div>
 
     <div class="sidebar">
         <ul>
-            <li><a href="/bizconnect/prMenu_product.do">제품관리</a></li>
-            <li><a href="/bizconnect/prMenu_porder.do">발주관리</a></li>
+            <li><a href="moveprMenu_product.do">제품관리</a></li>
+            <li><a href="moveprMenu_porder.do">발주관리</a></li>
             <li><a href="moveprMenu_order.do">수주관리</a></li>
             <li><a href="/bizconnect/prMenu_check.do">교환/환불관리</a></li>
-            <li><a href="/bizconnect/prMenu_client.do">거래처관리</a></li>
+            <li class="active"><a href="moveprMenu_client.do">거래처관리</a></li>
         </ul>
     </div>
 
     <div class="content">
-        <h1>재고관리 HOME</h1>
-		대시보드 (보고서 느낌)
+        <h1>거래처관리 ▸ 거래처조회</h1>
+
+        <div class="search-bar">
+            <select>
+                <option>제품명</option>
+                <!-- 추가 옵션들 -->
+            </select>
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>전체보기</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>회사명(회사코드)</th>
+                    <th>사업자번호</th>
+                    <th>담당자명</th>
+                    <th>거래처업종</th>
+                    <th>거래처전화번호</th>
+                    <th>거래처주소</th>
+                    <th>거래처이메일</th>
+                    <th>거래처팩스번호</th>
+                    <th>저장파일명</th>
+                    <th>수정일</th>
+                    <th>수정 / 삭제</th>
+                    <th>상세</th>
+                </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+            <tfoot>
+                <c:forEach items="${ client }" var="c"><tr>
+            	<tr>
+
+                    <td>${ c.getClientName() }(${ c.getClientCode() })</td>
+                    <td>${ c.getBusinessNum() }</td>
+                    <td>${ c.getPersonCharge() }</td>
+                    <td>${ c.getBusinessType() }</td>
+                    <td>${ c.getClientTel() }</td>
+                    <td>${ c.getClientAddr() }</td>
+                    <td>${ c.getClientEmail() }</td>
+                    <td>${ c.getClientFax() }</td>
+                    <td>${ c.getFileName() }</td>
+                    <td>${ c.getModifiDate() }</td>
+        
+                    
+                    <td>
+                    	<button class="updateBTN" onclick="updateBTN('${ c.getClientCode() }'); return false;">수정 / 상세</button>
+                    </td>
+                    <td>
+                    	<button class="deleteBTN" onclick="deleteBTN('${ c.getClientCode() }'); return false;">삭 제</button>	
+                    </td>
+			    </tr>
+			    </c:forEach>
+                
+            </tfoot>
+        </table>
+
+        <div class="button-group">
+            <button class="btn-black">전체선택</button>
+            <button class="btn-blue">뭘로 하징</button>
+            <button class="btn-red" onclick="javascript:location.href='moveClientInsert.do'; return false;">거래처 등록</button>
+            <button class="btn-blue" onclick="javascript:location.href='/bizconnect/ordreport.do'; return false;">거래명세서 작성</button>
+        </div>
 
     </div>
 
