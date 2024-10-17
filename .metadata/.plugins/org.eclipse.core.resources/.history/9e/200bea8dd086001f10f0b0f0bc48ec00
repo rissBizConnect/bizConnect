@@ -1,0 +1,89 @@
+package org.riss.bizconnect.hr.retire.model.dto;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class Retire implements Serializable {
+   
+	private static final long serialVersionUID = -4691352981300651599L;
+	
+	private String retNo; 		// 퇴직자 사번
+    private Date userEntryDate; // 입사일
+    private Date retDate; 		// 퇴사일
+    private String retTotalDate;// 총 근무일
+    private String retExitreson; 	// 비고
+    private String comCode; 	// 회사코드
+    private String gid;			// 유저 GID
+	
+    public Retire() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+    
+	public Retire(String retNo, Date userEntryDate, Date retDate, String retTotalDate, String exitreason,
+			String comCode, String gid) {
+		super();
+		this.retNo = retNo;
+		this.userEntryDate = userEntryDate;
+		this.retDate = retDate;
+		this.retTotalDate = retTotalDate;
+		this.exitreason = exitreason;
+		this.comCode = comCode;
+		this.gid = gid;
+	}
+	public String getRetNo() {
+		return retNo;
+	}
+	public void setRetNo(String retNo) {
+		this.retNo = retNo;
+	}
+	public Date getUserEntryDate() {
+		return userEntryDate;
+	}
+	public void setUserEntryDate(Date userEntryDate) {
+		this.userEntryDate = userEntryDate;
+	}
+	public Date getRetDate() {
+		return retDate;
+	}
+	public void setRetDate(Date retDate) {
+		this.retDate = retDate;
+	}
+	public String getRetTotalDate() {
+		return retTotalDate;
+	}
+	public void setRetTotalDate(String retTotalDate) {
+		this.retTotalDate = retTotalDate;
+	}
+	public String getExitreason() {
+		return exitreason;
+	}
+	public void setExitreason(String exitreason) {
+		this.exitreason = exitreason;
+	}
+	public String getComCode() {
+		return comCode;
+	}
+	public void setComCode(String comCode) {
+		this.comCode = comCode;
+	}
+	public String getGid() {
+		return gid;
+	}
+	public void setGid(String gid) {
+		this.gid = gid;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	@Override
+	public String toString() {
+		return "Retire [retNo=" + retNo + ", userEntryDate=" + userEntryDate + ", retDate=" + retDate
+				+ ", retTotalDate=" + retTotalDate + ", exitreason=" + exitreason + ", comCode=" + comCode + ", gid="
+				+ gid + "]";
+	}
+    
+	
+	
+}

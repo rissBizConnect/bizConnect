@@ -1,0 +1,8 @@
+package org.riss.bizconnect.hr.document.model.dao;
+
+import org.springframework.stereotype.Repository;
+
+@Repository("documentDao")
+public class DocumentDao {
+
+}

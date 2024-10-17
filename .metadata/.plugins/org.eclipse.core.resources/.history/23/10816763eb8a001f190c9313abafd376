@@ -1,0 +1,9 @@
+package org.riss.bizconnect.hr.document.model.service;
+
+import java.util.List;
+
+import org.riss.bizconnect.hr.document.model.dto.Certificate;
+
+public interface CertificateService {
+	
+}

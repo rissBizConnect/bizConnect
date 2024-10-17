@@ -1,0 +1,55 @@
+package org.riss.bizconnect.hr.retire.model.dao;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class RetireDAO {
+    @Autowired
+    private SqlSessionTemplate sqlSessionTemplate;
+
+    // 퇴직자 목록 조회
+    public List<Retire> getRetireList(int offset, int limit) {
+        return sqlSessionTemplate.selectList("retireMapper.getRetireList", null, new RowBounds(offset, limit));
+    }
+
+    // 퇴직자 추가
+    public int addRetire(Retire retire) {
+        return sqlSessionTemplate.insert("retireMapper.addRetire", retire);
+    }
+
+    // 퇴직자 수정
+    public int updateRetire(Retire retire) {
+        return sqlSessionTemplate.update("retireMapper.updateRetire", retire);
+    }
+
+    // 퇴직자 삭제
+    public int deleteRetire(String retNo) {
+        return sqlSessionTemplate.delete("retireMapper.deleteRetire", retNo);
+    }
+
+    // 퇴직자 수 조회
+    public int getRetireCount() {
+        return sqlSessionTemplate.selectOne("retireMapper.getRetireCount");
+    }
+
+    // 필터링 기능
+    public List<Retire> filterRetires(String retNo, String userEntryDate, String retDate, String retType) {
+        // 필요한 파라미터를 맵에 추가
+        Map<String, Object> params = new HashMap<>();
+        params.put("retNo", retNo);
+        params.put("userEntryDate", userEntryDate);
+        params.put("retDate", retDate);
+        params.put("retType", retType);
+        
+        return sqlSessionTemplate.selectList("retireMapper.filterRetires", params);
+    }
+}

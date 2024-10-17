@@ -1,0 +1,80 @@
+package org.riss.bizconnect.hr.document.model.dto;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+public class Document implements Serializable {
+	
+	private static final long serialVersionUID = 8621293571373691741L;
+	
+	private String contractId;	// 계약서명
+	private Date dm_date;		// 등록날짜
+	private String dm_file;		// 파일명
+	private String dm_title;	// 기타
+	private String comCode;		// 회사 코드
+	private String gid;			// 로그인 아이디
+	
+	public Document() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getContractId() {
+		return contractId;
+	}
+
+	public void setContractId(String contractId) {
+		this.contractId = contractId;
+	}
+
+	public Date getDm_date() {
+		return dm_date;
+	}
+
+	public void setDm_date(Date dm_date) {
+		this.dm_date = dm_date;
+	}
+
+	public String getDm_file() {
+		return dm_file;
+	}
+
+	public void setDm_file(String dm_file) {
+		this.dm_file = dm_file;
+	}
+
+	public String getDm_title() {
+		return dm_title;
+	}
+
+	public void setDm_title(String dm_title) {
+		this.dm_title = dm_title;
+	}
+
+	public String getComCode() {
+		return comCode;
+	}
+
+	public void setComCode(String comCode) {
+		this.comCode = comCode;
+	}
+
+	public String getGid() {
+		return gid;
+	}
+
+	public void setGid(String gid) {
+		this.gid = gid;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "Document [contractId=" + contractId + ", dm_date=" + dm_date + ", dm_file=" + dm_file + ", dm_title="
+				+ dm_title + ", comCode=" + comCode + ", gid=" + gid + "]";
+	}	
+	
+}

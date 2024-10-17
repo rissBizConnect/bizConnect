@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+
+    <!-- 사용자 정보 매핑 -->
+    <resultMap id="userResultMap" type="org.riss.bizconnect.common.model.dto.Member">
+        <result property="gId" column="GID"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="userAddr" column="USER_ADDR"/>
+        <result property="userEntry" column="USER_ENTRY_DATE"/>
+        <result property="userPW" column="USER_PW"/>
+        <result property="comCode" column="COM_CODE"/>
+        <result property="userRole" column="USER_ROLE"/>
+        <result property="userPhone" column="USER_PHONE"/>
+        <result property="userEmail" column="USER_EMAIL"/>
+        <result property="userCard" column="USER_CARD"/>
+        <result property="userJob" column="USER_JOB"/>
+    </resultMap>
+
+    <!-- 로그인 처리 쿼리 -->
+    <select id="selectLogin" parameterType="org.riss.bizconnect.common.model.dto.Member" resultMap="userResultMap">
+        SELECT GID, USER_PW, COM_CODE, USER_NAME, USER_ROLE, USER_PHONE, USER_EMAIL, USER_JOB, USER_ENTRY_DATE
+        FROM TB_USERINFO
+        WHERE GID = #{gId}
+          AND USER_PW = #{userPW}
+          AND COM_CODE = #{comCode}
+    </select>
+
+    <!-- 프로필 업데이트 쿼리 -->
+    <update id="updateProfile" parameterType="org.riss.bizconnect.common.model.dto.Member">
+        UPDATE TB_USERINFO
+        SET USER_EMAIL = #{userEmail},
+            USER_CARD = #{userCard},
+            USER_ADDR = #{userAddr}
+        <if test="userPW != null">
+            , USER_PW = #{userPW}
+        </if>
+        WHERE GID = #{gId}
+    </update>
+
+    <!-- 모든 사용자를 조회하는 쿼리 -->
+    <select id="findAllUsers" resultMap="userResultMap">
+        SELECT GID, USER_NAME, USER_ADDR, USER_ENTRY_DATE
+        FROM TB_USERINFO
+        WHERE USER_ROLE = 'Admin'
+    </select>
+
+    <!-- 사용자 ID로 특정 사용자를 조회하는 쿼리 -->
+    <select id="findUserById" parameterType="String" resultMap="userResultMap">
+        SELECT GID, COM_CODE, USER_NAME, USER_JOB, USER_PHONE, USER_EMAIL, USER_ADDR, USER_ENTRY_DATE
+        FROM TB_USERINFO
+        WHERE GID = #{userId}
+    </select>
+
+    <!-- 사용자 정보를 업데이트하는 쿼리 -->
+    <update id="updateUser" parameterType="org.riss.bizconnect.common.model.dto.Member">
+        UPDATE TB_USERINFO
+        SET USER_NAME = #{userName},
+            USER_JOB = #{userJob},
+            USER_PHONE = #{userPhone},
+            USER_EMAIL = #{userEmail},
+            USER_ADDR = #{userAddr},
+            USER_ENTRY_DATE = #{userEntry}
+        WHERE GID = #{gId}
+    </update>
+
+</mapper>

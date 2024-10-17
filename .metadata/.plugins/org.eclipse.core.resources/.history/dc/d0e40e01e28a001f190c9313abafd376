@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>계약서 목록</title>
+</head>
+<body>
+    <h2>계약서 목록</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>서류명</th>
+                <th>등록 날짜</th>
+                <th>파일명</th>
+                <th>기타</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="contract" items="${contractList}">
+                <tr>
+                    <td><a href="viewContract.do?contractId=${contract.contractId}">${contract.dm_title}</a></td>
+                    <td>${contract.dm_date}</td>
+                    <td>${contract.dm_file}</td>
+                    <td>${contract.dm_description}</td>
+                    <td>
+                        <form action="deleteContract.do" method="post">
+                            <input type="hidden" name="contractId" value="${contract.contractId}" />
+                            <button type="submit">삭제</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</body>
+</html>

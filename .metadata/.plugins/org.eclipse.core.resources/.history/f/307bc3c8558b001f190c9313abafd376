@@ -1,0 +1,15 @@
+package org.riss.bizconnect.hr.document.model.service;
+
+import java.util.ArrayList;
+
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.hr.document.model.dto.Certificate;
+
+public interface CertificateService {
+	   
+	 int addContract(Certificate contract);
+	 Certificate getContract(String contractId);
+	 int updateContract(Certificate contract);
+	 int deleteContract(String contractId);
+	 List<Certificate> searchContracts(String title);
+}

@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>서류명</th>
+            <th>계약서 ID</th>
+            <th>등록 날짜</th>
+            <th>파일명</th>
+            <th>기타</th>
+            <th>상세보기</th>
+        </tr>
+    </thead>
+    <tbody>
+        <c:forEach var="doc" items="${contracts}">
+            <tr>
+                <td>${doc.dm_title}</td>
+                <td>${doc.contractId}</td>
+                <td>${doc.dm_date}</td>
+                <td>${doc.dm_file}</td>
+                <td>${doc.dm_description}</td>
+                <td><a href="viewContractDetail.do?contractId=${doc.contractId}">상세보기</a></td>
+            </tr>
+        </c:forEach>
+    </tbody>
+</table>
+</body>
+</html>

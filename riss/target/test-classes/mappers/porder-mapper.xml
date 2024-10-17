@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+ "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="porderMapper">
+
+	<resultMap type="PorderDTO" id="porderdto">
+		<result property="test" column="PORDER_CD" />
+	</resultMap>
+
+	<select id="select" resultMap="porderdto">
+		select *
+		from TB_PORDER
+	</select>
+	
+	<insert id="insertporder" parameterType="PorderDTO">
+		INSERT INTO tb_porder (PORDER_CD, COM_CODE, PRODUCT_NAME, PORDER_CNT, FIELD_NUM) 
+		VALUES(#{PorderNo}, #{LicenseCode}, #{ProductName}, #{FieldNum}) <!-- 수정필요 -->
+	</insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

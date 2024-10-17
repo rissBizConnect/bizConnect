@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+ "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="salaryMapper">
+
+	<resultMap type="Salary" id="resultSalary">
+		<result property="gId" column="GID" />
+		<result property="comCode" column="COM_CODE" />
+		<result property="salaryNo" column="SALARY_NO" />
+		<result property="salaryIncomT" column="SALARY_INCOMET" />
+		<result property="salaryLocalT" column="SALARY_LOCALT" />
+		<result property="salaryNPS" column="SALARY_NPS" />
+		<result property="salaryHI" column="SALARY_HI" />
+		<result property="salaryEL" column="SALARY_EI" />
+		<result property="salaryWCI" column="SALARY_WCI" />
+		<result property="salaryLTCI" column="SALARY_LTCI" />
+		<result property="salaryTotalD" column="SALARY_TOTALD" />
+		<result property="salaryIncentive" column="SALARY_INCENTIVE" />
+		<result property="salaryPayDate" column="SALARY_PAYDATE" />
+		<result property="salaryPay" column="SALARY_PAY" />
+		<result property="accountNumber" column="ACCOUNT_NUMBER" />
+		<result property="name" column="USER_NAME" />
+	</resultMap>
+	
+	<select id="selectAll" parameterType="Paging" resultMap="resultSalary">
+		select *
+		from(SELECT rownum rnum, GID, COM_CODE, SALARY_NO, SALARY_INCOMET, SALARY_LOCALT, SALARY_NPS, SALARY_HI, 
+					SALARY_EI, SALARY_WCI, SALARY_LTCI, SALARY_TOTALD, SALARY_INCENTIVE, SALARY_PAYDATE,
+					SALARY_PAY, ACCOUNT_NUMBER, USER_NAME
+			from(SELECT s.GID, s.COM_CODE, SALARY_NO, SALARY_INCOMET, SALARY_LOCALT, SALARY_NPS, SALARY_HI, 
+					SALARY_EI, SALARY_WCI, SALARY_LTCI, SALARY_TOTALD, SALARY_INCENTIVE, SALARY_PAYDATE,
+					SALARY_PAY, ACCOUNT_NUMBER, USER_NAME
+				FROM TB_USERINFO u
+				JOIN TB_SALARY s ON u.GID = s.GID AND u.COM_CODE = s.COM_CODE
+				where u.com_code = #{comCode}
+				ORDER BY SALARY_PAYDATE DESC))
+		where rnum between #{ startRow } and #{ endRow } 
+	</select>
+	
+	<select id="selectKeyword" parameterType="Paging" resultMap="resultSalary">
+		select *
+		from(SELECT rownum rnum, GID, COM_CODE, SALARY_NO, SALARY_INCOMET, SALARY_LOCALT, SALARY_NPS, SALARY_HI, 
+					SALARY_EI, SALARY_WCI, SALARY_LTCI, SALARY_TOTALD, SALARY_INCENTIVE, SALARY_PAYDATE,
+					SALARY_PAY, ACCOUNT_NUMBER, USER_NAME
+			from(SELECT s.GID, s.COM_CODE, SALARY_NO, SALARY_INCOMET, SALARY_LOCALT, SALARY_NPS, SALARY_HI, 
+					SALARY_EI, SALARY_WCI, SALARY_LTCI, SALARY_TOTALD, SALARY_INCENTIVE, SALARY_PAYDATE,
+					SALARY_PAY, ACCOUNT_NUMBER, USER_NAME
+				FROM TB_USERINFO u
+				JOIN TB_SALARY s ON u.GID = s.GID AND u.COM_CODE = s.COM_CODE 
+				where u.com_code = #{comCode} and LOWER(u.USER_NAME) LIKE LOWER(#{keyword})
+				ORDER BY SALARY_PAYDATE DESC))
+		where rnum between #{ startRow } and #{ endRow } 
+	</select>
+
+	
+	<select id="selectAllCount" parameterType="string" resultType="_int">
+	SELECT count(*)
+		FROM TB_USERINFO u
+		JOIN TB_SALARY s ON u.GID = s.GID AND u.COM_CODE = s.COM_CODE
+		where u.com_code = #{comCode}
+	</select>
+	
+	<select id="selectKeywordCount" parameterType="Search" resultType="_int">
+		SELECT count(*)
+			FROM TB_USERINFO u
+			JOIN TB_SALARY s ON u.GID = s.GID AND u.COM_CODE = s.COM_CODE 
+			where u.com_code = #{comCode} and LOWER(u.USER_NAME) LIKE LOWER(#{keyword})
+			
+	</select>
+	
+	<select id="selectMember" parameterType="Member" resultMap="resultSalary">
+		select * from TB_SALARY
+		where COM_CODE = #{comCode} and USER_NAME = #{gId} and salary_no = #{salaryNo}
+	</select>
+	
+	<delete id="deleteMember" parameterType="Member">
+		delete TB_SALARY
+		where COM_CODE = #{comCode} and GID = #{gId} and salary_no = #{salaryNo}
+	</delete>
+	
+	
+</mapper>

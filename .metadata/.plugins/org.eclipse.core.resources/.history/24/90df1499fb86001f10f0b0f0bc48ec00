@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>퇴직자 추가</title>
+</head>
+<body>
+    <h1>퇴직자 추가</h1>
+       <div class="front">
+        <c:import url="/WEB-INF/views/common/header.jsp" />
+        <c:import url="/WEB-INF/views/common/menubar.jsp" />
+    <form action="addRetire.do" method="POST">
+    	<div class="front">
+		<c:import url="/WEB-INF/views/common/header.jsp" />
+		<c:import url="/WEB-INF/views/common/menubar.jsp" />
+        <label for="retNo">퇴직자 사번:</label>
+        <input type="text" id="retNo" name="retNo" required /><br>
+
+        <label for="gid">유저 GID:</label>
+        <input type="text" id="gid" name="gid" required /><br>
+
+        <label for="comCode">회사 코드:</label>
+        <input type="text" id="comCode" name="comCode" required /><br>
+
+        <label for="userEntryDate">입사일:</label>
+        <input type="date" id="userEntryDate" name="userEntryDate" required /><br>
+
+        <label for="retDate">퇴사일:</label>
+        <input type="date" id="retDate" name="retDate" required /><br>
+
+        <label for="retTotalDate">총 근무일:</label>
+        <input type="number" id="retTotalDate" name="retTotalDate" required /><br>
+
+		<label for="retTotalDate">근무형태:</label>
+        <input type="text" id="retType" name="retType" required /><br>
+        
+        <label for="retExitReason">비고:</label>
+        <textarea id="retExitReason" name="retExitReason" required></textarea><br>
+
+        <input type="submit" value="추가" />
+    </form>
+    	<c:import url="/WEB-INF/views/common/footer.jsp" />
+</body>
+</html>

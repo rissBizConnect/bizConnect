@@ -1,0 +1,47 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import org.apache.ibatis.session.SqlSession;
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class RetireServiceImpl implements RetireService {
+
+    @Autowired
+    private SqlSession sqlSession;
+
+    @Override
+    public List<Retire> getRetireList() {
+        RetireDAO retireDAO = sqlSession.getMapper(RetireDAO.class);
+        return retireDAO.getRetireList();
+    }
+
+    @Override
+    public List<Retire> getRetireList(Paging paging) {
+        RetireDAO retireDAO = sqlSession.getMapper(RetireDAO.class);
+        return retireDAO.getRetireList(paging); // 페이징 처리된 리스트 반환
+    }
+
+    @Override
+    public void addRetire(Retire retire) {
+        RetireDAO retireDAO = sqlSession.getMapper(RetireDAO.class);
+        retireDAO.addRetire(retire);
+    }
+
+    @Override
+    public void updateRetire(Retire retire) {
+        RetireDAO retireDAO = sqlSession.getMapper(RetireDAO.class);
+        retireDAO.updateRetire(retire);
+    }
+
+    @Override
+    public void deleteRetire(String retNo) {
+        RetireDAO retireDAO = sqlSession.getMapper(RetireDAO.class);
+        retireDAO.deleteRetire(retNo);
+    }
+}

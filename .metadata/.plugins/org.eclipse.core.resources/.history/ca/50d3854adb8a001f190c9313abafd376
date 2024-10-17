@@ -1,0 +1,5 @@
+package org.riss.bizconnect.hr.document.model.service;
+
+public interface DocumentService {
+
+}

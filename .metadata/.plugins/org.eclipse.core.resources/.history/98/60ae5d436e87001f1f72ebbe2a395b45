@@ -1,0 +1,34 @@
+package org.riss.bizconnect.hr.retire.model.dao;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository("retireDAO")
+public class RetireDAO {
+    @Autowired
+    private SqlSessionTemplate sqlSessionTemplate;
+
+    public int addRetire(Retire retire) {
+        return sqlSessionTemplate.insert("RetireMapper.addRetire", retire);
+    }
+
+    public List<Retire> getAllRetires() {
+        return sqlSessionTemplate.selectList("RetireMapper.getAllRetires"); // 모든 퇴직자 조회
+    }
+
+    public Retire getRetireById(String retNo) {
+        return sqlSessionTemplate.selectOne("RetireMapper.getRetireById", retNo); // 퇴직자 정보 조회
+    }
+
+    public int updateRetire(Retire retire) {
+        return sqlSessionTemplate.update("RetireMapper.updateRetire", retire);
+    }
+
+    public int deleteRetire(String retNo) {
+        return sqlSessionTemplate.delete("RetireMapper.deleteRetire", retNo);
+    }
+}

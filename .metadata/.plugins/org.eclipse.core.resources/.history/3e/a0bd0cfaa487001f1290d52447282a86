@@ -1,0 +1,15 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+
+import java.util.List;
+
+public interface RetireService {
+    List<Retire> getRetireList();
+    List<Retire> getRetireList(Paging paging);  // 페이징 추가
+    int addRetire(Retire retire);
+    int updateRetire(Retire retire);
+    int deleteRetire(String retNo);
+    int getRetireListCount();
+}

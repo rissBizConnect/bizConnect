@@ -1,0 +1,30 @@
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<mapper namespace="infoMapper">
+<resultMap type="Member" id="reultMember">
+<result property="gId" column="GID"/>
+<result property="comCode" column="COM_CODE"/>
+<result property="userPW" column="USER_PW"/>
+<result property="userName" column="USER_NAME"/>
+<result property="userJob" column="USER_JOB"/>
+<result property="userRegNo" column="USER_REGNO"/>
+<result property="userPhone" column="USER_PHONE"/>
+<result property="userEmail" column="USER_EMAIL"/>
+<result property="userAddr" column="USER_ADDR"/>
+<result property="userEntry" column="USER_ENTRY_DATE"/>
+<result property="userPay" column="USER_PAY"/>
+<result property="userAccount" column="USER_ACCOUNT"/>
+<result property="userCard" column="USER_CARD"/>
+<result property="userRole" column="USER_ROLE"/>
+<result property="userFacePictPath" column="USER_PICTURE"/>
+<result property="status" column="STATUS"/>
+</resultMap>
+<select id="selectAllMemeber" parameterType="Paging" resultMap="reultMember"> select * from (select rownum rnum, GID, COM_CODE, USER_PW, USER_NAME, USER_JOB, USER_REGNO, USER_PHONE, USER_EMAIL, USER_ADDR, USER_ENTRY_DATE, USER_PAY, USER_ACCOUNT, USER_CARD, USER_ROLE, USER_PICTURE, STATUS from (SELECT * FROM tb_userinfo where COM_CODE = #{comCode} and STATUS = 'Y')) where rnum between #{ startRow } and #{ endRow } </select>
+<select id="selectKeyword" parameterType="Search" resultMap="reultMember"> select * from (select rownum rnum, GID, COM_CODE, USER_PW, USER_NAME, USER_JOB, USER_REGNO, USER_PHONE, USER_EMAIL, USER_ADDR, USER_ENTRY_DATE, USER_PAY, USER_ACCOUNT, USER_CARD, USER_ROLE, USER_PICTURE, STATUS from (SELECT * FROM tb_userinfo where COM_CODE = #{comCode} and STATUS = 'Y' and LOWER(USER_NAME) LIKE LOWER(#{keyword}))) where rnum between #{ startRow } and #{ endRow } </select>
+<select id="selectAllMemeberCount" parameterType="string" resultType="_int"> select count(*) from tb_userinfo where COM_CODE = #{comCode} and STATUS = 'Y' </select>
+<select id="selectKeywordCount" parameterType="Search" resultType="_int"> select count(*) from tb_userinfo where COM_CODE = #{comCode} and STATUS = 'Y' and LOWER(USER_NAME) LIKE LOWER(#{keyword}) </select>
+<select id="selectMember" parameterType="Member" resultMap="reultMember"> select * from tb_userinfo where COM_CODE = #{comCode} and gid = #{gId} </select>
+<insert id="insertMember" parameterType="Member"> insert into tb_userinfo (GID, COM_CODE, USER_PW, USER_NAME, USER_JOB, USER_REGNO, USER_PHONE, USER_EMAIL, USER_ADDR, USER_ENTRY_DATE, USER_PAY, USER_ACCOUNT, USER_CARD, USER_ROLE, USER_PICTURE, STATUS) values(#{gId}, #{comCode},default,#{userName}, #{userJob},#{userRegNo},#{userPhone},#{userEmail}, #{userAddr},#{userEntry},#{userPay}, #{userAccount},#{userCard},#{userRole},#{userFacePictPath}, default) </insert>
+<update id="updateMember" parameterType="Member"> update tb_userinfo set USER_NAME = #{userName}, USER_JOB = #{userJob}, USER_REGNO = #{userRegNo}, USER_PHONE = #{userPhone}, USER_EMAIL = #{userEmail}, USER_ADDR = #{userAddr}, USER_ENTRY_DATE = #{userEntry}, USER_PAY = #{userPay}, USER_ACCOUNT = #{userAccount}, USER_CARD = #{userCard}, USER_ROLE = #{userRole}, USER_PICTURE = #{userFacePictPath} where gid = #{ gId } and COM_CODE = #{comCode} </update>
+<update id="memberRetireChage" parameterType="Member"> update tb_userinfo set STATUS = 'N' where gid = #{ gId } and COM_CODE = #{comCode} </update>
+<delete id="deleteMember" parameterType="Member"> delete tb_userinfo where COM_CODE = #{comCode} and GID = #{gId} </delete>
+</mapper>

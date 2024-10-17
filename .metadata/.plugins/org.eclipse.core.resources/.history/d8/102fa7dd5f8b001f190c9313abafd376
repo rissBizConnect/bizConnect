@@ -1,0 +1,46 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>증명서 목록</title>
+    <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/style.css' />">
+</head>
+<body>
+    <h2>증명서 목록</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>증명서번호</th>
+                <th>서류명</th>
+                <th>등록 날짜</th>
+                <th>설명</th>
+                <th>파일</th>
+                <th>상세 보기</th>
+                <th>수정</th>
+                <th>삭제</th>
+            </tr>
+        </thead>
+        <tbody>
+            <c:forEach var="certificate" items="${certificateList}">
+                <tr>
+                    <td>${certificate.contractId}</td>
+                    <td>${certificate.contractsTitle}</td>
+                    <td>${certificate.contractsDate}</td>
+                    <td>${certificate.contractsDescription}</td>
+                    <td><a href="${certificate.contractsFile}" download"download>다운로드</a></td>
+                    <td><a href="cerView.do/${certificate.contractId}">상세보기</a></td>
+                    <td><a href="cerUpdateForm.do/${certificate.contractId}">수정</a></td>
+                    <td>
+                        <form action="cerDelete.do/${certificate.contractId}" method="post">
+                            <input type="submit" value="삭제">
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+    <br>
+    <a href="cerAddForm.do">새 증명서 추가</a>
+</body>
+</html>

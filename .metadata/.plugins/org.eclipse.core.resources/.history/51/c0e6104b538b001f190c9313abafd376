@@ -1,0 +1,43 @@
+package org.riss.bizconnect.hr.document.model.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.hr.attendance.model.dto.Attendance;
+import org.riss.bizconnect.hr.document.model.dto.Certificate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository("documentDao")
+public class CertificateDAO {
+
+	@Autowired
+    private SqlSessionTemplate sqlSessionTemplate;
+
+	
+	
+	public int insertCertificate(Certificate certificate) {
+		return sqlSessionTemplate.insert("certificatesMapper.insertCertificate",certificate);
+		
+	}
+
+	public int updateCertificate(Certificate certificate) {
+		return sqlSessionTemplate.update("certificatesMapper.updateAttendnce",certificate);
+		
+	}
+
+	public int deleteCertificate(Certificate certificate) {
+		return sqlSessionTemplate.delete("certificatesMapper.deleteCertificate",certificate);
+		
+	}
+
+	public ArrayList<Certificate> selectCertificates(Certificate certificate) {
+		return sqlSessionTemplate.delete("certificatesMapper.selectCertificates",certificate);
+	}
+
+
+	
+}
+	

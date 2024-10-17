@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="noticeMapper">
+
+    <resultMap id="resultNotice" type="org.riss.bizconnect.main.notice.model.dto.Notice">
+        <result property="noticeNo" column="NOTICE_NO" />
+        <result property="noticeTitle" column="NOTICE_TITLE" />
+        <result property="noticeDate" column="NOTICE_DATE" />
+        <result property="noticeWriter" column="NOTICE_WRITER" />
+        <result property="noticeContent" column="NOTICE_CONTENT" />
+        <result property="originalFilePath" column="ORIGINAL_FILEPATH" />
+        <result property="renameFilePath" column="RENAME_FILEPATH" />
+        <result property="importance" column="IMPORTANCE" />
+        <result property="impEndDate" column="IMP_END_DATE" />
+        <result property="readCount" column="READCOUNT" />
+    </resultMap>
+
+    <select id="selectList" resultMap="resultNotice">
+        SELECT * FROM NOTICE 
+        ORDER BY IMPORTANCE DESC, NOTICE_NO DESC
+    </select>
+
+    <select id="selectNotice" parameterType="int" resultMap="resultNotice">
+        SELECT * FROM NOTICE WHERE NOTICE_NO = #{noticeNo}
+    </select>
+
+    <insert id="insertNotice" parameterType="org.riss.bizconnect.main.notice.model.dto.Notice">
+        INSERT INTO NOTICE (NOTICE_NO, NOTICE_TITLE, NOTICE_DATE, NOTICE_WRITER, NOTICE_CONTENT, ORIGINAL_FILEPATH, RENAME_FILEPATH, IMPORTANCE, IMP_END_DATE, READCOUNT, COM_CODE)
+        VALUES (#{noticeNo}, #{noticeTitle}, SYSDATE, #{noticeWriter}, #{noticeContent}, #{originalFilePath}, #{renameFilePath}, #{importance}, #{impEndDate}, #{readCount}, #{comCode})
+    </insert>
+
+    <delete id="deleteNotice" parameterType="int">
+        DELETE FROM NOTICE WHERE NOTICE_NO = #{noticeNo}
+    </delete>
+</mapper>

@@ -1,0 +1,43 @@
+package org.riss.bizconnect.hr.document.model.service;
+
+import java.util.List;
+
+import org.riss.bizconnect.hr.document.model.dao.CertificateDAO;
+import org.riss.bizconnect.hr.document.model.dto.Certificate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("documentService")
+public class CertificateServiceImpl implements CertificateService {
+	
+	@Autowired
+	private CertificateDAO certificateDAO;
+
+	@Override
+    public void insertCertificate(Certificate certificate) {
+		certificateDAO.insertCertificate(certificate);
+    }
+
+    @Override
+    public Certificate selectCertificate(String certificateId) {
+    	certificateDAO.selectCertificate(certificateId);
+    }
+
+    @Override
+    public void updateCertificate(Certificate certificate) {
+    	certificateDAO.updateCertificate(certificate);
+    }
+
+    @Override
+    public void deleteCertificate(String certificateId) {
+    	certificateDAO.deleteCertificate(certificateId);
+    }
+
+    @Override
+    public List<Certificate> selectListCertificates(String title) {
+    	certificateDAO.selectListCertificates(title);
+    }
+
+
+	
+}

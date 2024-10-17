@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+ "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="contractsMapper">
+
+	<resultMap type="Contracts" id="reultContracts">
+		<result property="contractsId" column="CONTRACTS_ID" jdbcType="VARCHAR"/>
+		<result property="contractsTitle" column="CONTRACTS_TITLE" />
+		<result property="contractsDate" column="CONTRACTS_DATE" />
+		<result property="contractsFile" column="CONTRACTS_FILE" />
+		<result property="contractsDescription" column="CONTRACTS_DESCRIPTION" />
+		<result property="gId" column="GID" />
+		<result property="comCode" column="COM_CODE" />
+	</resultMap>
+
+	<!-- 증명서 목록 조회 -->
+    <select id="selectContracts" resultMap="reultContracts">
+        SELECT * FROM TB_CONTRACTS
+    </select>
+
+    <!-- 증명서 상세 조회 -->
+	<select id="selectContractsById" parameterType="String" resultMap="reultContracts">
+    	SELECT * FROM TB_CONTRACTS WHERE CONTRACTS_ID = #{certificateId}
+	</select>
+
+    <!-- 증명서 추가 -->
+    
+	<insert id="insertContracts" parameterType="Contracts">
+    INSERT INTO TB_CONTRACTS (CONTRACTS_ID, CONTRACTS_TITLE, CERTIFICATES_DATE, CERTIFICATES_FILE, CERTIFICATES_DESCRIPTION, GID, COM_CODE)
+    VALUES (
+        (SELECT 'CER' || (NVL(MAX(TO_NUMBER(SUBSTR(CERTIFICATES_ID, 4))), 0) + 1) FROM TB_CONTRACTS),
+        #{certificatesTitle},
+        #{certificatesDate},
+        #{certificatesFile},
+        #{certificatesDescription},
+        #{gId},
+        #{comCode}
+    )
+</insert>
+	
+    <!-- 증명서 수정 -->
+  	<update id="updateContracts" parameterType="Contracts">
+    	UPDATE TB_CONTRACTS
+    	SET CONTRACTS_TITLE = #{certificateTitle}, 
+      	  	CERTIFICATES_DATE = #{certificateDate},
+        	CERTIFICATES_FILE = #{certificateFile}, 
+        	CERTIFICATES_DESCRIPTION = #{certificateDescription}
+    	WHERE CONTRACTS_ID = #{certificateId}
+	</update>
+    
+    <!-- 증명서 삭제 -->
+    <delete id="deleteContracts" parameterType="String">
+    DELETE FROM TB_CONTRACTS WHERE CONTRACTS_ID = #{certificateId}
+	</delete>
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC
+ "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="certificatesMapper">
+
+	<insert id="insertCertificate">
+        INSERT INTO certificates (certificateId, certificateTitle, certificateDate, certificateFile, certificateDescription, gid, comCode)
+        VALUES (#{certificateId}, #{certificateTitle}, #{certificateDate}, #{certificateFile}, #{certificateDescription}, #{gid}, #{comCode})
+    </insert>
+
+    <select id="selectCertificates" resultType="Certificate">
+        SELECT certificateId, certificateTitle, certificateDate, certificateFile, certificateDescription
+        FROM certificates
+        WHERE gid = #{param1} AND comCode = #{param2}
+    </select>
+
+    <update id="updateCertificate">
+        UPDATE certificates
+        SET certificateTitle = #{certificateTitle}, certificateFile = #{certificateFile}, certificateDescription = #{certificateDescription}
+        WHERE certificateId = #{certificateId} AND gid = #{gid} AND comCode = #{comCode}
+    </update>
+
+    <delete id="deleteCertificate">
+        DELETE FROM certificates
+        WHERE gid = #{param1} AND comCode = #{param2} AND certificateFile = #{param3}
+    </delete>
+
+</mapper>

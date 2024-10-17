@@ -1,0 +1,11 @@
+package org.riss.bizconnect.hr.document.model.dto;
+
+public class Document {
+	
+	private String contractId;
+	private String dm_date;
+	private String dm.file;
+	private String dm_title;
+	private String comCode;
+	private String gid;
+}
