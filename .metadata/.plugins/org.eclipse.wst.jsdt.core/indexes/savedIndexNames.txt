@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+D:\riss project\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-1135217742.index
-3827197455.index
-603629134.index
-163977445.index
-563303466.index
-109697032.index
-1894729692.index
