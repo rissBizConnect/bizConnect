@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+ "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="supportMapper">
+	<resultMap id="resultSupport" type="Support">
+		<result property="supportNo" column="SUPPORT_NO" />
+		<result property="supportTitle" column="SUPPORT_TITLE" />
+		<result property="supportDate" column="SUPPORT_DATE" />
+		<result property="supportWriter" column="SUPPORT_WRITER" />
+		<result property="supportContent" column="SUPPORT_CONTENT" />
+		<result property="originalFilePath" column="ORIGINAL_FILEPATH" />
+		<result property="renameFilePath" column="RENAME_FILEPATH" />
+		<result property="importance" column="IMPORTANCE" />
+		<result property="impEndDate" column="IMP_END_DATE" />
+		<result property="readCount" column="READCOUNT" />
+		<result property="comCode" column="COM_CODE" />
+	</resultMap>
+
+	<!-- <select id="selectList" resultMap="resultSUPPORT"> SELECT SUPPORT_NO, 
+		SUPPORT_TITLE, SUPPORT_DATE, SUPPORT_WRITER, READCOUNT FROM SUPPORT ORDER 
+		BY SUPPORT_NO DESC </select> -->
+
+	<select id="selectList" resultMap="resultSupport"
+		parameterType="Paging">
+		select *
+		from (select rownum rnum, support_no,
+		support_title, support_date, support_writer, support_content,
+		original_filepath, rename_filepath, importance, imp_end_date,
+		readcount, com_code
+		from (select * from tb_support WHERE com_code = #{comCode }
+		order by support_date desc, support_no desc))
+		where rnum between #{ startRow
+		} and #{ endRow }
+	</select>
+
+	<!-- 공지글 총 갯수 조회용 쿼리 -->
+	<select id="selectListCount" resultType="_int">
+		select count(*) from
+		TB_SUPPORT
+	</select>
+
+
+	<!-- 공지사항 목록 <select id="selectSUPPORTList" resultMap="resultSUPPORT"> SELECT 
+		* FROM SUPPORT ORDER BY SUPPORT_NO DESC </select> -->
+
+	<!-- 공지사항 상세 조회 -->
+	<select id="selectSupport" parameterType="int"
+		resultMap="resultSupport">
+		SELECT * FROM TB_SUPPORT WHERE SUPPORT_NO = #{supportNo}
+	</select>
+
+	<!-- 조회수 1증가 처리용 쿼리 -->
+	<update id="updateAddReadCount" parameterType="_int">
+		update tb_support
+		set readcount = readcount + 1
+		where support_no = #{ no }
+	</update>
+
+	<!-- 공지사항 등록 -->
+	<insert id="insertSupport" parameterType="Support">
+		INSERT INTO TB_SUPPORT (SUPPORT_NO, SUPPORT_TITLE, SUPPORT_DATE,
+		SUPPORT_WRITER, SUPPORT_CONTENT, ORIGINAL_FILEPATH, RENAME_FILEPATH,
+		IMPORTANCE, IMP_END_DATE, READCOUNT, COM_CODE)
+		VALUES (SUPPORT_SEQ.NEXTVAL, #{supportTitle}, SYSDATE, #{supportWriter},
+		#{supportContent}, #{originalFilePath}, #{renameFilePath},
+		#{importance}, #{impEndDate}, #{readCount}, #{comCode})
+	</insert>
+
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteSupport" parameterType="int">
+		delete from tb_support
+		where support_no = #{ no }
+	</delete>
+
+	<!-- 공지사항 수정 -->
+	<update id="updateSupport" parameterType="Support">
+		update tb_support
+		<if test="originalFilePath == null">
+			set support_title = #{ supportTitle },
+			support_date = #{ supportDate }, support_content = #{ supportContent },
+			original_filepath = null , rename_filepath = null,
+			importance = #{ importance }, imp_end_date = #{ impEndDate }
+		</if>
+		<if test="originalFilePath != null">
+			set support_title = #{ supportTitle },
+			support_date = #{ supportDate }, support_content = #{ supportContent },
+			original_filepath = #{ originalFilePath }, rename_filepath = #{
+			renameFilePath },
+			importance = #{ importance }, imp_end_date = #{ impEndDate }
+		</if>
+		where support_no = #{ supportNo }
+	</update>
+
+	<!-- 공지글 검색용 쿼리 ********************************************** -->
+	<select id="selectSearchTitle" resultMap="resultSupport"
+		parameterType="Search">
+		select *
+		from (select rownum rnum, support_no, support_title, support_date,
+				support_writer, support_content,
+				original_filepath, rename_filepath, importance, imp_end_date, readcount
+			from (select * from tb_support
+				where support_title like '%' || #{ keyword } || '%'
+				order by importance desc, support_date desc, support_no desc))
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+
+	<select id="selectSearchContent" resultMap="resultSupport"
+		parameterType="Search">
+		select *
+		from (select rownum rnum, support_no, support_title, support_date,
+				support_writer, support_content,
+				original_filepath, rename_filepath, importance, imp_end_date, readcount
+			from (select * from tb_support
+				where support_content like '%' || #{ keyword } || '%'
+				order by importance desc, support_date desc, support_no desc))
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+
+	<select id="selectSearchDate" resultMap="resultSupport"
+		parameterType="Search">
+		select *
+		from (select rownum rnum, support_no, support_title, support_date,
+				support_writer, support_content, original_filepath, 
+				rename_filepath, importance, imp_end_date, readcount
+			from (select * from tb_support
+				where support_date between #{ begin } and #{ end }
+				order by importance desc, support_date desc, support_no desc))
+		where rnum between #{ startRow } and #{ endRow }
+	</select>
+	
+	<!-- 공지글 검색관련 목록 총 갯수 조회용 쿼리 ************************************* -->
+	<select id="selectSearchTitleCount" resultType="int" parameterType="string">
+		select count(*) 
+		from tb_support
+		where support_title like '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="selectSearchContentCount" resultType="int" parameterType="string">
+		select count(*) 
+		from tb_support
+		where support_content like '%' || #{ keyword } || '%'
+	</select>
+	
+	<select id="selectSearchDateCount" resultType="int" parameterType="Search">
+		select count(*) 
+		from tb_support
+		where support_date between #{ begin } and #{ end }
+	</select>
+	
+</mapper>

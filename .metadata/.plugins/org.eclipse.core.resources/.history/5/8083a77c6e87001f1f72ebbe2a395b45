@@ -1,0 +1,24 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+public interface RetireService {
+
+	int updateRetire(Retire retire);
+
+	int deleteRetire(String retNo);
+
+	Retire getRetireById(String retNo);
+
+	List<Retire> getAllRetires();
+
+	int addRetire(Retire retire);
+
+	int getRetireListCount();
+    
+}

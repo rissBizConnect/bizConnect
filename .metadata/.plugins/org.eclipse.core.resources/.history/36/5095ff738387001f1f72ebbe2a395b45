@@ -1,0 +1,41 @@
+package org.riss.bizconnect.hr.retire.model.service;
+
+import java.util.List;
+
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class RetireServiceImpl implements RetireService {
+
+    @Autowired
+    private RetireDAO retireDAO;
+
+    @Override
+    public List<Retire> getRetireList() {
+        return retireDAO.selectRetireList(); // 전체 퇴직자 리스트 조회
+    }
+
+    @Override
+    public List<Retire> getRetireList(Paging paging) {
+        return retireDAO.getRetireList(paging); // 페이징 처리된 리스트 반환
+    }
+
+    @Override
+    public int addRetire(Retire retire) {
+        return retireDAO.insertRetire(retire);
+    }
+
+    @Override
+    public int updateRetire(Retire retire) {
+        return retireDAO.updateRetire(retire);
+    }
+
+    @Override
+    public int deleteRetire(String retNo) {
+        return retireDAO.deleteRetire(retNo);
+    }
+}

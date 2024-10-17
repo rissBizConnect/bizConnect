@@ -1,0 +1,26 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>증명서 상세 보기</title>
+</head>
+<body>
+    <h2>증명서 상세 보기</h2>
+    <p><strong>증명서 번호:</strong> ${certificate.certificateId}</p><br>
+    <p><strong>서류명:</strong> ${certificate.certificateTitle}</p><br>
+    <p><strong>등록 날짜:</strong> ${certificate.certificateDate}</p><br>
+    <p><strong>설명:</strong> ${certificate.certificateDescription}</p><br>
+    <p><strong>파일:</strong> <a href="${certificate.certificateFile}" download>다운로드</a></p><br>
+    <form action="cerDetailUpdate.do" method="post" style="display: inline;">
+    <input type="hidden" name="certificateId" value="${certificate.certificateId}">
+    <button type="submit">수정</button>
+	</form>
+    <form action="cerDelete.do" method="post" style="display:inline;">
+        <input type="hidden" name="certificateId" value="${certificate.certificateId != null ? certificate.certificateId : 0}">
+        <input type="submit" value="삭제" onclick="return confirm('정말 삭제하시겠습니까?');" />
+    </form><br>
+    <br/>
+    <a href="cerList.do">목록으로 돌아가기</a>
+</body>
+</html>

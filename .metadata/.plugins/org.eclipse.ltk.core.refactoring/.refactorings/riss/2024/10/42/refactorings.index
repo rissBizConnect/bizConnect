@@ -1,0 +1,70 @@
+1728878743485	Delete element
+1728951999081	Delete element
+1728956991306	Delete element
+1728963350856	Delete element
+1728983015090	Rename package 'org.riss.bizconnect.hr.attendance.controller'
+1728983028723	Copy package
+1728983044499	Copy package
+1728983059332	Rename package 'org.riss.bizconnect.hr.document.service'
+1728983068157	Copy package
+1728983253018	Rename package 'org.riss.bizconnect.hr.document.controller'
+1728983295475	Delete element
+1728983296541	Delete element
+1728983297581	Delete element
+1728983312322	Copy package
+1728983439893	Delete element
+1728985527192	Copy file
+1728985803477	Copy file
+1728985816223	Copy file
+1728986005052	Copy file
+1728988151331	Delete element
+1728988152671	Delete element
+1728988155286	Delete element
+1728988156054	Delete element
+1728988169795	Copy file
+1728988192930	Copy file
+1728988895664	Copy file
+1728991476899	Rename type 'Document'
+1728992654323	Rename type 'DocumentDao'
+1728992725659	Rename type 'DocumentService'
+1728992732903	Rename type 'DocumentServiceImpl'
+1728993313054	Rename resource 'documentMapper.xml'
+1728995841972	Rename type 'DocumentController'
+1729040801378	Rename resource 'certificate_list.jsp'
+1729040810352	Rename resource 'contract_list.jsp'
+1729040833846	Copy file
+1729044431036	Copy file
+1729047502910	Rename resource 'certificateEdit.jsp'
+1729066185894	Delete element
+1729066295543	Delete elements
+1729066300495	Delete element
+1729066356543	Delete elements
+1729066359845	Delete element
+1729067421710	Delete element
+1729068167032	Delete elements
+1729068173876	Delete elements
+1729124135828	Copy file
+1729124155640	Rename resource 'cerUpdate.jsp'
+1729126997000	Delete element
+1729126997836	Delete element
+1729137320036	Copy files
+1729137577258	Copy compilation unit
+1729137717234	Copy compilation unit
+1729137843920	Copy compilation unit
+1729137931401	Copy compilation unit
+1729138011355	Copy compilation unit
+1729140128006	Delete element
+1729140128793	Delete element
+1729140163695	Delete element
+1729140165662	Delete element
+1729140166784	Delete element
+1729140211093	Copy compilation unit
+1729140534346	Copy compilation unit
+1729140669225	Copy compilation unit
+1729140729227	Copy compilation unit
+1729140780754	Copy compilation unit
+1729141845805	Copy file
+1729142469752	Rename resource 'certificateAdd2.jsp'
+1729142481218	Rename resource 'certificateDetail2.jsp'
+1729142487565	Rename resource 'certificateList2.jsp'
+1729142494773	Rename resource 'certificateUpdate2.jsp'

@@ -1,0 +1,48 @@
+package org.riss.bizconnect.hr.retire.service;
+
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.riss.bizconnect.hr.retire.repository.RetireRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class RetireServiceImpl implements RetireService {
+
+    @Autowired
+    private RetireRepository retireRepository;
+
+    @Override
+    public List<Retire> getRetireList(int page, int pageSize, String keyword) {
+        int startRow = (page - 1) * pageSize;
+        return retireRepository.getRetireList(startRow, pageSize, keyword);
+    }
+
+    @Override
+    public Retire getRetireById(String retNo) {
+        return retireRepository.getRetireById(retNo);
+    }
+
+    @Override
+    public void addRetire(Retire retire) {
+        retireRepository.addRetire(retire);
+    }
+
+    @Override
+    public void updateRetire(Retire retire) {
+        retireRepository.updateRetire(retire);
+    }
+
+    @Override
+    public void deleteRetire(String retNo) {
+        retireRepository.deleteRetire(retNo);
+    }
+
+    @Override
+    public PageDto getPageInfo(int currentPage, int pageSize) {
+        int totalRecords = retireRepository.getTotalCount();
+        int totalPages = (int) Math.ceil(totalRecords / (double) pageSize);
+        return new PageDto(currentPage, totalPages, pageSize);
+    }
+}

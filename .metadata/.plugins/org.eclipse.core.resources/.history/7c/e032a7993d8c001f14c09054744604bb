@@ -1,0 +1,46 @@
+package org.riss.bizconnect.hr.document.model.dao;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.riss.bizconnect.hr.document.model.dto.Contract;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository("contractDAO")
+public class ContractsDAO {
+
+	@Autowired
+    private SqlSessionTemplate sqlSessionTemplate;
+
+	// 증명서 목록 조회
+    public List<Contract> selectcontracts() {
+        return sqlSessionTemplate.selectList("contractsMapper.selectcontracts");
+    }
+
+    // 증명서 상세 조회
+    public contract selectcontractById(String contractId) {
+        return sqlSessionTemplate.selectOne("contractsMapper.selectcontractById", contractId);
+    }
+
+    // 증명서 추가
+    public int insertcontract(Contract contract) {
+        return sqlSessionTemplate.insert("contractsMapper.insertcontract", contract);
+    }
+
+    // 증명서 수정
+    public int updatecontract(Contract contract) {
+        return sqlSessionTemplate.update("contractsMapper.updatecontract", contract);
+    }
+    
+    // 증명서 삭제
+	public int deletecontract(String contractId) {
+		return sqlSessionTemplate.delete("contractsMapper.deletecontract", contractId);
+	}
+
+    
+	
+
+
+}
+	

@@ -1,0 +1,39 @@
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class RetireDAO {
+    @Autowired
+    private SqlSessionTemplate sqlSessionTemplate;
+
+    // 퇴직자 목록 조회
+    public List<Retire> getRetireList(Map<String, Object> params) {
+        return sqlSessionTemplate.selectList("org.riss.bizconnect.hr.retire.model.dao.RetireDAO.getRetireList", params);
+    }
+
+    // 퇴직자 추가
+    public int addRetire(Retire retire) {
+        return sqlSessionTemplate.insert("org.riss.bizconnect.hr.retire.model.dao.RetireDAO.addRetire", retire);
+    }
+
+    // 퇴직자 수정
+    public int updateRetire(Retire retire) {
+        return sqlSessionTemplate.update("org.riss.bizconnect.hr.retire.model.dao.RetireDAO.updateRetire", retire);
+    }
+
+    // 퇴직자 삭제
+    public int deleteRetire(String retNo) {
+        return sqlSessionTemplate.delete("org.riss.bizconnect.hr.retire.model.dao.RetireDAO.deleteRetire", retNo);
+    }
+
+    // 총 퇴직자 수 조회
+    public int getTotalCount(Map<String, Object> params) {
+        return sqlSessionTemplate.selectOne("org.riss.bizconnect.hr.retire.model.dao.RetireDAO.getTotalCount", params);
+    }
+}

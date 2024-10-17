@@ -1,0 +1,105 @@
+package org.riss.bizconnect.hr.document.model.dto;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+public class Contract implements Serializable {
+	
+	private static final long serialVersionUID = 8621293571373691741L;
+	
+	private String contractId;        // 계약서 ID (자동 증가)
+    private String contractTitle;     // 서류명
+    private String contractDate;      // 등록 날짜
+    private String contractFile;      // 파일 경로
+    private String contractDescription; // 기타 설명
+    private String gId;                // 로그인 아이디
+    private String comCode;            // 회사 코드
+	
+    public Contract() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Contract(String contractId, String contractTitle, String contractDate, String contractFile,
+			String contractDescription, String gId, String comCode) {
+		super();
+		this.contractId = contractId;
+		this.contractTitle = contractTitle;
+		this.contractDate = contractDate;
+		this.contractFile = contractFile;
+		this.contractDescription = contractDescription;
+		this.gId = gId;
+		this.comCode = comCode;
+	}
+
+	public String getContractId() {
+		return contractId;
+	}
+
+	public void setContractId(String contractId) {
+		this.contractId = contractId;
+	}
+
+	public String getContractTitle() {
+		return contractTitle;
+	}
+
+	public void setContractTitle(String contractTitle) {
+		this.contractTitle = contractTitle;
+	}
+
+	public String getContractDate() {
+		return contractDate;
+	}
+
+	public void setContractDate(String contractDate) {
+		this.contractDate = contractDate;
+	}
+
+	public String getContractFile() {
+		return contractFile;
+	}
+
+	public void setContractFile(String contractFile) {
+		this.contractFile = contractFile;
+	}
+
+	public String getContractDescription() {
+		return contractDescription;
+	}
+
+	public void setContractDescription(String contractDescription) {
+		this.contractDescription = contractDescription;
+	}
+
+	public String getgId() {
+		return gId;
+	}
+
+	public void setgId(String gId) {
+		this.gId = gId;
+	}
+
+	public String getComCode() {
+		return comCode;
+	}
+
+	public void setComCode(String comCode) {
+		this.comCode = comCode;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public String toString() {
+		return "Contract [contractId=" + contractId + ", contractTitle=" + contractTitle + ", contractDate="
+				+ contractDate + ", contractFile=" + contractFile + ", contractDescription=" + contractDescription
+				+ ", gId=" + gId + ", comCode=" + comCode + "]";
+	}
+    
+	
+	
+	
+}

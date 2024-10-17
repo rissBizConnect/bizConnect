@@ -1,0 +1,53 @@
+package org.riss.bizconnect.hr.retire.model.dto;
+
+import java.io.Serializable;
+import java.sql.Date;
+
+public class Retire implements Serializable {
+   
+	private static final long serialVersionUID = -4691352981300651599L;
+	
+	private String retNo; 		// 퇴직자 사번
+    private String gid; 		// 유저 GID
+	private Date userEntryDate; // 입사일
+    private Date retDate; 		// 퇴사일
+    private int retTotalDate; 	// 총 근무일
+    private String retType;		// 고용형태
+    private String exitReason;	// 비고
+    private String comCode;		// 회사코드
+	private String status;		// 퇴직자 -> 사원
+
+	
+	public Retire() {
+		super();
+	}
+
+	public Retire(String retNo, String gid, Date retDate, String retType, String comCode, Date userEntryDate) {
+		super();
+		this.retNo = retNo;
+		this.gid = gid;
+		this.retDate = retDate;
+		this.retType = retType;
+		this.comCode = comCode;
+		this.userEntryDate = userEntryDate;
+	}
+
+	public Retire(String retNo, String gid, Date retDate, int retTotalDate, String retType, String exitReason,
+			String comCode, String status, Date userEntryDate) {
+		super();
+		this.retNo = retNo;
+		this.gid = gid;
+		this.retDate = retDate;
+		this.retTotalDate = retTotalDate;
+		this.retType = retType;
+		this.exitReason = exitReason;
+		this.comCode = comCode;
+		this.status = status;
+		this.userEntryDate = userEntryDate;
+	}
+
+	
+	
+	
+	
+}

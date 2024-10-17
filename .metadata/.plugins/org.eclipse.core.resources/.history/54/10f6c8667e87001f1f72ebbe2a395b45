@@ -1,0 +1,40 @@
+import java.util.List;
+import java.util.Map;
+
+import org.riss.bizconnect.hr.retire.model.dao.RetireDAO;
+import org.riss.bizconnect.hr.retire.model.dto.Retire;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class RetireServiceImpl implements RetireService {
+    @Autowired
+    private RetireDAO retireDAO;
+
+    @Override
+    public List<Retire> getRetireList(Map<String, Object> params) {
+        return retireDAO.getRetireList(params);
+    }
+
+    @Override
+    public int addRetire(Retire retire) {
+        return retireDAO.addRetire(retire);
+    }
+
+    @Override
+    public int updateRetire(Retire retire) {
+        return retireDAO.updateRetire(retire);
+    }
+
+    @Override
+    public int deleteRetire(String retNo) {
+        return retireDAO.deleteRetire(retNo);
+    }
+
+    @Override
+    public int getTotalCount(Map<String, Object> params) {
+        return retireDAO.getTotalCount(params);
+    }
+
+	
+}

@@ -1,0 +1,117 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.servletContext.contextPath}" />
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>증명서 추가</title>
+    <link rel="stylesheet" href="${path}/resources/css/hr.css"> <!-- hr.css 파일 연결 -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* 중앙 정렬 */
+            background-color: #f4f4f4; /* 배경색 */
+        }
+
+        .contentPos {
+            display: flex;
+            flex-direction: column; /* 세로로 배치 */
+            align-items: center; /* 중앙 정렬 */
+            padding: 20px;
+            background-color: #fff; /* 콘텐츠 배경색 */
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+            margin: 20px; /* 여백 */
+            width: 90%; /* 너비 조정 */
+            max-width: 500px; /* 최대 너비 설정 */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333; /* 제목 색상 */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555; /* 라벨 색상 */
+        }
+
+        input[type="text"], textarea, input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc; /* 테두리 색상 */
+            border-radius: 4px; /* 테두리 둥글기 */
+        }
+
+        button {
+            background-color: #007BFF; /* 버튼 배경색 */
+            color: white; /* 버튼 텍스트 색상 */
+            padding: 10px 15px;
+            border: none; /* 테두리 제거 */
+            border-radius: 4px; /* 버튼 둥글기 */
+            cursor: pointer; /* 커서 스타일 */
+            transition: background-color 0.3s; /* 부드러운 전환 효과 */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* 버튼 호버 색상 */
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #007BFF; /* 링크 색상 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
+
+        a:hover {
+            text-decoration: underline; /* 링크 호버 시 밑줄 */
+        }
+
+        .image-container {
+            margin-bottom: 20px; /* 이미지 아래 여백 */
+        }
+
+        img {
+            width: 100%; /* 이미지 너비 */
+            border-radius: 5px; /* 이미지 둥글기 */
+            max-width: 400px; /* 최대 너비 설정 */
+        }
+    </style>
+</head>
+<body>
+    <c:import url="/WEB-INF/views/common/header.jsp" />
+    <c:import url="/WEB-INF/views/common/menubar.jsp" />
+
+    <div class="contentPos">
+        <div class="image-container">
+            <img src="${path}/resources/images/certificate_image.png" alt="증명서 이미지"> <!-- 이미지 추가 -->
+        </div>
+        <h2>증명서 추가</h2>
+        <form action="${path}/cerAdd.do" method="post" enctype="multipart/form-data">
+            <label for="certificateTitle">증명서 제목:</label>
+            <input type="text" id="certificateTitle" name="certificateTitle" required>
+
+            <label for="certificateDescription">설명:</label>
+            <textarea id="certificateDescription" name="certificateDescription" required></textarea>
+
+            <label for="file">파일 업로드:</label>
+            <input type="file" id="file" name="file" required>
+
+            <button type="submit">추가</button>
+        </form>
+        <a href="${path}/cerList.do">목록으로 돌아가기</a>
+    </div>
+
+    <c:import url="/WEB-INF/views/common/footer.jsp" />
+</body>
+</html>

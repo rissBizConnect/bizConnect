@@ -1,0 +1,43 @@
+package org.riss.bizconnect.hr.document.model.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.riss.bizconnect.common.model.dto.Paging;
+import org.riss.bizconnect.hr.document.model.dao.CertificateDAO;
+import org.riss.bizconnect.hr.document.model.dto.Certificate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("documentService")
+public class CertificateServiceImpl implements CertificateService {
+	
+	@Autowired
+	private CertificateDAO certificateDAO;
+
+	@Override
+    public int addContract(Certificate contract) {
+        return Certificate.insertContract(contract);
+    }
+
+    @Override
+    public Certificate getContract(String contractId) {
+        return Certificate.selectContract(contractId);
+    }
+
+    @Override
+    public int updateContract(Certificate contract) {
+        return Certificate.updateContract(contract);
+    }
+
+    @Override
+    public int deleteContract(String contractId) {
+        return Certificate.deleteContract(contractId);
+    }
+
+    @Override
+    public List<Certificate> searchContracts(String title) {
+        return Certificate.searchContracts(title);
+    }
+	
+}

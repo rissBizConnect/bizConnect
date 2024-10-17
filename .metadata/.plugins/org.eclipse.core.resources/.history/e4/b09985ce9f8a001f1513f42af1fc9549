@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="retireMapper">
+
+    <resultMap type="Retire" id="retireResult" >
+        <id property="retNo" column="RET_NO" /> <!-- 퇴직자 사번 -->
+        <result property="retType" column="RET_TYPE" /> <!-- 고용형태 -->
+        <result property="exitReason" column="RET_exitReason" /> <!-- 퇴직 사유 (비고) -->
+        <result property="userEntryDate" column="USER_ENTRY_DATE" /> <!-- 퇴사일 -->
+        <result property="retDate" column="RET_DATE" /> <!-- 퇴사일 -->
+        <result property="retTotalDate" column="RET_TOTAL_DATE" /> <!-- 총 근무일 -->
+        <result property="gid" column="GID" /> <!-- 유저 GID -->
+        <result property="comCode" column="COM_CODE" /> <!-- 회사코드 -->
+        <result property="status" column="STATUS" /> <!-- 퇴직자 여부 ('Y' or 'N') -->
+    </resultMap>
+    
+    <!-- 퇴직자 목록 조회 -->
+    <select id="selectRetireList" parameterType="Paging" resultMap="retireResult">
+    SELECT *
+    FROM (
+        SELECT ROWNUM rnum, RET_NO, RET_TYPE, RET_EXITREASON, RET_DATE, USER_ENTRY_DATE, RET_TOTAL_DATE, GID, COM_CODE, STATUS
+        FROM (
+            SELECT *
+            FROM TB_RETIRE
+            WHERE COM_CODE = #{comCode} AND STATUS = 'N'  -- STATUS가 'N'인 조건 추가
+            ORDER BY RET_NO DESC
+        )
+    )
+    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+</select>
+
+
+    <!-- 퇴직자 수 조회 -->
+    <select id="selectRetireCount" parameterType="Retire" resultType="_int">
+    	SELECT COUNT(*)
+    	FROM TB_RETIRE
+   	 	WHERE COM_CODE = #{comCode} AND STATUS = 'N'  -- STATUS가 'N'인 조건 추가
+	</select>
+
+    <!-- 특정 퇴직자 조회 -->
+    <select id="selectRetireByRetNo" resultMap="retireResult">
+        SELECT *
+        FROM TB_RETIRE
+        WHERE RET_NO = #{retNo, jdbcType=VARCHAR}
+    </select>
+
+	<!-- 퇴직자 추가 (INSERT) -->
+    <insert id="insertRetire" parameterType="Retire">
+        INSERT INTO TB_RETIRE (
+            RET_NO, RET_TYPE, RET_exitReason, RET_DATE, USER_ENTRY_DATE, RET_TOTAL_DATE, GID, COM_CODE, STATUS
+        ) VALUES (
+            (SELECT COALESCE(MAX(ret_no), 1) + 1
+			FROM TB_RETIRE), #{retType}, #{exitReason}, #{retDate}, #{userEntryDate}, #{retTotalDate}, #{gid}, #{comCode}, default
+        )
+    </insert>
+
+    <!-- 퇴직자 수정 (UPDATE) -->
+    <update id="updateRetire" parameterType="Retire">
+        UPDATE TB_RETIRE
+        SET
+            RET_TYPE = #{retType},
+            RET_exitReason = #{exitReason},
+            USER_ENTRY_DATE = 
+            RET_DATE = #{retDate} = #{userEntryDate},
+            RET_TOTAL_DATE = #{retTotalDate},
+            STATUS = #{status}
+        WHERE RET_NO = #{retNo} AND GID = #{gid} AND COM_CODE = #{comCode}
+    </update>
+
+    <!-- 퇴직자 삭제 (DELETE) -->
+    <delete id="deleteRetire" parameterType="String">
+        DELETE FROM TB_RETIRE
+        WHERE RET_NO = #{retNo} AND COM_CODE = #{comCode}
+    </delete>
+	
+
+</mapper>
