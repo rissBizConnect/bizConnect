@@ -8,40 +8,35 @@ import org.riss.bizconnect.pd.client.model.dto.ClientDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("clientService")
 public class ClientServiceImpl implements ClientService {
 
 	@Autowired
 	private ClientDAO clientDAO;
 
 	@Override
-	public ArrayList<ClientDTO> listAllClients() {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertclient(ClientDTO clientDTO) {
+		return clientDAO.insertclient(clientDTO);
 	}
 
 	@Override
-	public Optional<ClientDTO> getclients(String ClientCode) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<ClientDTO> selectAll(String myCom) {
+		return clientDAO.selectAll(myCom);
 	}
 
 	@Override
-	public void insertclient(ClientDTO client) {
-		// TODO Auto-generated method stub
-		
+	public int deleteClient(ClientDTO client) {
+		return clientDAO.deleteClient(client);
 	}
 
 	@Override
-	public void updateclient(String ClientCode, ClientDTO client) {
-		// TODO Auto-generated method stub
-		
+	public ClientDTO selectClientOne(ClientDTO clientDTO) {
+		return clientDAO.selectClientOne(clientDTO);
 	}
 
 	@Override
-	public void deleteclient(String ClientCode) {
-		// TODO Auto-generated method stub
-		
+	public int update(ClientDTO client) {
+		return clientDAO.update(client);
 	}
 	
 	

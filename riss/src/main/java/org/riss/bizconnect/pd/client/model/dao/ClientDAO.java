@@ -18,4 +18,25 @@ public class ClientDAO {
 		List<ClientDTO> list = sqlSessionTemplate.selectList("clientMapper.select");
 		return (ArrayList<ClientDTO>)list;
 	}
+
+	public int insertclient(ClientDTO client) {
+		return sqlSessionTemplate.insert("clientMapper.insertclient", client);
+	}
+
+	public ArrayList<ClientDTO> selectAll(String myCom) {
+		List<ClientDTO> list = sqlSessionTemplate.selectList("clientMapper.selectAll", myCom);
+		return (ArrayList<ClientDTO>)list;
+	}
+
+	public int deleteClient(ClientDTO client) {
+		return sqlSessionTemplate.delete("clientMapper.deleteClient", client);
+	}
+
+	public ClientDTO selectClientOne(ClientDTO clientDTO) {
+		return sqlSessionTemplate.selectOne("clientMapper.selectClientOne", clientDTO);
+	}
+
+	public int update(ClientDTO client) {
+		return sqlSessionTemplate.update("clientMapper.update", client);
+	}
 }

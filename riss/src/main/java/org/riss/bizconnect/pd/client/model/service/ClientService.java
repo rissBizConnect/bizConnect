@@ -6,9 +6,16 @@ import java.util.Optional;
 import org.riss.bizconnect.pd.client.model.dto.ClientDTO;
 
 public interface ClientService {
-	ArrayList<ClientDTO> listAllClients();
-	Optional<ClientDTO> getclients(String ClientCode);
-	void insertclient(ClientDTO client);
-	void updateclient(String ClientCode, ClientDTO client);
-	void deleteclient(String ClientCode);
+
+	int insertclient(ClientDTO clientDTO);
+
+	ArrayList<ClientDTO> selectAll(String myCom);
+
+	int deleteClient(ClientDTO client);
+
+	ClientDTO selectClientOne(ClientDTO clientDTO);
+
+	int update(ClientDTO client);
+
+
 }

@@ -1,10 +1,12 @@
 package org.riss.bizconnect.pd.client.model.dto;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class ClientDTO implements Serializable {
-	private String ClientCode; //거래처코드
+
+	private static final long serialVersionUID = -4159441270266239972L;
+	private int ClientCode; //거래처코드
 	private String LicenseCode; //회사코드
 	private String BusinessNum; //사업자번호
 	private String ClientName; //거래처명
@@ -15,16 +17,15 @@ public class ClientDTO implements Serializable {
 	private String ClientEmail; //거래처이메일
 	private String ClientFax; //거래처팩스번호
 	private String FileName; //저장파일명
-	private LocalDate ModifiDate; //수정일
+	private Date ModifiDate; //수정일
 	
 	public ClientDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public ClientDTO(String clientCode, String licenseCode, String businessNum, String clientName, String personCharge,
+	public ClientDTO(int clientCode, String licenseCode, String businessNum, String clientName, String personCharge,
 			String businessType, String clientTel, String clientAddr, String clientEmail, String clientFax,
-			String fileName, LocalDate modifiDate) {
+			String fileName, Date modifiDate) {
 		super();
 		ClientCode = clientCode;
 		LicenseCode = licenseCode;
@@ -40,11 +41,11 @@ public class ClientDTO implements Serializable {
 		ModifiDate = modifiDate;
 	}
 
-	public String getClientCode() {
+	public int getClientCode() {
 		return ClientCode;
 	}
 
-	public void setClientCode(String clientCode) {
+	public void setClientCode(int clientCode) {
 		ClientCode = clientCode;
 	}
 
@@ -128,12 +129,16 @@ public class ClientDTO implements Serializable {
 		FileName = fileName;
 	}
 
-	public LocalDate getModifiDate() {
+	public Date getModifiDate() {
 		return ModifiDate;
 	}
 
-	public void setModifiDate(LocalDate modifiDate) {
+	public void setModifiDate(Date modifiDate) {
 		ModifiDate = modifiDate;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -143,7 +148,6 @@ public class ClientDTO implements Serializable {
 				+ ", ClientTel=" + ClientTel + ", ClientAddr=" + ClientAddr + ", ClientEmail=" + ClientEmail
 				+ ", ClientFax=" + ClientFax + ", FileName=" + FileName + ", ModifiDate=" + ModifiDate + "]";
 	}
+	
 
-	
-	
 }

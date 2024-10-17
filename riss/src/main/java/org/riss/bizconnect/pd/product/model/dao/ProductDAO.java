@@ -23,4 +23,24 @@ public class ProductDAO {
 		return sqlSessionTemplate.insert("productMapper.insertproduct", prod);
 	}
 
+	public ArrayList<ProductDTO> selectAll(String myCom) {
+		List<ProductDTO> list = sqlSessionTemplate.selectList("productMapper.selectAll", myCom);
+		return (ArrayList<ProductDTO>)list;
+	}
+
+	public int insertProduct(ProductDTO productDTO) {
+		return sqlSessionTemplate.insert("productMapper.insertProduct", productDTO);
+	}
+
+	public int deleteproduct(ProductDTO product) {
+		return sqlSessionTemplate.delete("productMapper.deleteproduct", product);
+	}
+
+	public int update(ProductDTO product) {
+		return sqlSessionTemplate.update("productMapper.update", product);
+	}
+
+	public ProductDTO selectProductOne(ProductDTO product) {
+		return sqlSessionTemplate.selectOne("productMapper.selectProductOne", product);
+	}
 }

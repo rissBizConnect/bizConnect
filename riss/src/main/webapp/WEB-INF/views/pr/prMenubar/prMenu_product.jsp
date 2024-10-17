@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ page import="java.util.List" %>
- <%@ page import="org.riss.bizconnect.pd.order.model.dto.OrderDTO" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript" src="/bizconnect/resources/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="/bizconnect/resources/js/pr/prMenu_product.js"></script>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -167,11 +168,11 @@
 
     <div class="sidebar">
         <ul>
-            <li class="active"><a href="/bizconnect/prMenu_product.do">제품관리</a></li>
-            <li><a href="/bizconnect/prMenu_porder.do">발주관리</a></li>
-            <li><a href="/bizconnect/prMenu_order.do">수주관리</a></li>
+            <li class="active"><a href="moveprMenu_product.do">제품관리</a></li>
+            <li><a href="moveprMenu_porder.do">발주관리</a></li>
+            <li><a href="moveprMenu_order.do">수주관리</a></li>
             <li><a href="/bizconnect/prMenu_check.do">교환/환불관리</a></li>
-            <li><a href="/bizconnect/prMenu_client.do">거래처관리</a></li>
+            <li><a href="moveprMenu_client.do">거래처관리</a></li>
         </ul>
     </div>
 
@@ -211,23 +212,30 @@
                         </select>
         			<th>거래처명</th>
                     <th>처리상태</th>
+                    <th>상세 / 수정</th>
+                    <th>삭제</th>
 					<!-- <th>제품사진</th> -->
                 </tr>
             </thead>
             <tbody>
-                <c:forEach var="product" items="${productList}">
+                <c:forEach var="pro" items="${productList}">
                     <tr>
-                        <td><input type="checkbox" name="selectProduct" value="${product.productNo}"></td>
-                        <td>${product.productNo}</td>
-                        <td>${product.productName}</td>
-                        <td>${product.productCri}</td>
-                        <td>${product.stockStatus}</td> <!-- 재고 상태 출력 -->
-                        <td>${product.productPrice}</td>
-                        <td>${product.productPurPrice}</td>
-                        <td>${product.productCnt}</td>
-                        <td>${product.productStockWarn}</td>
-                        <td>${product.clientName}</td>
-                        <td>${product.processStatus}</td>
+                        <td>${pro.getProductNo()}</td>
+                        <td>${pro.getProductName()}</td>
+                        <td>${pro.getProductCri()}</td>
+                        <td>${pro.getProductStatus()}</td> <!-- 재고 상태 출력 -->
+                        <td>${pro.getProductPrice()}</td>
+                        <td>${pro.getProductPurPrice()}</td>
+                        <td>${pro.getProductCnt()}</td>
+                        <td>${pro.getProductStockWarn()}</td>
+                        <td>${pro.getClientCode()}</td>
+                        <td>${pro.getProductStatus()}</td>
+                        <td>
+                    	<button class="updateBTN" onclick="updateBTN('${ pro.getProductNo() }'); return false;">수정 / 상세</button>
+                    </td>
+                    <td>
+                    	<button class="deleteBTN" onclick="deleteBTN('${ pro.getProductNo() }'); return false;">삭 제</button>	
+                    </td>
                     </tr>
                 </c:forEach>              
             </tbody>
@@ -237,7 +245,7 @@
         <div class="button-group">
             <button class="btn-black">전체선택</button>
             <button class="btn-blue">조건별 조회</button>
-            <button class="btn-red" onclick="javascript:location.href='/bizconnect/product.do'; return false;">제품 등록</button>
+            <button class="btn-red" onclick="javascript:location.href='/bizconnect/moveProductInsert.do'; return false;">제품 등록</button>
             <button class="btn-blue" onclick="javascript:location.href='/bizconnect/ordreport.do'; return false;">거래명세서 작성</button>
         </div>
         

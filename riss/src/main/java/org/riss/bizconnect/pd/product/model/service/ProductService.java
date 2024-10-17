@@ -7,12 +7,14 @@ import org.riss.bizconnect.pd.product.model.dto.ProductDTO;
 
 
 public interface ProductService {
-	ArrayList<ProductDTO> listAllProducts();
-	Optional<ProductDTO> selectproductNo(int productNo);
-	void updateproduct(ProductDTO product);
-	void deleteproduct(int productNo);
-	int insertProduct();
-	int insertproduct(ProductDTO prod);
-	
-	ArrayList<ProductDTO> selectAllList();
+	ArrayList<ProductDTO> selectAll(String myCom);
+
+	int insertProduct(ProductDTO productDTO);
+
+	int deleteproduct(ProductDTO product);
+
+	int update(ProductDTO product);
+
+	ProductDTO selectProductOne(ProductDTO product);
+
 }

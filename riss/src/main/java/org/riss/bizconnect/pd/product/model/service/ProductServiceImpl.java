@@ -13,54 +13,29 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Autowired
 	private ProductDAO productDAO;
-
-	public ProductDAO getProductDAO() {
-		return productDAO;
-	}
-
-	public void setProductDAO(ProductDAO productDAO) {
-		this.productDAO = productDAO;
+	
+	@Override
+	public ArrayList<ProductDTO> selectAll(String myCom) {
+		return productDAO.selectAll(myCom);
 	}
 
 	@Override
-	public ArrayList<ProductDTO> listAllProducts() {
-		// TODO Auto-generated method stub
-		return null;
+	public int insertProduct(ProductDTO productDTO) {
+		return productDAO.insertProduct(productDTO);
 	}
 
 	@Override
-	public Optional<ProductDTO> selectproductNo(int productNo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public void updateproduct(ProductDTO product) {
-		// TODO Auto-generated method stub
-		
+	public int deleteproduct(ProductDTO product) {
+		return productDAO.deleteproduct(product);
 	}
 
 	@Override
-	public void deleteproduct(int productNo) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public int insertproduct(ProductDTO prod) {
-		return productDAO.insertproduct(prod);
+	public int update(ProductDTO product) {
+		return productDAO.update(product);
 	}
 
 	@Override
-	public int insertProduct() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public ArrayList<ProductDTO> selectAllList() {
-		return productDAO.selectAllList();
+	public ProductDTO selectProductOne(ProductDTO product) {
+		return productDAO.selectProductOne(product);
 	}
 }
