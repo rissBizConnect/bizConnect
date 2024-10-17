@@ -7,7 +7,7 @@ import org.riss.bizconnect.hr.document.model.dto.Certificate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service("documentService")
+@Service("certificateService")
 public class CertificateServiceImpl implements CertificateService {
 	
 	@Autowired
@@ -19,8 +19,8 @@ public class CertificateServiceImpl implements CertificateService {
     }
 
     @Override
-    public Certificate selectCertificateById(String comCode) {
-        return certificateDAO.selectCertificateById(comCode);
+    public Certificate selectCertificateById(String certificateId) {
+        return certificateDAO.selectCertificateById(certificateId);
     }
 
     @Override
@@ -33,10 +33,12 @@ public class CertificateServiceImpl implements CertificateService {
         return certificateDAO.updateCertificate(certificate);
     }
 
-    @Override
-    public int deleteCertificate(int contractId) {
-        return certificateDAO.deleteCertificate(contractId);
-    }
+	@Override
+	public int deleteCertificate(String certificateId) {
+		return certificateDAO.deleteCertificate(certificateId);
+	}
+
+	
    
 
 	

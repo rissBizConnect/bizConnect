@@ -34,7 +34,7 @@
                     </c:forEach>
                 </tbody>
             </table>
-            <a href="/bizconnect/supportCenter.do">고객센터</a>
+            <a href="/bizconnect/supportList.do">고객센터</a>
         </div>
         
         <div class="content">

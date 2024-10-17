@@ -10,7 +10,7 @@ public interface CertificateService {
     List<Certificate> selectCertificates();
 
     // 증명서 상세 조회
-    Certificate selectCertificateById(String comCode);
+    Certificate selectCertificateById(String certificateId);
 
     // 증명서 추가
     int insertCertificate(Certificate certificate);
@@ -19,6 +19,7 @@ public interface CertificateService {
     int updateCertificate(Certificate certificate);
 
     // 증명서 삭제
-    int deleteCertificate(int contractId);
+	int deleteCertificate(String certificateId);
+
     
 }

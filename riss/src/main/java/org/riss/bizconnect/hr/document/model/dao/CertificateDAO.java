@@ -11,7 +11,7 @@ import org.riss.bizconnect.hr.retire.model.dto.Retire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository("documentDao")
+@Repository("certificateDAO")
 public class CertificateDAO {
 
 	@Autowired
@@ -23,8 +23,8 @@ public class CertificateDAO {
     }
 
     // 증명서 상세 조회
-    public Certificate selectCertificateById(String comCode) {
-        return sqlSessionTemplate.selectOne("certificatesMapper.selectCertificateById", comCode);
+    public Certificate selectCertificateById(String certificateId) {
+        return sqlSessionTemplate.selectOne("certificatesMapper.selectCertificateById", certificateId);
     }
 
     // 증명서 추가
@@ -36,11 +36,15 @@ public class CertificateDAO {
     public int updateCertificate(Certificate certificate) {
         return sqlSessionTemplate.update("certificatesMapper.updateCertificate", certificate);
     }
-
+    
     // 증명서 삭제
-    public int deleteCertificate(int contractId) {
-        return sqlSessionTemplate.delete("certificatesMapper.deleteCertificate", contractId);
-    }
+	public int deleteCertificate(String certificateId) {
+		return sqlSessionTemplate.delete("certificatesMapper.deleteCertificate", certificateId);
+	}
+
+    
+	
+
 
 }
 	

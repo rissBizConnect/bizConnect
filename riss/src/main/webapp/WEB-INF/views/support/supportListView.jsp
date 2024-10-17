@@ -7,38 +7,38 @@
 <head>
 <meta charset="UTF-8">
 <title>고객센터 게시판</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #f4f6f9;
     margin: 0;
     padding: 0;
 }
 
-.header {
+/* 전체 레이아웃 스타일 */
+.wrapper {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: #f4f4f4;
-    padding: 10px 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100vh;
 }
 
-.header button {
-    padding: 10px 20px;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    font-weight: bold;
-}
-
+/* 사이드바 스타일 */
 .sidebar {
-    width: 220px;
-    background-color: #f4f4f4;
+    width: 250px;
+    background-color: #343a40;
     padding: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     height: 100vh;
-    float: left;
+    color: white;
+}
+
+.sidebar h3 {
+    color: #ffc107;
+    margin-bottom: 30px;
 }
 
 .sidebar ul {
@@ -47,20 +47,119 @@ body {
 }
 
 .sidebar ul li {
-    padding: 10px 0;
+    margin-bottom: 15px;
 }
 
 .sidebar ul li a {
-    text-decoration: none;
-    color: #333;
+    color: white;
     font-weight: bold;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.sidebar ul li a:hover {
+            background-color: #495057;  /* 약간 밝은 회색 */
+        }
+/* 콘텐츠 영역 스타일 */
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+/* 헤더 스타일 */
+        .header {
+            background-color: #ffffff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+/* 버튼 스타일 */
+        .header button {
+            background-color: #343a40; /* 사이드바와 동일한 다크 그레이 */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+.header button:hover {
+    background-color: #495057;
+}
+
+/* 테이블 스타일 */
+        .profile-info-section table {
+            width: 60%; /* 테이블 너비 조정 */
+            max-width: 600px;
+            margin-right: 20px;
+            border-collapse: collapse;
+        }
+
+        table td {
+            padding: 12px;
+            border: 1px solid #dee2e6;
+            color: #343a40; /* 다크 그레이 */
+        }
+
+        table tr td:first-child {
+            font-weight: bold;
+            width: 150px;
+            background-color: #495057; /* 짙은 회색 */
+            color: white;
+        }
+
+/* 콘텐츠 영역 스타일 */
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-top: 0px; /* Removed unnecessary padding */
 }
 
 .content {
-    margin-left: 240px;
-    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 10px 20px;  /* Reduced padding to bring it upwards */
+    box-sizing: border-box;
+    margin-top: -30px;  /* Move content upwards */
 }
 
+/* 헤더 스타일 */
+.header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* 버튼 스타일 */
+.header button {
+    background-color: #343a40;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.header button:hover {
+            background-color: #495057; /* 약간 밝은 회색 */
+        }
 table {
     width: 100%;
     border-collapse: collapse;
@@ -76,44 +175,89 @@ th {
     background-color: #f2f2f2;
     font-weight: bold;
 }
+
+
+
+
+/* 미디어 쿼리: 화면 축소에 대응하는 레이아웃 */
+        @media (max-width: 1200px) {
+            .content {
+                max-width: 800px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header button {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .profile-info-section {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-info-section table {
+                width: 100%;
+            }
+
+            .profile-photo {
+                margin-top: 20px;
+                width: 120px;
+                height: 120px;
+            }
+        }
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
 </style>
 </head>
 <body>
+<div class="wrapper">
+<!-- 사이드바 -->
+<div class="sidebar">
+    <h3>ERP Connect</h3>
+    <ul>
+        <li><a href="/bizconnect/main.do">마이페이지</a></li>
+        <li><a href="/bizconnect/profileUpdate.do">개인정보 변경</a></li>
+        <li><a href="/bizconnect/companyInfo.do">기업 정보</a></li>
+        <li><a href="/bizconnect/supportList.do">고객센터</a></li>
+    </ul>
+</div>
 
-    <!-- 상단 헤더 -->
-    <div class="header">
-        <div class="profile-info">BizConnect</div>
-        <button onclick="location.href='<c:url value="/menu.do"/>'">전체메뉴</button>
-    </div>
-
-    <!-- 왼쪽 사이드바 -->
-    <div class="sidebar">
-        <ul>
-            <li><a href="<c:url value='/main.do'/>">프로필 정보</a></li>
-            <li><a href="<c:url value='/profileUpdate.do'/>">개인정보 변경</a></li>
-            <li><a href="<c:url value='/companyInfo.do'/>">기업 등록 및 정보</a></li>
-            <li><a href="<c:url value='/supportList.do'/>">고객센터</a></li>
-        </ul>
-    </div>
-
+<div class="content-wrapper">
     <!-- 콘텐츠 영역 -->
     <div class="content">
+        <!-- 상단 헤더 -->
+        <div class="header">
+            <button onclick="location.href='/bizconnect/menu.do'">메인페이지</button>
+            <button onclick="location.href='/bizconnect/logout.do'" class="btn">로그아웃</button>
+        </div>
+
         <h1>고객센터 게시판</h1>
         <!-- 항목별 검색 기능 추가 -->
         <fieldset id="ss">
             <legend>검색할 항목을 선택하세요.</legend>
-            <input type="radio" name="item" id="title" checked> 제목 &nbsp; 
-            <input type="radio" name="item" id="content"> 내용 &nbsp; 
+            <input type="radio" name="item" id="title" checked> 제목 &nbsp;
+            <input type="radio" name="item" id="content"> 내용 &nbsp;
             <input type="radio" name="item" id="date"> 등록날짜 &nbsp;
         </fieldset>
 
-        <!-- 검색 항목별 값 입력 전송용 폼 -->
         <!-- 제목 검색 폼 -->
         <form action="<c:url value='/supportSearchTitle.do'/>" id="titleform" class="sform" method="get">
             <input type="hidden" name="action" value="title">
             <fieldset>
                 <legend>검색할 제목을 입력하세요.</legend>
-                <input type="search" name="keyword" size="50"> &nbsp; 
+                <input type="search" name="keyword" size="50"> &nbsp;
                 <input type="submit" value="검색">
             </fieldset>
         </form>
@@ -123,18 +267,18 @@ th {
             <input type="hidden" name="action" value="content">
             <fieldset>
                 <legend>검색할 내용을 입력하세요.</legend>
-                <input type="search" name="keyword" size="50"> &nbsp; 
+                <input type="search" name="keyword" size="50"> &nbsp;
                 <input type="submit" value="검색">
             </fieldset>
         </form>
 
         <!-- 등록날짜 검색 폼 -->
-        <form action="<c:url value='/supportSearchDate.do'/>" id="dateform" class="sform" method="get">
+        <form action="supportSearchDate.do" id="dateform" class="sform" method="get">
             <input type="hidden" name="action" value="date">
             <fieldset>
                 <legend>검색할 등록날짜를 선택하세요.</legend>
-                <input type="date" name="begin"> ~ 
-                <input type="date" name="end"> &nbsp; 
+                <input type="date" name="begin"> ~
+                <input type="date" name="end"> &nbsp;
                 <input type="submit" value="검색">
             </fieldset>
         </form>
@@ -179,7 +323,11 @@ th {
         <!-- 게시글 추가 버튼 -->
         <button onclick="location.href='<c:url value="/supportWriteForm.do"/>'">게시글 추가</button>
     </div>
+</div>
+</div>
+<footer>
+    <c:import url="/WEB-INF/views/common/footer.jsp" />
+</footer>
 
-    <c:import url="/WEB-INF/views/common/pagingView.jsp" />
 </body>
 </html>

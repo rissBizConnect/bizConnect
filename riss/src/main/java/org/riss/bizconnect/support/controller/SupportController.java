@@ -10,7 +10,7 @@ import org.riss.bizconnect.common.model.dto.FileDownloadView;
 import org.riss.bizconnect.common.model.dto.FileNameChange;
 import org.riss.bizconnect.common.model.dto.Paging;
 import org.riss.bizconnect.common.model.dto.Search;
-import org.riss.bizconnect.main.member.model.dto.User;
+import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.support.model.dto.Support;
 import org.riss.bizconnect.support.service.SupportService;
 import org.slf4j.Logger;
@@ -68,9 +68,11 @@ public class SupportController {
 
 		// 총 목록갯수 조회해서 총 페이지 수 계산함
 		int listCount = supportService.selectListCount();
-
+		
+		//Member loginUser = (Member) session.getAttribute("loginUser");
+		
 		// 페이지 관련 항목 계산 처리
-		String comCode = ((User) session.getAttribute("loginUser")).getComCode();
+		String comCode = ((Member) session.getAttribute("loginUser")).getComCode();
 		Paging paging = new Paging(comCode, listCount, limit, currentPage, "supportList.do");
 		paging.calculate();
 
@@ -94,7 +96,10 @@ public class SupportController {
 
 	// 공지사항 상세 보기 (selectSupport)
 	@RequestMapping("supportDetail.do")
-	public ModelAndView supportDetailMethod(@RequestParam("no") int supportNo, ModelAndView mv, HttpSession session) {
+	public ModelAndView supportDetailMethod(
+			@RequestParam("no") int supportNo, 
+			ModelAndView mv, 
+			HttpSession session) {
 		logger.info("supportdetail.do : " + supportNo);
 
 		Support support = supportService.selectSupport(supportNo);
@@ -104,7 +109,7 @@ public class SupportController {
 		if (support != null) {
 			mv.addObject("support", support);
 
-			User loginUser = (User) session.getAttribute("loginUser");
+			Member loginUser = (Member) session.getAttribute("loginUser");
 			if (loginUser != null && loginUser.getUserRole().equals("developer")) {
 				mv.setViewName("support/supportDeveloperView");
 			} else {
@@ -114,6 +119,7 @@ public class SupportController {
 			mv.addObject("message", supportNo + "번 공지사항 조회 실패!");
 			mv.setViewName("common/error");
 		}
+		
 		return mv;
 	}
 
@@ -125,20 +131,23 @@ public class SupportController {
 
 	// 새 공지사항 등록 처리 (insertSupport)
 	@RequestMapping(value = "insertSupport.do", method = RequestMethod.POST)
-	public String insertSupport(Support Support,
-			@RequestParam(name = "uploadFile", required = false) MultipartFile file, HttpServletRequest request,
-			Model model, HttpSession session) {
+	public String insertSupport(Support support,
+			@RequestParam(name = "uploadFile", required = false) 
+			MultipartFile file, 
+			HttpServletRequest request,
+			Model model, 
+			HttpSession session) {
 
 		// 세션에서 로그인된 사용자 정보 가져오기 (실제 로그인 구현에 따라 수정)
-		User loginUser = (User) session.getAttribute("loginUser");
+		Member loginUser = (Member) session.getAttribute("loginUser");
 		if (loginUser == null) {
 			model.addAttribute("message", "로그인이 필요합니다.");
 			return "common/error";
 		}
 
-		Support.setComCode(loginUser.getComCode());
-		if (Support.getImportance() == null || Support.getImportance().isEmpty()) {
-			Support.setImportance("N");
+		support.setComCode(loginUser.getComCode());
+		if (support.getImportance() == null || support.getImportance().isEmpty()) {
+			support.setImportance("N");
 		}
 
 		// 파일 업로드 처리
@@ -149,8 +158,8 @@ public class SupportController {
 
 			try {
 				file.transferTo(saveFile);
-				Support.setOriginalFilePath(fileName);
-				Support.setRenameFilePath(fileName);
+				support.setOriginalFilePath(fileName);
+				support.setRenameFilePath(fileName);
 			} catch (Exception e) {
 				e.printStackTrace();
 				model.addAttribute("message", "파일 업로드 실패!");
@@ -158,7 +167,7 @@ public class SupportController {
 			}
 		}
 
-		if (supportService.insertSupport(Support) > 0) {
+		if (supportService.insertSupport(support) > 0) {
 			return "redirect:supportList.do";
 		} else {
 			model.addAttribute("message", "공지사항 등록 실패!");
@@ -315,7 +324,7 @@ public class SupportController {
 
 		int listCount = supportService.selectSearchTitleCount(keyword);
 
-		String comCode = ((User) session.getAttribute("loginUser")).getComCode();
+		String comCode = ((Member) session.getAttribute("loginUser")).getComCode();
 		Paging paging = new Paging(comCode, listCount, limit, currentPage, "supportSearchTitle.do");
 		paging.calculate();
 		
@@ -359,7 +368,7 @@ public class SupportController {
 		}
 
 		int listCount = supportService.selectSearchContentCount(keyword);
-		String comCode = ((User) session.getAttribute("loginUser")).getComCode();
+		String comCode = ((Member) session.getAttribute("loginUser")).getComCode();
 
 		Paging paging = new Paging(comCode, listCount, limit, currentPage, "supportSearchContent.do");
 		paging.calculate();
@@ -388,8 +397,7 @@ public class SupportController {
 	@RequestMapping("supportSearchDate.do")
 	public ModelAndView searchSupportDateMethod(
 			ModelAndView mv, Search search,
-			@RequestParam("startDate") String startDate,
-			@RequestParam("endDate") String endDate, 
+			@RequestParam("action") String action,
 			@RequestParam(name = "page", required = false) String page,
 			@RequestParam(name = "limit", required = false) String slimit, 
 			HttpSession session) {
@@ -408,7 +416,7 @@ public class SupportController {
 		
 		int listCount = supportService.selectSearchDateCount(search);
 		
-		String comCode = ((User) session.getAttribute("loginUser")).getComCode();
+		String comCode = ((Member) session.getAttribute("loginUser")).getComCode();
 		Paging paging = new Paging(comCode, listCount, limit, currentPage, "supportSearchDate.do");
 		paging.calculate();
 		
@@ -421,11 +429,14 @@ public class SupportController {
 			mv.addObject("list", list);
 			mv.addObject("paging", paging);
 			mv.addObject("currentPage", currentPage);
-			mv.addObject("startDate", startDate);
-			mv.addObject("endDate", endDate);
+			mv.addObject("action", action);
+			mv.addObject("begin", search.getBegin());
+			mv.addObject("end", search.getEnd());
+			
 			mv.setViewName("support/supportListView");
 		} else {
-			mv.addObject("message", "검색 결과가 없습니다.");
+			mv.addObject("message", action + "에 대한 " + search.getBegin() + "부터 " 
+					+ search.getEnd() + "기간 사이에 등록한 공지글 검색 결과가 존재하지 않습니다.");
 			mv.setViewName("common/error");
 		}
 		return mv;

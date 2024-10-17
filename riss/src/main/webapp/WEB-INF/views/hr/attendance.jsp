@@ -4,7 +4,7 @@
 <c:set var="path" value="${pageContext.servletContext.contextPath}" />
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>attendance</title>

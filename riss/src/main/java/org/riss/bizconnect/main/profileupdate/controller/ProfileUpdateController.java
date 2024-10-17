@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
-import org.riss.bizconnect.main.member.model.dto.User;
+import org.riss.bizconnect.common.model.dto.Member;
 import org.riss.bizconnect.main.member.model.service.MemberService;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -27,11 +27,11 @@ public class ProfileUpdateController {
 
     // 비밀번호 확인 메소드 (POST 요청)
     @PostMapping("/profileUpdateCheck.do")
-    public String checkPassword(@RequestParam("userPw") String userPw, HttpSession session, Model model) {
-        User loginUser = (User) session.getAttribute("loginUser");
+    public String checkPassword(@RequestParam("userPW") String userPW, HttpSession session, Model model) {
+        Member loginUser = (Member) session.getAttribute("loginUser");
 
         // 입력받은 비밀번호와 실제 비밀번호 비교
-        if (memberService.validateLogin(loginUser.getgID(), userPw, loginUser.getComCode())) {
+        if (memberService.validateLogin(loginUser.getgId(), userPW, loginUser.getComCode())) {
             model.addAttribute("loginUser", loginUser);
             return "mypage/profileUpdateForm"; // 프로필 업데이트 폼으로 이동
         } else {
@@ -42,13 +42,13 @@ public class ProfileUpdateController {
 
     // 프로필 업데이트 메소드 (POST 요청)
     @PostMapping("/updateProfile.do")
-    public String updateProfile(@ModelAttribute User user, 
-                                @RequestParam("oldPw") String oldPw,
-                                @RequestParam("newPw") String newPw, 
-                                @RequestParam("confirmPw") String confirmPw, 
+    public String updateProfile(@ModelAttribute Member user, 
+                                @RequestParam("oldPW") String oldPW,
+                                @RequestParam("newPW") String newPW, 
+                                @RequestParam("confirmPW") String confirmPW, 
                                 HttpSession session, 
                                 Model model) {
-        User loginUser = (User) session.getAttribute("loginUser");
+    	Member loginUser = (Member) session.getAttribute("loginUser");
 
         // 로그 추가
         System.out.println("getUserName 값: " + user.getUserName());
@@ -57,15 +57,15 @@ public class ProfileUpdateController {
         System.out.println("getUserAddr 값: " + user.getUserAddr());
 
         // 세션에서 GID를 가져와 user 객체에 설정
-        user.setgID(loginUser.getgID());
+        user.setgId(loginUser.getgId());
 
         // 비밀번호 변경 로직
-        if (!oldPw.isEmpty() && !newPw.isEmpty() && newPw.equals(confirmPw)) {
-            if (!memberService.validateLogin(loginUser.getgID(), oldPw, loginUser.getComCode())) {
+        if (!oldPW.isEmpty() && !newPW.isEmpty() && newPW.equals(confirmPW)) {
+            if (!memberService.validateLogin(loginUser.getgId(), oldPW, loginUser.getComCode())) {
                 model.addAttribute("errorMessage", "기존 비밀번호가 일치하지 않습니다.");
                 return "mypage/profileUpdateForm";
             }
-            user.setUserPw(newPw); // 비밀번호 업데이트
+            user.setUserPW(newPW); // 비밀번호 업데이트
         }
 
         // 개인정보 업데이트

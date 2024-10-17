@@ -11,7 +11,7 @@ public class Member implements Serializable {
    private String userPW;      //비밀번호
    private String userName;      //이름
    private String userJob;      //직원분류
-   private String userRegNo;      //주민번호
+   private String userRegNo;      //주민번호s
    private String userPhone;      //전화버놓
    private String userEmail;      //이메일
    private String userAddr;      //주소
@@ -26,9 +26,17 @@ public class Member implements Serializable {
    public Member() {
       super();
    }
-
    
-   public Member(String gId, String comCode, String userPW, String userName, String userRegNo, Date userEntry,
+   
+   public Member(String gId, String userPW, String comCode) {
+		super();
+		this.gId = gId;
+		this.userPW = userPW;
+		this.comCode = comCode;
+	}
+
+
+public Member(String gId, String comCode, String userPW, String userName, String userRegNo, Date userEntry,
          String userRole, String status) {
       super();
       this.gId = gId;

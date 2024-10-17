@@ -16,11 +16,11 @@
 	<div class = contentPos>
     <h2>증명서 추가</h2>
     <form action="/cerAdd.do" method="Post" enctype="multipart/form-data">
-    <label for="certificateTitle">증명서 제목:</label>
-    <input type="text" id="certificateTitle" name="certificateTitle"><br>
+    <label for="contractsTitle">증명서 제목:</label>
+    <input type="text" id="contractsTitle" name="contractsTitle"><br>
 
-    <label for="certificateDescription">설명:</label>
-    <textarea id="certificateDescription" name="certificateDescription"></textarea><br>
+    <label for="contractsDescription">설명:</label>
+    <textarea id="contractsDescription" name="contractsDescription"></textarea><br>
 
     <label for="file">파일 업로드:</label>
     <input type="file" id="file" name="file"><br>

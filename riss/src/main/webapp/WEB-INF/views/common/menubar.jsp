@@ -38,7 +38,7 @@
 	            <li class="has-submenu" id="document">
 	                <a href="#" onclick="toggleSubmenu('document'); return false;">서류관리</a>
 	                <ul class="submenu" id="document-submenu">
-	                    <li><a href="#">계약서</a></li>
+	                    <li><a href="conList.do?page=1">계약서</a></li>
 	                    <li><a href="cerList.do?page=1">증명서</a></li>
 	                </ul>
 	            </li>

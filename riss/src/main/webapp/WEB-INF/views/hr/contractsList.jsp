@@ -30,23 +30,23 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach var="certificate" items="${certificateList}">
+            <c:forEach var="contracts" items="${contractsList}">
                 <tr>
-                    <td>${certificate.certificateId}</td>
-                    <td>${certificate.certificateTitle}</td>
-                    <td>${certificate.certificateDate}</td>
-                    <td>${certificate.certificateDescription}</td>
-                    <td><a href="${certificate.certificateFile}" download="download">다운로드</a></td>
-                    <td><form action="cerView.do" method="POST">
-    					<input type="hidden" name="certificateId" value="${certificate.certificateId}">
+                    <td>${contracts.contractsId}</td>
+                    <td>${contracts.contractsTitle}</td>
+                    <td>${contracts.contractsDate}</td>
+                    <td>${contracts.contractsDescription}</td>
+                    <td><a href="${contracts.contractsFile}" download="download">다운로드</a></td>
+                    <td><form action="conView.do" method="POST">
+    					<input type="hidden" name="contractsId" value="${contracts.contractsId}">
    						<button type="submit">상세보기</button>
 					</form></td>
-                    <td><form action="cerDetailUpdate.do" method="post" style="display: inline;">
-    					<input type="hidden" name="certificateId" value="${certificate.certificateId}">
+                    <td><form action="conDetailUpdate.do" method="post" style="display: inline;">
+    					<input type="hidden" name="contractsId" value="${contracts.contractsId}">
    						<button type="submit">수정</button>
 					</form></td>
-                    <td><form action="cerDelete.do" method="POST">
-    					<input type="hidden" name="certificateId" value="${certificate.certificateId}">
+                    <td><form action="conDelete.do" method="POST">
+    					<input type="hidden" name="contractsId" value="${contracts.contractsId}">
     					<button type="submit">삭제</button>
 						</form>
 					</td>
@@ -54,7 +54,7 @@
             </c:forEach>
         </tbody>
     </table>
-    <a href="cerAddView.do">증명서 추가</a> <!-- 증명서 추가 페이지 링크 -->
+    <a href="conAddView.do">증명서 추가</a> <!-- 증명서 추가 페이지 링크 -->
     <c:import url="/WEB-INF/views/common/footer.jsp" />
     </div>
     </div>

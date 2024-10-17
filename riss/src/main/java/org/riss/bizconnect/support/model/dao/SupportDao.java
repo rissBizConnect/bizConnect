@@ -15,20 +15,19 @@ public class SupportDao {
     @Autowired
     private SqlSessionTemplate sqlSessionTemplate;
 
-   
-
-
-    public Support selectSupport(int SupportNo) {
-        return sqlSessionTemplate.selectOne("supportMapper.selectSupport", SupportNo);
+    public Support selectSupport(int supportNo) {
+        return sqlSessionTemplate.selectOne("supportMapper.selectSupport", supportNo);
     }
 
-    public int insertSupport(Support Support) {
-        return sqlSessionTemplate.insert("supportMapper.insertSupport", Support);
+    public int insertSupport(Support support) {
+        return sqlSessionTemplate.insert("supportMapper.insertSupport", support);
     }
 
+    
+    
     // 삭제
-    public int deleteSupport(int SupportNo) {
-        return sqlSessionTemplate.delete("supportMapper.deleteSupport", SupportNo);
+    public int deleteSupport(int supportNo) {
+        return sqlSessionTemplate.delete("supportMapper.deleteSupport", supportNo);
     }
 
 
@@ -39,17 +38,15 @@ public class SupportDao {
 
 	public ArrayList<Support> selectList(Paging paging) {
 		List<Support> list = sqlSessionTemplate.selectList("supportMapper.selectList", paging);
-        return (ArrayList<Support>) list;
+        return (ArrayList<Support>)list;
 	}
 
 	public int updateAddReadCount(int supportNo) {
-
 		return sqlSessionTemplate.update("supportMapper.updateAddReadCount", supportNo);
 	}
 
 	public int updateSupport(Support support) {
-	
-		return sqlSessionTemplate.update("supportMapper.updateSupport", support);
+			return sqlSessionTemplate.update("supportMapper.updateSupport", support);
 	}
 	
 	// 검색 관련 메소드 ----------------------
