@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>재고관리</title>
+<meta charset="UTF-8">
+<title></title>
 </head>
 <body>
-    <h1>재고관리 페이지</h1>
+ 안녕하세요 배달의 민족 주문입니다
 </body>
+
 </html>
