@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 .gowork {
 	width: 10%;
@@ -7,29 +7,19 @@
     top: 150px;
     left: 300px;
 }
-.headerPos {
-position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-.menubarPos {
-    position: relative;
-    float: left;
-    top: 0;
-    left: 0;
-    
-}
+
 
 .contentPos {
-	position: relative;
-	left: 50px;
-	top: 20px;
+	position: absolute;
+    left: 247px;
+    top: 112px;
+    width: 1000px;
 }
 
 .footerPos {
-    position: relative;
-    bottom: -20px;
+    position: absolute;
+    bottom: -292px;
+    width: 100%;
 }
 
 .goworkBTN {
@@ -46,10 +36,13 @@ position: relative;
 }
 
 .table {
-
-	border: 1; 
-	width: 80%;
+	width: 1000px;
 }
 .row {
-	 text-align: center; /* ºˆ∆Ú ¡ﬂæ” πËƒ° */
+	 text-align: center; /* ÏàòÌèâ Ï§ëÏïô Î∞∞Ïπò */
+}
+.paging{
+	top: 372px;
+    position: absolute;
+    left: 135px;
 }

@@ -1,10 +1,11 @@
+/*
 package org.riss.bizconnect.main.member.model.dto;
 
 import java.sql.Date; // api ??
 
 public class Member implements java.io.Serializable{
 
-	private static final long serialVersionUID = -8270627500234305220L; // ½Ã¸®¾ó³Ñ¹ö
+	private static final long serialVersionUID = -8270627500234305220L; // ï¿½Ã¸ï¿½ï¿½ï¿½Ñ¹ï¿½
 	
 	
 	private String gID;				//	GID	VARCHAR2(20 BYTE)
@@ -38,7 +39,7 @@ public class Member implements java.io.Serializable{
 	private String adminYN;  //ADMIN_YN	CHAR(1 BYTE)
 	private String loginOk;  //LOGIN_OK	CHAR(1 BYTE)
 	private String photoFileName;  //PHOTO_FILENAME	VARCHAR2(100 BYTE)
-	*/
+	
 	
 	public Member() {
 		super();
@@ -174,3 +175,4 @@ public class Member implements java.io.Serializable{
 	
 	
 }
+*/

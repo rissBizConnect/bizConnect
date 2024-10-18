@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,8 +18,8 @@
 			<a class = "bar" href="#" onclick="loadPage('회계관리')">회계관리</a>
 		</div>
 		<div class="login-mypage">
-			<button onclick="goToMypage()">마이페이지</button>
-			<button onclick="logout()">로그아웃</button>
+			<button onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/main.do'; return false;">마이페이지</button>
+			<button onclick="javascript:location.href='${ pageContext.servletContext.contextPath }/logout.do'; return false;">로그아웃</button>
 		</div>
 	</ul>
 </body>

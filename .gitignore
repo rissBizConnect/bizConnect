@@ -17,6 +17,3 @@ target/
 # IntelliJ IDEA settings
 *.iml
 .idea
-
-# Logs
-*.logs
